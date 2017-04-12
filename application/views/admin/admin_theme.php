@@ -7,7 +7,7 @@ $userdata = $this->session->userdata('admin_login');
 
 <head>
     <meta charset="UTF-8">
-    <title>SIMPaten Sumbawa Barat</title>
+    <title><?php echo $title; ?></title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link rel="shortcut icon" href="img/favicon.ico"/>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -96,11 +96,11 @@ $userdata = $this->session->userdata('admin_login');
                 <div class="nav_profile">
                     <div class="media profile-left">
                         <a class="pull-left profile-thumb" href="javascript:void(0)">
-                            <img src="img/authors/user.jpg" class="img-circle" alt="User Image">
+                            <img src="<?php echo base_url(); ?>assets/img/ksb.png" class="img-circle" alt="User Image">
                         </a>
                         <div class="content-profile">
                             <h4 class="media-heading">
-                                Jayson Wiley
+                                <?php echo $userdata['nama']; ?>
                             </h4>
                             <p>Admin</p>
                         </div>
@@ -108,23 +108,18 @@ $userdata = $this->session->userdata('admin_login');
                 </div>
                 <ul class="navigation">
                     <li>
-                        <a href="index.html">
+                        <a href="<?php echo site_url('baru'); ?>">
                             <i class="menu-icon fa fa-fw fa-home"></i>
-                            <span class="mm-text ">Dashboard 1</span>
+                            <span class="mm-text ">Baru</span>
                         </a>
                     </li>
                     <li>
-                        <a href="index2.html">
+                        <a href="<?php echo site_url('belajar'); ?> ">
                             <i class="menu-icon fa fa-fw fa-dashboard"></i>
-                            <span class="mm-text ">Dashboard 2</span>
+                            <span class="mm-text ">Belajar</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="ui_elements.html">
-                            <i class="menu-icon fa fa-fw fa-cube"></i>
-                            <span class="mm-text ">Elements</span>
-                        </a>
-                    </li>
+                    
                     <li class="menu-dropdown">
                         <a href="#">
                             <i class="menu-icon fa fa-check-square"></i>
@@ -132,11 +127,7 @@ $userdata = $this->session->userdata('admin_login');
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="sub-menu">
-                            <li>
-                                <a href="form_elements.html">
-                                    <i class="fa fa-fw fa-fire"></i> Form Elements
-                                </a>
-                            </li>
+                            
                             <li>
                                 <a href="form_features.html">
                                     <i class="fa fa-fw fa-file-text-o"></i> Form Features
@@ -410,12 +401,13 @@ $userdata = $this->session->userdata('admin_login');
     <aside class="right-aside view-port-height">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Blank</h1>
+            <h1><?php echo $subtitle; ?></h1>
         </section>
         <!-- Main content -->
         <section class="content">
             <div class="row">
                 <div class="col-lg-12">
+                    <?php echo $content; ?>
                 </div>
             </div>
         </section>

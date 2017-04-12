@@ -124,10 +124,20 @@
 
                                     if(hasil.error == false) {
 
-
+                                        if (hasil.level == 'kab') {
+                                         swal({
+                                                title: 'Login Berhasil',
+                                                text: 'Anda Login Sebagai Admin Kab',
+                                                type: 'success',
+                                                buttonsStyling: false,
+                                                confirmButtonClass: 'btn btn-primary'
+                                                  
+                                            });
                                      
 
-                                         swal({
+                                                window.location.href = '<?php echo site_url("admin"); ?>';   
+                                        }else{
+                                            swal({
                                                 title: 'Login Berhasil',
                                                 text: 'Anda Login Sebagai Admin Kecamatan',
                                                 type: 'success',
@@ -138,6 +148,10 @@
                                      
 
                                                 window.location.href = '<?php echo site_url("admin"); ?>';
+                                        }
+                                     
+
+                                         
                                       
                                               
                   

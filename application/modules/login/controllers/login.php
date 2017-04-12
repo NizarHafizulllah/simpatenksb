@@ -50,23 +50,34 @@ class Login extends CI_Controller {
 
 		 }else{
 		 	$member = $res->row();
-
-		 	
-		 		
-				$jj = array (
+		 	$jj = array (
 					'login' => true,
 					'id_user' => $member->id,
 					'nama' => $member->nama,
 					'level' => $member->level,
 					);
 
+		 	if ($member->level==1) {
 		 		$this->session->set_userdata('admin_login', $jj);
-
 		 		$datalogin = $this->session->userdata("admin_login");
+		 		$ret = array("error"=>false, "level"=> 'kab');
+		 	}else{
+		 		$this->session->set_userdata('admin_kec' , $jj);
+		 		$datalogin = $this->session->userdata("admin_kec");
+		 		$ret = array("error"=>false, "level"=> 'kec');
+		 	}
+		 	
+		 		
+				
 
-		 	$ret = array("error"=>false);
+		 		
+
+		 		
+
+		 	
 
 		 }
+		 // show_array($member); exit;
 		 // else {
 
 		 // 	$member = $res->row();
