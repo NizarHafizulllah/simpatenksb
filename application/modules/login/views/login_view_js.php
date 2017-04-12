@@ -63,7 +63,7 @@ jQuery(document).ready(function() {
 
                                          swal(
                                                 {
-                                                title: 'Selamat Datan',
+                                                title: 'Selamat Datang',
                                                 text: 'Anda Login Sebagai Admin Kecamatan',
                                                 type: 'success',
                                                 buttonsStyling: false,
