@@ -18,14 +18,16 @@ class Login extends CI_Controller {
 		$this->session->unset_userdata("admin_login",true);
 		redirect("login");
 	}
-	function logout_pengepul(){
-		$this->session->unset_userdata("pengepul_login",true);
+	function logout_adminkab(){
+		$this->session->unset_userdata("adminkab_login",true);
 		redirect("login");
 	}
-	function logout_nasabah(){
-		$this->session->unset_userdata("nasabah_login",true);
+
+	function logout_super_admin(){
+		$this->session->unset_userdata("sa_login",true);
 		redirect("login");
 	}
+	
 	
 
 
@@ -45,6 +47,8 @@ class Login extends CI_Controller {
 
 
 
+
+
 		 if($res->num_rows()==0) {
 		 	$ret = array("error"=>true);
 
@@ -57,24 +61,30 @@ class Login extends CI_Controller {
 					'level' => $member->level,
 					);
 
-		 	if ($member->level==1) {
-		 		$this->session->set_userdata('admin_login', $jj);
-		 		$datalogin = $this->session->userdata("admin_login");
-		 		$ret = array("error"=>false, "level"=> 'kab');
-		 	}else{
-		 		$this->session->set_userdata('admin_kec' , $jj);
-		 		$datalogin = $this->session->userdata("admin_kec");
-		 		$ret = array("error"=>false, "level"=> 'kec');
-		 	}
-		 	
-		 		
-				
+
+
+				if ($jj['level']==1) {
+					$this->session->set_userdata('admin_login', $jj);
+					$datalogin = $this->session->userdata("admin_login");
+					
+					// kecamatan	
+				}else if ($jj['level']==2){
+					$this->session->set_userdata('adminkab_login', $jj);
+					$datalogin = $this->session->userdata('adminkab_login');
+					// kabupaten
+
+				}else if ($jj['level']==3) {
+					$this->session->set_userdata('sa_login', $jj);
+					$datalogin = $this->session->userdata('sa_login');
+					// super admin
+				}
 
 		 		
 
 		 		
 
-		 	
+		 	$ret = array("error"=>false, "level"=>$jj['level']);
+
 
 		 }
 		 // show_array($member); exit;

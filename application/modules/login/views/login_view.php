@@ -122,7 +122,7 @@
                                 data : data,
                                 success : function(hasil){
 
-                                    if(hasil.error == false) {
+                                    if(hasil.error == false && hasil.level == 1) {
 
                                         if (hasil.level == 'kab') {
                                          swal({
@@ -155,6 +155,30 @@
                                       
                                               
                   
+                                    }else if(hasil.error == false && hasil.level == 2){
+                                        swal({
+                                                title: 'Login Berhasil',
+                                                text: 'Anda Login Sebagai Admin Kabupaten',
+                                                type: 'success',
+                                                buttonsStyling: false,
+                                                confirmButtonClass: 'btn btn-primary'
+                                                  
+                                            });
+                                     
+
+                                                window.location.href = '<?php echo site_url("kabupaten"); ?>';
+                                    }else if(hasil.error == false && hasil.level == 3){
+                                        swal({
+                                                title: 'Login Berhasil',
+                                                text: 'Anda Login Sebagai Super Admin',
+                                                type: 'success',
+                                                buttonsStyling: false,
+                                                confirmButtonClass: 'btn btn-primary'
+                                                  
+                                            });
+                                     
+
+                                                window.location.href = '<?php echo site_url("super_admin"); ?>';
                                     }
                                     else {
                                          swal({
