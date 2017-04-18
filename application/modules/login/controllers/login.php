@@ -54,15 +54,13 @@ class Login extends CI_Controller {
 
 		 }else{
 		 	$member = $res->row();
-
-		 	
-		 		
-				$jj = array (
+		 	$jj = array (
 					'login' => true,
 					'id_user' => $member->id,
 					'nama' => $member->nama,
 					'level' => $member->level,
 					);
+
 
 
 				if ($jj['level']==1) {
@@ -87,7 +85,9 @@ class Login extends CI_Controller {
 
 		 	$ret = array("error"=>false, "level"=>$jj['level']);
 
+
 		 }
+		 // show_array($member); exit;
 		 // else {
 
 		 // 	$member = $res->row();

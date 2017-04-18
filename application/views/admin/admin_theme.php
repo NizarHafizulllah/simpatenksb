@@ -7,6 +7,7 @@ $userdata = $this->session->userdata('admin_login');
 
 <head>
     <meta charset="UTF-8">
+
     <title><?php echo $title ?></title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link rel="shortcut icon" href="img/favicon.ico"/>
@@ -83,7 +84,8 @@ $userdata = $this->session->userdata('admin_login');
             <div id="menu" role="navigation">
                 <div class="nav_profile">
                     <div class="media profile-left">
-                        
+
+
                         <div class="content-profile">
                             <h4 class="media-heading">
                                 <?php echo $userdata['nama']; ?>
@@ -94,9 +96,11 @@ $userdata = $this->session->userdata('admin_login');
                 </div>
                 <ul class="navigation">
                     <li>
+
                         <a href="<?php echo site_url('admin'); ?>">
                             <i class="menu-icon fa fa-fw fa-home"></i>
                             <span class="mm-text ">Izin Tempat Usaha Distribusi Pelayanan Obat Skala Kecamatan (Apotek dan Toko Obat)</span>
+
                         </a>
                         <li>
                         <a href="<?php echo site_url('admin'); ?>">
@@ -121,12 +125,15 @@ $userdata = $this->session->userdata('admin_login');
     <aside class="right-aside view-port-height">
         <!-- Content Header (Page header) -->
         <section class="content-header">
+
             <h1><?php echo $subtitle ?></h1>
+
         </section>
         <!-- Main content -->
         <section class="content">
             <div class="row">
                 <div class="col-lg-12">
+
                 <?php echo $content ?>
                 </div>
             </div>

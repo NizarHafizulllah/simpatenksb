@@ -9,17 +9,14 @@ $userdata = $this->session->userdata('adminkab_login');
     <meta charset="UTF-8">
     <title><?php echo $title ?></title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <link rel="shortcut icon" href="img/favicon.ico"/>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+     <link rel="shortcut icon" href="img/favicon.ico"/>
+    
+     <script src="<?php echo base_url('assets/plugins/jQuery/jQuery-2.1.4.min.js'); ?>"></script>
+
+    <script src="<?php echo base_url(); ?>assets/js/app.js" type="text/javascript"></script>
     <!-- global css -->
     <link type="text/css" href="<?php echo base_url(); ?>assets/css/app.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/custom.css">
-    <!-- end of global css -->
 </head>
 
 <body>
@@ -106,6 +103,24 @@ $userdata = $this->session->userdata('adminkab_login');
                             <span class="mm-text ">Tanda Dafar Industri (TDI) Bagi Industri Mikro, Tradisional dan Rumah Tangga Dengan Nilai Investasi Peralatan Sampai Dengan 50.000.000,00-</span>
                         </a>
                     </li>
+                    <li class="menu-dropdown">
+                        <a href="#">
+                            <i class="menu-icon fa fa-users"></i>
+                            <span>Admin Kecamatan</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                               <a href="<?php echo site_url('kab_add_kecamatan'); ?>">
+                                    <i class="fa fa-fw fa-user"></i> Lihat Data
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?php echo site_url('kab_add_kecamatan/baru'); ?>">
+                                    <i class="fa fa-fw fa-user-plus"></i> Tambah Data
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <!-- / .navigation -->
@@ -137,7 +152,6 @@ $userdata = $this->session->userdata('adminkab_login');
 
 
 <!-- global js -->
-<script src="<?php echo base_url(); ?>assets/js/app.js" type="text/javascript"></script>
 <!-- end of page level js -->
 </body>
 
