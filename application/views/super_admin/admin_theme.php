@@ -18,7 +18,7 @@ $userdata = $this->session->userdata('sa_login');
     <![endif]-->
      <script src="<?php echo base_url('assets/plugins/jQuery/jQuery-2.1.4.min.js'); ?>"></script>
 
-    <script src="<?php echo base_url(); ?>assets/js/app.js" type="text/javascript"></script>
+    
     <!-- global css -->
     <link type="text/css" href="<?php echo base_url(); ?>assets/css/app.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/custom.css">

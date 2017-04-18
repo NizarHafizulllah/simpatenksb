@@ -17,6 +17,10 @@ $userdata = $this->session->userdata('admin_login');
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
     <!-- global css -->
+    <script src="<?php echo base_url('assets/plugins/jQuery/jQuery-2.1.4.min.js'); ?>"></script>
+
+    
+    <!-- global css -->
     <link type="text/css" href="<?php echo base_url(); ?>assets/css/app.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/custom.css">
     <!-- end of global css -->
@@ -56,7 +60,7 @@ $userdata = $this->session->userdata('admin_login');
                         </li>
                         <!-- Menu Body -->
                         <li class="p-t-3">
-                            <a href="user_profile.html">
+                            <a href="<?php echo site_url('profil_kecamatan'); ?>">
                                 Profile<i class="fa fa-fw fa-user pull-right"></i>
                             </a>
                         </li>
