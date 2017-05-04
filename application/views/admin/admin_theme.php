@@ -114,6 +114,50 @@ $userdata = $this->session->userdata('admin_login');
                             <span class="mm-text ">Tanda Dafar Industri (TDI) Bagi Industri Mikro, Tradisional dan Rumah Tangga Dengan Nilai Investasi Peralatan Sampai Dengan 50.000.000,00-</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="<?php echo site_url('admin'); ?>">
+                            <i class="menu-icon fa fa-fw fa-home"></i>
+                            <span class="mm-text ">SIUP (modal <= 50.000.000)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('admin'); ?>">
+                            <i class="menu-icon fa fa-fw fa-home"></i>
+                            <span class="mm-text ">SITU (luas <= 150m2)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('admin'); ?>">
+                            <i class="menu-icon fa fa-fw fa-home"></i>
+                            <span class="mm-text ">IMB (luas <= 250m2)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('admin'); ?>">
+                            <i class="menu-icon fa fa-fw fa-home"></i>
+                            <span class="mm-text ">HO</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('admin'); ?>">
+                            <i class="menu-icon fa fa-fw fa-home"></i>
+                            <span class="mm-text ">UPTL (yang berdomisili di kecamatan dengan kapasitas maksimal 40 PK)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('admin'); ?>">
+                            <i class="menu-icon fa fa-fw fa-home"></i>
+                            <span class="mm-text ">pemberian, pembatalan, penutupan izin usaha depot dan pangkalan minyak
+Pemberian, pembatalan, penutupan dan perpanjangan izin usaha pengumpulan dan penyaluran pelumas bebas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('admin'); ?>">
+                            <i class="menu-icon fa fa-fw fa-home"></i>
+                            <span class="mm-text ">Surat izin usaha perseorangan operasiproduksi untuk usaha perdagangan umu untuk jenis bahan galian pasir diluar sungai, tanah urug, tanah liat dengan luas maksimal 1000 m2 dan tidak menggunkan alat bera dan peledak</span>
+                        </a>
+                    </li>
+                    
                     </li>
                 </ul>
                 <!-- / .navigation -->
