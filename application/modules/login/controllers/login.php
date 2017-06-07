@@ -40,9 +40,15 @@ class Login extends CI_Controller {
 
 
 
+		
+
+		 $this->db->select("a.*, kec.kecamatan as nama_kecamatan")
+		 ->from("admin a")
+		 ->join("tiger_kecamatan kec","kec.id=a.kecamatan","left");
 		 $this->db->where("username",$username);
 		 $this->db->where("password",$password);
-		 $res = $this->db->get("admin");
+
+		 $res = $this->db->get();
 		 // echo $this->db->last_query(); exit;
 
 
@@ -59,6 +65,7 @@ class Login extends CI_Controller {
 					'id_user' => $member->id,
 					'nama' => $member->nama,
 					'level' => $member->level,
+					'kecamatan' => $member->nama_kecamatan,
 					);
 
 

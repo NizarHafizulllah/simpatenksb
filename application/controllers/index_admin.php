@@ -1,10 +1,10 @@
 <?php 
 
 
-class admin extends admin_controller {
+class index_admin extends admin_controller {
 	
 	var $controller;
-	public function admin(){
+	public function index_admin(){
 		parent::__construct();
 		$this->controller = get_class($this);
 	}
@@ -16,12 +16,11 @@ class admin extends admin_controller {
 
 		$data_array=array();
 
-		$data_array = array(
-								);
+	 
 
 		$content = $this->load->view("admin/index_view",$data_array,true);
 
-		$this->set_subtitle("DASHBOARD");
+		$this->set_subtitle("SIMPATEN ");
 		$this->set_title("DASHBOARD");
 		$this->set_content($content);
 		$this->cetak();

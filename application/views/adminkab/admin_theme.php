@@ -86,24 +86,8 @@ $userdata = $this->session->userdata('adminkab_login');
                     </div>
                 </div>
                 <ul class="navigation">
-                    <li>
-                        <a href="<?php echo site_url('admin'); ?>">
-                            <i class="menu-icon fa fa-fw fa-home"></i>
-                            <span class="mm-text ">Izin Tempat Usaha Distribusi Pelayanan Obat Skala Kecamatan (Apotek dan Toko Obat)</span>
-                        </a>
-                        <li>
-                        <a href="<?php echo site_url('admin'); ?>">
-                            <i class="menu-icon fa fa-fw fa-home"></i>
-                            <span class="mm-text ">Izin Penggunaan/Pemanfaatan Jaringan Irigasi Tersiar Dalam Satu Wilayah Kecamatan Bagi Pengurusan Kepentingan Pertanian</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo site_url('admin'); ?>">
-                            <i class="menu-icon fa fa-fw fa-home"></i>
-                            <span class="mm-text ">Tanda Dafar Industri (TDI) Bagi Industri Mikro, Tradisional dan Rumah Tangga Dengan Nilai Investasi Peralatan Sampai Dengan 50.000.000,00-</span>
-                        </a>
-                    </li>
-                    <li class="menu-dropdown">
+
+<li class="menu-dropdown">
                         <a href="#">
                             <i class="menu-icon fa fa-users"></i>
                             <span>Admin Kecamatan</span>
@@ -122,6 +106,351 @@ $userdata = $this->session->userdata('adminkab_login');
                             </li>
                         </ul>
                     </li>
+
+
+<li class="menu-dropdown"> 
+        <a href="#">
+            <i class="menu-icon fa fa-desktop"></i>
+            <span>PERIJINAN</span>
+            <span class="fa arrow"></span>
+        </a>
+                        <ul class="sub-menu">
+                            <li>
+
+                        <a href="<?php echo site_url('admin'); ?>">
+                            <i class="fa fa-fw fa-file-text-o"></i>
+                            <span class="mm-text ">1. Izin Apotak &amp; Toko Obat </span>
+
+                        </a>
+                        <li>
+                        <a href="<?php echo site_url('admin'); ?>">
+                            <i class="fa fa-fw fa-file-text-o"></i>
+                            <span class="mm-text ">2. Izin Jaringan Irigasi </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('admin'); ?>">
+                            <i class="fa fa-fw fa-file-text-o"></i>
+                            <span class="mm-text ">3. TDI Industri Mikro</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('admin'); ?>">
+                            <i class="fa fa-fw fa-file-text-o"></i>
+                            <span class="mm-text ">4. SIUP </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('admin'); ?>">
+                            <i class="fa fa-fw fa-file-text-o"></i>
+                            <span class="mm-text ">5. SITU </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('admin'); ?>">
+                            <i class="fa fa-fw fa-file-text-o"></i>
+                            <span class="mm-text ">6. IMB </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('admin'); ?>">
+                            <i class="fa fa-fw fa-file-text-o"></i>
+                            <span class="mm-text ">7. Ijin Gangguan (HO)</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('admin'); ?>">
+                            <i class="fa fa-fw fa-file-text-o"></i>
+                            <span class="mm-text ">8. UPTL  </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('admin'); ?>">
+                            <i class="fa fa-fw fa-file-text-o"></i>
+                            <span class="mm-text ">9. Ijin Depo Pangkalan Minyak </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo site_url('admin'); ?>">
+                            <i class="fa fa-fw fa-file-text-o"></i>
+                            <span class="mm-text ">10. Surat izin usaha</span>
+                        </a>
+                    </li>
+                    
+                    </li>
+                        </ul>
+                    </li>
+ <li class="menu-dropdown"> 
+
+        <a href="#">
+            <i class="menu-icon fa fa-files-o"></i>
+            <span>NON PERIJINAN</span>
+            <span class="fa arrow"></span>
+        </a>
+        <ul class="sub-menu">
+
+
+
+           
+            <li>
+
+            <a href="<?php echo site_url('admin'); ?>">
+                <i class="fa fa-fw fa-file-text-o"></i>
+                <span class="mm-text ">1. Pendirian Sekolah</span>
+
+            </a>
+            </li>
+
+
+            <li>
+            <a href="<?php echo site_url('admin'); ?>">
+                <i class="fa fa-fw fa-file-text-o"></i>
+                <span class="mm-text ">2. Izin Tempat Kerja </span>
+            </a>
+
+            </li>
+
+
+            <li>
+            <a href="<?php echo site_url('admin'); ?>">
+                <i class="fa fa-fw fa-file-text-o"></i>
+                <span class="mm-text ">3. Izin Usaha Depot Isi Ulang </span>
+            </a>
+
+            </li>
+
+             <li>
+            <a href="<?php echo site_url('admin'); ?>">
+                <i class="fa fa-fw fa-file-text-o"></i>
+                <span class="mm-text ">4. Rek. Pembentukan P3A </span>
+            </a>
+
+            </li>
+
+
+           
+
+             <li>
+            <a href="<?php echo site_url('admin'); ?>">
+                <i class="fa fa-fw fa-file-text-o"></i>
+                <span class="mm-text ">5. Izin Pemakaian Lahan Bekas </span>
+            </a>
+
+            </li>
+
+              <li>
+            <a href="<?php echo site_url('admin'); ?>">
+                <i class="fa fa-fw fa-file-text-o"></i>
+                <span class="mm-text ">6. IMB Perusahaan & Perumahan </span>
+            </a>
+
+            </li>
+              <li>
+            <a href="<?php echo site_url('admin'); ?>">
+                <i class="fa fa-fw fa-file-text-o"></i>
+                <span class="mm-text ">7. Domisili Koperasi & UKM </span>
+            </a>
+
+            </li>
+
+              <li>
+            <a href="<?php echo site_url('admin'); ?>">
+                <i class="fa fa-fw fa-file-text-o"></i>
+                <span class="mm-text ">8. Ijin Pendirian Koperasi</span>
+            </a>
+
+            </li>
+
+              <li>
+            <a href="<?php echo site_url('admin'); ?>">
+                <i class="fa fa-fw fa-file-text-o"></i>
+                <span class="mm-text ">9. Rek. Modal UMKM</span>
+            </a>
+
+            </li>
+
+
+              <li>
+            <a href="<?php echo site_url('admin'); ?>">
+                <i class="fa fa-fw fa-file-text-o"></i>
+                <span class="mm-text ">10. Rek. LPK</span>
+            </a>
+
+            </li>
+
+               <li>
+            <a href="<?php echo site_url('admin'); ?>">
+                <i class="fa fa-fw fa-file-text-o"></i>
+                <span class="mm-text ">11. Rek. Menara Seluler</span>
+            </a>
+
+            </li>
+
+            <li>
+            <a href="<?php echo site_url('admin'); ?>">
+                <i class="fa fa-fw fa-file-text-o"></i>
+                <span class="mm-text ">12. Rek. Ijin Trayek</span>
+            </a>
+
+            </li>
+
+            <li>
+            <a href="<?php echo site_url('admin'); ?>">
+                <i class="fa fa-fw fa-file-text-o"></i>
+                <span class="mm-text ">13. Rek. Organisasi Sosial</span>
+            </a>
+
+            </li>
+
+              <li>
+            <a href="<?php echo site_url('admin'); ?>">
+                <i class="fa fa-fw fa-file-text-o"></i>
+                <span class="mm-text ">14. Rek. Pemberian Penghargaan</span>
+            </a>
+
+            </li>
+
+            <li>
+                <a href="<?php echo site_url('admin'); ?>">
+                    <i class="fa fa-fw fa-file-text-o"></i>
+                    <span class="mm-text ">15. Rek. Tempat Pembudidayaan Perikanan</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="<?php echo site_url('admin'); ?>">
+                    <i class="fa fa-fw fa-file-text-o"></i>
+                    <span class="mm-text ">16. Rek. Tempat Pembudidayaan Perkebunan</span>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo site_url('admin'); ?>">
+                    <i class="fa fa-fw fa-file-text-o"></i>
+                    <span class="mm-text ">17. Rek. Tempat Budidaya Perkebunan</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="<?php echo site_url('admin'); ?>">
+                    <i class="fa fa-fw fa-file-text-o"></i>
+                    <span class="mm-text ">18. Rek. Pengolahan Hasil Perkebunan</span>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="<?php echo site_url('admin'); ?>">
+                    <i class="fa fa-fw fa-file-text-o"></i>
+                    <span class="mm-text ">19. Rek. Pengolahan Sarang Burung , Madu dan Jamur</span>
+                </a>
+            </li>
+
+             <li>
+                <a href="<?php echo site_url('admin'); ?>">
+                    <i class="fa fa-fw fa-file-text-o"></i>
+                    <span class="mm-text ">20. Rek. Usaha Tenaga  Kelistrikan</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="<?php echo site_url('admin'); ?>">
+                    <i class="fa fa-fw fa-file-text-o"></i>
+                    <span class="mm-text ">21. Rek. Industri Pengusulan Modal</span>
+                </a>
+            </li>
+
+             <li>
+                <a href="<?php echo site_url('admin'); ?>">
+                    <i class="fa fa-fw fa-file-text-o"></i>
+                    <span class="mm-text ">22. Surat Ket. Penanaman Modal</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="<?php echo site_url('admin'); ?>">
+                    <i class="fa fa-fw fa-file-text-o"></i>
+                    <span class="mm-text ">23. Rek. Usaha SBBM</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="<?php echo site_url('admin'); ?>">
+                    <i class="fa fa-fw fa-file-text-o"></i>
+                    <span class="mm-text ">24. Rek. UPTL </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="<?php echo site_url('admin'); ?>">
+                    <i class="fa fa-fw fa-file-text-o"></i>
+                    <span class="mm-text ">25. Rek. Pemanfaatan Tenaga Kerja Lokal </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="<?php echo site_url('admin'); ?>">
+                    <i class="fa fa-fw fa-file-text-o"></i>
+                    <span class="mm-text ">26. Rek. Usaha Pertambangan &amp; Energi </span>
+                </a>
+            </li>
+
+
+            <li>
+                <a href="<?php echo site_url('admin'); ?>">
+                    <i class="fa fa-fw fa-file-text-o"></i>
+                    <span class="mm-text ">27. Rek. HO Besar dan Sedang </span>
+                </a>
+            </li>
+
+             <li>
+                <a href="<?php echo site_url('admin'); ?>">
+                    <i class="fa fa-fw fa-file-text-o"></i>
+                    <span class="mm-text ">28. Rek. Izin Tempat Usaha  </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="<?php echo site_url('admin'); ?>">
+                    <i class="fa fa-fw fa-file-text-o"></i>
+                    <span class="mm-text ">29. Surat Keterangan Ahli Waris </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="<?php echo site_url('admin'); ?>">
+                    <i class="fa fa-fw fa-file-text-o"></i>
+                    <span class="mm-text ">30. Surat Keterangan Pindah </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="<?php echo site_url('admin'); ?>">
+                    <i class="fa fa-fw fa-file-text-o"></i>
+                    <span class="mm-text ">31. Rekomendasi Akte Kelahiran </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="<?php echo site_url('admin'); ?>">
+                    <i class="fa fa-fw fa-file-text-o"></i>
+                    <span class="mm-text ">32. Surat Pengantar Pengurusan KTP </span>
+                </a>
+            </li>
+
+             <li>
+                <a href="<?php echo site_url('admin'); ?>">
+                    <i class="fa fa-fw fa-file-text-o"></i>
+                    <span class="mm-text ">33. Surat Keterangan kurang mampu </span>
+                </a>
+            </li>
+
+
+
+
+
+        </ul>
+</li>
+                    
                 </ul>
                 <!-- / .navigation -->
             </div>
