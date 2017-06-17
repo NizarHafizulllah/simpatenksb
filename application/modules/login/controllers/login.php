@@ -65,6 +65,7 @@ class Login extends CI_Controller {
 					'id_user' => $member->id,
 					'nama' => $member->nama,
 					'level' => $member->level,
+					'id_kecamatan' => $member->kecamatan,
 					'kecamatan' => $member->nama_kecamatan,
 					);
 

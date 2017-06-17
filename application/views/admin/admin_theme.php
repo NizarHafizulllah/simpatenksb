@@ -10,7 +10,7 @@ $userdata = $this->session->userdata('admin_login');
 
     <title><?php echo $title ?></title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <link rel="shortcut icon" href="img/favicon.ico"/>
+    <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/img/favicon.ico"/>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -24,6 +24,10 @@ $userdata = $this->session->userdata('admin_login');
     <!-- global css -->
     <link type="text/css" href="<?php echo base_url(); ?>assets/css/app.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/custom.css">
+    <link href="<?php echo base_url(); ?>assets/vendors/notific/css/jquery.notific8.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url(); ?>assets/vendors/bootstrapvalidator/css/bootstrapValidator.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/vendors/iCheck/css/all.css" rel="stylesheet" type="text/css"/>
+    <link href="<?php echo base_url(); ?>assets/vendors/airdatepicker/css/datepicker.min.css" rel="stylesheet" type="text/css">
     <!-- end of global css -->
 </head>
 
@@ -136,7 +140,7 @@ $userdata = $this->session->userdata('admin_login');
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo site_url('index_admin'); ?>">
+                        <a href="<?php echo site_url('kec_imb'); ?>">
                             <i class="fa fa-fw fa-file-text-o"></i>
                             <span class="mm-text ">6. IMB </span>
                         </a>
@@ -476,6 +480,29 @@ $userdata = $this->session->userdata('admin_login');
 
 <!-- global js -->
 <script src="<?php echo base_url(); ?>assets/js/app.js" type="text/javascript"></script>
+<script src="<?php echo base_url("assets") ?>/js/jquery.dataTables.min.js"></script>  
+<script src="<?php echo base_url("assets") ?>/vendors/airdatepicker/js/datepicker.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/vendors/airdatepicker/js/datepicker.en.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/vendors/notific/js/jquery.notific8.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/vendors/iCheck/js/icheck.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(".tanggal").datepicker();
+    $(".tanggal").datepicker({ dateFormat: "dd-mm-yyyy" }).val()
+
+    $(".content .row").find('input').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+        increaseArea: '20%' // optional
+    });
+
+    $('[type="reset"]').on('click', function () {
+        setTimeout(function () {
+            $("input").iCheck("update");
+        }, 10);
+    });
+</script> 
 <!-- end of page level js -->
 </body>
 
