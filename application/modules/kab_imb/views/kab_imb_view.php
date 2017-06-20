@@ -12,7 +12,8 @@
                             </h3>
                         </div>
                         <div class="panel-body">
-                            <form role="form" action="" id="btn-cari">
+              <form role="form" action="" id="btn-cari">
+             <div class="row"> 
             <div class="col-md-3">
               <div class="form-group">
               <label for="nama">Nama Pemohon </label>
@@ -25,6 +26,20 @@
                 <input id="no_regis" name="no_regis" type="text" class="form-control" placeholder="No. Registrasi"></input>
               </div>
             </div>
+            <div class="col-md-3">
+              <div class="form-group">
+              <label for="nama">Kecamatan </label>
+                <?php echo form_dropdown("kecamatan",$arr_kecamatan,isset($kecamatan)?$kecamatan:'','id="kecamatan" class="form-control input-style"'); ?>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+              <label for="nama">Status</label>
+                <?php echo form_dropdown("status",$arr_status,isset($status)?$status:'','id="status" class="form-control input-style"'); ?>
+              </div>
+            </div>
+            </div>
+            <div class="row">
             <div class="col-md-2">
               <div class="form-group">
                 <label></label>
@@ -38,11 +53,6 @@
               </div>
             </div>
 
-            <div class="col-md-2">
-              <div class="form-group">
-                <label></label>
-                <a href="<?php echo site_url('kec_imb/baru') ?>" class="btn btn-success form-control">Tambah</a>
-              </div>
             </div>
           
           </form>
@@ -74,6 +84,7 @@
                                         <th>Nama Pemohon</th>
                                         <th>Tgl. Verfikasi</th>
                                         <th>Petugas Verifikasi</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>

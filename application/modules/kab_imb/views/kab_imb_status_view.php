@@ -1,0 +1,607 @@
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/pages/datatables.css">
+<link href="<?php echo base_url(); ?>assets/vendors/bootstrapvalidator/css/bootstrapValidator.min.css" rel="stylesheet">
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
+
+<style>
+        @media(max-width: 1024px)
+        {
+            .radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {
+                margin-top: 0;
+                margin-left: 8px;
+            }
+        }
+    </style>
+
+
+<div class="row">
+  <div class="col-md-12">
+                    <!-- First Basic Table strats here-->
+        <div class="panel">
+            <?php if ($status=='2') { ?>
+                  <div class="panel-heading" style="background-color: #2980b9;">
+                      <h3 class="panel-title">
+                          <i class="ti-layout-cta-left"></i> Disetujui
+                    </h3>
+                  </div>
+                <?php }else if ($status=='1'){ ?>
+                  <div class="panel-heading" style="background-color: #f1c40f;">
+                      <h3 class="panel-title">
+                          <i class="ti-layout-cta-left"></i> Proses
+                    </h3>
+                  </div>
+                <?php  }else if ($status=='3'){ ?>
+                    <div class="panel-heading" style="background-color: #e74c3c;">
+                      <h3 class="panel-title">
+                          <i class="ti-layout-cta-left"></i> Tidak Disetujui
+                    </h3>
+                  </div>
+                <?php } ?>
+
+            
+            <div class="panel-body">
+              <div class="col-lg-12">
+                <?php if ($status=='2') { ?>
+                  <p>Anda menyetujui data persyaratan IMB ini</p>
+                <?php }else if ($status=='1') { ?>
+                  <p>Data persyaratan IMB ini belum diproses</p>
+                <?php  }else if ($status=='3') { ?>
+                  <p>Anda tidak menyetujui data persyaratan IMB ini</p>
+                <?php } ?>
+              </div>
+                   
+
+            </div>
+        </div>
+    </div>
+</div>
+    
+
+<form method="post" class="form-horizontal p-10" id="form_<?php echo $action ?>" action="<?php echo site_url("$this->controller/$action"); ?>" role="form">
+<div class="row">
+	<div class="col-lg-12">
+                    <!-- First Basic Table strats here-->
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="ti-layout-cta-left"></i> Data Pemohon
+               </h3>
+            </div>
+            <div class="panel-body">
+
+            	<div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">No. Registrasi</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" name="no_regis" id="no_regis" value="<?php echo $no_regis ?>" placeholder="No. Registrasi" readonly>
+                    </div>
+                  </div>
+
+                 <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Nama Pemohon</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" name="nama_pemohon" id="nama_pemohon" placeholder="Nama Pemohon" value="<?php echo $nama_pemohon ?>" readonly>
+                    </div>
+                  </div> 
+
+                  <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Alamat</label>
+                    <div class="col-md-9">
+                      <textarea rows="3" class="form-control resize_vertical" name="alamat" id="alamat" placeholder="Alamat" readonly><?php echo $alamat ?></textarea>
+                    </div>
+                  </div>          
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+	<div class="col-lg-12">
+                    <!-- First Basic Table strats here-->
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="ti-layout-cta-left"></i> Syarat Umum
+               </h3>
+            </div>
+            <div class="panel-body">
+
+            	<div class="form-group p-10">
+                    <label class="control-label col-md-8" for="text">&nbsp;</label>
+                    <div class="col-md-4">
+                      <div class="col-md-6">
+                      	<b>Ada</b>
+                      </div>
+                      <div class="col-md-6">
+                      	<b>Tidak Ada</b>
+                      </div>
+                    </div>
+                  </div> 
+
+                  <div class="form-group p-10">
+                    <label class="col-md-8" for="text">1. Formulir PIMB (1 asli, 2 fotokopi) </label>
+                    <div class="col-md-4">
+
+                    <?php if ($pimb=='ada') { ?>
+                      
+                      <div class="col-md-6">
+                        <input type="radio" name="pimb" class="radio-blue" value="ada" checked="true">
+                      </div>
+                      <div class="col-md-6">
+                        &nbsp;
+                      </div>
+
+                    <?php }else{ ?>
+                        
+                        <div class="col-md-6">
+                        &nbsp;
+                      </div>
+                      <div class="col-md-6">
+                        <input type="radio" name="pimb" class="radio-blue" value="tidak ada" checked="true">
+                      </div>
+
+                      <?php } ?>
+
+                    </div>
+                  </div>  
+
+                  <div class="form-group p-10">
+                    <label class="col-md-8" for="text">2. Fotokopi KTP Pemilik ( 3 rangkap)  </label>
+                    <div class="col-md-4">
+
+                      <?php if ($ktp=='ada') { ?>
+                      
+                      <div class="col-md-6">
+                        <input type="radio" name="ktp" class="radio-blue" value="ada" checked="true">
+                      </div>
+                      <div class="col-md-6">
+                        &nbsp;
+                      </div>
+
+                    <?php }else{ ?>
+                        
+                        <div class="col-md-6">
+                        &nbsp;
+                      </div>
+                      <div class="col-md-6">
+                        <input type="radio" name="ktp" class="radio-blue" value="tidak ada" checked="true">
+                      </div>
+
+                      <?php } ?>
+
+                      
+                    </div>
+                  </div>   
+
+                  <div class="form-group p-10">
+                    <label class="col-md-8" for="text">3. Pasphoto warna ukuran 3x4  (3 (tiga) lembar)   </label>
+                    <div class="col-md-4">
+
+                      <?php if ($foto=='ada') { ?>
+                      
+                      <div class="col-md-6">
+                        <input type="radio" name="foto" class="radio-blue" value="ada" checked="true">
+                      </div>
+                      <div class="col-md-6">
+                        &nbsp;
+                      </div>
+
+                    <?php }else{ ?>
+                        
+                        <div class="col-md-6">
+                        &nbsp;
+                      </div>
+                      <div class="col-md-6">
+                        <input type="radio" name="foto" class="radio-blue" value="tidak ada" checked="true">
+                      </div>
+
+                      <?php } ?>
+
+                    </div>
+                  </div> 
+
+                  <div class="form-group p-10">
+                    <label class="col-md-8" for="text">4. Fotokopi Sertifikat Tanah / SKGR Camat (3 (tiga) rangkap)   </label>
+                    <div class="col-md-4">
+                      
+
+                      <?php if ($sertifikat_tanah=='ada') { ?>
+                      
+                      <div class="col-md-6">
+                        <input type="radio" name="sertifikat_tanah" class="radio-blue" value="ada" checked="true">
+                      </div>
+                      <div class="col-md-6">
+                        &nbsp;
+                      </div>
+
+                    <?php }else{ ?>
+                        
+                        <div class="col-md-6">
+                        &nbsp;
+                      </div>
+                      <div class="col-md-6">
+                        <input type="radio" name="sertifikat_tanah" class="radio-blue" value="tidak ada" checked="true">
+                      </div>
+
+                      <?php } ?>
+
+                    </div>
+                  </div> 
+
+                  <div class="form-group p-10">
+                    <label class="col-md-8" for="text">5. Fotokopi PBB (3 (tiga) rangkap)  </label>
+                    <div class="col-md-4">
+
+                       <?php if ($pbb=='ada') { ?>
+                      
+                      <div class="col-md-6">
+                        <input type="radio" name="pbb" class="radio-blue" value="ada" checked="true">
+                      </div>
+                      <div class="col-md-6">
+                        &nbsp;
+                      </div>
+
+                    <?php }else{ ?>
+                        
+                        <div class="col-md-6">
+                        &nbsp;
+                      </div>
+                      <div class="col-md-6">
+                        <input type="radio" name="pbb" class="radio-blue" value="tidak ada" checked="true">
+                      </div>
+
+                      <?php } ?>
+
+                    
+                    </div>
+                  </div> 
+
+                  <div class="form-group p-10">
+                    <label class="col-md-8" for="text">6. BAP / Rekomendasi UPTD TARCIP setempat  (3 (tiga) rangkap)   </label>
+                    <div class="col-md-4">
+
+                      <?php if ($bap=='ada') { ?>
+                      
+                      <div class="col-md-6">
+                        <input type="radio" name="bap" class="radio-blue" value="ada" checked="true">
+                      </div>
+                      <div class="col-md-6">
+                        &nbsp;
+                      </div>
+
+                    <?php }else{ ?>
+                        
+                        <div class="col-md-6">
+                        &nbsp;
+                      </div>
+                      <div class="col-md-6">
+                        <input type="radio" name="bap" class="radio-blue" value="tidak ada" checked="true">
+                      </div>
+
+                      <?php } ?>
+
+                      
+                    </div>
+                  </div> 
+
+                  <div class="form-group p-10">
+                    <label class="col-md-8" for="text">7. Penelitian tanah/sondir untuk ruko 3 (tiga) lantai  </label>
+                    <div class="col-md-4">
+
+                      <?php if ($penelitian_tanah=='ada') { ?>
+                      
+                      <div class="col-md-6">
+                        <input type="radio" name="penelitian_tanah" class="radio-blue" value="ada" checked="true">
+                      </div>
+                      <div class="col-md-6">
+                        &nbsp;
+                      </div>
+
+                    <?php }else{ ?>
+                        
+                        <div class="col-md-6">
+                        &nbsp;
+                      </div>
+                      <div class="col-md-6">
+                        <input type="radio" name="penelitian_tanah" class="radio-blue" value="tidak ada" checked="true">
+                      </div>
+
+                      <?php } ?>
+
+                    </div>
+                  </div> 
+
+                  <div class="form-group p-10">
+                    <label class="col-md-8" for="text">8. Surat Persetujuan Sempada Tanah  </label>
+                    <div class="col-md-4">
+
+                    <?php if ($setuju_sempada_tanah=='ada') { ?>
+                      
+                      <div class="col-md-6">
+                        <input type="radio" name="setuju_sempada_tanah" class="radio-blue" value="ada" checked="true">
+                      </div>
+                      <div class="col-md-6">
+                        &nbsp;
+                      </div>
+
+                    <?php }else{ ?>
+                        
+                        <div class="col-md-6">
+                        &nbsp;
+                      </div>
+                      <div class="col-md-6">
+                        <input type="radio" name="setuju_sempada_tanah" class="radio-blue" value="tidak ada" checked="true">
+                      </div>
+
+                      <?php } ?>
+
+                      
+                    </div>
+                  </div>      
+
+                  <div class="form-group p-10">
+                    <label class="col-md-8" for="text">9. Rekomendasi Dinas Perhubungan dan Infokom Kab.Sumbawa Barat (untuk IMB Tower)  </label>
+                    <div class="col-md-4">
+
+                    <?php if ($rekom_dishub=='ada') { ?>
+                      
+                      <div class="col-md-6">
+                        <input type="radio" name="rekom_dishub" class="radio-blue" value="ada" checked="true">
+                      </div>
+                      <div class="col-md-6">
+                        &nbsp;
+                      </div>
+
+                    <?php }else{ ?>
+                        
+                        <div class="col-md-6">
+                        &nbsp;
+                      </div>
+                      <div class="col-md-6">
+                        <input type="radio" name="rekom_dishub" class="radio-blue" value="tidak ada" checked="true">
+                      </div>
+
+                      <?php } ?>
+
+                      
+                    </div>
+                  </div>  
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+	<div class="col-lg-12">
+                    <!-- First Basic Table strats here-->
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="ti-layout-cta-left"></i> Persyaratan Teknis
+               </h3>
+            </div>
+            <div class="panel-body">
+
+            	<div class="form-group p-10">
+                    <label class="control-label col-md-8" for="text">&nbsp;</label>
+                    <div class="col-md-4">
+                      <div class="col-md-6">
+                      	<b>Ada</b>
+                      </div>
+                      <div class="col-md-6">
+                      	<b>Tidak Ada</b>
+                      </div>
+                    </div>
+                  </div> 
+
+                  <div class="form-group p-10">
+                    <label class="col-md-8" for="text">1. Gambar rencana bangunan & site plan (3 (tiga) rangkap)  </label>
+                    <div class="col-md-4">
+
+                    <?php if ($tek_gamabar_rencana=='ada') { ?>
+                      
+                      <div class="col-md-6">
+                        <input type="radio" name="tek_gamabar_rencana" class="radio-blue" value="ada" checked="true">
+                      </div>
+                      <div class="col-md-6">
+                        &nbsp;
+                      </div>
+
+                    <?php }else{ ?>
+                        
+                        <div class="col-md-6">
+                        &nbsp;
+                      </div>
+                      <div class="col-md-6">
+                        <input type="radio" name="tek_gamabar_rencana" class="radio-blue" value="tidak ada" checked="true">
+                      </div>
+
+                      <?php } ?>
+
+                    </div>
+                  </div>  
+
+                  <div class="form-group p-10">
+                    <label class="col-md-8" for="text">2. Instalasi air, listrik dan telepon  </label>
+                    <div class="col-md-4">
+
+                    <?php if ($tek_instalasi_air=='ada') { ?>
+                      
+                      <div class="col-md-6">
+                        <input type="radio" name="tek_instalasi_air" class="radio-blue" value="ada" checked="true">
+                      </div>
+                      <div class="col-md-6">
+                        &nbsp;
+                      </div>
+
+                    <?php }else{ ?>
+                        
+                        <div class="col-md-6">
+                        &nbsp;
+                      </div>
+                      <div class="col-md-6">
+                        <input type="radio" name="tek_instalasi_air" class="radio-blue" value="tidak ada" checked="true">
+                      </div>
+
+                      <?php } ?>
+
+                      
+                    </div>
+                  </div>   
+
+                  <div class="form-group p-10">
+                    <label class="col-md-8" for="text">3. Penelitian tanah/sondir untuk ruko 3(tiga) lantai  </label>
+                    <div class="col-md-4">
+
+                    <?php if ($tek_penelitian_tanah=='ada') { ?>
+                      
+                      <div class="col-md-6">
+                        <input type="radio" name="tek_penelitian_tanah" class="radio-blue" value="ada" checked="true">
+                      </div>
+                      <div class="col-md-6">
+                        &nbsp;
+                      </div>
+
+                    <?php }else{ ?>
+                        
+                        <div class="col-md-6">
+                        &nbsp;
+                      </div>
+                      <div class="col-md-6">
+                        <input type="radio" name="tek_penelitian_tanah" class="radio-blue" value="tidak ada" checked="true">
+                      </div>
+
+                      <?php } ?>
+
+                      
+                    </div>
+                  </div> 
+
+                  <div class="form-group p-10">
+                    <label class="col-md-8" for="text">4. Sistem pengamanan  </label>
+                    <div class="col-md-4">
+
+                    <?php if ($tek_pengaman=='ada') { ?>
+                      
+                      <div class="col-md-6">
+                        <input type="radio" name="tek_pengaman" class="radio-blue" value="ada" checked="true">
+                      </div>
+                      <div class="col-md-6">
+                        &nbsp;
+                      </div>
+
+                    <?php }else{ ?>
+                        
+                        <div class="col-md-6">
+                        &nbsp;
+                      </div>
+                      <div class="col-md-6">
+                        <input type="radio" name="tek_pengaman" class="radio-blue" value="tidak ada" checked="true">
+                      </div>
+
+                      <?php } ?>
+
+                      
+                    </div>
+                  </div>  
+
+                  <div class="form-group p-10">
+                    <label class="col-md-8" for="text">5. Sistem drainase dan persampahan  </label>
+                    <div class="col-md-4">
+
+                    <?php if ($sistem_drainase=='ada') { ?>
+                      
+                      <div class="col-md-6">
+                        <input type="radio" name="sistem_drainase" class="radio-blue" value="ada" checked="true">
+                      </div>
+                      <div class="col-md-6">
+                        &nbsp;
+                      </div>
+
+                    <?php }else{ ?>
+                        
+                        <div class="col-md-6">
+                        &nbsp;
+                      </div>
+                      <div class="col-md-6">
+                        <input type="radio" name="sistem_drainase" class="radio-blue" value="tidak ada" checked="true">
+                      </div>
+
+                      <?php } ?>
+
+                      
+                    </div>
+                  </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+	<div class="col-lg-12">
+                    <!-- First Basic Table strats here-->
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="ti-layout-cta-left"></i> Verifikasi
+               </h3>
+            </div>
+            <div class="panel-body">
+
+            	<div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Nama Petugas Verifikasi</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" name="nama_petugas_verifikasi" id="nama_petugas_verifikasi" placeholder="Nama Petugas Verifikasi" value="<?php echo $nama_petugas_verifikasi; ?>" readonly>
+                    </div>
+                  </div>
+
+                 <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Tanggal Verifikasi</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" name="tgl_verifikasi" id="tgl_verifikasi" placeholder="Tanggal Verifikasi" value="<?php echo $tgl_verifikasi; ?>" readonly>
+                    </div>
+                  </div> 
+
+                  <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Status</label>
+                    <div class="col-md-9">
+                      <?php echo form_dropdown("status",$arr_status,isset($status)?$status:'','id="status" class="form-control input-style"'); ?>
+                    </div>
+                  </div> 
+
+                            
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-8">
+  &nbsp;
+</div>
+<div class="col-md-2">
+  <button id="<?php echo $action ?>" style="border-radius: 8;" type="submit" class="btn btn-lg btn-primary"  >Update</button>
+</div>
+<div class="col-md-2">
+  <a href="<?php echo site_url('kab_imb') ?>"> <button style="border-radius: 8;" id="reset" type="button" class="btn btn-lg btn-danger">Cancel</button></a>
+</div>
+
+
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+<?php 
+$this->load->view($this->controller.'_status_view_js');
+?>

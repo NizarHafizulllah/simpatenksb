@@ -9,7 +9,7 @@ $(document).ready(function(){
 				"columnDefs": [ { "targets": 0, "orderable": false } ],
 				"processing": true,
 		        "serverSide": true,
-		        "ajax": '<?php echo site_url("kec_imb/get_data") ?>'
+		        "ajax": '<?php echo site_url("kab_imb/get_data") ?>'
 		 	});
 
 		 
@@ -22,6 +22,8 @@ $(document).ready(function(){
 
 		 	  dt.column(1).search($("#nama_pemohon").val())
         dt.column(2).search($("#no_regis").val())
+        dt.column(3).search($("#kecamatan").val())
+        dt.column(4).search($("#status").val())
 				 .draw();
 
 				 return false;
@@ -31,6 +33,8 @@ $(document).ready(function(){
 		 $("#btn_reset").click(function(){
 			$("#no_regis").val('');
       $("#nama_pemohon").val('');
+      $("#kecamatan").val('');
+      $("#status").val('');
 			$("#btn_submit").click();
 		 });
 

@@ -19,15 +19,19 @@ $userdata = $this->session->userdata('admin_login');
     <![endif]-->
     <!-- global css -->
     <script src="<?php echo base_url('assets/plugins/jQuery/jQuery-2.1.4.min.js'); ?>"></script>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/pages/datatables.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap-dialog.min.css">
 
     
     <!-- global css -->
     <link type="text/css" href="<?php echo base_url(); ?>assets/css/app.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/custom.css">
     <link href="<?php echo base_url(); ?>assets/vendors/notific/css/jquery.notific8.min.css" rel="stylesheet" type="text/css">
-    <link href="<?php echo base_url(); ?>assets/vendors/bootstrapvalidator/css/bootstrapValidator.min.css" rel="stylesheet">
+    
     <link href="<?php echo base_url(); ?>assets/vendors/iCheck/css/all.css" rel="stylesheet" type="text/css"/>
     <link href="<?php echo base_url(); ?>assets/vendors/airdatepicker/css/datepicker.min.css" rel="stylesheet" type="text/css">
+
+
     <!-- end of global css -->
 </head>
 
@@ -482,14 +486,23 @@ $userdata = $this->session->userdata('admin_login');
 <script src="<?php echo base_url(); ?>assets/js/app.js" type="text/javascript"></script>
 <script src="<?php echo base_url("assets") ?>/js/jquery.dataTables.min.js"></script>  
 <script src="<?php echo base_url("assets") ?>/vendors/airdatepicker/js/datepicker.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
+
 <script src="<?php echo base_url(); ?>assets/vendors/airdatepicker/js/datepicker.en.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/vendors/notific/js/jquery.notific8.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/vendors/iCheck/js/icheck.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/js/bootstrap-dialog.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-    $(".tanggal").datepicker();
-    $(".tanggal").datepicker({ dateFormat: "dd-mm-yyyy" }).val()
+
+$(".tanggal").datepicker({
+    changeMonth: true,
+    changeYear: true,
+    dateFormat: "dd-mm-yyyy"
+});
+    
+    $(".tanggal").datepicker().on('changeDate', function(ev){                 
+             $('.tanggal').datepicker('hide');
+        });
 
     $(".content .row").find('input').iCheck({
         checkboxClass: 'icheckbox_square-blue',
