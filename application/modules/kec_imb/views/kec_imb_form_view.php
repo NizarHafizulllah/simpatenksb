@@ -26,12 +26,21 @@
             </div>
             <div class="panel-body">
 
+            <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Tanggal Surat</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control tanggal" data-language='en' name="tgl_surat" id="tgl_surat" placeholder="Tanggal Surat">
+                    </div>
+                  </div>
+
             	<div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">No. Registrasi</label>
                     <div class="col-md-9">
                       <input type="text" class="form-control" name="no_regis" id="no_regis" placeholder="No. Registrasi">
                     </div>
                   </div>
+
+
 
                  <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">Nama Pemohon</label>

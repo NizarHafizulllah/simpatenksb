@@ -26,6 +26,15 @@
             </div>
             <div class="panel-body">
 
+
+             <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Tanggal Surat</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control tanggal" data-language='en' name="tgl_surat" id="tgl_surat" placeholder="Tanggal Surat" value="<?php echo $tgl_surat; ?>">
+                    </div>
+                  </div> 
+
+
             	<div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">No. Registrasi</label>
                     <div class="col-md-9">

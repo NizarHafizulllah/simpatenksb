@@ -461,7 +461,7 @@ $userdata = $this->session->userdata('admin_login');
         <!-- Content Header (Page header) -->
         <section class="content-header">
 
-            <h1>DASHBOARD ADMIN KECAMATAN <?php //echo $subtitle ?></h1>
+            <h1><?php echo $subtitle ?></h1>
 
         </section>
         <!-- Main content -->

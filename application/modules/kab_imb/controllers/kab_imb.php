@@ -146,6 +146,7 @@ class kab_imb extends adminkab_controller {
          $data_array = $imb->row_array();
 
          $data_array['tgl_verifikasi'] = flipdate($data_array['tgl_verifikasi']);
+         $data_array['tgl_surat'] = flipdate($data_array['tgl_surat']);
 
          $data_array['action'] = 'update';
 

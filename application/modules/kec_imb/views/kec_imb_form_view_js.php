@@ -11,6 +11,7 @@ $(document).ready(function(){
 
             
   $("#tgl_verifikasi").val('<?php echo $tgl_verifikasi ?>');
+  $("#tgl_surat").val('<?php echo $tgl_surat ?>');
 
 	
 

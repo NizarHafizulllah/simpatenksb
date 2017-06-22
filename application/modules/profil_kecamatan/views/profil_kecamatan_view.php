@@ -46,7 +46,7 @@
 		<div class="panel">
             <div class="panel-heading">
               <h3 class="panel-title">
-                <i class="livicon" data-name="user-add" data-size="18" data-c="#fff" data-hc="#fff" data-loop="true"></i> Data Diri
+                <i class="livicon" data-name="user-add" data-size="18" data-c="#fff" data-hc="#fff" data-loop="true"></i> Profil
               </h3>
             <span class="pull-right">
               <i class="fa fa-fw ti-angle-up clickable"></i>
