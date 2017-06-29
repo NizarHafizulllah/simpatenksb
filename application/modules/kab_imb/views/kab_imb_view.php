@@ -77,7 +77,7 @@
                             </h3>
                         </div>
                         <div class="panel-body">
-                                <table class="table" id="imb">
+                                <table class="table dataTable" id="imb">
                                  <thead>
                                     <tr>
                                         <th>No. Registrasi</th>

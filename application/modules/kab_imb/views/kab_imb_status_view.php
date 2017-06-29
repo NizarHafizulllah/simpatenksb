@@ -572,6 +572,20 @@
                   </div> 
 
                   <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Nama Camat</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" data-language='en' name="nama_camat" id="nama_camat" placeholder="Nama Camat" value="<?php echo $nama_camat; ?>" readonly>
+                    </div>
+                  </div> 
+
+                  <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">NIP Camat</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" data-language='en' name="nip_camat" id="nip_camat" placeholder="Tanggal Verifikasi" value="<?php echo $nip_camat; ?>" readonly>
+                    </div>
+                  </div> 
+
+                  <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">Status</label>
                     <div class="col-md-9">
                       <?php echo form_dropdown("status",$arr_status,isset($status)?$status:'','id="status" class="form-control input-style"'); ?>

@@ -40,6 +40,8 @@ $("#simpan").click(function(){
   						$('#alamat').val('');
   						$('#nama_petugas_verifikasi').val('');
   						$('#tgl_verifikasi').val('');
+                        $('#nama_camat').val('');
+                        $('#nip_camat').val('');
             }
             else {
                  params.heading = 'Gagal';

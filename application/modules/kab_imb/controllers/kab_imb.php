@@ -229,7 +229,7 @@ if($this->form_validation->run() == TRUE ) {
 
         $userdata = $this->session->userdata('admin_login');
         $post['tgl_verifikasi'] = flipdate($post['tgl_verifikasi']);
-        
+        $post['tgl_surat'] = flipdate($post['tgl_surat']);
         $this->db->where('no_regis', $post['no_regis']);
         $res = $this->db->update('imb', $post); 
         if($res){

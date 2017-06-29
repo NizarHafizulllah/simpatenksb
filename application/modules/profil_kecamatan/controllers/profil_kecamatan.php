@@ -182,13 +182,18 @@ if ($error=='true') {
 
         if($res){
             $arr = array("error"=>false,'message'=>"BERHASIL DIUPDATE");
-            $this->db->where('id', $id_user);
-            $user = $this->db->get('admin')->row_array();
+            $this->db->select("a.*, kec.kecamatan as nama_kecamatan")
+		 ->from("admin a")
+		 ->join("tiger_kecamatan kec","kec.id=a.kecamatan","left");
+            $this->db->where('a.id', $id_user);
+            $user = $this->db->get()->row_array();
             $jj = array (
 					'login' => true,
 					'id_user' => $user['id'],
 					'nama' => $user['nama'],
 					'level' => $user['level'],
+					'id_kecamatan' => $user['kecamatan'],
+					'kecamatan' => $user['nama_kecamatan'],
 					);
             // $jj['login'] = true;
             $this->session->set_userdata('admin_login', $jj);

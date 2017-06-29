@@ -7,8 +7,6 @@
  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/print_style.css">
  <style type="text/css">
 <!--
-.style6 {font-size: 10px}
-.style7 {font-size: 18px}
 .style17 {
 	font-size: 24px;
 	font-weight: bold;
@@ -149,27 +147,59 @@
   </tr>
   <tr>
     <td height="15">2.</td>
-    <td><div align="justify">Memelihara kebersihan tempat usaha dan lingkungan.</div></td>
+    <td><div align="justify">Memelihara kebersihan tempat bangunan dan lingkungan.</div></td>
   </tr>
   <tr>
     <td height="15">3.</td>
-    <td><div align="justify">Menaati ketentuan/petunjuk yang ada hubungan dengan  kegiatan usahanya.</div></td>
+    <td><div align="justify">Menaati ketentuan/petunjuk yang ada hubungan dengan bangunannya.</div></td>
   </tr>
   <tr>
     <td height="15">4.</td>
-    <td><div align="justify">Membayar pajak dan retribusi daerah yang berkenaan  dengan usaha yang dilakukan.</div></td>
+    <td><div align="justify">Membayar pajak dan retribusi daerah yang berkenaan dengan bangunan yang dimiliki.</div></td>
   </tr>
   <tr>
     <td height="15">5.</td>
-    <td><div align="justify">Menyediakan racun api dan peralatan lainnya di tempat  usaha untuk mencegah kebakaran.</div></td>
+    <td><div align="justify">Menyediakan racun api dan peralatan lainnya di tempat bangunan untuk mencegah kebakaran.</div></td>
   </tr>
   <tr>
     <td height="35">6.</td>
-    <td><div align="justify">Surat Izin Tempat Usaha ini bukan merupakan surat  jaminan mutlak bagi perusahaan/pengusaha apabila dikemudian hari ternyata  perusahaan/pengusaha mempunyai sengketa mengenai tempat dan/atau usahanya, maka  izin yang diberikan dapat dicabut kembali.</div></td>
+    <td><div align="justify">Surat Izin Mendirikan Bangunan ini bukan merupakan surat  jaminan mutlak bagi pemilik bangunan apabila dikemudian hari ternyata  bangunan mempunyai sengketa mengenai tempat dan/atau bangunannya, maka  izin yang diberikan dapat dicabut kembali.</div></td>
   </tr>
   <tr>
     <td height="35">7.</td>
-    <td><div align="justify">Surat Izin Tempat Usaha ini berlaku selama  perusahaan/usaha masih berjalan, dan untuk kepentingan pengawasan/pengendalian  terhadap perusahaan tersebut dapat dilakukan pendaftaran ulang setiap 5 (lima)  tahun sekali terhitung sejak tanggal ditetapkan sampai dengan....,&hellip;&hellip; 20... Atas permohonan yang  bersangkutan serta terpenuhinya syarat-syarat yang berlaku.</div></td>
+    <td><div align="justify">Surat Izin Mendirikan Bangunan ini berlaku selama  bangunan masih berdiri, dan untuk kepentingan pengawasan/pengendalian  terhadap bangunan tersebut dapat dilakukan pendaftaran ulang setiap 5 (lima)  tahun sekali terhitung sejak tanggal ditetapkan sampai dengan....,&hellip;&hellip; 20... Atas permohonan yang  bersangkutan serta terpenuhinya syarat-syarat yang berlaku.</div></td>
+  </tr>
+</table>
+<br/>&nbsp;
+<br/>&nbsp;
+<table width="100%">
+  <tr>
+    <td width="60%">&nbsp;</td>
+    <td width="40%"><strong>Ditetapkan di <?php echo $query['nm_kecamatan'] ?></strong></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><strong>Pada tanggal <?php echo $d_surat.' '.$m_surat.' '.$y_surat; ?></strong></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><strong>a.n BUPATI SUMBAWA BARAT</strong></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><strong>Camat <?php echo $query['nm_kecamatan'] ?></strong></td>
+  </tr>
+  <tr>
+    <td height="71">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><strong><u><?php echo $query['nama_camat'] ?></u></strong></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><strong><?php echo $query['nip_camat'] ?></strong></td>
   </tr>
 </table>
 

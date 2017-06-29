@@ -67,7 +67,7 @@
                             </h3>
                         </div>
                         <div class="panel-body">
-                                <table class="table" id="imb">
+                                <table width="100%" border="0" class="table table-striped table-bordered table-hover dataTable no-footer" id="imb" role="grid">
                                  <thead>
                                     <tr>
                                         <th>No. Registrasi</th>

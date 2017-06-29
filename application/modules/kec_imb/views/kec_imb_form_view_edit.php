@@ -511,7 +511,7 @@
         <div class="panel">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <i class="ti-layout-cta-left"></i> Verifikasi
+                    <i class="ti-layout-cta-left"></i> Verifikasi dan Data Kecamatan
                </h3>
             </div>
             <div class="panel-body">
@@ -530,6 +530,21 @@
                     </div>
                   </div> 
 
+
+                  <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Nama Camat</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" data-language='en' name="nama_camat" id="nama_camat" placeholder="Nama Camat" value="<?php echo $nama_camat; ?>">
+                    </div>
+                  </div> 
+
+                  <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">NIP Camat</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" data-language='en' name="nip_camat" id="nip_camat" placeholder="Tanggal Verifikasi" value="<?php echo $nip_camat; ?>">
+                    </div>
+                  </div> 
+
                             
 
             </div>
@@ -544,7 +559,7 @@
 	<button id="<?php echo $action ?>" style="border-radius: 8;" type="submit" class="btn btn-lg btn-primary"  >Update</button>
 </div>
 <div class="col-md-2">
-	<a href="<?php echo site_url('kec_imb') ?>"> <button style="border-radius: 8;" id="reset" type="button" class="btn btn-lg btn-danger">Cancel</button></a>
+	<a href="<?php echo site_url('kec_imb') ?>"> <button style="border-radius: 8;" id="reset" type="button" class="btn btn-lg btn-danger">Kembali</button></a>
 </div>
 
 
