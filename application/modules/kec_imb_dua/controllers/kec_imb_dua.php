@@ -18,7 +18,7 @@ class kec_imb_dua extends admin_controller {
 		
 		$data_array=array();
 
-        $data_array['curPage'] = 'imb_satu';
+        $data_array['curPage'] = 'imb_dua';
 
 	   
 
@@ -134,12 +134,12 @@ class kec_imb_dua extends admin_controller {
         $data_array['action'] = 'simpan';
         $data_array['tgl_verifikasi'] = "";
         $data_array['tgl_surat'] = ""; 
-        $data_array['curPage'] = 'imb_satu';
+        $data_array['curPage'] = 'imb_dua';
 
 
         $content = $this->load->view($this->controller."_form_view",$data_array,true);
-       $this->set_subtitle("Tambah Perijinan IMB Dibawah 250");
-		$this->set_title("Tambah Perijinan IMB Dibawah 250");
+       $this->set_subtitle("Tambah Perijinan IMB Diatas 250");
+		$this->set_title("Tambah Perijinan IMB Diatas 250");
 		$this->set_content($content);
 		$this->cetak();
     }
@@ -157,33 +157,34 @@ class kec_imb_dua extends admin_controller {
 
 
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('no_regis','Nomor registrasi','required');
-        $this->form_validation->set_rules('nama_pemohon','Nama Pemohon','required');
-        $this->form_validation->set_rules('alamat','Alamat','required');
-        $this->form_validation->set_rules('pimb','Syarat umum pertama','required');
-        $this->form_validation->set_rules('ktp','Syarat umum kedua','required');
-        $this->form_validation->set_rules('foto','Syarat umum ketiga','required');
-        $this->form_validation->set_rules('sertifikat_tanah','Syarat umum keempat','required');
-        $this->form_validation->set_rules('pbb','Syarat umum kelima','required');
-        $this->form_validation->set_rules('bap','Syarat umum keenam','required');
-        $this->form_validation->set_rules('penelitian_tanah','Syarat umum ketujuh','required');
-        $this->form_validation->set_rules('setuju_sempada_tanah','Syarat umum kedelapan','required');
-        $this->form_validation->set_rules('rekom_dishub','Syarat umum kesembilan','required');
-        $this->form_validation->set_rules('tek_gamabar_rencana','Syarat teknis pertama','required');
-        $this->form_validation->set_rules('tek_instalasi_air','Syarat teknis kedua','required');
-        $this->form_validation->set_rules('tek_penelitian_tanah','Syarat teknis ketiga','required');
-        $this->form_validation->set_rules('tek_pengaman','Syarat teknis keempat','required');
-        $this->form_validation->set_rules('sistem_drainase','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('nama_petugas_verifikasi','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('tgl_verifikasi','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('tgl_surat','Tgl. Surat','required');
-        $this->form_validation->set_rules('tgl_lahir_pemohon','Tgl. Lahir Pemohon','required');
-        $this->form_validation->set_rules('tempat_lahir_pemohon','Tempat Lahir Pemohon','required');
-        $this->form_validation->set_rules('no_telp_pemohon','No. Telp. Pemohon','required');
-        $this->form_validation->set_rules('pekerjaan_pemohon','Pekerjaan Pemohon','required');
-          
-         
-        $this->form_validation->set_message('required', ' Harap isi semua data');
+        $this->form_validation->set_rules('tgl_surat','Tanggal Surat','required'); 
+        $this->form_validation->set_rules('no_regis','No. Register','required');  
+        $this->form_validation->set_rules('nama_pemohon','Nama Pemohon','required');  
+        $this->form_validation->set_rules('tempat_lahir_pemohon','1','required');  
+        $this->form_validation->set_rules('tgl_lahir_pemohon','2','required');  
+        $this->form_validation->set_rules('pekerjaan_pemohon','3','required');  
+        $this->form_validation->set_rules('no_telp_pemohon','4','required');
+        $this->form_validation->set_rules('alamat','5','required');  
+        $this->form_validation->set_rules('pimb','6','required');  
+        $this->form_validation->set_rules('ktp','7','required');  
+        $this->form_validation->set_rules('foto','8','required');  
+        $this->form_validation->set_rules('foto','9','required');  
+        $this->form_validation->set_rules('fc_pbb','10','required');  
+        $this->form_validation->set_rules('bap','11','required');  
+        $this->form_validation->set_rules('sondir_ruko','12','required'); 
+        $this->form_validation->set_rules('sempada','13','required'); 
+        $this->form_validation->set_rules('rekom_imb_tower','14','required'); 
+        $this->form_validation->set_rules('site_plan','15','required'); 
+        $this->form_validation->set_rules('instalasi','16','required'); 
+        $this->form_validation->set_rules('sondir_ruko_syarat','17','required'); 
+        $this->form_validation->set_rules('pengaman','18','required'); 
+        $this->form_validation->set_rules('drainase','19','required'); 
+        $this->form_validation->set_rules('nama_petugas_verifikasi','20','required'); 
+        $this->form_validation->set_rules('tgl_verifikasi','21','required');  
+        $this->form_validation->set_rules('nama_camat','22','required');  
+        $this->form_validation->set_rules('nip_camat','23','required');  
+
+        $this->form_validation->set_message('required', '%s Harap isi semua data');
         
         $this->form_validation->set_error_delimiters('', '<br>&nbsp;<br>&nbsp;<br>');
 
@@ -202,7 +203,7 @@ if($this->form_validation->run() == TRUE ) {
         $post['status'] = 1;
         
         
-        $res = $this->db->insert('imb', $post); 
+        $res = $this->db->insert('imb_dua', $post); 
         if($res){
             $arr = array("error"=>false,'message'=>"BERHASIL DISIMPAN");
         }
@@ -309,7 +310,7 @@ else {
          $data_array['tgl_lahir_pemohon'] = flipdate($data_array['tgl_lahir_pemohon']);
 
          $data_array['action'] = 'update';
-         $data_array['curPage'] = 'imb_satu';
+         $data_array['curPage'] = 'imb_dua';
          // show_array($data); exit;
     	 // show_array($data_array);
       //    exit();
@@ -375,7 +376,7 @@ else {
          $data_array['tgl_lahir_pemohon'] = flipdate($data_array['tgl_lahir_pemohon']);
 
          $data_array['action'] = 'update';
-         $data_array['curPage'] = 'imb_satu';
+         $data_array['curPage'] = 'imb_dua';
          // show_array($data); exit;
     	 // show_array($data_array);
       //    exit();

@@ -41,7 +41,7 @@
             <div class="col-md-2">
               <div class="form-group">
                 <label></label>
-                <a href="<?php echo site_url('kec_imb/baru') ?>" class="btn btn-success form-control">Tambah</a>
+                <a href="<?php echo site_url($this->controller.'/baru') ?>" class="btn btn-success form-control">Tambah</a>
               </div>
             </div>
           

@@ -16,7 +16,7 @@ class index_admin extends admin_controller {
 
 		$data_array=array();
 
-	 
+	 	$data_array['curPage'] = '';
 
 		$content = $this->load->view("admin/index_view",$data_array,true);
 

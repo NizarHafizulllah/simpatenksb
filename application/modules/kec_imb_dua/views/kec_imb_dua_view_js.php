@@ -14,7 +14,7 @@ $('.tanggal').datepicker().on('changeDate', function(ev){
 				"columnDefs": [ { "targets": 0, "orderable": false } ],
 				"processing": true,
 		        "serverSide": true,
-		        "ajax": '<?php echo site_url("kec_imb/get_data") ?>'
+		        "ajax": '<?php echo site_url("$this->controller/get_data") ?>'
 		 	});
 
 		 
