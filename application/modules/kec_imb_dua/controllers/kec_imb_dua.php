@@ -168,7 +168,7 @@ class kec_imb_dua extends admin_controller {
         $this->form_validation->set_rules('pimb','6','required');  
         $this->form_validation->set_rules('ktp','7','required');  
         $this->form_validation->set_rules('foto','8','required');  
-        $this->form_validation->set_rules('foto','9','required');  
+        $this->form_validation->set_rules('fc_sertifikat_tanah','9','required');  
         $this->form_validation->set_rules('fc_pbb','10','required');  
         $this->form_validation->set_rules('bap','11','required');  
         $this->form_validation->set_rules('sondir_ruko','12','required'); 
@@ -241,7 +241,7 @@ function update(){
         $this->form_validation->set_rules('pimb','6','required');  
         $this->form_validation->set_rules('ktp','7','required');  
         $this->form_validation->set_rules('foto','8','required');  
-        $this->form_validation->set_rules('foto','9','required');  
+        $this->form_validation->set_rules('fc_sertifikat_tanah','9','required');  
         $this->form_validation->set_rules('fc_pbb','10','required');  
         $this->form_validation->set_rules('bap','11','required');  
         $this->form_validation->set_rules('sondir_ruko','12','required'); 
