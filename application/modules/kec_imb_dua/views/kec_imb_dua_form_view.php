@@ -36,7 +36,7 @@
             	<div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">No. Registrasi</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control" name="no_regis" id="no_regis" placeholder="No. Registrasi" value="<?php echo isset($no_regis)?$no_regis:''; ?>">
+                      <input type="text" class="form-control" name="no_regis" id="no_regis" placeholder="No. Registrasi" value="<?php echo isset($no_regis)?$no_regis:''; ?>" <?php if ($action=='update') { echo 'readonly'; } ?>>
                     </div>
                   </div>
 
@@ -349,10 +349,10 @@
                     <label class="col-md-8" for="text">1. Formulir PIMB (1 asli, 2 fotokopi) </label>
                     <div class="col-md-4">
                       <div class="col-md-6">
-                        <input type="radio" name="pimb" class="radio-blue" value="ada">
+                        <input type="radio" name="pimb" class="radio-blue" value="ada" <?php if ($pimb=='ada') { echo 'checked="true"'; } ?>>
                       </div>
                       <div class="col-md-6">
-                        <input type="radio" name="pimb" class="radio-blue" value="tidak ada">
+                        <input type="radio" name="pimb" class="radio-blue" value="tidak ada" <?php if ($pimb=='tidak ada') { echo 'checked="true"'; } ?>>
                       </div>
                     </div>
                   </div>  
@@ -361,10 +361,10 @@
                     <label class="col-md-8" for="text">2. Fotokopi KTP Pemilik ( 3 rangkap)     </label>
                     <div class="col-md-4">
                       <div class="col-md-6">
-                        <input type="radio" name="ktp" class="radio-blue" value="ada">
+                        <input type="radio" name="ktp" class="radio-blue" value="ada" <?php if ($ktp=='ada') { echo 'checked="true"'; } ?>>
                       </div>
                       <div class="col-md-6">
-                        <input type="radio" name="ktp" class="radio-blue" value="tidak ada">
+                        <input type="radio" name="ktp" class="radio-blue" value="tidak ada" <?php if ($ktp=='tidak ada') { echo 'checked="true"'; } ?>>
                       </div>
                     </div>
                   </div>   
@@ -373,10 +373,10 @@
                     <label class="col-md-8" for="text">3. Pasphoto warna ukuran 3x4  (3 (tiga) lembar)   </label>
                     <div class="col-md-4">
                       <div class="col-md-6">
-                        <input type="radio" name="foto" class="radio-blue" value="ada">
+                        <input type="radio" name="foto" class="radio-blue" value="ada" <?php if ($foto=='ada') { echo 'checked="true"'; } ?>>
                       </div>
                       <div class="col-md-6">
-                        <input type="radio" name="foto" class="radio-blue" value="tidak ada">
+                        <input type="radio" name="foto" class="radio-blue" value="tidak ada" <?php if ($foto=='tidak ada') { echo 'checked="true"'; } ?>>
                       </div>
                     </div>
                   </div> 
@@ -385,10 +385,10 @@
                     <label class="col-md-8" for="text">4. Fotokopi Sertifikat Tanah / SKGR Camat (3 (tiga) rangkap)    </label>
                     <div class="col-md-4">
                       <div class="col-md-6">
-                        <input type="radio" name="fc_sertifikat_tanah" class="radio-blue" value="ada">
+                        <input type="radio" name="fc_sertifikat_tanah" class="radio-blue" value="ada" <?php if ($fc_sertifikat_tanah=='ada') { echo 'checked="true"'; } ?>>
                       </div>
                       <div class="col-md-6">
-                        <input type="radio" name="fc_sertifikat_tanah" class="radio-blue" value="tidak ada">
+                        <input type="radio" name="fc_sertifikat_tanah" class="radio-blue" value="tidak ada" <?php if ($fc_sertifikat_tanah=='tidak ada') { echo 'checked="true"'; } ?>>
                       </div>
                     </div>
                   </div> 
@@ -397,10 +397,10 @@
                     <label class="col-md-8" for="text">5. Fotokopi PBB (3 (tiga) rangkap) </label>
                     <div class="col-md-4">
                       <div class="col-md-6">
-                        <input type="radio" name="fc_pbb" class="radio-blue" value="ada">
+                        <input type="radio" name="fc_pbb" class="radio-blue" value="ada" <?php if ($fc_pbb=='ada') { echo 'checked="true"'; } ?>>
                       </div>
                       <div class="col-md-6">
-                        <input type="radio" name="fc_pbb" class="radio-blue" value="tidak ada">
+                        <input type="radio" name="fc_pbb" class="radio-blue" value="tidak ada" <?php if ($fc_pbb=='tidak ada') { echo 'checked="true"'; } ?>>
                       </div>
                     </div>
                   </div> 
@@ -409,10 +409,10 @@
                     <label class="col-md-8" for="text">6. BAP / Rekomendasi UPTD TARCIP setempat  (3 (tiga) rangkap)    </label>
                     <div class="col-md-4">
                       <div class="col-md-6">
-                        <input type="radio" name="bap" class="radio-blue" value="ada">
+                        <input type="radio" name="bap" class="radio-blue" value="ada" <?php if ($bap=='ada') { echo 'checked="true"'; } ?>>
                       </div>
                       <div class="col-md-6">
-                        <input type="radio" name="bap" class="radio-blue" value="tidak ada">
+                        <input type="radio" name="bap" class="radio-blue" value="tidak ada" <?php if ($bap=='tidak ada') { echo 'checked="true"'; } ?>>
                       </div>
                     </div>
                   </div> 
@@ -421,10 +421,10 @@
                     <label class="col-md-8" for="text">7. Penelitian tanah/sondir untuk ruko 3 (tiga) lantai  </label>
                     <div class="col-md-4">
                       <div class="col-md-6">
-                        <input type="radio" name="sondir_ruko" class="radio-blue" value="ada">
+                        <input type="radio" name="sondir_ruko" class="radio-blue" value="ada" <?php if ($sondir_ruko=='ada') { echo 'checked="true"'; } ?>>
                       </div>
                       <div class="col-md-6">
-                        <input type="radio" name="sondir_ruko" class="radio-blue" value="tidak ada">
+                        <input type="radio" name="sondir_ruko" class="radio-blue" value="tidak ada" <?php if ($sondir_ruko=='tidak ada') { echo 'checked="true"'; } ?>>
                       </div>
                     </div>
                   </div> 
@@ -433,10 +433,10 @@
                     <label class="col-md-8" for="text">8. Surat Persetujuan Sempada Tanah  </label>
                     <div class="col-md-4">
                       <div class="col-md-6">
-                        <input type="radio" name="sempada" class="radio-blue" value="ada">
+                        <input type="radio" name="sempada" class="radio-blue" value="ada" <?php if ($sempada=='ada') { echo 'checked="true"'; } ?>>
                       </div>
                       <div class="col-md-6">
-                        <input type="radio" name="sempada" class="radio-blue" value="tidak ada">
+                        <input type="radio" name="sempada" class="radio-blue" value="tidak ada" <?php if ($sempada=='tidak ada') { echo 'checked="true"'; } ?>>
                       </div>
                     </div>
                   </div>      
@@ -445,10 +445,10 @@
                     <label class="col-md-8" for="text">9. Rekomendasi Dinas Perhubungan dan Infokom Kab.Sumbawa Barat (untuk IMB Tower)</label>
                     <div class="col-md-4">
                       <div class="col-md-6">
-                        <input type="radio" name="rekom_imb_tower" class="radio-blue" value="ada">
+                        <input type="radio" name="rekom_imb_tower" class="radio-blue" value="ada" <?php if ($rekom_imb_tower=='ada') { echo 'checked="true"'; } ?>>
                       </div>
                       <div class="col-md-6">
-                        <input type="radio" name="rekom_imb_tower" class="radio-blue" value="tidak ada">
+                        <input type="radio" name="rekom_imb_tower" class="radio-blue" value="tidak ada" <?php if ($rekom_imb_tower=='tidak ada') { echo 'checked="true"'; } ?>>
                       </div>
                     </div>
                   </div>  
@@ -487,10 +487,10 @@
                     <label class="col-md-8" for="text">1. Gambar rencana bangunan & site plan (3 (tiga) rangkap)   </label>
                     <div class="col-md-4">
                       <div class="col-md-6">
-                        <input type="radio" name="site_plan" class="radio-blue" value="ada">
+                        <input type="radio" name="site_plan" class="radio-blue" value="ada" <?php if ($site_plan=='ada') { echo 'checked="true"'; } ?>>
                       </div>
                       <div class="col-md-6">
-                        <input type="radio" name="site_plan" class="radio-blue" value="tidak ada">
+                        <input type="radio" name="site_plan" class="radio-blue" value="tidak ada" <?php if ($site_plan=='tidak ada') { echo 'checked="true"'; } ?>>
                       </div>
                     </div>
                   </div>  
@@ -499,10 +499,10 @@
                     <label class="col-md-8" for="text">2. Instalasi air, listrik dan telepon   </label>
                     <div class="col-md-4">
                       <div class="col-md-6">
-                        <input type="radio" name="instalasi" class="radio-blue" value="ada">
+                        <input type="radio" name="instalasi" class="radio-blue" value="ada" <?php if ($instalasi=='ada') { echo 'checked="true"'; } ?>>
                       </div>
                       <div class="col-md-6">
-                        <input type="radio" name="instalasi" class="radio-blue" value="tidak ada">
+                        <input type="radio" name="instalasi" class="radio-blue" value="tidak ada" <?php if ($instalasi=='tidak ada') { echo 'checked="true"'; } ?>>
                       </div>
                     </div>
                   </div>   
@@ -511,10 +511,10 @@
                     <label class="col-md-8" for="text">3. Penelitian tanah/sondir untuk ruko 3(tiga) lantai </label>
                     <div class="col-md-4">
                       <div class="col-md-6">
-                        <input type="radio" name="sondir_ruko_syarat" class="radio-blue" value="ada">
+                        <input type="radio" name="sondir_ruko_syarat" class="radio-blue" value="ada" <?php if ($sondir_ruko_syarat=='ada') { echo 'checked="true"'; } ?>>
                       </div>
                       <div class="col-md-6">
-                        <input type="radio" name="sondir_ruko_syarat" class="radio-blue" value="tidak ada">
+                        <input type="radio" name="sondir_ruko_syarat" class="radio-blue" value="tidak ada" <?php if ($sondir_ruko_syarat=='tidak ada') { echo 'checked="true"'; } ?>>
                       </div>
                     </div>
                   </div> 
@@ -523,10 +523,10 @@
                     <label class="col-md-8" for="text">4. Sistem pengamanan </label>
                     <div class="col-md-4">
                       <div class="col-md-6">
-                        <input type="radio" name="pengaman" class="radio-blue" value="ada">
+                        <input type="radio" name="pengaman" class="radio-blue" value="ada" <?php if ($pengaman=='ada') { echo 'checked="true"'; } ?>>
                       </div>
                       <div class="col-md-6">
-                        <input type="radio" name="pengaman" class="radio-blue" value="tidak ada">
+                        <input type="radio" name="pengaman" class="radio-blue" value="tidak ada" <?php if ($pengaman=='tidak ada') { echo 'checked="true"'; } ?>>
                       </div>
                     </div>
                   </div>  
@@ -535,10 +535,10 @@
                     <label class="col-md-8" for="text">5. Sistem drainase dan persampahan  </label>
                     <div class="col-md-4">
                       <div class="col-md-6">
-                        <input type="radio" name="drainase" class="radio-blue" value="ada">
+                        <input type="radio" name="drainase" class="radio-blue" value="ada" <?php if ($drainase=='ada') { echo 'checked="true"'; } ?>>
                       </div>
                       <div class="col-md-6">
-                        <input type="radio" name="drainase" class="radio-blue" value="tidak ada">
+                        <input type="radio" name="drainase" class="radio-blue" value="tidak ada" <?php if ($drainase=='tidak ada') { echo 'checked="true"'; } ?>>
                       </div>
                     </div>
                   </div>
@@ -604,7 +604,7 @@
 	<button id="<?php echo $action ?>" style="border-radius: 8;" type="submit" class="btn btn-lg btn-primary"  >Simpan</button>
 </div>
 <div class="col-md-2">
-	<a href="<?php echo site_url('kec_imb'); ?>"><button style="border-radius: 8;" id="reset" type="button" class="btn btn-lg btn-danger">Kembali</button></a>
+	<a href="<?php echo site_url('kec_imb_dua'); ?>"><button style="border-radius: 8;" id="reset" type="button" class="btn btn-lg btn-danger">Kembali</button></a>
 </div>
 
 
