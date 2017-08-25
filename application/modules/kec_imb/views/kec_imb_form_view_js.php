@@ -2,6 +2,10 @@
 
 $(document).ready(function(){
 
+$('.tanggal').datepicker().on('changeDate', function(ev){
+  $('.tanggal').datepicker('hide');
+});
+
 	var params = {
                 life: 5000,
                 horizontalEdge: 'top',

@@ -18,12 +18,14 @@ class kec_imb extends admin_controller {
 		
 		$data_array=array();
 
+        $data_array['curPage'] = 'imb_satu';
+
 	   
 
 		$content = $this->load->view($this->controller."_view",$data_array,true);
 
-		$this->set_subtitle("Perijinan IMB");
-		$this->set_title("Perijinan IMB");
+		$this->set_subtitle("Perijinan IMB Dibawah 250");
+		$this->set_title("Perijinan IMB Dibawah 250");
 		$this->set_content($content);
 		$this->cetak();
 
@@ -99,6 +101,7 @@ class kec_imb extends admin_controller {
                               	<li><a href='kec_imb/status?id=$id'><i class='fa fa-eye'></i> Status</a></li>
                                 <li><a href='kec_imb/editdata?id=$id'><i class='fa fa-edit'></i> Edit</a></li>
                                 <li><a href='#' onclick=\"hapus('$id')\" ><i class='fa fa-trash'></i> Hapus</a></li>
+                                <li><a href='#' onclick=\"printsurat('$id')\" ><i class='fa fa-print'></i> Formulir</a></li>
                               </ul>
                             </div>";
         	
@@ -131,11 +134,12 @@ class kec_imb extends admin_controller {
         $data_array['action'] = 'simpan';
         $data_array['tgl_verifikasi'] = "";
         $data_array['tgl_surat'] = ""; 
+        $data_array['curPage'] = 'imb_satu';
 
 
         $content = $this->load->view($this->controller."_form_view",$data_array,true);
-       $this->set_subtitle("Tambah Perijinan IMB");
-		$this->set_title("Tambah Perijinan IMB");
+       $this->set_subtitle("Tambah Perijinan IMB Dibawah 250");
+		$this->set_title("Tambah Perijinan IMB Dibawah 250");
 		$this->set_content($content);
 		$this->cetak();
     }
@@ -173,6 +177,10 @@ class kec_imb extends admin_controller {
         $this->form_validation->set_rules('nama_petugas_verifikasi','Syarat teknis kelima','required');
         $this->form_validation->set_rules('tgl_verifikasi','Syarat teknis kelima','required');
         $this->form_validation->set_rules('tgl_surat','Tgl. Surat','required');
+        $this->form_validation->set_rules('tgl_lahir_pemohon','Tgl. Lahir Pemohon','required');
+        $this->form_validation->set_rules('tempat_lahir_pemohon','Tempat Lahir Pemohon','required');
+        $this->form_validation->set_rules('no_telp_pemohon','No. Telp. Pemohon','required');
+        $this->form_validation->set_rules('pekerjaan_pemohon','Pekerjaan Pemohon','required');
           
          
         $this->form_validation->set_message('required', ' Harap isi semua data');
@@ -181,7 +189,7 @@ class kec_imb extends admin_controller {
 
      
 
-        //show_array($data);
+        // show_array($data);
 
 if($this->form_validation->run() == TRUE ) { 
 
@@ -190,6 +198,7 @@ if($this->form_validation->run() == TRUE ) {
         $post['kabupaten'] = '52_7';
         $post['tgl_verifikasi'] = flipdate($post['tgl_verifikasi']);
         $post['tgl_surat'] = flipdate($post['tgl_surat']);
+        $post['tgl_lahir_pemohon'] = flipdate($post['tgl_lahir_pemohon']);
         $post['status'] = 1;
         
         
@@ -240,6 +249,10 @@ function update(){
         $this->form_validation->set_rules('nama_petugas_verifikasi','Syarat teknis kelima','required');
         $this->form_validation->set_rules('tgl_verifikasi','Syarat teknis kelima','required');
         $this->form_validation->set_rules('tgl_surat','Tgl. Surat','required');
+        $this->form_validation->set_rules('tgl_lahir_pemohon','Tgl. Lahir Pemohon','required');
+        $this->form_validation->set_rules('tempat_lahir_pemohon','Tempat Lahir Pemohon','required');
+        $this->form_validation->set_rules('no_telp_pemohon','No. Telp. Pemohon','required');
+        $this->form_validation->set_rules('pekerjaan_pemohon','Pekerjaan Pemohon','required');
           
          
         $this->form_validation->set_message('required', ' Harap isi semua data');
@@ -257,6 +270,7 @@ if($this->form_validation->run() == TRUE ) {
         $post['kabupaten'] = '52_7';
         $post['tgl_verifikasi'] = flipdate($post['tgl_verifikasi']);
         $post['tgl_surat'] = flipdate($post['tgl_surat']);
+        $post['tgl_lahir_pemohon'] = flipdate($post['tgl_lahir_pemohon']);
         $post['status'] = 1;
         
         $this->db->where('no_regis', $post['no_regis']);
@@ -292,8 +306,10 @@ else {
 
          $data_array['tgl_verifikasi'] = flipdate($data_array['tgl_verifikasi']);
          $data_array['tgl_surat'] = flipdate($data_array['tgl_surat']);
+         $data_array['tgl_lahir_pemohon'] = flipdate($data_array['tgl_lahir_pemohon']);
 
          $data_array['action'] = 'update';
+         $data_array['curPage'] = 'imb_satu';
          // show_array($data); exit;
     	 // show_array($data_array);
       //    exit();
@@ -316,8 +332,8 @@ else {
 
         $content = $this->load->view($this->controller."_form_view_edit",$data_array,true);
 
-		$this->set_subtitle("Edit Perijinan IMB");
-		$this->set_title("Edit Perijinan IMB");
+		$this->set_subtitle("Edit Perijinan IMB Dibawah 250");
+		$this->set_title("Edit Perijinan IMB Dibawah 250");
 		$this->set_content($content);
 		$this->cetak();
 
@@ -356,8 +372,10 @@ else {
 
          $data_array['tgl_verifikasi'] = flipdate($data_array['tgl_verifikasi']);
          $data_array['tgl_surat'] = flipdate($data_array['tgl_surat']);
+         $data_array['tgl_lahir_pemohon'] = flipdate($data_array['tgl_lahir_pemohon']);
 
          $data_array['action'] = 'update';
+         $data_array['curPage'] = 'imb_satu';
          // show_array($data); exit;
     	 // show_array($data_array);
       //    exit();
@@ -380,8 +398,8 @@ else {
 
         $content = $this->load->view($this->controller."_status_view",$data_array,true);
 
-		$this->set_subtitle("Status IMB");
-		$this->set_title("Status IMB");
+		$this->set_subtitle("Status IMB Dibawah 250");
+		$this->set_title("Status IMB Dibawah 250");
 		$this->set_content($content);
 		$this->cetak();
 
@@ -528,6 +546,82 @@ else {
  
 
          $html = $this->load->view("pdf/cetak_surat",$data,true);
+         $pdf->writeHTML($html, true, false, true, false, '');
+
+ 
+         $pdf->Output($data['header']. $this->session->userdata("tahun") .'.pdf', 'FI');
+}
+
+
+
+    function formulir(){
+    $get = $this->input->get(); 
+    
+    $no_regis = $get['id'];
+
+    
+     
+    
+
+
+
+
+    $this->db->select('m.*, kec.kecamatan as nm_kecamatan, kab.kota as kabupaten');
+
+      $this->db->from("imb m");
+      $this->db->join('tiger_kecamatan kec','m.kecamatan=kec.id');
+      $this->db->join('tiger_kota kab','m.kabupaten=kab.id');
+      // $this->db->where('id_birojasa', $id_birojasa);
+
+     
+      $this->db->where("m.no_regis",$no_regis);
+
+     $resx = $this->db->get();
+
+
+    $data['controller'] = get_class($this);
+    $data['header'] = "Dokumen Persyaratan IMB";
+    $data['query'] = $resx->row_array();
+
+    $timestamp = strtotime($data['query']['tgl_verifikasi']);
+
+    $day = date('l', $timestamp);
+    $data['d_surat'] = date('d', $timestamp);
+    $bulan = date('m', $timestamp);
+    $data['y_surat'] = date('Y', $timestamp);
+
+    $data['m_surat'] = bulan($bulan);
+
+    $data['hari'] = hari($day);
+    // show_array($data);
+    // exit();
+
+    
+    
+    // show_array($data);exit;
+    $data['title'] = $data['header'];
+    $this->load->library('Pdf');
+        $pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->SetTitle( $data['header']);
+     
+        $pdf->SetMargins(10, 10, 10);
+        $pdf->SetHeaderMargin(10);
+        $pdf->SetFooterMargin(10);
+        $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+        $pdf->SetAutoPageBreak(true,10);
+        $pdf->SetAuthor('PKPD  taujago@gmail.com');
+         
+            
+        $pdf->setPrintHeader(false);
+        $pdf->setPrintFooter(true);
+
+         // add a page
+        $pdf->AddPage('P');
+
+ 
+
+         $html = $this->load->view("pdf/formulir",$data,true);
          $pdf->writeHTML($html, true, false, true, false, '');
 
  

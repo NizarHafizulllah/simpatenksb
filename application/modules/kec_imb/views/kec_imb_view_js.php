@@ -2,6 +2,11 @@
 
 $(document).ready(function(){
 
+
+$('.tanggal').datepicker().on('changeDate', function(ev){
+  $('.tanggal').datepicker('hide');
+});
+
 	 var dt = $("#imb").DataTable(
 		 	{
 		 		// "order": [[ 0, "desc" ]],
@@ -38,7 +43,9 @@ $(document).ready(function(){
 });
 	
 
-
+function printsurat(id){
+        open('<?php echo site_url("$this->controller/formulir?"); ?>'+'id='+ id);
+        }
 
 
 function hapus(id){
@@ -51,8 +58,8 @@ var params = {
             };
 
 BootstrapDialog.show({
-            message : 'ANDA AKAN MENGHAPUS DATA JENIS INI. ANDA YAKIN  ?  ',
-            title: 'KONFIRMASI HAPUS DATA  JENIS',
+            message : 'ANDA AKAN MENGHAPUS DATA IMB INI. ANDA YAKIN  ?  ',
+            title: 'KONFIRMASI HAPUS DATA  IMB',
             draggable: true,
             buttons : [
               {

@@ -33,7 +33,7 @@
                         <b>Username</b> <a class="pull-right"><?php echo $user['username'] ?></a>
                     </li>
                     <li class="list-group-item">
-                        <b>Kec.</b> <a class="pull-right"><?php echo $user['kecamatan'] ?></a>
+                        <b>Polres.</b> <a class="pull-right"><?php echo $user['polres'] ?></a>
                     </li>
                 </ul>
 

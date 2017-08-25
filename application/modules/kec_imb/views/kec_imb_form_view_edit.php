@@ -50,6 +50,34 @@
                   </div> 
 
                   <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Tempat Lahir</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" name="tempat_lahir_pemohon" id="tempat_lahir_pemohon" placeholder="Tempat Lahir" value="<?php echo $tempat_lahir_pemohon ?>">
+                    </div>
+                  </div> 
+
+                  <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Tanggal Lahir</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control tanggal" name="tgl_lahir_pemohon" id="tgl_lahir_pemohon" placeholder="Tanggal Lahir" data-date-format="dd-mm-yyyy" value="<?php echo $tgl_lahir_pemohon ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Pekerjaan</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" name="pekerjaan_pemohon" id="pekerjaan_pemohon" placeholder="Pekerjaan" value="<?php echo $pekerjaan_pemohon ?>">
+                    </div>
+                  </div> 
+
+                  <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">No. Telp</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" name="no_telp_pemohon" id="no_telp_pemohon" placeholder="No. Telp" value="<?php echo $no_telp_pemohon ?>">
+                    </div>
+                  </div> 
+
+                  <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">Alamat</label>
                     <div class="col-md-9">
                       <textarea rows="3" class="form-control resize_vertical" name="alamat" id="alamat" placeholder="Alamat"><?php echo $alamat ?></textarea>

@@ -91,6 +91,27 @@
                   </div> 
 
                   <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Tempat Lahir</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" name="nama_pemohon" id="tempat_lahir_pemohon" placeholder="Tempat Lahir" value="<?php echo $tempat_lahir_pemohon ?>" readonly>
+                    </div>
+                  </div> 
+
+                  <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Tanggal Lahir</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" name="tgl_lahir_pemohon" id="tgl_lahir_pemohon" placeholder="Tanggal Surat" value="<?php echo $tgl_lahir_pemohon; ?>" readonly>
+                    </div>
+                  </div> 
+
+                  <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Pekerjaan</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" name="pekerjaan_pemohon" id="pekerjaan_pemohon" placeholder="Pekerjaan" value="<?php echo $pekerjaan_pemohon ?>" readonly>
+                    </div>
+                  </div> 
+
+                  <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">Alamat</label>
                     <div class="col-md-9">
                       <textarea rows="3" class="form-control resize_vertical" name="alamat" id="alamat" placeholder="Alamat" readonly><?php echo $alamat ?></textarea>
@@ -597,12 +618,12 @@
 
 
 
-<div class="col-md-8">
+<div class="col-md-6">
 	&nbsp;
 </div>
 <?php if ($status=='2') { ?>
     <div class="col-md-2">
-    <a href='#' class="btn btn-lg btn-primary" onclick="printsurat('<?php echo $no_regis ?>')" ><i class='fa fa-print'></i> Cetak</a>
+    <a href='#' class="btn btn-lg btn-primary" onclick="printsurat('<?php echo $no_regis ?>')" ><i class='fa fa-print'></i> Izin</a>
 
   
 </div>
@@ -612,6 +633,9 @@
 </div>
 <?php  } ?>
 
+<div class="col-md-2">
+    <a href='#' class="btn btn-lg btn-primary" onclick="formulir('<?php echo $no_regis ?>')" ><i class='fa fa-print'></i> Formulir</a>
+</div>
 <div class="col-md-2">
 	<a href="<?php echo site_url('kec_imb') ?>"> <button style="border-radius: 8;" id="reset" type="button" class="btn btn-lg btn-danger">Kembali</button></a>
 </div>

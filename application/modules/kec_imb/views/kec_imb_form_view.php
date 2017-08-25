@@ -21,7 +21,7 @@
         <div class="panel">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <i class="ti-layout-cta-left"></i> Data Pemohon
+                    <i class="ti-layout-cta-left"></i> Data Surat & Pemohon
                </h3>
             </div>
             <div class="panel-body">
@@ -29,7 +29,7 @@
             <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">Tanggal Surat</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control tanggal" data-language='en' name="tgl_surat" id="tgl_surat" placeholder="Tanggal Surat">
+                      <input type="text" class="form-control tanggal" name="tgl_surat" id="tgl_surat" placeholder="Tanggal Surat" data-date-format="dd-mm-yyyy">
                     </div>
                   </div>
 
@@ -48,6 +48,35 @@
                       <input type="text" class="form-control" name="nama_pemohon" id="nama_pemohon" placeholder="Nama Pemohon">
                     </div>
                   </div> 
+                  <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Tempat Lahir</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" name="tempat_lahir_pemohon" id="tempat_lahir_pemohon" placeholder="Tempat Lahir">
+                    </div>
+                  </div> 
+
+                  <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Tanggal Lahir</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control tanggal" name="tgl_lahir_pemohon" id="tgl_lahir_pemohon" placeholder="Tanggal Lahir" data-date-format="dd-mm-yyyy">
+                    </div>
+                  </div>
+
+                  <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Pekerjaan</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" name="pekerjaan_pemohon" id="pekerjaan_pemohon" placeholder="Pekerjaan">
+                    </div>
+                  </div> 
+
+                  <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">No. Telp</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" name="no_telp_pemohon" id="no_telp_pemohon" placeholder="No. Telp">
+                    </div>
+                  </div> 
+
+
 
                   <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">Alamat</label>
@@ -306,7 +335,7 @@
                  <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">Tanggal Verifikasi</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control tanggal" data-language='en' name="tgl_verifikasi" id="tgl_verifikasi" placeholder="Tanggal Verifikasi">
+                      <input type="text" class="form-control tanggal" name="tgl_verifikasi" id="tgl_verifikasi" placeholder="Tanggal Verifikasi" data-date-format="dd-mm-yyyy">
                     </div>
                   </div> 
 
