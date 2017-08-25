@@ -572,7 +572,7 @@ else {
 
     $this->db->select('m.*, kec.kecamatan as nm_kecamatan, kab.kota as kabupaten');
 
-      $this->db->from("imb m");
+      $this->db->from("imb_dua m");
       $this->db->join('tiger_kecamatan kec','m.kecamatan=kec.id');
       $this->db->join('tiger_kota kab','m.kabupaten=kab.id');
       // $this->db->where('id_birojasa', $id_birojasa);
