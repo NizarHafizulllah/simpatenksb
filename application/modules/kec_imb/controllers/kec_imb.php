@@ -91,19 +91,36 @@ class kec_imb extends admin_controller {
         foreach($result as $row) : 
 		$id = $row['no_regis'];
 
-        $action = "<div class='btn-group'>
+        if ($row['status']==1) {
+            $action = "<div class='btn-group'>
                               <button type='button' class='btn btn-primary'>Action</button>
                               <button type='button' class='btn btn-primary dropdown-toggle' data-toggle='dropdown'>
                                 <span class='caret'></span>
                                 <span class='sr-only'>Toggle Dropdown</span>
                               </button>
                               <ul class='dropdown-menu' role='menu'>
-                              	<li><a href='kec_imb/status?id=$id'><i class='fa fa-eye'></i> Status</a></li>
+                                <li><a href='kec_imb/status?id=$id'><i class='fa fa-eye'></i> Status</a></li>
                                 <li><a href='kec_imb/editdata?id=$id'><i class='fa fa-edit'></i> Edit</a></li>
                                 <li><a href='#' onclick=\"hapus('$id')\" ><i class='fa fa-trash'></i> Hapus</a></li>
                                 <li><a href='#' onclick=\"printsurat('$id')\" ><i class='fa fa-print'></i> Formulir</a></li>
                               </ul>
                             </div>";
+        }else{
+            $action = "<div class='btn-group'>
+                              <button type='button' class='btn btn-primary'>Action</button>
+                              <button type='button' class='btn btn-primary dropdown-toggle' data-toggle='dropdown'>
+                                <span class='caret'></span>
+                                <span class='sr-only'>Toggle Dropdown</span>
+                              </button>
+                              <ul class='dropdown-menu' role='menu'>
+                                <li><a href='kec_imb/status?id=$id'><i class='fa fa-eye'></i> Status</a></li>
+                                <li><a href='#' onclick=\"printsurat('$id')\" ><i class='fa fa-print'></i> Formulir</a></li>
+                                <li><a href='#' onclick=\"izin('$id')\" ><i class='fa fa-print'></i> Rekomendasi</a></li>
+                              </ul>
+                            </div>";
+        }
+
+        
         	
         	 
         	$arr_data[] = array(
