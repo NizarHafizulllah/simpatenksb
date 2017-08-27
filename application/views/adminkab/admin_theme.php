@@ -10,26 +10,25 @@ $userdata = $this->session->userdata('adminkab_login');
     <title><?php echo $title ?></title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
      <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/img/favicon.ico"/>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-    <!-- global css -->
+   
     <script src="<?php echo base_url('assets/plugins/jQuery/jQuery-2.1.4.min.js'); ?>"></script>
-    
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap-dialog.min.css">
+
+
+     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap-dialog.min.css">
 
     
     <!-- global css -->
     <link type="text/css" href="<?php echo base_url(); ?>assets/css/app.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/custom.css">
-    <link href="<?php echo base_url(); ?>assets/vendors/notific/css/jquery.notific8.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/custom.css"/>
+    <link href="<?php echo base_url(); ?>assets/vendors/notific/css/jquery.notific8.min.css" rel="stylesheet" type="text/css"/>
+
+
     
     <link href="<?php echo base_url(); ?>assets/vendors/iCheck/css/all.css" rel="stylesheet" type="text/css"/>
-    <link href="<?php echo base_url(); ?>assets/vendors/airdatepicker/css/datepicker.min.css" rel="stylesheet" type="text/css">
+    
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/pages/datatables.css">
+
+
 
 </head>
 
@@ -101,19 +100,19 @@ $userdata = $this->session->userdata('adminkab_login');
                 </div>
                 <ul class="navigation">
 
-<li class="menu-dropdown">
+<li class="menu-dropdown <?php if($curPage=='user'||$curPage=='user_add'){ echo 'active'; } ?>">
                         <a href="#">
                             <i class="menu-icon fa fa-users"></i>
                             <span>Admin Kecamatan</span>
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="sub-menu">
-                            <li>
+                            <li class="<?php if($curPage=='user'){ echo 'active'; } ?>">
                                <a href="<?php echo site_url('kab_add_kecamatan'); ?>">
                                     <i class="fa fa-fw fa-user"></i> Lihat Data
                                 </a>
                             </li>
-                            <li>
+                            <li class="<?php if($curPage=='user_add'){ echo 'active'; } ?>">
                                 <a href="<?php echo site_url('kab_add_kecamatan/baru'); ?>">
                                     <i class="fa fa-fw fa-user-plus"></i> Tambah Data
                                 </a>
@@ -122,7 +121,7 @@ $userdata = $this->session->userdata('adminkab_login');
                     </li>
 
 
-<li class="menu-dropdown"> 
+<li class="menu-dropdown <?php if($curPage=='imb_satu'||$curPage=='imb_dua'||$curPage=='siup'||$curPage=='situ'){ echo 'active'; } ?>"> 
         <a href="#">
             <i class="menu-icon fa fa-desktop"></i>
             <span>PERIJINAN</span>
@@ -148,23 +147,36 @@ $userdata = $this->session->userdata('adminkab_login');
                             <span class="mm-text ">3. TDI Industri Mikro</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="<?php echo site_url('admin'); ?>">
+                    <li class="<?php if($curPage=='siup'){ echo 'active'; } ?>">
+                        <a href="<?php echo site_url('kab_izinusaha'); ?>">
                             <i class="fa fa-fw fa-file-text-o"></i>
                             <span class="mm-text ">4. SIUP </span>
                         </a>
                     </li>
-                    <li>
-                        <a href="<?php echo site_url('admin'); ?>">
+                    <li class="<?php if($curPage=='situ'){ echo 'active'; } ?>">
+                        <a href="<?php echo site_url('kab_situ'); ?>">
                             <i class="fa fa-fw fa-file-text-o"></i>
                             <span class="mm-text ">5. SITU </span>
                         </a>
                     </li>
-                    <li>
-                        <a href="<?php echo site_url('kab_imb'); ?>">
+                    <li class="<?php if($curPage=='imb_satu'||$curPage=='imb_dua'){ echo 'active'; } ?>">
+                        <a href="#">
                             <i class="fa fa-fw fa-file-text-o"></i>
                             <span class="mm-text ">6. IMB </span>
+                            <span class="fa arrow"></span>
                         </a>
+                        <ul class="sub-menu sub-submenu">
+                            <li class="<?php if($curPage=='imb_satu'){ echo 'active'; } ?>">
+                                <a href="<?php echo site_url('kab_imb'); ?>">
+                                    <i class="fa fa-fw fa-sitemap"></i> IMB Dibawah 250
+                                </a>
+                            </li>
+                            <li class="<?php if($curPage=='imb_dua'){ echo 'active'; } ?>">
+                                <a href="<?php echo site_url('kab_imb_dua'); ?>">
+                                    <i class="fa fa-fw fa-sitemap"></i> IMB Diatas 250
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="<?php echo site_url('admin'); ?>">
@@ -496,24 +508,18 @@ $userdata = $this->session->userdata('adminkab_login');
 <!-- global js -->
 <script src="<?php echo base_url(); ?>assets/js/app.js" type="text/javascript"></script>
 <script src="<?php echo base_url("assets") ?>/js/jquery.dataTables.min.js"></script>  
-<script src="<?php echo base_url("assets") ?>/vendors/airdatepicker/js/datepicker.min.js" type="text/javascript"></script>
 
-<script src="<?php echo base_url(); ?>assets/vendors/airdatepicker/js/datepicker.en.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/vendors/notific/js/jquery.notific8.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/vendors/iCheck/js/icheck.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/bootstrap-dialog.min.js" type="text/javascript"></script>
 
+<link href="<?php echo base_url("assets") ?>/css/datepicker.css" rel="stylesheet">
+<script src="<?php echo base_url("assets") ?>/js/bootstrap-datepicker.js"></script>
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrapValidator.min.css">
+<script src="<?php echo base_url(); ?>assets/js/bootstrapValidator.min.js"></script>
+
 <script type="text/javascript">
 
-$(".tanggal").datepicker({
-    changeMonth: true,
-    changeYear: true,
-    dateFormat: "dd-mm-yyyy"
-});
-    
-    $(".tanggal").datepicker().on('changeDate', function(ev){                 
-             $('.tanggal').datepicker('hide');
-        });
 
     $(".content .row").find('input').iCheck({
         checkboxClass: 'icheckbox_square-blue',
@@ -527,7 +533,6 @@ $(".tanggal").datepicker({
         }, 10);
     });
 </script> 
-
 <!-- global js -->
 <!-- end of page level js -->
 </body>

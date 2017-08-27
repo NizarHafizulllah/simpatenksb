@@ -43,8 +43,14 @@ $('.tanggal').datepicker().on('changeDate', function(ev){
 });
 	
 
+  
+
 function printsurat(id){
         open('<?php echo site_url("$this->controller/formulir?"); ?>'+'id='+ id);
+        }
+
+function izin(id){
+        open('<?php echo site_url("$this->controller/printsuratizin?"); ?>'+'id='+ id);
         }
 
 

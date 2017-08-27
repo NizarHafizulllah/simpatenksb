@@ -1,8 +1,6 @@
 
 
-<link type="text/css" href="<?php echo base_url('assets'); ?>/css/app.css" rel="stylesheet"/>
-<link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>">
-<script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js'); ?>"></script>
+
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
      <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap/bootstrap-dialog.min.css">
    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrapValidator.min.css">
@@ -33,7 +31,7 @@
                         <b>Username</b> <a class="pull-right"><?php echo $user['username'] ?></a>
                     </li>
                     <li class="list-group-item">
-                        <b>Polres.</b> <a class="pull-right"><?php echo $user['polres'] ?></a>
+                        <b>Polres.</b> <a class="pull-right"><?php echo $user['kecamatan'] ?></a>
                     </li>
                 </ul>
 
@@ -46,7 +44,7 @@
 		<div class="panel">
             <div class="panel-heading">
               <h3 class="panel-title">
-                <i class="livicon" data-name="user-add" data-size="18" data-c="#fff" data-hc="#fff" data-loop="true"></i> Profil
+                <i class="livicon" data-name="user-add" data-size="18" data-c="#fff" data-hc="#fff" data-loop="true"></i> Profil  &nbsp;&nbsp;&nbsp;&nbsp; <a href="<?php echo site_url('profil_kecamatan/kecamatan') ?>" style="color: blue;">Profil Kecamatan</a>  
               </h3>
             <span class="pull-right">
               <i class="fa fa-fw ti-angle-up clickable"></i>

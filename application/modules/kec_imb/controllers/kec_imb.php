@@ -105,7 +105,7 @@ class kec_imb extends admin_controller {
                                 <li><a href='#' onclick=\"printsurat('$id')\" ><i class='fa fa-print'></i> Formulir</a></li>
                               </ul>
                             </div>";
-        }else{
+        }else if($row['status']==2){
             $action = "<div class='btn-group'>
                               <button type='button' class='btn btn-primary'>Action</button>
                               <button type='button' class='btn btn-primary dropdown-toggle' data-toggle='dropdown'>
@@ -116,6 +116,19 @@ class kec_imb extends admin_controller {
                                 <li><a href='kec_imb/status?id=$id'><i class='fa fa-eye'></i> Status</a></li>
                                 <li><a href='#' onclick=\"printsurat('$id')\" ><i class='fa fa-print'></i> Formulir</a></li>
                                 <li><a href='#' onclick=\"izin('$id')\" ><i class='fa fa-print'></i> Rekomendasi</a></li>
+                              </ul>
+                            </div>";
+        }else{
+            $action = "<div class='btn-group'>
+                              <button type='button' class='btn btn-primary'>Action</button>
+                              <button type='button' class='btn btn-primary dropdown-toggle' data-toggle='dropdown'>
+                                <span class='caret'></span>
+                                <span class='sr-only'>Toggle Dropdown</span>
+                              </button>
+                              <ul class='dropdown-menu' role='menu'>
+                                <li><a href='kec_imb/status?id=$id'><i class='fa fa-eye'></i> Status</a></li>
+                                <li><a href='kec_imb/editdata?id=$id'><i class='fa fa-edit'></i> Edit</a></li>
+                                <li><a href='#' onclick=\"hapus('$id')\" ><i class='fa fa-trash'></i> Hapus</a></li>
                               </ul>
                             </div>";
         }
@@ -215,6 +228,9 @@ if($this->form_validation->run() == TRUE ) {
         $post['kabupaten'] = '52_7';
         $post['tgl_verifikasi'] = flipdate($post['tgl_verifikasi']);
         $post['tgl_surat'] = flipdate($post['tgl_surat']);
+        $post['tgl_skgr'] = flipdate($post['tgl_skgr']);
+        $post['tgl_rekom_desa'] = flipdate($post['tgl_rekom_desa']);
+        $post['tgl_rekom_uptd'] = flipdate($post['tgl_rekom_uptd']);
         $post['tgl_lahir_pemohon'] = flipdate($post['tgl_lahir_pemohon']);
         $post['status'] = 1;
         
@@ -288,6 +304,10 @@ if($this->form_validation->run() == TRUE ) {
         $post['tgl_verifikasi'] = flipdate($post['tgl_verifikasi']);
         $post['tgl_surat'] = flipdate($post['tgl_surat']);
         $post['tgl_lahir_pemohon'] = flipdate($post['tgl_lahir_pemohon']);
+        $post['tgl_skgr'] = flipdate($post['tgl_skgr']);
+        $post['tgl_rekom_desa'] = flipdate($post['tgl_rekom_desa']);
+        $post['tgl_rekom_uptd'] = flipdate($post['tgl_rekom_uptd']);
+
         $post['status'] = 1;
         
         $this->db->where('no_regis', $post['no_regis']);
@@ -324,6 +344,10 @@ else {
          $data_array['tgl_verifikasi'] = flipdate($data_array['tgl_verifikasi']);
          $data_array['tgl_surat'] = flipdate($data_array['tgl_surat']);
          $data_array['tgl_lahir_pemohon'] = flipdate($data_array['tgl_lahir_pemohon']);
+         $data_array['tgl_skgr'] = flipdate($data_array['tgl_skgr']);
+         $data_array['tgl_rekom_desa'] = flipdate($data_array['tgl_rekom_desa']);
+         $data_array['tgl_rekom_uptd'] = flipdate($data_array['tgl_rekom_uptd']);
+
 
          $data_array['action'] = 'update';
          $data_array['curPage'] = 'imb_satu';
@@ -500,9 +524,19 @@ else {
     
     $no_regis = $get['id'];
 
+     $userdata = $this->session->userdata('admin_login');
+        
+
     
-     
+     $this->db->where('id_kecamatan', $userdata['kecamatan']);
+     $pk = $this->db->get('profil_kecamatan');
     
+    if ($pk->num_rows()>0) {
+        $data['profil_kecamatan'] = $pk->row_array();
+    }else{
+        $data['profil_kecamatan'] = array('tahun_pembentukan', '.....',
+                                           'no_perda_pembentukan', '.....', );
+    }
 
 
 

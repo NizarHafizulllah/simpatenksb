@@ -108,7 +108,7 @@ $userdata = $this->session->userdata('admin_login');
 
 
  <ul class="navigation">
- <li class="menu-dropdown <?php if($curPage=='imb_satu'||$curPage=='imb_dua'||$curPage=='ho'){ echo 'active'; } ?>"> 
+ <li class="menu-dropdown <?php if($curPage=='imb_satu'||$curPage=='imb_dua'||$curPage=='ho'||$curPage=='siup'||$curPage=='situ'){ echo 'active'; } ?>"> 
         <a href="#">
             <i class="menu-icon fa fa-desktop"></i>
             <span>PERIJINAN</span>
@@ -119,7 +119,7 @@ $userdata = $this->session->userdata('admin_login');
 
                         <a href="<?php echo site_url('index_admin'); ?>">
                             <i class="fa fa-fw fa-file-text-o"></i>
-                            <span class="mm-text ">1. Izin Apotak &amp; Toko Obat </span>
+                            <span class="mm-text ">1. Izin Apotik &amp; Toko Obat </span>
 
                         </a>
                         <li>
@@ -134,14 +134,14 @@ $userdata = $this->session->userdata('admin_login');
                             <span class="mm-text ">3. TDI Industri Mikro</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="<?php echo site_url('index_admin'); ?>">
+                    <li class="<?php if($curPage=='siup'){ echo 'active'; } ?>">
+                        <a href="<?php echo site_url('kec_izinusaha'); ?>">
                             <i class="fa fa-fw fa-file-text-o"></i>
                             <span class="mm-text ">4. SIUP </span>
                         </a>
                     </li>
-                    <li>
-                        <a href="<?php echo site_url('index_admin'); ?>">
+                    <li class="<?php if($curPage=='situ'){ echo 'active'; } ?>">
+                        <a href="<?php echo site_url('kec_situ'); ?>">
                             <i class="fa fa-fw fa-file-text-o"></i>
                             <span class="mm-text ">5. SITU </span>
                         </a>

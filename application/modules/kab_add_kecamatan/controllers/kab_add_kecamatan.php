@@ -14,6 +14,7 @@ class kab_add_kecamatan extends adminkab_controller{
 
 	function index(){
 		$data_array=array();
+        $data_array['curPage'] = 'user';
 		$content = $this->load->view($this->controller."_view",$data_array,true);
 
 		$this->set_subtitle("Pengguna");
@@ -103,6 +104,7 @@ class kab_add_kecamatan extends adminkab_controller{
 
     function baru(){
         $data_array=array();
+        $data_array['curPage'] = 'user_add';
 
         $data_array['action'] = 'simpan';
         $data_array['form'] = 'form_simpan';
@@ -235,6 +237,8 @@ function cek_username2($username){
     function editdata(){
          $get = $this->input->get(); 
          $id = $get['id'];
+
+         $data_array['curPage'] = 'user';
 
          $this->db->where('id',$id);
          $pengguna = $this->db->get('admin');

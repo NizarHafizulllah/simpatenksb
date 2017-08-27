@@ -19,6 +19,8 @@ class kab_imb extends adminkab_controller {
 
 		$data_array=array();
 
+        $data_array['curPage'] = 'imb_satu';
+
         $data_array['arr_status'] = array('' => '- Pilih Status -',
                                             '1' => 'Dalam Proses',
                                             '2' => 'Disetujui',
@@ -28,8 +30,8 @@ class kab_imb extends adminkab_controller {
 
 		$content = $this->load->view($this->controller."_view",$data_array,true);
 
-		$this->set_subtitle("IMB");
-		$this->set_title("IMB");
+		$this->set_subtitle("IMB Dibawah 250");
+		$this->set_title("IMB Dibawah 250");
 		$this->set_content($content);
 		$this->cetak();
 
@@ -103,14 +105,13 @@ class kab_imb extends adminkab_controller {
                               </ul>
                             </div>";
 
-        if ($row['status']=='1') {
-            $status = "<button type='button' class='btn btn-info'> Dalam Proses</button>";
+         if ($row['status']=='1') {
+            $status = '<span class="label label-info"> Dalam Proses</span>';
         }else if ($row['status']=='2') {
-            $status = "<button type='button' class='btn btn-primary'> Disetujui</button>";
+            $status = '<span class="label label-success"> Disetujui</span>';
         }else if ($row['status']=='3') {
-            $status = "<button type='button' class='btn btn-danger'> Tidak Disetujui</button>";
+            $status = '<span class="label label-danger"> Tidak Disetujui</span>';
         }
-        	
         	 
         	$arr_data[] = array(
         		$row['no_regis'],
@@ -147,8 +148,12 @@ class kab_imb extends adminkab_controller {
 
          $data_array['tgl_verifikasi'] = flipdate($data_array['tgl_verifikasi']);
          $data_array['tgl_surat'] = flipdate($data_array['tgl_surat']);
+         $data_array['tgl_rekom_desa'] = flipdate($data_array['tgl_rekom_desa']);
+         $data_array['tgl_rekom_uptd'] = flipdate($data_array['tgl_rekom_uptd']);
+         $data_array['tgl_skgr'] = flipdate($data_array['tgl_skgr']);
 
          $data_array['action'] = 'update';
+         $data_array['curPage'] = 'imb_satu';
 
 
          $data_array['arr_status'] = array('1' => "- Pilih status -",
@@ -227,11 +232,13 @@ class kab_imb extends adminkab_controller {
 
 if($this->form_validation->run() == TRUE ) { 
 
-        $userdata = $this->session->userdata('admin_login');
-        $post['tgl_verifikasi'] = flipdate($post['tgl_verifikasi']);
-        $post['tgl_surat'] = flipdate($post['tgl_surat']);
+        $data = array('status' => $post['status'], );
+
+        
+
+    
         $this->db->where('no_regis', $post['no_regis']);
-        $res = $this->db->update('imb', $post); 
+        $res = $this->db->update('imb', $data); 
         if($res){
             $arr = array("error"=>false,'message'=>"BERHASIL DIUPDATE");
         }

@@ -69,19 +69,7 @@
             </div>
             <div class="panel-body">
 
-            <div class="form-group p-10">
-                    <label class="control-label col-md-3" for="text">Tanggal Surat</label>
-                    <div class="col-md-9">
-                      <input type="text" class="form-control" name="tgl_surat" id="tgl_surat" placeholder="Tanggal Surat" value="<?php echo $tgl_surat; ?>" readonly>
-                    </div>
-                  </div> 
-
-            	<div class="form-group p-10">
-                    <label class="control-label col-md-3" for="text">No. Registrasi</label>
-                    <div class="col-md-9">
-                      <input type="text" class="form-control" name="no_regis" id="no_regis" value="<?php echo $no_regis ?>" placeholder="No. Registrasi" readonly>
-                    </div>
-                  </div>
+           
 
                  <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">Nama Pemohon</label>
@@ -117,6 +105,80 @@
                       <textarea rows="3" class="form-control resize_vertical" name="alamat" id="alamat" placeholder="Alamat" readonly><?php echo $alamat ?></textarea>
                     </div>
                   </div>          
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-12">
+                    <!-- First Basic Table strats here-->
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="ti-layout-cta-left"></i> Data Surat 
+               </h3>
+            </div>
+            <div class="panel-body">
+
+              <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Tanggal Register</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control tanggal" name="tgl_surat" id="tgl_surat" placeholder="Tanggal Register" data-date-format="dd-mm-yyyy" value="<?php echo $tgl_surat ?>" readonly>
+                    </div>
+                  </div>
+
+              <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">No. Registrasi</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" name="no_regis" id="no_regis" placeholder="No. Registrasi" value="<?php echo $no_regis ?>" readonly>
+                    </div>
+                  </div>
+
+              <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">No. Rekomendasi Desa</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" name="no_rekom_desa" id="no_rekom_desa" placeholder="No. Rekomendasi Desa" value="<?php echo $no_rekom_desa ?>" readonly>
+                    </div>
+                  </div>
+
+              <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Tgl. Rekomendasi Desa</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control tanggal" name="tgl_rekom_desa" id="tgl_rekom_desa" placeholder="Tgl. Rekomendasi Desa" data-date-format="dd-mm-yyyy" value="<?php echo $tgl_rekom_desa ?>" readonly>
+                    </div>
+                  </div>
+
+              <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">No. SKGR</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" name="no_skgr" id="no_skgr" placeholder="No. SKGR" value="<?php echo $no_skgr ?>" readonly>
+                    </div>
+                  </div>
+
+                <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Tgl. SKGR</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control tanggal" name="tgl_skgr" id="tgl_skgr" placeholder="Tgl. SKGR" data-date-format="dd-mm-yyyy" value="<?php echo $tgl_skgr ?>" readonly>
+                    </div>
+                  </div>
+
+                  <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">No. Rekomendasi UPTD</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" name="no_rekom_uptd" id="no_rekom_uptd" placeholder="No. Rekomendasi UPTD" value="<?php echo $no_rekom_uptd ?>" readonly>
+                    </div>
+                  </div>
+
+                  <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Tgl. Rekomendasi UPTD</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control tanggal" name="tgl_rekom_uptd" id="tgl_rekom_uptd" placeholder="Tgl. Rekomendasi UPTD" data-date-format="dd-mm-yyyy" value="<?php echo $tgl_rekom_uptd ?>" readonly>
+                    </div>
+                  </div>
+
 
             </div>
         </div>
