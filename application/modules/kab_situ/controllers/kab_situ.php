@@ -117,6 +117,7 @@ class kab_situ extends adminkab_controller {
         		$row['no_register'],
         		$row['nama_pemohon'],
         		$row['tgl_verifikasi'],
+                $row['nm_kecamatan'],
         		$row['nama_petugas_verifikasi'],
                 $status,
         	   $action

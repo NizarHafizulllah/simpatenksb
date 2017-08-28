@@ -27,24 +27,24 @@ class kab_izinusaha_model extends CI_Model {
 
 		 
 
-		 $this->db->select('*')->from("izin_praktek");
-
+		 $this->db->select('l.*, k.kecamatan as nm_kecamatan')->from("izin_praktek l");
+		 $this->db->join('tiger_kecamatan k','l.kecamatan=k.id');
 
 		 
  		if(!empty($kecamatan)) {
-		 	$this->db->like("kecamatan",$kecamatan);
+		 	$this->db->like("l.kecamatan",$kecamatan);
 		 }
 
 		 if(!empty($status)) {
-		 	$this->db->like("status",$status);
+		 	$this->db->like("l.status",$status);
 		 }
 
 		 if(!empty($no_regis)) {
-		 	$this->db->like("no_register",$no_regis);
+		 	$this->db->like("l.no_register",$no_regis);
 		 }
 
 		 if(!empty($nama_pemohon)) {
-		 	$this->db->like("nama_pemohon",$nama_pemohon);
+		 	$this->db->like("l.nama_pemohon",$nama_pemohon);
 		 }
 
 		($param['limit'] != null ? $this->db->limit($param['limit']['end'], $param['limit']['start']) : '');

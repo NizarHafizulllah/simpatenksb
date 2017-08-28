@@ -116,7 +116,8 @@ class kab_imb extends adminkab_controller {
         	$arr_data[] = array(
         		$row['no_regis'],
         		$row['nama_pemohon'],
-        		$row['tgl_verifikasi'],
+        		flipdate($row['tgl_verifikasi']),
+                $row['nm_kecamatan'],
         		$row['nama_petugas_verifikasi'],
                 $status,
         	   $action
