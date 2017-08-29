@@ -108,28 +108,28 @@ $userdata = $this->session->userdata('admin_login');
 
 
  <ul class="navigation">
- <li class="menu-dropdown <?php if($curPage=='imb_satu'||$curPage=='imb_dua'||$curPage=='ho'||$curPage=='siup'||$curPage=='situ'){ echo 'active'; } ?>"> 
+ <li class="menu-dropdown <?php if($curPage=='imb_satu'||$curPage=='imb_dua'||$curPage=='ho'||$curPage=='siup'||$curPage=='situ'||$curPage=='toko_obat'||$curPage=='irigasi'||$curPage=='mikro'||$curPage=='uptl'||$curPage=='minyak'||$curPage=='siu'){ echo 'active'; } ?>"> 
         <a href="#">
             <i class="menu-icon fa fa-desktop"></i>
             <span>PERIJINAN</span>
             <span class="fa arrow"></span>
         </a>
                         <ul class="sub-menu">
-                            <li>
+                            <li class="<?php if($curPage=='toko_obat'){ echo 'active'; } ?>">
 
-                        <a href="<?php echo site_url('index_admin'); ?>">
+                        <a href="<?php echo site_url('toko_obat'); ?>">
                             <i class="fa fa-fw fa-file-text-o"></i>
                             <span class="mm-text ">1. Izin Apotik &amp; Toko Obat </span>
 
                         </a>
-                        <li>
-                        <a href="<?php echo site_url('index_admin'); ?>">
+                        <li class="<?php if($curPage=='irigasi'){ echo 'active'; } ?>">
+                        <a href="<?php echo site_url('kec_irigasi'); ?>">
                             <i class="fa fa-fw fa-file-text-o"></i>
                             <span class="mm-text ">2. Izin Jaringan Irigasi </span>
                         </a>
                     </li>
-                    <li>
-                        <a href="<?php echo site_url('index_admin'); ?>">
+                    <li class="<?php if($curPage=='mikro'){ echo 'active'; } ?>">
+                        <a href="<?php echo site_url('kec_mikro'); ?>">
                             <i class="fa fa-fw fa-file-text-o"></i>
                             <span class="mm-text ">3. TDI Industri Mikro</span>
                         </a>
@@ -171,20 +171,20 @@ $userdata = $this->session->userdata('admin_login');
                             <span class="mm-text ">7. Ijin Gangguan (HO)</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="<?php echo site_url('index_admin'); ?>">
+                    <li class="<?php if($curPage=='uptl'){ echo 'active'; } ?>">
+                        <a href="<?php echo site_url('kec_uptl'); ?>">
                             <i class="fa fa-fw fa-file-text-o"></i>
                             <span class="mm-text ">8. UPTL  </span>
                         </a>
                     </li>
-                    <li>
-                        <a href="<?php echo site_url('index_admin'); ?>">
+                    <li class="<?php if($curPage=='minyak'){ echo 'active'; } ?>">
+                        <a href="<?php echo site_url('kec_minyak'); ?>">
                             <i class="fa fa-fw fa-file-text-o"></i>
                             <span class="mm-text ">9. Ijin Depo Pangkalan Minyak </span>
                         </a>
                     </li>
-                    <li>
-                        <a href="<?php echo site_url('index_admin'); ?>">
+                    <li class="<?php if($curPage=='siu'){ echo 'active'; } ?>">
+                        <a href="<?php echo site_url('kec_siu'); ?>">
                             <i class="fa fa-fw fa-file-text-o"></i>
                             <span class="mm-text ">10. Surat izin usaha</span>
                         </a>
@@ -193,7 +193,7 @@ $userdata = $this->session->userdata('admin_login');
                     </li>
                         </ul>
                     </li>
- <li class="menu-dropdown"> 
+ <li class="menu-dropdown <?php if($curPage=='lahan'){ echo 'active'; } ?>"> 
 
         <a href="#">
             <i class="menu-icon fa fa-files-o"></i>
@@ -243,8 +243,8 @@ $userdata = $this->session->userdata('admin_login');
 
            
 
-             <li>
-            <a href="<?php echo site_url('index_admin'); ?>">
+             <li class="<?php if($curPage=='lahan'){ echo 'active'; } ?>">
+            <a href="<?php echo site_url('kec_lahan'); ?>">
                 <i class="fa fa-fw fa-file-text-o"></i>
                 <span class="mm-text ">5. Izin Pemakaian Lahan Bekas </span>
             </a>
