@@ -11,7 +11,7 @@ $userdata = $this->session->userdata('admin_login');
 <script type="text/javascript"></script>
    
 <div class="row">
-	<div class="col-md-3">
+	<div class="col-md-4">
 		<div class="box box-primary">
             <div class="box-body box-profile">
                 <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url('assets/images/user.png') ?>" alt="User profile picture">
@@ -22,7 +22,7 @@ $userdata = $this->session->userdata('admin_login');
                         <b>Username</b> <a class="pull-right"><?php echo $user['username'] ?></a>
                     </li>
                     <li class="list-group-item">
-                        <b>Polres.</b> <a class="pull-right"><?php echo $user['kecamatan'] ?></a>
+                        <b>Kecamatan </b> <a class="pull-right"><?php echo $user['kecamatan'] ?></a>
                     </li>
                 </ul>
 
@@ -31,7 +31,7 @@ $userdata = $this->session->userdata('admin_login');
                         <!-- /.box-body -->
         </div>
 	</div>
-	<div class="col-md-9">
+	<div class="col-md-8">
 		<div class="panel">
             <div class="panel-heading">
               <h3 class="panel-title">
