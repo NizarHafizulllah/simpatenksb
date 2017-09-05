@@ -93,7 +93,7 @@ class kec_imb_dua extends admin_controller {
        
         $arr_data = array();
         foreach($result as $row) : 
-		$id = $row['no_regis'];
+		$id = $row['id'];
 
        
         if ($row['status']==1) {
@@ -243,7 +243,7 @@ if($this->form_validation->run() == TRUE ) {
         $post['tgl_rekom_desa'] = flipdate($post['tgl_rekom_desa']);
         $post['tgl_rekom_uptd'] = flipdate($post['tgl_rekom_uptd']);
         $post['tgl_skgr'] = flipdate($post['tgl_skgr']);
-
+        $post['id'] = md5(microtime(true));
         $post['status'] = 1;
         
         
@@ -349,9 +349,9 @@ else {
 
     	
          $get = $this->input->get(); 
-         $no_regis = $get['id'];
+         $id = $get['id'];
          
-         $this->db->where('no_regis',$no_regis);
+         $this->db->where('id',$id);
          $imb = $this->db->get('imb_dua');
          $data_array = $imb->row_array();
 
@@ -396,9 +396,9 @@ else {
 
         function hapusdata(){
     	$get = $this->input->post();
-    	$no_regis = $get['id'];
+    	$id = $get['id'];
 
-    	$data = array('no_regis' => $no_regis, );
+    	$data = array('id' => $id, );
 
     	$res = $this->db->delete('imb_dua', $data);
         if($res){
@@ -418,9 +418,9 @@ else {
 
     	
          $get = $this->input->get(); 
-         $no_regis = $get['id'];
+         $id = $get['id'];
          
-         $this->db->where('no_regis',$no_regis);
+         $this->db->where('id',$id);
          $imb = $this->db->get('imb_dua');
          $data_array = $imb->row_array();
 
@@ -467,7 +467,7 @@ else {
     function printsurat(){
     $get = $this->input->get(); 
     
-    $no_regis = $get['id'];
+    $id = $get['id'];
 
     
      
@@ -484,7 +484,7 @@ else {
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
-      $this->db->where("m.no_regis",$no_regis);
+      $this->db->where("m.id",$id);
 
      $resx = $this->db->get();
 
@@ -538,7 +538,7 @@ else {
     function printsuratizin(){
     $get = $this->input->get(); 
     
-    $no_regis = $get['id'];
+    $id = $get['id'];
 
     
      
@@ -569,7 +569,7 @@ else {
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
-      $this->db->where("m.no_regis",$no_regis);
+      $this->db->where("m.id",$id);
 
      $resx = $this->db->get();
 
@@ -628,7 +628,7 @@ else {
     function formulir(){
     $get = $this->input->get(); 
     
-    $no_regis = $get['id'];
+    $id = $get['id'];
 
     
      
@@ -645,7 +645,7 @@ else {
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
-      $this->db->where("m.no_regis",$no_regis);
+      $this->db->where("m.id",$id);
 
      $resx = $this->db->get();
 

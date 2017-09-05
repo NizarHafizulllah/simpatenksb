@@ -18,6 +18,8 @@ class kec_imb extends admin_controller {
 		
 		$data_array=array();
 
+        
+
         $data_array['curPage'] = 'imb_satu';
 
 	   
@@ -89,7 +91,7 @@ class kec_imb extends admin_controller {
        
         $arr_data = array();
         foreach($result as $row) : 
-		$id = $row['no_regis'];
+		$id = $row['id'];
 
         if ($row['status']==1) {
             $action = "<div class='btn-group'>
@@ -166,6 +168,13 @@ class kec_imb extends admin_controller {
         $data_array['tgl_surat'] = ""; 
         $data_array['curPage'] = 'imb_satu';
 
+        $userdata = $this->session->userdata('admin_login');
+
+        $this->db->where('id_kecamatan', $userdata['kecamatan']);
+        $profil_kecamatan = $this->db->get('profil_kecamatan')->row_array();
+
+        $data_array['nama_camat'] = $profil_kecamatan['nama_camat'];
+        $data_array['nip_camat'] = $profil_kecamatan['nip_camat'];
 
         $content = $this->load->view($this->controller."_form_view",$data_array,true);
        $this->set_subtitle("Tambah Perijinan IMB Dibawah 250");
@@ -233,7 +242,11 @@ if($this->form_validation->run() == TRUE ) {
         $post['tgl_rekom_uptd'] = flipdate($post['tgl_rekom_uptd']);
         $post['tgl_lahir_pemohon'] = flipdate($post['tgl_lahir_pemohon']);
         $post['status'] = 1;
+        $post['id'] = md5(microtime(true));
         
+
+        // show_array($post);
+        // exit();
         
         $res = $this->db->insert('imb', $post); 
         if($res){
@@ -310,7 +323,7 @@ if($this->form_validation->run() == TRUE ) {
 
         $post['status'] = 1;
         
-        $this->db->where('no_regis', $post['no_regis']);
+        $this->db->where('id', $post['id']);
         $res = $this->db->update('imb', $post); 
         if($res){
             $arr = array("error"=>false,'message'=>"BERHASIL DIUPDATE");
@@ -335,9 +348,9 @@ else {
 
     	
          $get = $this->input->get(); 
-         $no_regis = $get['id'];
+         $id = $get['id'];
          
-         $this->db->where('no_regis',$no_regis);
+         $this->db->where('id',$id);
          $imb = $this->db->get('imb');
          $data_array = $imb->row_array();
 
@@ -383,9 +396,9 @@ else {
 
         function hapusdata(){
     	$get = $this->input->post();
-    	$no_regis = $get['id'];
+    	$id = $get['id'];
 
-    	$data = array('no_regis' => $no_regis, );
+    	$data = array('id' => $id, );
 
     	$res = $this->db->delete('imb', $data);
         if($res){
@@ -405,9 +418,9 @@ else {
 
     	
          $get = $this->input->get(); 
-         $no_regis = $get['id'];
+         $id = $get['id'];
          
-         $this->db->where('no_regis',$no_regis);
+         $this->db->where('id',$id);
          $imb = $this->db->get('imb');
          $data_array = $imb->row_array();
 
@@ -451,7 +464,7 @@ else {
     function printsurat(){
     $get = $this->input->get(); 
     
-    $no_regis = $get['id'];
+    $id = $get['id'];
 
     
      
@@ -468,7 +481,7 @@ else {
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
-      $this->db->where("m.no_regis",$no_regis);
+      $this->db->where("m.id",$id);
 
      $resx = $this->db->get();
 
@@ -522,7 +535,7 @@ else {
     function printsuratizin(){
     $get = $this->input->get(); 
     
-    $no_regis = $get['id'];
+    $id = $get['id'];
 
      $userdata = $this->session->userdata('admin_login');
         
@@ -549,7 +562,7 @@ else {
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
-      $this->db->where("m.no_regis",$no_regis);
+      $this->db->where("m.id",$id);
 
      $resx = $this->db->get();
 
@@ -608,7 +621,7 @@ else {
     function formulir(){
     $get = $this->input->get(); 
     
-    $no_regis = $get['id'];
+    $id = $get['id'];
 
     
      
@@ -625,7 +638,7 @@ else {
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
-      $this->db->where("m.no_regis",$no_regis);
+      $this->db->where("m.id",$id);
 
      $resx = $this->db->get();
 

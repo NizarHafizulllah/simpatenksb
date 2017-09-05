@@ -30,6 +30,7 @@
                     <label class="control-label col-md-3" for="text">Nama Pemohon</label>
                     <div class="col-md-9">
                       <input type="text" class="form-control" name="nama_pemohon" id="nama_pemohon" placeholder="Nama Pemohon">
+
                     </div>
                   </div> 
                   <div class="form-group p-10">
@@ -417,14 +418,14 @@
                   <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">Nama Camat</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control" name="nama_camat" id="nama_camat" placeholder="Nama Camat">
+                      <input type="text" class="form-control" name="nama_camat" id="nama_camat" placeholder="Nama Camat" value="<?php echo isset($nama_camat)?$nama_camat:'' ?>">
                     </div>
                   </div>
 
                   <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">NIP Camat</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control" name="nip_camat" id="nip_camat" placeholder="NIP Camat">
+                      <input type="text" class="form-control" name="nip_camat" id="nip_camat" placeholder="NIP Camat" value="<?php echo isset($nip_camat)?$nip_camat:'' ?>">
                     </div>
                   </div>
 

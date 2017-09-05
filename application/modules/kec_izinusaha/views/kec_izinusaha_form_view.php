@@ -31,6 +31,7 @@
                     <label class="control-label col-md-3" for="text">NIK Pemohon</label>
                     <div class="col-md-9">
                       <input type="text" class="form-control" name="nik_pemohon" id="nik_pemohon" placeholder="NIK Pemohon" value="<?php echo isset($nik_pemohon)?$nik_pemohon:''; ?>">
+                      <input type="hidden" name="id" id="id" value="<?php echo isset($id)?$id:'' ?>">
                     </div>
                   </div>
 
@@ -708,7 +709,7 @@
               <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">No. Registrasi</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control" name="no_register" id="no_register" placeholder="No. Registrasi" value="<?php echo isset($no_register)?$no_register:''; ?>" <?php if ($action=='update') { echo 'readonly'; } ?>>
+                      <input type="text" class="form-control" name="no_register" id="no_register" placeholder="No. Registrasi" value="<?php echo isset($no_register)?$no_register:''; ?>" >
                     </div>
                   </div>
 
