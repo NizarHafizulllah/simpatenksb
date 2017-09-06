@@ -193,7 +193,7 @@ $userdata = $this->session->userdata('admin_login');
                     </li>
                         </ul>
                     </li>
- <li class="menu-dropdown <?php if($curPage=='lahan'){ echo 'active'; } ?>"> 
+ <li class="menu-dropdown <?php if($curPage=='lahan'||$curPage=='p3a'){ echo 'active'; } ?>"> 
 
         <a href="#">
             <i class="menu-icon fa fa-files-o"></i>
@@ -232,8 +232,8 @@ $userdata = $this->session->userdata('admin_login');
 
             </li>
 
-             <li>
-            <a href="<?php echo site_url('index_admin'); ?>">
+             <li class="<?php if($curPage=='p3a'){ echo 'active'; } ?>">
+            <a href="<?php echo site_url('kec_kelembagaan'); ?>">
                 <i class="fa fa-fw fa-file-text-o"></i>
                 <span class="mm-text ">4. Rek. Pembentukan P3A </span>
             </a>
