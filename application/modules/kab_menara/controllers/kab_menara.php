@@ -1,10 +1,10 @@
 <?php 
 
 
-class kab_kelembagaan extends adminkab_controller {
+class kab_menara extends adminkab_controller {
 	
 	var $controller;
-	public function kab_kelembagaan(){
+	public function kab_menara(){
 		parent::__construct();
 		$this->controller = get_class($this);
         $this->load->model('coremodel','cm');
@@ -19,7 +19,7 @@ class kab_kelembagaan extends adminkab_controller {
 
 		$data_array=array();
 
-        $data_array['curPage'] = 'p3a';
+        $data_array['curPage'] = 'menara';
 
         $data_array['arr_status'] = array('' => '- Pilih Status -',
                                             '1' => 'Dalam Proses',
@@ -30,8 +30,8 @@ class kab_kelembagaan extends adminkab_controller {
 
 		$content = $this->load->view($this->controller."_view",$data_array,true);
 
-		$this->set_subtitle("Surat Rekomendasi P3A");
-		$this->set_title("Surat Rekomendasi P3A");
+		$this->set_subtitle("Surat Rekomendasi Izin Menara Seluler ");
+		$this->set_title("Surat Rekomendasi Izin Menara Seluler");
 		$this->set_content($content);
 		$this->cetak();
 
@@ -144,15 +144,15 @@ class kab_kelembagaan extends adminkab_controller {
          $id = $get['id'];
          
          $this->db->where('id',$id);
-         $p3a = $this->db->get('p3a');
-         $data_array = $p3a->row_array();
+         $menara = $this->db->get('menara');
+         $data_array = $menara->row_array();
 
          $data_array['tgl_verifikasi'] = flipdate($data_array['tgl_verifikasi']);
          $data_array['tgl_register'] = flipdate($data_array['tgl_register']);
          $data_array['tgl_lahir'] = flipdate($data_array['tgl_lahir']);
 
          $data_array['action'] = 'update';
-         $data_array['curPage'] = 'p3a';
+         $data_array['curPage'] = 'menara';
 
 
          $data_array['arr_status'] = array('1' => "- Pilih status -",
@@ -180,8 +180,8 @@ class kab_kelembagaan extends adminkab_controller {
 
         $content = $this->load->view($this->controller."_status_view",$data_array,true);
 
-        $this->set_subtitle("Status Pembentukan P3A");
-        $this->set_title("Status Pembentukan P3A");
+        $this->set_subtitle("Status Pembentukan Izin Menara Seluler");
+        $this->set_title("Status Pembentukan Izin Menara Seluler");
         $this->set_content($content);
         $this->cetak();
 
@@ -212,13 +212,12 @@ class kab_kelembagaan extends adminkab_controller {
         $this->form_validation->set_rules('retribusi_perthn_f','Syarat teknis pertama','required');
         $this->form_validation->set_rules('npwpd','Syarat teknis kedua','required');
         $this->form_validation->set_rules('jenis_permohonan','Syarat teknis ketiga','required');
-        $this->form_validation->set_rules('matrai','Syarat teknis keempat','required');
-        $this->form_validation->set_rules('adrt','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('fc_notaris','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('rekom_lurah','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('rekom_dinas','Tgl. Surat','required');
-        $this->form_validation->set_rules('program_kerja','Tgl. Lahir Pemohon','required');
-        $this->form_validation->set_rules('daftar_pengurus','No. Telp. Pemohon','required');
+        $this->form_validation->set_rules('fc_ktp','Syarat teknis keempat','required');
+        $this->form_validation->set_rules('photo','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('fc_pajak','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('matrai','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('fc_akte','Tgl. Surat','required');
+
         $this->form_validation->set_rules('siup_asli','Pekerjaan Pemohon','required');
         $this->form_validation->set_rules('tgl_register','Pekerjaan Pemohon','required');
         $this->form_validation->set_rules('no_register','Pekerjaan Pemohon','required');
@@ -252,7 +251,7 @@ class kab_kelembagaan extends adminkab_controller {
 
     
         $this->db->where('id', $post['id']);
-        $res = $this->db->update('p3a', $data); 
+        $res = $this->db->update('menara', $data); 
         if($res){
             $arr = array("error"=>false,'message'=>"BERHASIL DIUPDATE");
         }
