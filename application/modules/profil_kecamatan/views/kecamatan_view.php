@@ -78,7 +78,7 @@ $userdata = $this->session->userdata('admin_login');
                 <div class="form-group">
                     <label for="nama" class="col-sm-3 control-label">Alamat Kecamatan</label>
                     <div class="col-sm-9">
-                        <textarea class="form-control" name="alamat_kecamatan" id="alamat_kecamatan"><?php echo $alamat_kecamatan; ?></textarea>
+                        <textarea class="form-control" name="alamat_kecamatan" id="alamat_kecamatan"><?php echo isset($alamat_kecamatan)?$alamat_kecamatan:''; ?></textarea>
                     </div>
                 </div>
 

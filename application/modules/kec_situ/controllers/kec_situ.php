@@ -89,7 +89,7 @@ class kec_situ extends admin_controller {
        
         $arr_data = array();
         foreach($result as $row) : 
-		$id = $row['no_register'];
+		$id = $row['id'];
 
         if ($row['status']==1) {
             $action = "<div class='btn-group'>
@@ -246,6 +246,7 @@ if($this->form_validation->run() == TRUE ) {
         $post['tgl_register'] = flipdate($post['tgl_register']);
         $post['tgl_lahir'] = flipdate($post['tgl_lahir']);;
         $post['status'] = 1;
+        $post['id'] = md5(microtime(true));
         
         
         $res = $this->db->insert('situ', $post); 
@@ -354,9 +355,9 @@ else {
 
     	
          $get = $this->input->get(); 
-         $no_regis = $get['id'];
+         $id = $get['id'];
          
-         $this->db->where('no_register',$no_regis);
+         $this->db->where('id',$id);
          $izin_praktek = $this->db->get('situ');
          $data_array = $izin_praktek->row_array();
 
@@ -398,9 +399,9 @@ else {
 
         function hapusdata(){
     	$get = $this->input->post();
-    	$no_regis = $get['id'];
+    	$id = $get['id'];
 
-    	$data = array('no_register' => $no_regis, );
+    	$data = array('id' => $id, );
 
     	$res = $this->db->delete('situ', $data);
         if($res){
@@ -420,9 +421,9 @@ else {
 
     	
          $get = $this->input->get(); 
-         $no_regis = $get['id'];
+         $id = $get['id'];
          
-         $this->db->where('no_register',$no_regis);
+         $this->db->where('id',$id);
          $situ = $this->db->get('situ');
          $data_array = $situ->row_array();
 
@@ -431,7 +432,7 @@ else {
          $data_array['tgl_lahir'] = flipdate($data_array['tgl_lahir']);
 
          $data_array['action'] = 'update';
-         $data_array['curPage'] = 'siup';
+         $data_array['curPage'] = 'situ';
          // show_array($data); exit;
     	 // show_array($data_array);
       //    exit();
@@ -466,7 +467,7 @@ else {
     function printsurat(){
     $get = $this->input->get(); 
     
-    $no_regis = $get['id'];
+    $id = $get['id'];
 
     
      
@@ -483,7 +484,7 @@ else {
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
-      $this->db->where("m.no_regis",$no_regis);
+      $this->db->where("m.id",$id);
 
      $resx = $this->db->get();
 
@@ -537,7 +538,7 @@ else {
     function printsuratizin(){
     $get = $this->input->get(); 
     
-    $no_regis = $get['id'];
+    $id = $get['id'];
 
      $userdata = $this->session->userdata('admin_login');
         
@@ -564,7 +565,7 @@ else {
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
-      $this->db->where("m.no_register",$no_regis);
+      $this->db->where("m.id",$id);
 
      $resx = $this->db->get();
 
@@ -623,7 +624,7 @@ else {
     function formulir(){
     $get = $this->input->get(); 
     
-    $no_regis = $get['id'];
+    $id = $get['id'];
 
     
      
@@ -640,7 +641,7 @@ else {
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
-      $this->db->where("m.no_register",$no_regis);
+      $this->db->where("m.id",$id);
 
      $resx = $this->db->get();
 

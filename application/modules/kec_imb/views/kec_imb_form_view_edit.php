@@ -30,6 +30,7 @@
                     <label class="control-label col-md-3" for="text">Nama Pemohon</label>
                     <div class="col-md-9">
                       <input type="text" class="form-control" name="nama_pemohon" id="nama_pemohon" placeholder="Nama Pemohon" value="<?php echo $nama_pemohon ?>">
+                      <input type="hidden" name="id" id="id" value="<?php echo $id ?>">
                     </div>
                   </div> 
 

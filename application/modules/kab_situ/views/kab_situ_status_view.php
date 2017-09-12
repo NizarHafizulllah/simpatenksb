@@ -73,6 +73,7 @@
                     <label class="control-label col-md-3" for="text">NIK Pemohon</label>
                     <div class="col-md-9">
                       <input type="text" class="form-control" name="nik_pemohon" id="nik_pemohon" placeholder="NIK Pemohon" value="<?php echo isset($nik_pemohon)?$nik_pemohon:''; ?>" readonly>
+                      <input type="hidden" name="id" value="<?php echo isset($id)?$id:''; ?>">
                     </div>
                   </div>
 

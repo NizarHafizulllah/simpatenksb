@@ -697,7 +697,7 @@
 </div>
 <?php if ($status=='2') { ?>
     <div class="col-md-2">
-    <a href='#' class="btn btn-lg btn-primary" onclick="printsurat('<?php echo $no_register ?>')" ><i class='fa fa-print'></i> Izin</a>
+    <a href='#' class="btn btn-lg btn-primary" onclick="printsurat('<?php echo $id ?>')" ><i class='fa fa-print'></i> Izin</a>
 
   
 </div>
@@ -708,7 +708,7 @@
 <?php  } ?>
 
 <div class="col-md-2">
-    <a href='#' class="btn btn-lg btn-primary" onclick="formulir('<?php echo $no_register ?>')" ><i class='fa fa-print'></i> Formulir</a>
+    <a href='#' class="btn btn-lg btn-primary" onclick="formulir('<?php echo $id ?>')" ><i class='fa fa-print'></i> Formulir</a>
 </div>
 <div class="col-md-2">
 	<a href="<?php echo site_url($this->controller) ?>"> <button style="border-radius: 8;" id="reset" type="button" class="btn btn-lg btn-danger">Kembali</button></a>
