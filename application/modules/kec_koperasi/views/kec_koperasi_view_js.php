@@ -2,7 +2,12 @@
 
 $(document).ready(function(){
 
-	 var dt = $("#menara").DataTable(
+
+$('.tanggal').datepicker().on('changeDate', function(ev){
+  $('.tanggal').datepicker('hide');
+});
+
+	 var dt = $("#imb").DataTable(
 		 	{
 		 		// "order": [[ 0, "desc" ]],
 		 		// "iDisplayLength": 50,
@@ -13,7 +18,7 @@ $(document).ready(function(){
 		 	});
 
 		 
-		 $("#p3a_filter").css("display","none");  
+		 $("#imb_filter").css("display","none");  
 	
 	 
 		 $("#btn_submit").click(function(){
@@ -21,9 +26,7 @@ $(document).ready(function(){
 		 	  
 
 		 	  dt.column(1).search($("#nama_pemohon").val())
-        dt.column(2).search($("#no_register").val())
-        dt.column(3).search($("#kecamatan").val())
-        dt.column(4).search($("#status").val())
+        dt.column(2).search($("#no_regis").val())
 				 .draw();
 
 				 return false;
@@ -31,10 +34,8 @@ $(document).ready(function(){
 
 
 		 $("#btn_reset").click(function(){
-			$("#no_register").val('');
+			$("#no_regis").val('');
       $("#nama_pemohon").val('');
-      $("#kecamatan").val('');
-      $("#status").val('');
 			$("#btn_submit").click();
 		 });
 
@@ -42,7 +43,13 @@ $(document).ready(function(){
 });
 	
 
+function printsurat(id){
+        open('<?php echo site_url("$this->controller/formulir?"); ?>'+'id='+ id);
+        }
 
+function izin(id){
+        open('<?php echo site_url("$this->controller/printsuratizin?"); ?>'+'id='+ id);
+        }
 
 
 function hapus(id){
@@ -55,8 +62,8 @@ var params = {
             };
 
 BootstrapDialog.show({
-            message : 'ANDA AKAN MENGHAPUS DATA JENIS INI ANDA YAKIN  ?  ',
-            title: 'KONFIRMASI HAPUS DATA',
+            message : 'ANDA AKAN MENGHAPUS DATA SIU. ANDA YAKIN  ?  ',
+            title: 'KONFIRMASI HAPUS DATA  SIU',
             draggable: true,
             buttons : [
               {
@@ -83,7 +90,7 @@ BootstrapDialog.show({
 				                       
 				                   
 
-                  			$('#p3a').DataTable().ajax.reload();		
+                  			$('#imb').DataTable().ajax.reload();		
                   		}
                   		else {
                   			params.heading = 'Gagal';

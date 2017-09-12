@@ -2,6 +2,8 @@
 
 $(document).ready(function(){
 
+
+
 	 var dt = $("#menara").DataTable(
 		 	{
 		 		// "order": [[ 0, "desc" ]],
@@ -13,7 +15,7 @@ $(document).ready(function(){
 		 	});
 
 		 
-		 $("#p3a_filter").css("display","none");  
+		 $("#menara_filter").css("display","none");  
 	
 	 
 		 $("#btn_submit").click(function(){
@@ -55,8 +57,8 @@ var params = {
             };
 
 BootstrapDialog.show({
-            message : 'ANDA AKAN MENGHAPUS DATA JENIS INI ANDA YAKIN  ?  ',
-            title: 'KONFIRMASI HAPUS DATA',
+            message : 'ANDA AKAN MENGHAPUS DATA INI, ANDA YAKIN  ?  ',
+            title: 'KONFIRMASI HAPUS DATA ',
             draggable: true,
             buttons : [
               {
@@ -83,7 +85,7 @@ BootstrapDialog.show({
 				                       
 				                   
 
-                  			$('#p3a').DataTable().ajax.reload();		
+                  			$('#menara').DataTable().ajax.reload();		
                   		}
                   		else {
                   			params.heading = 'Gagal';

@@ -2,7 +2,7 @@
 
 $(document).ready(function(){
 
-	 var dt = $("#menara").DataTable(
+	 var dt = $("#imb").DataTable(
 		 	{
 		 		// "order": [[ 0, "desc" ]],
 		 		// "iDisplayLength": 50,
@@ -13,7 +13,7 @@ $(document).ready(function(){
 		 	});
 
 		 
-		 $("#p3a_filter").css("display","none");  
+		 $("#imb_filter").css("display","none");  
 	
 	 
 		 $("#btn_submit").click(function(){
@@ -21,7 +21,7 @@ $(document).ready(function(){
 		 	  
 
 		 	  dt.column(1).search($("#nama_pemohon").val())
-        dt.column(2).search($("#no_register").val())
+        dt.column(2).search($("#no_regis").val())
         dt.column(3).search($("#kecamatan").val())
         dt.column(4).search($("#status").val())
 				 .draw();
@@ -31,7 +31,7 @@ $(document).ready(function(){
 
 
 		 $("#btn_reset").click(function(){
-			$("#no_register").val('');
+			$("#no_regis").val('');
       $("#nama_pemohon").val('');
       $("#kecamatan").val('');
       $("#status").val('');
@@ -55,8 +55,8 @@ var params = {
             };
 
 BootstrapDialog.show({
-            message : 'ANDA AKAN MENGHAPUS DATA JENIS INI ANDA YAKIN  ?  ',
-            title: 'KONFIRMASI HAPUS DATA',
+            message : 'ANDA AKAN MENGHAPUS DATA JENIS INI. ANDA YAKIN  ?  ',
+            title: 'KONFIRMASI HAPUS DATA  JENIS',
             draggable: true,
             buttons : [
               {
@@ -83,7 +83,7 @@ BootstrapDialog.show({
 				                       
 				                   
 
-                  			$('#p3a').DataTable().ajax.reload();		
+                  			$('#imb').DataTable().ajax.reload();		
                   		}
                   		else {
                   			params.heading = 'Gagal';

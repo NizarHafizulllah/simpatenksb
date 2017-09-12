@@ -1,47 +1,47 @@
 <?php 
 
 
-class kec_lahan extends admin_controller {
-	
-	var $controller;
-	public function kec_lahan(){
-		parent::__construct();
-		$this->controller = get_class($this);
-		$this->load->model($this->controller.'_model','dm');
-		$this->load->helper("tanggal");
-	}
-	
+class kec_menara extends admin_controller {
+    
+    var $controller;
+    public function kec_menara(){
+        parent::__construct();
+        $this->controller = get_class($this);
+        $this->load->model($this->controller.'_model','dm');
+        $this->load->helper("tanggal");
+    }
+    
 
 
 
-	function index(){
-		
-		$data_array=array();
+    function index(){
+        
+        $data_array=array();
 
-        $data_array['curPage'] = 'lahan';
+        $data_array['curPage'] = 'menara';
 
-	   
+       
 
-		$content = $this->load->view($this->controller."_view",$data_array,true);
+        $content = $this->load->view($this->controller."_view",$data_array,true);
 
-		$this->set_subtitle("Izin Pemakaian Lahan Bekas");
-		$this->set_title("Izin Pemakaian Lahan Bekas");
-		$this->set_content($content);
-		$this->cetak();
+        $this->set_subtitle("Rekomendasi Pemberian izin Menara Seluler");
+        $this->set_title("Rekomendasi Pemberian izin Menara Seluler");
+        $this->set_content($content);
+        $this->cetak();
 
 
-				
-			
-		
-	}
+                
+            
+        
+    }
 
-	 function get_data() {
+     function get_data() {
 
-    	
-    	// show_array($userdata);
+        
+        // show_array($userdata);
 
-    	$draw = $_REQUEST['draw']; // get the requested page 
-    	$start = $_REQUEST['start'];
+        $draw = $_REQUEST['draw']; // get the requested page 
+        $start = $_REQUEST['start'];
         $limit = $_REQUEST['length']; // get how many rows we want to have into the grid 
         $sidx = isset($_REQUEST['order'][0]['column'])?$_REQUEST['order'][0]['column']:0; // get index row - i.e. user click to sort 
         $sord = isset($_REQUEST['order'][0]['dir'])?$_REQUEST['order'][0]['dir']:"asc"; // get the direction if(!$sidx) $sidx =1;  
@@ -57,23 +57,23 @@ class kec_lahan extends admin_controller {
 
       //  order[0][column]
         $req_param = array (
-				"sort_by" => $sidx,
-				"sort_direction" => $sord,
-				"limit" => null,
-				"no_regis" => $no_regis,
+                "sort_by" => $sidx,
+                "sort_direction" => $sord,
+                "limit" => null,
+                "no_regis" => $no_regis,
                 "nama_pemohon" => $nama_pemohon,
                 "id_kecamatan" => $id_kecamatan
-				
-				 
-		);   
+                
+                 
+        );   
 
-		// show_array($req_param);
+        // show_array($req_param);
   //       exit();  
            
         $row = $this->dm->data($req_param)->result_array();
 
 
-		
+        
         $count = count($row); 
        
         
@@ -89,7 +89,7 @@ class kec_lahan extends admin_controller {
        
         $arr_data = array();
         foreach($result as $row) : 
-		$id = $row['no_register'];
+        $id = $row['id'];
 
         if ($row['status']==1) {
             $action = "<div class='btn-group'>
@@ -134,24 +134,24 @@ class kec_lahan extends admin_controller {
         }
 
         
-        	
-        	 
-        	$arr_data[] = array(
-        		$row['no_register'],
-        		$row['nama_pemohon'],
-        		$row['tgl_verifikasi'],
-        		$row['nama_petugas_verifikasi'],
-        	   $action
-        		
-         			 
-        		  				);
+            
+             
+            $arr_data[] = array(
+                $row['no_register'],
+                $row['nama_pemohon'],
+                $row['tgl_verifikasi'],
+                $row['nama_petugas_verifikasi'],
+               $action
+                
+                     
+                                );
         endforeach;
 
          $responce = array('draw' => $draw, // ($start==0)?1:$start,
-        				  'recordsTotal' => $count, 
-        				  'recordsFiltered' => $count,
-        				  'data'=>$arr_data
-        	);
+                          'recordsTotal' => $count, 
+                          'recordsFiltered' => $count,
+                          'data'=>$arr_data
+            );
          
         echo json_encode($responce); 
     }
@@ -159,12 +159,12 @@ class kec_lahan extends admin_controller {
 
     function baru(){
 
-    	$data_array=array();
+        $data_array=array();
     
         $data_array['action'] = 'simpan';
         $data_array['tgl_verifikasi'] = "";
         $data_array['tgl_surat'] = ""; 
-        $data_array['curPage'] = 'lahan';
+        $data_array['curPage'] = 'menara';
 
         $userdata = $this->session->userdata('admin_login');
 
@@ -176,10 +176,10 @@ class kec_lahan extends admin_controller {
 
 
         $content = $this->load->view($this->controller."_form_view",$data_array,true);
-       $this->set_subtitle("Tambah Izin Tempat Usaha ");
-		$this->set_title("Tambah Izin Tempat Usaha ");
-		$this->set_content($content);
-		$this->cetak();
+       $this->set_subtitle("Tambah Pemberian izin Menara Seluler");
+        $this->set_title("Tambah Pemberian izin Menara Seluler");
+        $this->set_content($content);
+        $this->cetak();
     }
 
 
@@ -189,47 +189,44 @@ class kec_lahan extends admin_controller {
 
     $post = $this->input->post();
 
-    // show_array($post);
-    // exit();
+
        
 
 
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('nik_pemohon','Nomor registrasi','required');
+        $this->form_validation->set_rules('no_ktp','NIK Pemohon','required');
         $this->form_validation->set_rules('nama_pemohon','Nama Pemohon','required');
         $this->form_validation->set_rules('tempat_lahir','Alamat','required');
         $this->form_validation->set_rules('tgl_lahir','Syarat umum pertama','required');
         $this->form_validation->set_rules('pekerjaan','Syarat umum kedua','required');
-        $this->form_validation->set_rules('alamat','Syarat umum ketiga','required');
-        $this->form_validation->set_rules('no_telp','Syarat umum keempat','required');
-        $this->form_validation->set_rules('negara_pemohon','Syarat umum kelima','required');
-        $this->form_validation->set_rules('nama_usaha','Syarat umum keenam','required');
+        $this->form_validation->set_rules('no_tlp','Syarat umum ketiga','required');
+        $this->form_validation->set_rules('kewarganegaraan','Syarat umum keempat','required');
+        $this->form_validation->set_rules('alamat','Syarat umum kelima','required');
+        $this->form_validation->set_rules('merek_usaha','Syarat umum keenam','required');
         $this->form_validation->set_rules('jenis_usaha','Syarat umum ketujuh','required');
-        $this->form_validation->set_rules('ukuran_luas_usaha','Syarat umum kedelapan','required');
-        $this->form_validation->set_rules('lokasi_usaha','Syarat umum kesembilan','required');
-        $this->form_validation->set_rules('status_bangunan_tempat_usaha','Syarat teknis pertama','required');
+        $this->form_validation->set_rules('klasif_perusahaan','Syarat umum kedelapan','required');
+        $this->form_validation->set_rules('alamat_usaha','Syarat umum kesembilan','required');
+        $this->form_validation->set_rules('retribusi_perthn_f','Syarat teknis pertama','required');
         $this->form_validation->set_rules('npwpd','Syarat teknis kedua','required');
-        $this->form_validation->set_rules('klasifikasi_usaha','Syarat teknis ketiga','required');
-        $this->form_validation->set_rules('tgl_register','Syarat teknis keempat','required');
-        $this->form_validation->set_rules('no_register','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('nama_petugas_verifikasi','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('nama_camat','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('nip_camat','Tgl. Surat','required');
-        $this->form_validation->set_rules('ktp','Tgl. Lahir Pemohon','required');
-        $this->form_validation->set_rules('fc_hak_tanah','Tempat Lahir Pemohon','required');
-        $this->form_validation->set_rules('sp_desa','No. Telp. Pemohon','required');
-        $this->form_validation->set_rules('sp_materai','Pekerjaan Pemohon','required');
-        $this->form_validation->set_rules('denah_lokasi','Pekerjaan Pemohon','required');
-        $this->form_validation->set_rules('foto','Pekerjaan Pemohon','required');
-        $this->form_validation->set_rules('fc_pbb','Pekerjaan Pemohon','required');
-        $this->form_validation->set_rules('rekom_uptd','Pekerjaan Pemohon','required');
-        $this->form_validation->set_rules('gambar_bangunan','Pekerjaan Pemohon','required');
-        $this->form_validation->set_rules('fc_siu','Pekerjaan Pemohon','required');
-        $this->form_validation->set_rules('instalasi_air','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('jenis_permohonan','Syarat teknis ketiga','required');
+        $this->form_validation->set_rules('fc_ktp','Syarat teknis keempat','required');
+        $this->form_validation->set_rules('photo','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('fc_pajak','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('matrai','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('fc_akte','Tgl. Surat','required');
+        
         $this->form_validation->set_rules('siup_asli','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('tgl_register','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('no_register','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('nama_petugas_verifikasi','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('tgl_verifikasi','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('nama_camat','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('nip_camat','Pekerjaan Pemohon','required');
+
+
           
          
-        $this->form_validation->set_message('required', ' Harap isi semua data');
+        $this->form_validation->set_message('required', ' %s Harap Diisi');
         
         $this->form_validation->set_error_delimiters('', '<br>&nbsp;<br>&nbsp;<br>');
 
@@ -243,12 +240,14 @@ if($this->form_validation->run() == TRUE ) {
         $post['kecamatan'] = $userdata['id_kecamatan'];
         $post['kabupaten'] = '52_7';
         $post['tgl_verifikasi'] = flipdate($post['tgl_verifikasi']);
+        $post['tgl_lahir'] = flipdate($post['tgl_lahir']);
         $post['tgl_register'] = flipdate($post['tgl_register']);
-        $post['tgl_lahir'] = flipdate($post['tgl_lahir']);;
         $post['status'] = 1;
+        $post['id'] = md5(microtime(true));
+
         
         
-        $res = $this->db->insert('situ', $post); 
+        $res = $this->db->insert('menara', $post); 
         if($res){
             $arr = array("error"=>false,'message'=>"BERHASIL DISIMPAN");
         }
@@ -275,38 +274,34 @@ function update(){
 
 
         $this->load->library('form_validation');
-      $this->form_validation->set_rules('nik_pemohon','Nomor registrasi','required');
+        $this->form_validation->set_rules('no_ktp','NIK Pemohon','required');
         $this->form_validation->set_rules('nama_pemohon','Nama Pemohon','required');
         $this->form_validation->set_rules('tempat_lahir','Alamat','required');
         $this->form_validation->set_rules('tgl_lahir','Syarat umum pertama','required');
         $this->form_validation->set_rules('pekerjaan','Syarat umum kedua','required');
-        $this->form_validation->set_rules('alamat','Syarat umum ketiga','required');
-        $this->form_validation->set_rules('no_telp','Syarat umum keempat','required');
-        $this->form_validation->set_rules('negara_pemohon','Syarat umum kelima','required');
-        $this->form_validation->set_rules('nama_usaha','Syarat umum keenam','required');
+        $this->form_validation->set_rules('no_tlp','Syarat umum ketiga','required');
+        $this->form_validation->set_rules('kewarganegaraan','Syarat umum keempat','required');
+        $this->form_validation->set_rules('alamat','Syarat umum kelima','required');
+        $this->form_validation->set_rules('merek_usaha','Syarat umum keenam','required');
         $this->form_validation->set_rules('jenis_usaha','Syarat umum ketujuh','required');
-        $this->form_validation->set_rules('ukuran_luas_usaha','Syarat umum kedelapan','required');
-        $this->form_validation->set_rules('lokasi_usaha','Syarat umum kesembilan','required');
-        $this->form_validation->set_rules('status_bangunan_tempat_usaha','Syarat teknis pertama','required');
+        $this->form_validation->set_rules('klasif_perusahaan','Syarat umum kedelapan','required');
+        $this->form_validation->set_rules('alamat_usaha','Syarat umum kesembilan','required');
+        $this->form_validation->set_rules('retribusi_perthn_f','Syarat teknis pertama','required');
         $this->form_validation->set_rules('npwpd','Syarat teknis kedua','required');
-        $this->form_validation->set_rules('klasifikasi_usaha','Syarat teknis ketiga','required');
-        $this->form_validation->set_rules('tgl_register','Syarat teknis keempat','required');
-        $this->form_validation->set_rules('no_register','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('nama_petugas_verifikasi','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('nama_camat','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('nip_camat','Tgl. Surat','required');
-        $this->form_validation->set_rules('ktp','Tgl. Lahir Pemohon','required');
-        $this->form_validation->set_rules('fc_hak_tanah','Tempat Lahir Pemohon','required');
-        $this->form_validation->set_rules('sp_desa','No. Telp. Pemohon','required');
-        $this->form_validation->set_rules('sp_materai','Pekerjaan Pemohon','required');
-        $this->form_validation->set_rules('denah_lokasi','Pekerjaan Pemohon','required');
-        $this->form_validation->set_rules('foto','Pekerjaan Pemohon','required');
-        $this->form_validation->set_rules('fc_pbb','Pekerjaan Pemohon','required');
-        $this->form_validation->set_rules('rekom_uptd','Pekerjaan Pemohon','required');
-        $this->form_validation->set_rules('gambar_bangunan','Pekerjaan Pemohon','required');
-        $this->form_validation->set_rules('fc_siu','Pekerjaan Pemohon','required');
-        $this->form_validation->set_rules('instalasi_air','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('jenis_permohonan','Syarat teknis ketiga','required');
+        $this->form_validation->set_rules('fc_ktp','Syarat teknis keempat','required');
+        $this->form_validation->set_rules('photo','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('fc_pajak','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('matrai','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('fc_akte','Tgl. Surat','required');
+        
         $this->form_validation->set_rules('siup_asli','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('tgl_register','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('no_register','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('nama_petugas_verifikasi','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('tgl_verifikasi','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('nama_camat','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('nip_camat','Pekerjaan Pemohon','required');
           
          
         $this->form_validation->set_message('required', ' Harap isi semua data');
@@ -323,14 +318,11 @@ if($this->form_validation->run() == TRUE ) {
         $post['kecamatan'] = $userdata['id_kecamatan'];
         $post['kabupaten'] = '52_7';
         $post['tgl_verifikasi'] = flipdate($post['tgl_verifikasi']);
-        $post['tgl_register'] = flipdate($post['tgl_register']);
         $post['tgl_lahir'] = flipdate($post['tgl_lahir']);
-        
-
+        $post['tgl_register'] = flipdate($post['tgl_register']);
         $post['status'] = 1;
-        
-        $this->db->where('no_register', $post['no_register']);
-        $res = $this->db->update('situ', $post); 
+        $this->db->where('id', $post['id']);
+        $res = $this->db->update('menara', $post); 
         if($res){
             $arr = array("error"=>false,'message'=>"BERHASIL DIUPDATE");
         }
@@ -352,64 +344,64 @@ else {
    function editdata(){
 
 
-    	
+        
          $get = $this->input->get(); 
-         $no_regis = $get['id'];
+         $id = $get['id'];
          
-         $this->db->where('no_register',$no_regis);
-         $izin_praktek = $this->db->get('lahan');
-         $data_array = $izin_praktek->row_array();
+         $this->db->where('id',$id);
+         $imb = $this->db->get('menara');
+         $data_array = $imb->row_array();
 
+         $data_array['tgl_lahir'] = flipdate($data_array['tgl_lahir']);
          $data_array['tgl_verifikasi'] = flipdate($data_array['tgl_verifikasi']);
          $data_array['tgl_register'] = flipdate($data_array['tgl_register']);
-         $data_array['tgl_lahir'] = flipdate($data_array['tgl_lahir']);
 
          $data_array['action'] = 'update';
-         $data_array['curPage'] = 'lahan';
+         $data_array['curPage'] = 'menara';
          // show_array($data); exit;
-    	 // show_array($data_array);
+         // show_array($data_array);
       //    exit();
-		
+        
 
-    	// $data_array=array(
-    	// 		'id' => $data->id,
-    	// 		'nama' => $data->nama,
-    	// 		'no_siup' => $data->no_siup,
-    	// 		'no_npwp' => $data->no_npwp,
-    	// 		'no_tdp' => $data->no_tdp,
-    	// 		'telp' => $data->telp,
-    	// 		'alamat' => $data->alamat,
-    	// 		'email' => $data->email,
-    	// 		'hp' => $data->hp,
+        // $data_array=array(
+        //      'id' => $data->id,
+        //      'nama' => $data->nama,
+        //      'no_siup' => $data->no_siup,
+        //      'no_npwp' => $data->no_npwp,
+        //      'no_tdp' => $data->no_tdp,
+        //      'telp' => $data->telp,
+        //      'alamat' => $data->alamat,
+        //      'email' => $data->email,
+        //      'hp' => $data->hp,
 
-    	// 	);
+        //  );
 
         
 
         $content = $this->load->view($this->controller."_form_view",$data_array,true);
 
-		$this->set_subtitle("Edit Izin Pemakaian lahan bekas ");
-		$this->set_title("Edit Izin Pemakaian lahan bekas ");
-		$this->set_content($content);
-		$this->cetak();
+        $this->set_subtitle("Edit Pemberian izin Menara Seluler");
+        $this->set_title("Edit Pemberian izin Menara Seluler");
+        $this->set_content($content);
+        $this->cetak();
 
     }
 
 
         function hapusdata(){
-    	$get = $this->input->post();
-    	$no_regis = $get['id'];
+        $get = $this->input->post();
+        $id = $get['id'];
 
-    	$data = array('no_register' => $no_register, );
+        $data = array('id' => $id, );
 
-    	$res = $this->db->delete('lahan', $data);
+        $res = $this->db->delete('menara', $data);
         if($res){
             $arr = array("error"=>false,"message"=>"DATA BERHASIL DIHAPUS");
         }
         else {
             $arr = array("error"=>true,"message"=>"DATA GAGAL DIHAPUS ".mysql_error());
         }
-    	//redirect('sa_birojasa');
+        //redirect('sa_birojasa');
         echo json_encode($arr);
     }
 
@@ -418,78 +410,73 @@ else {
    function status(){
 
 
-    	
+        
          $get = $this->input->get(); 
-         $no_regis = $get['id'];
+         $id = $get['id'];
          
-         $this->db->where('no_register',$no_register);
-         $situ = $this->db->get('lahan');
-         $data_array = $lahan->row_array();
+         $this->db->where('id',$id);
+         $imb = $this->db->get('menara');
+         $data_array = $imb->row_array();
 
+         $data_array['tgl_lahir'] = flipdate($data_array['tgl_lahir']);
          $data_array['tgl_verifikasi'] = flipdate($data_array['tgl_verifikasi']);
          $data_array['tgl_register'] = flipdate($data_array['tgl_register']);
-         $data_array['tgl_lahir'] = flipdate($data_array['tgl_lahir']);
 
          $data_array['action'] = 'update';
-         $data_array['curPage'] = 'lahan';
+         $data_array['curPage'] = 'menara';
          // show_array($data); exit;
-    	 // show_array($data_array);
+         // show_array($data_array);
       //    exit();
-		
+        
 
-    	// $data_array=array(
-    	// 		'id' => $data->id,
-    	// 		'nama' => $data->nama,
-    	// 		'no_siup' => $data->no_siup,
-    	// 		'no_npwp' => $data->no_npwp,
-    	// 		'no_tdp' => $data->no_tdp,
-    	// 		'telp' => $data->telp,
-    	// 		'alamat' => $data->alamat,
-    	// 		'email' => $data->email,
-    	// 		'hp' => $data->hp,
+        // $data_array=array(
+        //      'id' => $data->id,
+        //      'nama' => $data->nama,
+        //      'no_siup' => $data->no_siup,
+        //      'no_npwp' => $data->no_npwp,
+        //      'no_tdp' => $data->no_tdp,
+        //      'telp' => $data->telp,
+        //      'alamat' => $data->alamat,
+        //      'email' => $data->email,
+        //      'hp' => $data->hp,
 
-    	// 	);
+        //  );
 
         
 
         $content = $this->load->view($this->controller."_status_view",$data_array,true);
 
-		$this->set_subtitle("Status Izin Pemakaian Lahan Bekas ");
-		$this->set_title("Status Izin Pemakaian Lahan Bekas    ");
-		$this->set_content($content);
-		$this->cetak();
+        $this->set_subtitle("Status Pemberian izin Menara Seluler");
+        $this->set_title("Status Pemberian izin Menara Seluler");
+        $this->set_content($content);
+        $this->cetak();
 
     }
 
 
 
     function printsurat(){
-    $get = $this->input->get(); 
+   $get = $this->input->get(); 
     
-    $no_register = $get['id'];
+    $id = $get['id'];
 
     
-     
-    
-
-
-
 
     $this->db->select('m.*, kec.kecamatan as nm_kecamatan, kab.kota as kabupaten');
 
-      $this->db->from("lahan m");
+      $this->db->from("imb m");
       $this->db->join('tiger_kecamatan kec','m.kecamatan=kec.id');
       $this->db->join('tiger_kota kab','m.kabupaten=kab.id');
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
-      $this->db->where("m.no_register",$no_register);
+      $this->db->where("m.id",$id);
 
      $resx = $this->db->get();
 
 
     $data['controller'] = get_class($this);
-    $data['header'] = "Dokumen Persyaratan Surat Rekomendasi";
+    $data['header'] = "Dokumen Rekomendasi";
     $data['query'] = $resx->row_array();
 
     $timestamp = strtotime($data['query']['tgl_verifikasi']);
@@ -537,7 +524,7 @@ else {
     function printsuratizin(){
     $get = $this->input->get(); 
     
-    $no_regis = $get['id'];
+    $id = $get['id'];
 
      $userdata = $this->session->userdata('admin_login');
         
@@ -558,19 +545,19 @@ else {
 
     $this->db->select('m.*, kec.kecamatan as nm_kecamatan, kab.kota as kabupaten');
 
-      $this->db->from("lahan m");
+      $this->db->from("menara m");
       $this->db->join('tiger_kecamatan kec','m.kecamatan=kec.id');
       $this->db->join('tiger_kota kab','m.kabupaten=kab.id');
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
-      $this->db->where("m.no_register",$no_regis);
+      $this->db->where("m.id",$id);
 
      $resx = $this->db->get();
 
 
     $data['controller'] = get_class($this);
-    $data['header'] = "Dokumen Persyaratan Izin Tempat Usaha";
+    $data['header'] = "Dokumen Pembentukan Kelembagaan P3A";
     $data['query'] = $resx->row_array();
 
     $timestamp = strtotime($data['query']['tgl_verifikasi']);
@@ -623,30 +610,24 @@ else {
     function formulir(){
     $get = $this->input->get(); 
     
-    $no_regis = $get['id'];
-
-    
-     
-    
-
-
+    $id = $get['id'];
 
 
     $this->db->select('m.*, kec.kecamatan as nm_kecamatan, kab.kota as kabupaten');
 
-      $this->db->from("situ m");
+      $this->db->from("menara m");
       $this->db->join('tiger_kecamatan kec','m.kecamatan=kec.id');
       $this->db->join('tiger_kota kab','m.kabupaten=kab.id');
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
-      $this->db->where("m.no_register",$no_regis);
+      $this->db->where("m.id",$id);
 
      $resx = $this->db->get();
 
 
     $data['controller'] = get_class($this);
-    $data['header'] = "Blanko Permohonan SITU";
+    $data['header'] = "Blanko Permohonan";
     $data['query'] = $resx->row_array();
 
     $timestamp = strtotime($data['query']['tgl_verifikasi']);

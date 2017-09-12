@@ -166,6 +166,14 @@ class kec_kelembagaan extends admin_controller {
         $data_array['tgl_surat'] = ""; 
         $data_array['curPage'] = 'p3a';
 
+        $userdata = $this->session->userdata('admin_login');
+
+        $this->db->where('id_kecamatan', $userdata['kecamatan']);
+        $profil_kecamatan = $this->db->get('profil_kecamatan')->row_array();
+
+        $data_array['nama_camat'] = $profil_kecamatan['nama_camat'];
+        $data_array['nip_camat'] = $profil_kecamatan['nip_camat'];
+
 
         $content = $this->load->view($this->controller."_form_view",$data_array,true);
        $this->set_subtitle("Tambah Pembentukan Kelembagaan P3A");

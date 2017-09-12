@@ -206,9 +206,7 @@ $userdata = $this->session->userdata('adminkab_login');
                     </li>
                         </ul>
                     </li>
- <li class="menu-dropdown <?php if ($curPage=='p3a') {
-     echo 'active';
- }?>"> 
+ <li class="menu-dropdown <?php if($curPage=='lahan'||$curPage=='p3a'||$curPage=='koperasi'||$curPage=='menara'){ echo 'active'; } ?>">  
 
         <a href="#">
             <i class="menu-icon fa fa-files-o"></i>
@@ -283,8 +281,10 @@ $userdata = $this->session->userdata('adminkab_login');
 
             </li>
 
-              <li>
-            <a href="<?php echo site_url('admin'); ?>">
+              <li class="<?php if ($curPage=='koperasi') {
+                 echo 'active';
+             } ?>">
+            <a href="<?php echo site_url('kab_koperasi'); ?>">
                 <i class="fa fa-fw fa-file-text-o"></i>
                 <span class="mm-text ">8. Ijin Pendirian Koperasi</span>
             </a>
@@ -308,8 +308,10 @@ $userdata = $this->session->userdata('adminkab_login');
 
             </li>
 
-               <li>
-            <a href="<?php echo site_url('admin'); ?>">
+               <li class="<?php if ($curPage=='menara') {
+                 echo 'active';
+             } ?>">
+            <a href="<?php echo site_url('kab_menara'); ?>">
                 <i class="fa fa-fw fa-file-text-o"></i>
                 <span class="mm-text ">11. Rek. Menara Seluler</span>
             </a>
