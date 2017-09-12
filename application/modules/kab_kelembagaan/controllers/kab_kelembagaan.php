@@ -241,10 +241,14 @@ class kab_kelembagaan extends adminkab_controller {
 
         if($this->form_validation->run() == TRUE ) { 
 
-        $data = array('status' => $post['status'], );
+            if ($post['status']=='2') {
+                $data = array('status' => $post['status'],
+                                'tgl_rekom' => date('Y-m-d'), );
+            }else{
+                $data = array('status' => $post['status'], );        
+            }
 
         
-
     
         $this->db->where('id', $post['id']);
         $res = $this->db->update('p3a', $data); 
