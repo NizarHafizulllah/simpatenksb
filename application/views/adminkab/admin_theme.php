@@ -193,7 +193,7 @@ $userdata = $this->session->userdata('adminkab_login');
                     <li class="<?php if($curPage=='minyak'){ echo 'active'; } ?>">
                         <a href="<?php echo site_url('kab_minyak'); ?>">
                             <i class="fa fa-fw fa-file-text-o"></i>
-                            <span class="mm-text ">9. Ijin Depo Pangkalan Minyak </span>
+                            <span class="mm-text ">9. Izin Depo Pangkalan Minyak </span>
                         </a>
                     </li>
                     <li class="<?php if($curPage=='siu'){ echo 'active'; } ?>">

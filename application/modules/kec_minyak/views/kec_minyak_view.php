@@ -3,7 +3,7 @@
 
 
 <div class="row">
-	<div class="col-lg-12">
+  <div class="col-lg-12">
                     <!-- First Basic Table strats here-->
                     <div class="panel">
                         <div class="panel-heading">
@@ -41,7 +41,7 @@
             <div class="col-md-2">
               <div class="form-group">
                 <label></label>
-                <a href="<?php echo site_url('kec_imb/baru') ?>" class="btn btn-success form-control">Tambah</a>
+                <a href="<?php echo site_url($this->controller.'/baru') ?>" class="btn btn-success form-control">Tambah</a>
               </div>
             </div>
           
@@ -53,7 +53,7 @@
 </div>
 
 <div class="row">
-	<div class="col-lg-12">
+  <div class="col-lg-12">
                     <!-- First Basic Table strats here-->
                     <div class="panel">
                         <div class="panel-heading">
@@ -62,7 +62,7 @@
                                 <i class="ti-layout-cta-left"></i> Data
                                 </div>
                                 <div class="col-md-3 pull-right">
-                                	
+                                  
                                 </div>
                             </h3>
                         </div>
@@ -78,7 +78,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    	
+                                      
                                     </tbody>
                                 </table>
                         </div>

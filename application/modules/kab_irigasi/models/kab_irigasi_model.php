@@ -18,18 +18,20 @@ class kab_irigasi_model extends CI_Model {
 
 		 extract($param);
 
-		 $kolom = array(0=>"no_regis",
-							"nama_pemohon"
+		 $kolom = array(0=>"no_register",
+							"nama_pemohon",
+							"id_kecamatan"
 							
 							);
 
 
-		
+		 
 
-		 $this->db->select('l.*, k.kecamatan as nm_kecamatan')->from("imb l");
+		 $this->db->select('l.*, k.kecamatan as nm_kecamatan')->from("irigasi l");
 		 $this->db->join('tiger_kecamatan k','l.kecamatan=k.id');
 
-		  if(!empty($kecamatan)) {
+		 
+ 		if(!empty($kecamatan)) {
 		 	$this->db->like("l.kecamatan",$kecamatan);
 		 }
 
@@ -38,7 +40,7 @@ class kab_irigasi_model extends CI_Model {
 		 }
 
 		 if(!empty($no_regis)) {
-		 	$this->db->like("l.no_regis",$no_regis);
+		 	$this->db->like("l.no_register",$no_regis);
 		 }
 
 		 if(!empty($nama_pemohon)) {

@@ -3,7 +3,7 @@
 
 
 <div class="row">
-	<div class="col-lg-12">
+  <div class="col-lg-12">
                     <!-- First Basic Table strats here-->
                     <div class="panel">
                         <div class="panel-heading">
@@ -63,7 +63,7 @@
 </div>
 
 <div class="row">
-	<div class="col-lg-12">
+  <div class="col-lg-12">
                     <!-- First Basic Table strats here-->
                     <div class="panel">
                         <div class="panel-heading">
@@ -72,7 +72,7 @@
                                 <i class="ti-layout-cta-left"></i> Data
                                 </div>
                                 <div class="col-md-3 pull-right">
-                                	
+                                  
                                 </div>
                             </h3>
                         </div>
@@ -90,7 +90,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    	
+                                      
                                     </tbody>
                                 </table>
                         </div>
