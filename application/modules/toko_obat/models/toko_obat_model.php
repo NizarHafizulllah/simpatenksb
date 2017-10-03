@@ -27,7 +27,7 @@ class toko_obat_model extends CI_Model {
 
 		$this->db->where("kecamatan", $id_kecamatan);
 
-		 $this->db->select('*')->from("imb");
+		 $this->db->select('*')->from("apotek");
 
 
 		 

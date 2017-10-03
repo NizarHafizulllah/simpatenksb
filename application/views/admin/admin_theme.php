@@ -27,7 +27,7 @@ $userdata = $this->session->userdata('admin_login');
     
     <link href="<?php echo base_url(); ?>assets/vendors/iCheck/css/all.css" rel="stylesheet" type="text/css"/>
     
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/pages/datatables.css">
+    
 
 
 
@@ -507,7 +507,7 @@ $userdata = $this->session->userdata('admin_login');
 <script src="<?php echo base_url("assets") ?>/js/bootstrap-datepicker.js"></script>
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrapValidator.min.css">
 <script src="<?php echo base_url(); ?>assets/js/bootstrapValidator.min.js"></script>
-
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/pages/datatables.css">
 <script type="text/javascript">
 
 
