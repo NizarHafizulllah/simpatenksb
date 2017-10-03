@@ -2,7 +2,7 @@
 
 $(document).ready(function(){
 
-	 var dt = $("#menara").DataTable(
+	 var dt = $("#p3a").DataTable(
 		 	{
 		 		// "order": [[ 0, "desc" ]],
 		 		// "iDisplayLength": 50,

@@ -21,11 +21,7 @@ class kab_koperasi extends adminkab_controller {
 
         $data_array['curPage'] = 'koperasi';
 
-        $data_array['arr_status'] = array('' => '- Pilih Status -',
-                                            '1' => 'Dalam Proses',
-                                            '2' => 'Disetujui',
-                                            '3' => 'Tidak Disetujui', );
-
+       
 		$data_array['arr_kecamatan'] = $this->cm->arr_dropdown3("tiger_kecamatan", "id", "kecamatan", "kecamatan", "id_kota", "52_7");
 
 		$content = $this->load->view($this->controller."_view",$data_array,true);
@@ -119,7 +115,6 @@ class kab_koperasi extends adminkab_controller {
         		$row['tgl_verifikasi'],
                 $row['nm_kecamatan'],
         		$row['nama_petugas_verifikasi'],
-                $status,
         	   $action
         		
          			 
@@ -155,9 +150,7 @@ class kab_koperasi extends adminkab_controller {
          $data_array['curPage'] = 'koperasi';
 
 
-         $data_array['arr_status'] = array('1' => "- Pilih status -",
-                                            '2' => "Disetujui",
-                                            '3' => "Tidak Disetujui" );
+         
          // show_array($data); exit;
          // show_array($data_array);
       //    exit();
