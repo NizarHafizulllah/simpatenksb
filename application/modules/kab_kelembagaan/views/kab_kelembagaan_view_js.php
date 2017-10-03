@@ -2,8 +2,11 @@
 
 $(document).ready(function(){
 
-	 var dt = $("#menara").DataTable(
+  // alert('fuck you');
+
+	 var dt = $("#p3a").DataTable(
 		 	{
+
 		 		// "order": [[ 0, "desc" ]],
 		 		// "iDisplayLength": 50,
 				"columnDefs": [ { "targets": 0, "orderable": false } ],

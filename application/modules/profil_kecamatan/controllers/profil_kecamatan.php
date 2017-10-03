@@ -51,6 +51,55 @@ class profil_kecamatan extends admin_controller {
 	}
 
 
+	function tentang_kecamatan(){
+		$userdata = $this->session->userdata('admin_login');
+		$data_array=array();
+
+		$id = $userdata['id_user'];
+
+		
+
+
+		// echo $res['kecamatan'];
+
+		$this->db->where('id_kecamatan', $userdata['kecamatan']);
+		$data = $this->db->get('profil_kecamatan');
+
+
+		if ($data->num_rows()>0) {
+			$data_array = $data->row_array();
+		}else{
+			$data_array['id_kecamatan'] = $userdata['kecamatan'];
+			$data_array['tentang'] = '';
+			
+		}
+
+
+		$data_array['curPage'] = '';
+		
+
+
+		
+		
+		$this->db->select('a.*, kc.kecamatan as kecamatan')->from("admin a");
+		 $this->db->join('tiger_kecamatan kc','a.kecamatan=kc.id', 'left');
+		 $this->db->where('a.id', $id);
+		$data_array['user'] = $this->db->get('admin')->row_array();
+		// $data_array['user'] = $res;
+
+		// show_array($data_array);
+		// exit();
+
+		
+		$content = $this->load->view("tentang_kecamatan_view",$data_array,true);
+
+		$this->set_subtitle("Tentang Kecamatan");
+		$this->set_title("Tentang Kecamatan");
+		$this->set_content($content);
+		$this->cetak();
+	}
+
+
 	function kecamatan(){
 		
 		$userdata = $this->session->userdata('admin_login');
@@ -289,6 +338,69 @@ if ($error=='true') {
         $this->form_validation->set_rules('tahun_pembentukan','Alamat','required');
         $this->form_validation->set_rules('no_perda_pembentukan','Syarat umum pertama','required');
         
+          
+         
+        $this->form_validation->set_message('required', ' Harap isi semua data');
+        
+        $this->form_validation->set_error_delimiters('', '<br>&nbsp;<br>&nbsp;<br>');
+
+     
+
+        // show_array($data);
+
+if($this->form_validation->run() == TRUE ) { 
+
+        
+        $this->db->where('id_kecamatan', $post['id_kecamatan']);
+        $cari = $this->db->get('profil_kecamatan');
+
+        if ($cari->num_rows()>0) {
+
+        	$this->db->where('id_kecamatan', $post['id_kecamatan']);
+        	$res = $this->db->update('profil_kecamatan', $post);
+        	if($res){
+            $arr = array("error"=>false,'message'=>"BERHASIL DIUPDATE");
+        }
+        else {
+             $arr = array("error"=>true,'message'=>"GAGAL  DIUPDATE");
+        }
+        }else{
+        	$res = $this->db->insert('profil_kecamatan', $post); 
+        	if($res){
+            $arr = array("error"=>false,'message'=>"BERHASIL DISIMPAN");
+        	}
+        		else {
+             $arr = array("error"=>true,'message'=>"GAGAL  DISIMPAN");
+        	}
+        }
+        
+        
+        
+}
+else {
+    $arr = array("error"=>true,'message'=>validation_errors());
+}
+        echo json_encode($arr);
+}	
+
+	function simpan_tentang(){
+
+		
+
+
+    $post = $this->input->post();
+    $userdata = $this->session->userdata('admin_login');
+    $post['id_kecamatan'] = $userdata['kecamatan'];
+
+
+    // show_array($userdata);
+    // show_array($post);
+    // exit();
+       
+
+
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('tentang','tentang','required'); 
           
          
         $this->form_validation->set_message('required', ' Harap isi semua data');

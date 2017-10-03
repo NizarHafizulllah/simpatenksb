@@ -44,7 +44,7 @@
 		<div class="panel">
             <div class="panel-heading">
               <h3 class="panel-title">
-                <i class="livicon" data-name="user-add" data-size="18" data-c="#fff" data-hc="#fff" data-loop="true"></i> Profil  &nbsp;&nbsp;&nbsp;&nbsp; <a href="<?php echo site_url('profil_kecamatan/kecamatan') ?>" style="color: blue;">Profil Kecamatan</a>  
+                <i class="livicon" data-name="user-add" data-size="18" data-c="#fff" data-hc="#fff" data-loop="true"></i> Profil  &nbsp;&nbsp;&nbsp;&nbsp; <a href="<?php echo site_url('profil_kecamatan/kecamatan') ?>" style="color: blue;">Profil Kecamatan</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="<?php echo site_url('profil_kecamatan/tentang_kecamatan') ?>" style="color: blue;">Tentang Kecamatan </a>
               </h3>
             <span class="pull-right">
               <i class="fa fa-fw ti-angle-up clickable"></i>

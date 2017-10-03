@@ -35,7 +35,7 @@ $userdata = $this->session->userdata('admin_login');
 		<div class="panel">
             <div class="panel-heading">
               <h3 class="panel-title">
-                <i class="livicon" data-name="user-add" data-size="18" data-c="#fff" data-hc="#fff" data-loop="true"></i> <a href="<?php echo site_url('profil_kecamatan') ?>" style="color: blue;">Profil</a>  &nbsp;&nbsp;&nbsp;&nbsp; Profil Kecamatan  
+                <i class="livicon" data-name="user-add" data-size="18" data-c="#fff" data-hc="#fff" data-loop="true"></i> <a href="<?php echo site_url('profil_kecamatan') ?>" style="color: blue;">Profil</a>  &nbsp;&nbsp;&nbsp;&nbsp; Profil Kecamatan   &nbsp;&nbsp;&nbsp;&nbsp; <a href="<?php echo site_url('profil_kecamatan/tentang_kecamatan') ?>" style="color: blue;">Tentang Kecamatan </a>
               </h3>
             <span class="pull-right">
               <i class="fa fa-fw ti-angle-up clickable"></i>
