@@ -30,8 +30,8 @@ class kab_uptl extends adminkab_controller {
 
 		$content = $this->load->view($this->controller."_view",$data_array,true);
 
-		$this->set_subtitle("UPTL");
-		$this->set_title("UPTL");
+		$this->set_subtitle("Surat Izin Usaha");
+		$this->set_title("Surat Izin Usaha");
 		$this->set_content($content);
 		$this->cetak();
 
@@ -92,7 +92,7 @@ class kab_uptl extends adminkab_controller {
        
         $arr_data = array();
         foreach($result as $row) : 
-		$id = $row['no_regis'];
+		$id = $row['id'];
 
         $action = "<div class='btn-group'>
                               <button type='button' class='btn btn-primary'>Action</button>
@@ -101,7 +101,7 @@ class kab_uptl extends adminkab_controller {
                                 <span class='sr-only'>Toggle Dropdown</span>
                               </button>
                               <ul class='dropdown-menu' role='menu'>
-                              	<li><a href='kab_imb/status?id=$id'><i class='fa fa-eye'></i> Status</a></li>
+                              	<li><a href='$this->controller/status?id=$id'><i class='fa fa-eye'></i> Status</a></li>
                               </ul>
                             </div>";
 
@@ -114,9 +114,9 @@ class kab_uptl extends adminkab_controller {
         }
         	 
         	$arr_data[] = array(
-        		$row['no_regis'],
+        		$row['no_register'],
         		$row['nama_pemohon'],
-        		flipdate($row['tgl_verifikasi']),
+        		$row['tgl_verifikasi'],
                 $row['nm_kecamatan'],
         		$row['nama_petugas_verifikasi'],
                 $status,
@@ -141,20 +141,18 @@ class kab_uptl extends adminkab_controller {
 
         
          $get = $this->input->get(); 
-         $no_regis = $get['id'];
+         $id = $get['id'];
          
-         $this->db->where('no_regis',$no_regis);
-         $imb = $this->db->get('imb');
+         $this->db->where('id',$id);
+         $imb = $this->db->get('uptl');
          $data_array = $imb->row_array();
 
          $data_array['tgl_verifikasi'] = flipdate($data_array['tgl_verifikasi']);
-         $data_array['tgl_surat'] = flipdate($data_array['tgl_surat']);
-         $data_array['tgl_rekom_desa'] = flipdate($data_array['tgl_rekom_desa']);
-         $data_array['tgl_rekom_uptd'] = flipdate($data_array['tgl_rekom_uptd']);
-         $data_array['tgl_skgr'] = flipdate($data_array['tgl_skgr']);
+         $data_array['tgl_register'] = flipdate($data_array['tgl_register']);
+         $data_array['tgl_lahir'] = flipdate($data_array['tgl_lahir']);
 
          $data_array['action'] = 'update';
-         $data_array['curPage'] = 'imb_satu';
+         $data_array['curPage'] = 'uptl';
 
 
          $data_array['arr_status'] = array('1' => "- Pilih status -",
@@ -182,8 +180,8 @@ class kab_uptl extends adminkab_controller {
 
         $content = $this->load->view($this->controller."_status_view",$data_array,true);
 
-        $this->set_subtitle("Status IMB");
-        $this->set_title("Status IMB");
+        $this->set_subtitle("Status Izin UPTL ");
+        $this->set_title("Status Izin UPTL ");
         $this->set_content($content);
         $this->cetak();
 
@@ -201,28 +199,42 @@ class kab_uptl extends adminkab_controller {
 
 
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('no_regis','Nomor registrasi','required');
+       $this->form_validation->set_rules('nik_pemohon','Nomor registrasi','required');
         $this->form_validation->set_rules('nama_pemohon','Nama Pemohon','required');
-        $this->form_validation->set_rules('alamat','Alamat','required');
-        $this->form_validation->set_rules('pimb','Syarat umum pertama','required');
-        $this->form_validation->set_rules('ktp','Syarat umum kedua','required');
-        $this->form_validation->set_rules('foto','Syarat umum ketiga','required');
-        $this->form_validation->set_rules('sertifikat_tanah','Syarat umum keempat','required');
-        $this->form_validation->set_rules('pbb','Syarat umum kelima','required');
-        $this->form_validation->set_rules('bap','Syarat umum keenam','required');
-        $this->form_validation->set_rules('penelitian_tanah','Syarat umum ketujuh','required');
-        $this->form_validation->set_rules('setuju_sempada_tanah','Syarat umum kedelapan','required');
-        $this->form_validation->set_rules('rekom_dishub','Syarat umum kesembilan','required');
-        $this->form_validation->set_rules('tek_gamabar_rencana','Syarat teknis pertama','required');
-        $this->form_validation->set_rules('tek_instalasi_air','Syarat teknis kedua','required');
-        $this->form_validation->set_rules('tek_penelitian_tanah','Syarat teknis ketiga','required');
-        $this->form_validation->set_rules('tek_pengaman','Syarat teknis keempat','required');
-        $this->form_validation->set_rules('sistem_drainase','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('tempat_lahir','Alamat','required');
+        $this->form_validation->set_rules('tgl_lahir','Syarat umum pertama','required');
+        $this->form_validation->set_rules('pekerjaan','Syarat umum kedua','required');
+        $this->form_validation->set_rules('alamat','Syarat umum ketiga','required');
+        $this->form_validation->set_rules('no_telp','Syarat umum keempat','required');
+        $this->form_validation->set_rules('negara_pemohon','Syarat umum kelima','required');
+        $this->form_validation->set_rules('nama_usaha','Syarat umum keenam','required');
+        $this->form_validation->set_rules('jenis_usaha','Syarat umum ketujuh','required');
+        $this->form_validation->set_rules('ukuran_luas_usaha','Syarat umum kedelapan','required');
+        $this->form_validation->set_rules('lokasi_usaha','Syarat umum kesembilan','required');
+        $this->form_validation->set_rules('status_bangunan_tempat_usaha','Syarat teknis pertama','required');
+        $this->form_validation->set_rules('npwpd','Syarat teknis kedua','required');
+        $this->form_validation->set_rules('klasifikasi_usaha','Syarat teknis ketiga','required');
+        $this->form_validation->set_rules('retribusi_perthn_f','Syarat teknis pertahun','required');
+        $this->form_validation->set_rules('tgl_register','Syarat teknis keempat','required');
+        $this->form_validation->set_rules('no_register','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nama_petugas_verifikasi','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('tgl_verifikasi','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('nama_camat','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('nip_camat','Tgl. Surat','required');
+        $this->form_validation->set_rules('ktp','Tgl. Lahir Pemohon','required');
+        $this->form_validation->set_rules('fc_hak_tanah','Tempat Lahir Pemohon','required');
+        $this->form_validation->set_rules('sp_desa','No. Telp. Pemohon','required');
+        $this->form_validation->set_rules('sp_materai','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('denah_lokasi','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('foto','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('fc_pbb','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('rekom_uptd','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('gambar_bangunan','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('instalasi_air','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('rekom_desa','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('siup_asli','Pekerjaan Pemohon','required');
           
          
-        $this->form_validation->set_message('required', ' Harap isi semua data');
+        $this->form_validation->set_message('required', '%s Harap isi semua data');
         
         $this->form_validation->set_error_delimiters('', '<br>&nbsp;<br>&nbsp;<br>');
 
@@ -238,8 +250,8 @@ if($this->form_validation->run() == TRUE ) {
         
 
     
-        $this->db->where('no_regis', $post['no_regis']);
-        $res = $this->db->update('imb', $data); 
+        $this->db->where('id', $post['id']);
+        $res = $this->db->update('uptl', $data); 
         if($res){
             $arr = array("error"=>false,'message'=>"BERHASIL DIUPDATE");
         }

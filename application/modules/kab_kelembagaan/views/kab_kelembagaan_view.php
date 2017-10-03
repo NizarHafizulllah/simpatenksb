@@ -32,13 +32,7 @@
                 <?php echo form_dropdown("kecamatan",$arr_kecamatan,isset($kecamatan)?$kecamatan:'','id="kecamatan" class="form-control input-style"'); ?>
               </div>
             </div>
-            <div class="col-md-3">
-              <div class="form-group">
-              <label for="nama">Status</label>
-                <?php echo form_dropdown("status",$arr_status,isset($status)?$status:'','id="status" class="form-control input-style"'); ?>
-              </div>
-            </div>
-            </div>
+            
             <div class="row">
             <div class="col-md-2">
               <div class="form-group">
@@ -85,7 +79,7 @@
                                         <th>Tgl. Verfikasi</th>
                                         <th>Kecamatan</th>
                                         <th>Petugas Verifikasi</th>
-                                        <th>Status</th>
+                                        
                                         <th>Action</th>
                                     </tr>
                                     </thead>

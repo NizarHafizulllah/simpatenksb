@@ -21,10 +21,7 @@ class kab_menara extends adminkab_controller {
 
         $data_array['curPage'] = 'menara';
 
-        $data_array['arr_status'] = array('' => '- Pilih Status -',
-                                            '1' => 'Dalam Proses',
-                                            '2' => 'Disetujui',
-                                            '3' => 'Tidak Disetujui', );
+        
 
 		$data_array['arr_kecamatan'] = $this->cm->arr_dropdown3("tiger_kecamatan", "id", "kecamatan", "kecamatan", "id_kota", "52_7");
 
@@ -105,13 +102,6 @@ class kab_menara extends adminkab_controller {
                               </ul>
                             </div>";
 
-         if ($row['status']=='1') {
-            $status = '<span class="label label-info"> Dalam Proses</span>';
-        }else if ($row['status']=='2') {
-            $status = '<span class="label label-success"> Disetujui</span>';
-        }else if ($row['status']=='3') {
-            $status = '<span class="label label-danger"> Tidak Disetujui</span>';
-        }
         	 
         	$arr_data[] = array(
         		$row['no_register'],
@@ -119,7 +109,6 @@ class kab_menara extends adminkab_controller {
         		$row['tgl_verifikasi'],
                 $row['nm_kecamatan'],
         		$row['nama_petugas_verifikasi'],
-                $status,
         	   $action
         		
          			 

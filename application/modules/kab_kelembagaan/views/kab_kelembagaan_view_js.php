@@ -2,8 +2,6 @@
 
 $(document).ready(function(){
 
-  // alert('fuck you');
-
 	 var dt = $("#p3a").DataTable(
 		 	{
 

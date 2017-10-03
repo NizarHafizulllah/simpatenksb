@@ -50,7 +50,10 @@
 
 <table width="100%">
   <tr>
-    <td rowspan="5" width="65%"><strong>Perihal   : Permohonan Surat Rekomendasi Pembentukan dan Kelembagaan P3A</strong></td>
+    <td rowspan="5" width="10%"><strong>Perihal</strong></td>
+    <td rowspan="5" width="2%"><strong>:</strong></td>
+    <td rowspan="5" width="50%"><strong>Permohonan Surat Rekomendasi Pembentukan dan Kelembagaan P3A</strong></td>
+     <td rowspan="5%" width="5%"></td>
     <td width="35%"><?php echo $query['nm_kecamatan'] ?>, <?php echo $d_surat.' '.$m_surat.' '.$y_surat; ?> </td>
   </tr>
   <tr>
@@ -64,7 +67,7 @@
   </tr>
   <tr>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tempat</td>
-  </tr>
+  </tr>  
 </table>
 
 <br/>
