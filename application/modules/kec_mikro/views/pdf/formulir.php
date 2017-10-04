@@ -118,28 +118,18 @@
 <table width="100%">
   <tr>
     <td width="3%">&nbsp;</td>
-    <td width="30%"><strong>Nama Koperasi</strong></td>
+    <td width="30%"><strong>Nama Perusahaan</strong></td>
     <td width="67%"><strong>: <?php echo $query['merek_usaha'] ?></strong></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td><strong>Jenis Koperasi</strong></td>
+    <td><strong>Jenis Usaha</strong></td>
     <td><strong>: <?php echo $query['jenis_usaha'] ?></strong></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><strong>Ukuran Luas</strong></td>
-    <td><strong>: <?php echo $query['ukuran_luas_usaha'] ?></strong></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
     <td><strong>Lokasi</strong></td>
     <td><strong>: <?php echo $query['alamat_usaha'] ?></strong></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><strong>Status Bangunan Tempat Usaha </strong></td>
-    <td><strong>: <?php echo $query['status_bangunan'] ?></strong></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
@@ -165,32 +155,27 @@
   <tr>
     <td width="3%">&nbsp;</td>
     <td width="3%">1.</td>
-    <td width="94%">Surat Permohonan bermatrai 6000</td>
+    <td width="94%">AD/ ADRT</td>
   </tr>
   <tr>
     <td>&nbsp;</td>
     <td>2.</td>
-    <td>Memiliki AD / ART</td>
+    <td>Notulen Rapat</td>
   </tr>
   <tr>
     <td>&nbsp;</td>
     <td>3.</td>
-    <td>Foto Copy Akte Notaris</td>
+    <td>Daftar Hadir Rapat Anggota</td>
   </tr>
   <tr>
     <td>&nbsp;</td>
     <td>4.</td>
-    <td>Rekomendasi dari Lurah/ Kepala Desa </td>
+    <td>Rekomendasi UPTD Koperasi </td>
   </tr>
   <tr>
     <td>&nbsp;</td>
     <td>5.</td>
-    <td>Memiliki Program Kerja yang Jelas</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>6.</td>
-    <td>Daftar Susunan Pengurus lengkap dan alamatnya</td>
+    <td>Mengetahiu Lurah/ Kepala Desa</td>
   </tr>
   <tr>
 </table>
