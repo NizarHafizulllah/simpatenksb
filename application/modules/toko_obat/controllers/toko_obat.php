@@ -248,6 +248,7 @@ if($this->form_validation->run() == TRUE ) {
         $post['tgl_lahir'] = flipdate($post['tgl_lahir']);;
         $post['status'] = 1;
         $post['id'] = md5(microtime(true));
+        $post['negara_pemohon'] = "Indonesia";
         
         
         $res = $this->db->insert('toko_obat', $post); 

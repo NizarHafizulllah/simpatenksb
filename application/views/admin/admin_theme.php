@@ -122,71 +122,28 @@ $userdata = $this->session->userdata('admin_login');
                             <span class="mm-text ">1. Izin Apotik &amp; Toko Obat </span>
 
                         </a>
-                        <li class="<?php if($curPage=='irigasi'){ echo 'active'; } ?>">
-                        <a href="<?php echo site_url('kec_irigasi'); ?>">
-                            <i class="fa fa-fw fa-file-text-o"></i>
-                            <span class="mm-text ">2. Izin Jaringan Irigasi </span>
-                        </a>
-                    </li>
                     <li class="<?php if($curPage=='mikro'){ echo 'active'; } ?>">
                         <a href="<?php echo site_url('kec_mikro'); ?>">
                             <i class="fa fa-fw fa-file-text-o"></i>
-                            <span class="mm-text ">3. TDI Industri Mikro</span>
-                        </a>
-                    </li>
-                    <li class="<?php if($curPage=='siup'){ echo 'active'; } ?>">
-                        <a href="<?php echo site_url('kec_izinusaha'); ?>">
-                            <i class="fa fa-fw fa-file-text-o"></i>
-                            <span class="mm-text ">4. SIUP </span>
+                            <span class="mm-text ">2. TDI Industri Mikro</span>
                         </a>
                     </li>
                     <li class="<?php if($curPage=='situ'){ echo 'active'; } ?>">
                         <a href="<?php echo site_url('kec_situ'); ?>">
                             <i class="fa fa-fw fa-file-text-o"></i>
-                            <span class="mm-text ">5. SITU </span>
+                            <span class="mm-text ">3. SITU </span>
                         </a>
                     </li>
-                    <li class="<?php if($curPage=='imb_satu'||$curPage=='imb_dua'){ echo 'active'; } ?>">
-                        <a href="#">
+                    <li class="<?php if($curPage=='imb_satu'){ echo 'active'; } ?>">
+                        <a href="<?php echo site_url('kec_imb'); ?>">
                             <i class="fa fa-fw fa-file-text-o"></i>
-                            <span class="mm-text ">6. IMB </span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="sub-menu sub-submenu">
-                            <li class="<?php if($curPage=='imb_satu'){ echo 'active'; } ?>">
-                                <a href="<?php echo site_url('kec_imb'); ?>">
-                                    <i class="fa fa-fw fa-sitemap"></i> IMB Dibawah 250
-                                </a>
-                            </li>
-                            <li class="<?php if($curPage=='imb_dua'){ echo 'active'; } ?>">
-                                <a href="<?php echo site_url('kec_imb_dua'); ?>">
-                                    <i class="fa fa-fw fa-sitemap"></i> IMB Diatas 250
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="<?php if($curPage=='ho'){ echo 'active'; } ?>">
-                        <a href="<?php echo site_url('kec_ho'); ?>">
-                            <i class="fa fa-fw fa-file-text-o"></i>
-                            <span class="mm-text ">7. Ijin Gangguan (HO)</span>
-                        </a>
-                    </li>
-                    <li class="<?php if($curPage=='uptl'){ echo 'active'; } ?>">
-                        <a href="<?php echo site_url('kec_uptl'); ?>">
-                            <i class="fa fa-fw fa-file-text-o"></i>
-                            <span class="mm-text ">8. UPTL  </span>
-                        </a>
-                    </li>
-                    <li class="<?php if($curPage=='minyak'){ echo 'active'; } ?>">
-                        <a href="<?php echo site_url('kec_minyak'); ?>">
-                            <i class="fa fa-fw fa-file-text-o"></i>
-                            <span class="mm-text ">9. Izin Depo Pangkalan Minyak </span>
+                            <span class="mm-text ">4. IMB Dibawah 250 </span>
                         </a>
                     </li>
                     <li class="<?php if($curPage=='siu'){ echo 'active'; } ?>">
                         <a href="<?php echo site_url('kec_siu'); ?>">
                             <i class="fa fa-fw fa-file-text-o"></i>
-                            <span class="mm-text ">10. Surat izin usaha</span>
+                            <span class="mm-text ">5. Surat izin usaha</span>
                         </a>
                     </li>
                     

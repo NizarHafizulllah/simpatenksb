@@ -70,12 +70,7 @@
                     </div>
                   </div> 
 
-                   <div class="form-group p-10">
-                    <label class="control-label col-md-3" for="text">Negara</label>
-                    <div class="col-md-9">
-                      <input type="text" class="form-control" name="negara_pemohon" id="negara_pemohon" placeholder="Negara" value="<?php echo isset($negara_pemohon)?$negara_pemohon:''; ?>">
-                    </div>
-                  </div> 
+                 
 
 
 
@@ -682,12 +677,7 @@
             </div>
             <div class="panel-body">
 
-             <div class="form-group p-10">
-                    <label class="control-label col-md-3" for="text">Tanggal Register</label>
-                    <div class="col-md-9">
-                      <input type="text" class="form-control tanggal" name="tgl_register" id="tgl_register" placeholder="Tanggal Register" data-date-format="dd-mm-yyyy" value="<?php echo isset($tgl_register)?$tgl_register:''; ?>">
-                    </div>
-                  </div>
+             
 
               <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">No. Registrasi</label>
@@ -695,21 +685,6 @@
                       <input type="text" class="form-control" name="no_register" id="no_register" placeholder="No. Registrasi" value="<?php echo isset($no_register)?$no_register:''; ?>" <?php if ($action=='update') { echo 'readonly'; } ?>>
                     </div>
                   </div>
-
-            	<div class="form-group p-10">
-                    <label class="control-label col-md-3" for="text">Nama Petugas Verifikasi</label>
-                    <div class="col-md-9">
-                      <input type="text" class="form-control" name="nama_petugas_verifikasi" id="nama_petugas_verifikasi" placeholder="Nama Petugas Verifikasi" value="<?php echo isset($nama_petugas_verifikasi)?$nama_petugas_verifikasi:''; ?>">
-                    </div>
-                  </div>
-
-                 <div class="form-group p-10">
-                    <label class="control-label col-md-3" for="text">Tanggal Verifikasi</label>
-                    <div class="col-md-9">
-                      <input type="text" class="form-control tanggal" name="tgl_verifikasi" id="tgl_verifikasi" placeholder="Tanggal Verifikasi" data-date-format="dd-mm-yyyy" value="<?php echo isset($tgl_verifikasi)?$tgl_verifikasi:''; ?>">
-                    </div>
-                  </div> 
-
 
                   <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">Nama Camat</label>

@@ -69,16 +69,6 @@
                       <input type="text" class="form-control" name="no_telp" id="no_telp" placeholder="No. Telp" value="<?php echo isset($no_telp)?$no_telp:''; ?>">
                     </div>
                   </div> 
-
-                   <div class="form-group p-10">
-                    <label class="control-label col-md-3" for="text">Negara</label>
-                    <div class="col-md-9">
-                      <input type="text" class="form-control" name="negara_pemohon" id="negara_pemohon" placeholder="Negara" value="<?php echo isset($negara_pemohon)?$negara_pemohon:''; ?>">
-                    </div>
-                  </div> 
-
-
-
                   <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">Alamat</label>
                     <div class="col-md-9">

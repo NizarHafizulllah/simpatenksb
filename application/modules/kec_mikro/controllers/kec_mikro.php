@@ -201,7 +201,6 @@ class kec_mikro extends admin_controller {
         $this->form_validation->set_rules('tgl_lahir','Syarat umum pertama','required');
         $this->form_validation->set_rules('pekerjaan','Syarat umum kedua','required');
         $this->form_validation->set_rules('no_tlp','Syarat umum keempat','required');
-        $this->form_validation->set_rules('kewarganegaraan','Syarat umum kelima','required');
         $this->form_validation->set_rules('alamat','Syarat umum ketiga','required');
         $this->form_validation->set_rules('merek_usaha','Syarat umum keenam','required');
         $this->form_validation->set_rules('jenis_usaha','Syarat umum ketujuh','required');
@@ -219,14 +218,12 @@ class kec_mikro extends admin_controller {
         $this->form_validation->set_rules('program_kerja','Tgl. Lahir Pemohon','required');
         $this->form_validation->set_rules('daftar_pengurus','No. Telp. Pemohon','required');
         $this->form_validation->set_rules('siup_asli','Pekerjaan Pemohon','required');
-        $this->form_validation->set_rules('tgl_register','Syarat teknis keempat','required');
         $this->form_validation->set_rules('no_register','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('nama_petugas_verifikasi','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nama_camat','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nip_camat','Tgl. Surat','required');
           
          
-        $this->form_validation->set_message('required', ' %s Harap isi semua data');
+        $this->form_validation->set_message('required', '  Harap isi semua data');
         
         $this->form_validation->set_error_delimiters('', '<br>&nbsp;<br>&nbsp;<br>');
 
@@ -239,11 +236,11 @@ if($this->form_validation->run() == TRUE ) {
         $userdata = $this->session->userdata('admin_login');
         $post['kecamatan'] = $userdata['id_kecamatan'];
         $post['kabupaten'] = '52_7';
-        $post['tgl_verifikasi'] = flipdate($post['tgl_verifikasi']);
-        $post['tgl_register'] = flipdate($post['tgl_register']);
-        $post['tgl_lahir'] = flipdate($post['tgl_lahir']);;
+        $post['tgl_register'] = date('Y-m-d');
+        $post['tgl_lahir'] = flipdate($post['tgl_lahir']);
         $post['status'] = 1;
         $post['id'] = md5(microtime(true));
+        $post['kewarganegaraan'] = "Indonesia";
         
         
         $res = $this->db->insert('mikro', $post); 
@@ -317,8 +314,7 @@ if($this->form_validation->run() == TRUE ) {
         $userdata = $this->session->userdata('admin_login');
         $post['kecamatan'] = $userdata['id_kecamatan'];
         $post['kabupaten'] = '52_7';
-        $post['tgl_verifikasi'] = flipdate($post['tgl_verifikasi']);
-        $post['tgl_register'] = flipdate($post['tgl_register']);
+        $post['tgl_register'] = date('Y-m-d');
         $post['tgl_lahir'] = flipdate($post['tgl_lahir']);
         
 

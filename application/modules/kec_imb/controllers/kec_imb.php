@@ -213,9 +213,6 @@ class kec_imb extends admin_controller {
         $this->form_validation->set_rules('tek_penelitian_tanah','Syarat teknis ketiga','required');
         $this->form_validation->set_rules('tek_pengaman','Syarat teknis keempat','required');
         $this->form_validation->set_rules('sistem_drainase','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('nama_petugas_verifikasi','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('tgl_verifikasi','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('tgl_surat','Tgl. Surat','required');
         $this->form_validation->set_rules('tgl_lahir_pemohon','Tgl. Lahir Pemohon','required');
         $this->form_validation->set_rules('tempat_lahir_pemohon','Tempat Lahir Pemohon','required');
         $this->form_validation->set_rules('no_telp_pemohon','No. Telp. Pemohon','required');
@@ -235,8 +232,7 @@ if($this->form_validation->run() == TRUE ) {
         $userdata = $this->session->userdata('admin_login');
         $post['kecamatan'] = $userdata['id_kecamatan'];
         $post['kabupaten'] = '52_7';
-        $post['tgl_verifikasi'] = flipdate($post['tgl_verifikasi']);
-        $post['tgl_surat'] = flipdate($post['tgl_surat']);
+        $post['tgl_surat'] = date('Y-m-d');
         $post['tgl_skgr'] = flipdate($post['tgl_skgr']);
         $post['tgl_rekom_desa'] = flipdate($post['tgl_rekom_desa']);
         $post['tgl_rekom_uptd'] = flipdate($post['tgl_rekom_uptd']);

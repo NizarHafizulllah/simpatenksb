@@ -87,12 +87,6 @@
             </div>
             <div class="panel-body">
 
-              <div class="form-group p-10">
-                    <label class="control-label col-md-3" for="text">Tanggal Surat</label>
-                    <div class="col-md-9">
-                      <input type="text" class="form-control tanggal" name="tgl_surat" id="tgl_surat" placeholder="Tanggal Surat" data-date-format="dd-mm-yyyy">
-                    </div>
-                  </div>
 
             	<div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">No. Registrasi</label>
@@ -400,19 +394,7 @@
             </div>
             <div class="panel-body">
 
-            	<div class="form-group p-10">
-                    <label class="control-label col-md-3" for="text">Nama Petugas Verifikasi</label>
-                    <div class="col-md-9">
-                      <input type="text" class="form-control" name="nama_petugas_verifikasi" id="nama_petugas_verifikasi" placeholder="Nama Petugas Verifikasi">
-                    </div>
-                  </div>
-
-                 <div class="form-group p-10">
-                    <label class="control-label col-md-3" for="text">Tanggal Verifikasi</label>
-                    <div class="col-md-9">
-                      <input type="text" class="form-control tanggal" name="tgl_verifikasi" id="tgl_verifikasi" placeholder="Tanggal Verifikasi" data-date-format="dd-mm-yyyy">
-                    </div>
-                  </div> 
+            	
 
 
                   <div class="form-group p-10">

@@ -124,19 +124,7 @@
 
                                     if(hasil.error == false && hasil.level == 1) {
 
-                                        if (hasil.level == 'kab') {
-                                         swal({
-                                                title: 'Login Berhasil',
-                                                text: 'Anda Login Sebagai Admin Kab',
-                                                type: 'success',
-                                                buttonsStyling: false,
-                                                confirmButtonClass: 'btn btn-primary'
-                                                  
-                                            });
-                                     
-
-                                                window.location.href = '<?php echo site_url("admin"); ?>';   
-                                        }else{
+                                       
                                             swal({
                                                 title: 'Login Berhasil',
                                                 text: 'Anda Login Sebagai Admin Kecamatan',
@@ -148,12 +136,7 @@
                                      
 
                                                 window.location.href = '<?php echo site_url("admin"); ?>';
-                                        }
-                                     
-
-                                         
-                                      
-                                              
+           
                   
                                     }else if(hasil.error == false && hasil.level == 2){
                                         swal({
@@ -179,6 +162,30 @@
                                      
 
                                                 window.location.href = '<?php echo site_url("super_admin"); ?>';
+                                    }else if(hasil.error == false && hasil.level == 4){
+                                        swal({
+                                                title: 'Login Berhasil',
+                                                text: 'Anda Login Sebagai Penyetuju Kecamatan',
+                                                type: 'success',
+                                                buttonsStyling: false,
+                                                confirmButtonClass: 'btn btn-primary'
+                                                  
+                                            });
+                                     
+
+                                                window.location.href = '<?php echo site_url("app_kecamatan"); ?>';
+                                    }else if(hasil.error == false && hasil.level == 5){
+                                        swal({
+                                                title: 'Login Berhasil',
+                                                text: 'Anda Login Sebagai Operator Kecamatan',
+                                                type: 'success',
+                                                buttonsStyling: false,
+                                                confirmButtonClass: 'btn btn-primary'
+                                                  
+                                            });
+                                     
+
+                                                window.location.href = '<?php echo site_url("operator_kecamatan"); ?>';
                                     }
                                     else {
                                          swal({
