@@ -24,8 +24,8 @@ class kec_mikro extends admin_controller {
 
         $content = $this->load->view($this->controller."_view",$data_array,true);
 
-        $this->set_subtitle("Izin Pendirian UPTL");
-        $this->set_title("Izin Pendirian UPTL");
+        $this->set_subtitle("Izin TDI Industri Mikro");
+        $this->set_title("Izin TDI Industri Mikro");
         $this->set_content($content);
         $this->cetak();
 
@@ -204,19 +204,16 @@ class kec_mikro extends admin_controller {
         $this->form_validation->set_rules('alamat','Syarat umum ketiga','required');
         $this->form_validation->set_rules('merek_usaha','Syarat umum keenam','required');
         $this->form_validation->set_rules('jenis_usaha','Syarat umum ketujuh','required');
-        $this->form_validation->set_rules('ukuran_luas_usaha','Syarat umum kedelapan','required');
         $this->form_validation->set_rules('alamat_usaha','Syarat umum kesembilan','required');
-        $this->form_validation->set_rules('status_bangunan','Syarat teknis pertama','required');
         $this->form_validation->set_rules('npwpd','Syarat teknis kedua','required');
         $this->form_validation->set_rules('klasif_perusahaan','Syarat umum kedelapan','required');
         $this->form_validation->set_rules('retribusi_perthn_f','Syarat teknis pertama','required');
         $this->form_validation->set_rules('jenis_permohonan','Syarat teknis ketiga','required');
-        $this->form_validation->set_rules('matrai','Syarat teknis keempat','required');
         $this->form_validation->set_rules('adrt','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('fc_notaris','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('rekom_lurah','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('program_kerja','Tgl. Lahir Pemohon','required');
-        $this->form_validation->set_rules('daftar_pengurus','No. Telp. Pemohon','required');
+        $this->form_validation->set_rules('notulen','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('daftar_anggota','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('rekom_uptd','Tgl. Lahir Pemohon','required');
+        $this->form_validation->set_rules('mengetahui_lurah','No. Telp. Pemohon','required');
         $this->form_validation->set_rules('siup_asli','Pekerjaan Pemohon','required');
         $this->form_validation->set_rules('no_register','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nama_camat','Syarat teknis kelima','required');
@@ -280,25 +277,23 @@ function update(){
         $this->form_validation->set_rules('alamat','Syarat umum ketiga','required');
         $this->form_validation->set_rules('merek_usaha','Syarat umum keenam','required');
         $this->form_validation->set_rules('jenis_usaha','Syarat umum ketujuh','required');
-        $this->form_validation->set_rules('ukuran_luas_usaha','Syarat umum kedelapan','required');
         $this->form_validation->set_rules('alamat_usaha','Syarat umum kesembilan','required');
-        $this->form_validation->set_rules('status_bangunan','Syarat teknis pertama','required');
         $this->form_validation->set_rules('npwpd','Syarat teknis kedua','required');
         $this->form_validation->set_rules('klasif_perusahaan','Syarat umum kedelapan','required');
         $this->form_validation->set_rules('retribusi_perthn_f','Syarat teknis pertama','required');
         $this->form_validation->set_rules('jenis_permohonan','Syarat teknis ketiga','required');
-        $this->form_validation->set_rules('matrai','Syarat teknis keempat','required');
         $this->form_validation->set_rules('adrt','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('fc_notaris','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('rekom_lurah','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('program_kerja','Tgl. Lahir Pemohon','required');
-        $this->form_validation->set_rules('daftar_pengurus','No. Telp. Pemohon','required');
+        $this->form_validation->set_rules('notulen','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('daftar_anggota','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('rekom_uptd','Tgl. Lahir Pemohon','required');
+        $this->form_validation->set_rules('mengetahui_lurah','No. Telp. Pemohon','required');
         $this->form_validation->set_rules('siup_asli','Pekerjaan Pemohon','required');
         $this->form_validation->set_rules('tgl_register','Syarat teknis keempat','required');
         $this->form_validation->set_rules('no_register','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nama_petugas_verifikasi','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nama_camat','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nip_camat','Tgl. Surat','required');
+          
           
          
         $this->form_validation->set_message('required', ' %s Harap isi semua data');

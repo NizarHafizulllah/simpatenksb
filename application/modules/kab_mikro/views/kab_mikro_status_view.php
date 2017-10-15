@@ -139,7 +139,7 @@
         <div class="panel">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <i class="ti-layout-cta-left"></i> Data Koperasi
+                    <i class="ti-layout-cta-left"></i> Data Perusahaan
                </h3>
             </div>
             <div class="panel-body">
@@ -149,23 +149,16 @@
               
 
               <div class="form-group p-10">
-                    <label class="control-label col-md-3" for="text">Nama Koperasi</label>
+                    <label class="control-label col-md-3" for="text">Nama Perusahaan</label>
                     <div class="col-md-9">
                       <input type="text" class="form-control" name="merek_usaha" id="merek_usaha" placeholder="Nama Usaha" value="<?php echo isset($merek_usaha)?$merek_usaha:''; ?>" readonly >
                     </div>
                   </div>
 
               <div class="form-group p-10">
-                    <label class="control-label col-md-3" for="text">Jenis Koperasi</label>
+                    <label class="control-label col-md-3" for="text">Jenis Usaha</label>
                     <div class="col-md-9">
                       <input type="text" class="form-control" name="jenis_usaha" id="jenis_usaha" placeholder="Jenis Usaha" value="<?php echo isset($jenis_usaha)?$jenis_usaha:''; ?>" readonly >
-                    </div>
-                  </div>
-
-                  <div class="form-group p-10">
-                    <label class="control-label col-md-3" for="text">Ukuruan Luas</label>
-                    <div class="col-md-9">
-                      <input type="text" class="form-control" name="ukuran_luas_usaha" id="ukuran_luas_usaha" placeholder="Ukuran Usaha" value="<?php echo isset($ukuran_luas_usaha)?$ukuran_luas_usaha:''; ?>" readonly >
                     </div>
                   </div>
 
@@ -173,13 +166,6 @@
                     <label class="control-label col-md-3" for="text">Lokasi</label>
                     <div class="col-md-9">
                       <input type="text" class="form-control" name="alamat_usaha" id="alamat_usaha" placeholder="Lokasi Usaha" value="<?php echo isset($alamat_usaha)?$alamat_usaha:''; ?>" readonly >
-                    </div>
-                  </div>
-
-                  <div class="form-group p-10">
-                    <label class="control-label col-md-3" for="text">Status Bangunan</label>
-                    <div class="col-md-9">
-                      <input type="text" class="form-control" name="status_bangunan" id="status_bangunan" placeholder="Status Bangunan Tempat Usaha" value="<?php echo isset($status_bangunan)?$status_bangunan:''; ?>" readonly >
                     </div>
                   </div>
 
@@ -285,35 +271,10 @@
                         <b>Tidak Ada</b>
                       </div>
                     </div>
-                  </div> 
+                  </div>
 
                   <div class="form-group p-10">
-                    <label class="col-md-8" for="text">1. Surat Permohonan bermatrai 6000</label>
-                    <div class="col-md-4">
-                      <?php if ($matrai=='ada') { ?>
-                      
-                      <div class="col-md-6">
-                        <input type="radio" name="matrai" class="radio-blue" value="ada" checked="true">
-                      </div>
-                      <div class="col-md-6">
-                        &nbsp;
-                      </div>
-
-                    <?php }else{ ?>
-                        
-                        <div class="col-md-6">
-                        &nbsp;
-                      </div>
-                      <div class="col-md-6">
-                        <input type="radio" name="matrai" class="radio-blue" value="tidak ada" checked="true">
-                      </div>
-
-                      <?php } ?>
-                    </div>
-                  </div>  
-
-                  <div class="form-group p-10">
-                    <label class="col-md-8" for="text">2. Memiliki AD / ART </label>
+                    <label class="col-md-8" for="text">1. AD / ADRT </label>
                     <div class="col-md-4">
                       <?php if ($adrt=='ada') { ?>
                       
@@ -338,12 +299,12 @@
                   </div>   
 
                   <div class="form-group p-10">
-                    <label class="col-md-8" for="text">3. Foto Copy Akte Notaris</label>
+                    <label class="col-md-8" for="text">2. Notulen Rapat</label>
                     <div class="col-md-4">
-                      <?php if ($fc_notaris=='ada') { ?>
+                      <?php if ($notulen=='ada') { ?>
                       
                       <div class="col-md-6">
-                        <input type="radio" name="fc_notaris" class="radio-blue" value="ada" checked="true">
+                        <input type="radio" name="notulen" class="radio-blue" value="ada" checked="true">
                       </div>
                       <div class="col-md-6">
                         &nbsp;
@@ -355,7 +316,7 @@
                         &nbsp;
                       </div>
                       <div class="col-md-6">
-                        <input type="radio" name="fc_notaris" class="radio-blue" value="tidak ada" checked="true">
+                        <input type="radio" name="notulen" class="radio-blue" value="tidak ada" checked="true">
                       </div>
 
                       <?php } ?>
@@ -363,12 +324,12 @@
                   </div> 
 
                   <div class="form-group p-10">
-                    <label class="col-md-8" for="text">4. Rekomendasi dari Lurah/ Kepala Desa </label>
+                    <label class="col-md-8" for="text">3. Daftar Hadir Rapat Anggota</label>
                     <div class="col-md-4">
-                      <?php if ($rekom_lurah=='ada') { ?>
+                      <?php if ($daftar_anggota=='ada') { ?>
                       
                       <div class="col-md-6">
-                        <input type="radio" name="rekom_lurah" class="radio-blue" value="ada" checked="true">
+                        <input type="radio" name="daftar_anggota" class="radio-blue" value="ada" checked="true">
                       </div>
                       <div class="col-md-6">
                         &nbsp;
@@ -380,7 +341,7 @@
                         &nbsp;
                       </div>
                       <div class="col-md-6">
-                        <input type="radio" name="rekom_lurah" class="radio-blue" value="tidak ada" checked="true">
+                        <input type="radio" name="daftar_anggota" class="radio-blue" value="tidak ada" checked="true">
                       </div>
 
                       <?php } ?>
@@ -388,12 +349,12 @@
                   </div> 
 
                   <div class="form-group p-10">
-                    <label class="col-md-8" for="text">5. Memiliki Program Kerja yang Jelas</label>
+                    <label class="col-md-8" for="text">4. Rekomendasi UPTD Koperasi</label>
                     <div class="col-md-4">
-                      <?php if ($program_kerja=='ada') { ?>
+                      <?php if ($rekom_uptd=='ada') { ?>
                       
                       <div class="col-md-6">
-                        <input type="radio" name="program_kerja" class="radio-blue" value="ada" checked="true">
+                        <input type="radio" name="rekom_uptd" class="radio-blue" value="ada" checked="true">
                       </div>
                       <div class="col-md-6">
                         &nbsp;
@@ -405,7 +366,7 @@
                         &nbsp;
                       </div>
                       <div class="col-md-6">
-                        <input type="radio" name="program_kerja" class="radio-blue" value="tidak ada" checked="true">
+                        <input type="radio" name="rekom_uptd" class="radio-blue" value="tidak ada" checked="true">
                       </div>
 
                       <?php } ?>
@@ -413,12 +374,12 @@
                   </div> 
 
                   <div class="form-group p-10">
-                    <label class="col-md-8" for="text">6. Daftar Susunan Pengurus lengkap dan alamatnya  </label>
+                    <label class="col-md-8" for="text">5. Mengetahui Lurah/ Kepala Desa </label>
                     <div class="col-md-4">
-                      <?php if ($daftar_pengurus=='ada') { ?>
+                      <?php if ($mengetahui_lurah=='ada') { ?>
                       
                       <div class="col-md-6">
-                        <input type="radio" name="daftar_pengurus" class="radio-blue" value="ada" checked="true">
+                        <input type="radio" name="mengetahui_lurah" class="radio-blue" value="ada" checked="true">
                       </div>
                       <div class="col-md-6">
                         &nbsp;
@@ -430,7 +391,7 @@
                         &nbsp;
                       </div>
                       <div class="col-md-6">
-                        <input type="radio" name="daftar_pengurus" class="radio-blue" value="tidak ada" checked="true">
+                        <input type="radio" name="mengetahui_lurah" class="radio-blue" value="tidak ada" checked="true">
                       </div>
 
                       <?php } ?>
