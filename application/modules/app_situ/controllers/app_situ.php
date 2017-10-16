@@ -254,8 +254,10 @@ else {
          $get = $this->input->get(); 
          $id = $get['id'];
          
-         $this->db->where('id',$id);
-         $situ = $this->db->get('situ');
+         $this->db->select('a.* , k.klasifikasi as klasifikasi_usaha')->from('situ a');
+         $this->db->join('klasifikasi_usaha k','a.klasifikasi_usaha=k.id');
+         $this->db->where('a.id',$id);
+         $situ = $this->db->get();
          $data_array = $situ->row_array();
 
          $data_array['tgl_verifikasi'] = flipdate($data_array['tgl_verifikasi']);

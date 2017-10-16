@@ -140,8 +140,10 @@ class app_siu extends verifikator_controller {
          $get = $this->input->get(); 
          $id = $get['id'];
          
-         $this->db->where('id',$id);
-         $imb = $this->db->get('siu');
+        $this->db->select('a.* , k.klasifikasi as klasifikasi_usaha')->from('siu a');
+         $this->db->join('klasifikasi_usaha k','a.klasifikasi_usaha=k.id');
+         $this->db->where('a.id',$id);
+         $imb = $this->db->get();
          $data_array = $imb->row_array();
 
          $data_array['tgl_verifikasi'] = flipdate($data_array['tgl_verifikasi']);
