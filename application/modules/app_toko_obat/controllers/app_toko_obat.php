@@ -37,8 +37,7 @@ class app_toko_obat extends verifikator_controller {
 
 	}
 
-
-		 function get_data() {
+ function get_data() {
 
         
         // show_array($userdata);
@@ -53,7 +52,7 @@ class app_toko_obat extends verifikator_controller {
         $nama_pemohon = $_REQUEST['columns'][1]['search']['value'];
         $no_regis = $_REQUEST['columns'][2]['search']['value'];
         
-        $userdata = $this->session->userdata('admin_login');
+        $userdata = $this->session->userdata('app_login');
         $id_kecamatan = $userdata['id_kecamatan']; 
 
 
@@ -94,8 +93,7 @@ class app_toko_obat extends verifikator_controller {
         foreach($result as $row) : 
         $id = $row['id'];
 
-        if ($row['status']==1) {
-            $action = "<div class='btn-group'>
+        $action = "<div class='btn-group'>
                               <button type='button' class='btn btn-primary'>Action</button>
                               <button type='button' class='btn btn-primary dropdown-toggle' data-toggle='dropdown'>
                                 <span class='caret'></span>
@@ -103,47 +101,22 @@ class app_toko_obat extends verifikator_controller {
                               </button>
                               <ul class='dropdown-menu' role='menu'>
                                 <li><a href='$this->controller/status?id=$id'><i class='fa fa-eye'></i> Status</a></li>
-                                <li><a href='$this->controller/editdata?id=$id'><i class='fa fa-edit'></i> Edit</a></li>
-                                <li><a href='#' onclick=\"hapus('$id')\" ><i class='fa fa-trash'></i> Hapus</a></li>
-                                <li><a href='#' onclick=\"printsurat('$id')\" ><i class='fa fa-print'></i> Formulir</a></li>
                               </ul>
                             </div>";
-        }else if($row['status']==2){
-            $action = "<div class='btn-group'>
-                              <button type='button' class='btn btn-primary'>Action</button>
-                              <button type='button' class='btn btn-primary dropdown-toggle' data-toggle='dropdown'>
-                                <span class='caret'></span>
-                                <span class='sr-only'>Toggle Dropdown</span>
-                              </button>
-                              <ul class='dropdown-menu' role='menu'>
-                                <li><a href='$this->controller/status?id=$id'><i class='fa fa-eye'></i> Status</a></li>
-                                <li><a href='#' onclick=\"printsurat('$id')\" ><i class='fa fa-print'></i> Formulir</a></li>
-                                <li><a href='#' onclick=\"izin('$id')\" ><i class='fa fa-print'></i> Rekomendasi</a></li>
-                              </ul>
-                            </div>";
-        }else{
-            $action = "<div class='btn-group'>
-                              <button type='button' class='btn btn-primary'>Action</button>
-                              <button type='button' class='btn btn-primary dropdown-toggle' data-toggle='dropdown'>
-                                <span class='caret'></span>
-                                <span class='sr-only'>Toggle Dropdown</span>
-                              </button>
-                              <ul class='dropdown-menu' role='menu'>
-                                <li><a href='$this->controller/status?id=$id'><i class='fa fa-eye'></i> Status</a></li>
-                                <li><a href='$this->controller/editdata?id=$id'><i class='fa fa-edit'></i> Edit</a></li>
-                                <li><a href='#' onclick=\"hapus('$id')\" ><i class='fa fa-trash'></i> Hapus</a></li>
-                              </ul>
-                            </div>";
-        }
 
-        
-            
+         if ($row['status']=='1') {
+            $status = '<span class="label label-info"> Dalam Proses</span>';
+        }else if ($row['status']=='2') {
+            $status = '<span class="label label-success"> Disetujui</span>';
+        }else if ($row['status']=='3') {
+            $status = '<span class="label label-danger"> Tidak Disetujui</span>';
+        }
              
-            $arr_data[] = array(
+          $arr_data[] = array(
                 $row['no_register'],
                 $row['nama_pemohon'],
-                $row['tgl_verifikasi'],
-                $row['nama_petugas_verifikasi'],
+                flipdate($row['tgl_verifikasi']),
+                $status,
                $action
                 
                      
@@ -160,7 +133,7 @@ class app_toko_obat extends verifikator_controller {
     }
 
 
-    function status(){
+  function status(){
 
 
         
@@ -168,7 +141,7 @@ class app_toko_obat extends verifikator_controller {
          $id = $get['id'];
          
          $this->db->where('id',$id);
-         $imb = $this->db->get('situ');
+         $imb = $this->db->get('toko_obat');
          $data_array = $imb->row_array();
 
          $data_array['tgl_verifikasi'] = flipdate($data_array['tgl_verifikasi']);
@@ -176,40 +149,25 @@ class app_toko_obat extends verifikator_controller {
          $data_array['tgl_lahir'] = flipdate($data_array['tgl_lahir']);
 
          $data_array['action'] = 'update';
-         $data_array['curPage'] = 'situ';
+         $data_array['curPage'] = 'toko_obat';
 
 
          $data_array['arr_status'] = array('1' => "- Pilih status -",
                                             '2' => "Disetujui",
                                             '3' => "Tidak Disetujui" );
-         // show_array($data); exit;
-         // show_array($data_array);
-      //    exit();
-        
-
-        // $data_array=array(
-        //      'id' => $data->id,
-        //      'nama' => $data->nama,
-        //      'no_siup' => $data->no_siup,
-        //      'no_npwp' => $data->no_npwp,
-        //      'no_tdp' => $data->no_tdp,
-        //      'telp' => $data->telp,
-        //      'alamat' => $data->alamat,
-        //      'email' => $data->email,
-        //      'hp' => $data->hp,
-
-        //  );
+      
 
         
 
         $content = $this->load->view($this->controller."_status_view",$data_array,true);
 
-        $this->set_subtitle("Status Izin Praktek");
-        $this->set_title("Status Izin Praktek");
+        $this->set_subtitle("Status Izin Apotik dan Toko Obat");
+        $this->set_title("Status Izin Apotik dan Toko Obat");
         $this->set_content($content);
         $this->cetak();
 
     }
+    
 
 
     function update(){
@@ -238,9 +196,8 @@ class app_toko_obat extends verifikator_controller {
         $this->form_validation->set_rules('status_bangunan_tempat_usaha','Syarat teknis pertama','required');
         $this->form_validation->set_rules('npwpd','Syarat teknis kedua','required');
         $this->form_validation->set_rules('klasifikasi_usaha','Syarat teknis ketiga','required');
-        $this->form_validation->set_rules('tgl_register','Syarat teknis keempat','required');
+        $this->form_validation->set_rules('retribusi_perthn_f','Syarat teknis pertahun','required');
         $this->form_validation->set_rules('no_register','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('nama_petugas_verifikasi','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nama_camat','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nip_camat','Tgl. Surat','required');
         $this->form_validation->set_rules('ktp','Tgl. Lahir Pemohon','required');
@@ -268,13 +225,21 @@ class app_toko_obat extends verifikator_controller {
 
 if($this->form_validation->run() == TRUE ) { 
 
-        $data = array('status' => $post['status'], );
-
+         $userdata = $this->session->userdata('app_login');
+        if ($post['status']==2) {
+            $data = array('status' => $post['status'],
+                        'tgl_verifikasi' => date('Y-m-d'),
+                        'nama_petugas_verifikasi' => $userdata['nama']);
+    
+        }else{
+            $data = array('status' => $post['status'],);
+    
+        }
         
 
     
         $this->db->where('id', $post['id']);
-        $res = $this->db->update('situ', $data); 
+        $res = $this->db->update('toko_obat', $data); 
         if($res){
             $arr = array("error"=>false,'message'=>"BERHASIL DIUPDATE");
         }
@@ -287,6 +252,7 @@ else {
 }
         echo json_encode($arr);
 }
+
 
 
 }

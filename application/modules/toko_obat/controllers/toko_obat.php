@@ -202,7 +202,6 @@ class toko_obat extends admin_controller {
         $this->form_validation->set_rules('pekerjaan','Syarat umum kedua','required');
         $this->form_validation->set_rules('alamat','Syarat umum ketiga','required');
         $this->form_validation->set_rules('no_telp','Syarat umum keempat','required');
-        $this->form_validation->set_rules('negara_pemohon','Syarat umum kelima','required');
         $this->form_validation->set_rules('nama_usaha','Syarat umum keenam','required');
         $this->form_validation->set_rules('jenis_usaha','Syarat umum ketujuh','required');
         $this->form_validation->set_rules('ukuran_luas_usaha','Syarat umum kedelapan','required');
@@ -211,9 +210,7 @@ class toko_obat extends admin_controller {
         $this->form_validation->set_rules('npwpd','Syarat teknis kedua','required');
         $this->form_validation->set_rules('klasifikasi_usaha','Syarat teknis ketiga','required');
         $this->form_validation->set_rules('retribusi_perthn_f','Syarat teknis pertahun','required');
-        $this->form_validation->set_rules('tgl_register','Syarat teknis keempat','required');
         $this->form_validation->set_rules('no_register','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('nama_petugas_verifikasi','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nama_camat','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nip_camat','Tgl. Surat','required');
         $this->form_validation->set_rules('ktp','Tgl. Lahir Pemohon','required');
@@ -243,8 +240,7 @@ if($this->form_validation->run() == TRUE ) {
         $userdata = $this->session->userdata('admin_login');
         $post['kecamatan'] = $userdata['id_kecamatan'];
         $post['kabupaten'] = '52_7';
-        $post['tgl_verifikasi'] = flipdate($post['tgl_verifikasi']);
-        $post['tgl_register'] = flipdate($post['tgl_register']);
+        $post['tgl_register'] = date('Y-m-d');
         $post['tgl_lahir'] = flipdate($post['tgl_lahir']);;
         $post['status'] = 1;
         $post['id'] = md5(microtime(true));
@@ -285,7 +281,6 @@ function update(){
         $this->form_validation->set_rules('pekerjaan','Syarat umum kedua','required');
         $this->form_validation->set_rules('alamat','Syarat umum ketiga','required');
         $this->form_validation->set_rules('no_telp','Syarat umum keempat','required');
-        $this->form_validation->set_rules('negara_pemohon','Syarat umum kelima','required');
         $this->form_validation->set_rules('nama_usaha','Syarat umum keenam','required');
         $this->form_validation->set_rules('jenis_usaha','Syarat umum ketujuh','required');
         $this->form_validation->set_rules('ukuran_luas_usaha','Syarat umum kedelapan','required');
@@ -294,9 +289,7 @@ function update(){
         $this->form_validation->set_rules('npwpd','Syarat teknis kedua','required');
         $this->form_validation->set_rules('klasifikasi_usaha','Syarat teknis ketiga','required');
         $this->form_validation->set_rules('retribusi_perthn_f','Syarat teknis pertahun','required');
-        $this->form_validation->set_rules('tgl_register','Syarat teknis keempat','required');
         $this->form_validation->set_rules('no_register','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('nama_petugas_verifikasi','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nama_camat','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nip_camat','Tgl. Surat','required');
         $this->form_validation->set_rules('ktp','Tgl. Lahir Pemohon','required');
@@ -326,14 +319,12 @@ if($this->form_validation->run() == TRUE ) {
         $userdata = $this->session->userdata('admin_login');
         $post['kecamatan'] = $userdata['id_kecamatan'];
         $post['kabupaten'] = '52_7';
-        $post['tgl_verifikasi'] = flipdate($post['tgl_verifikasi']);
-        $post['tgl_register'] = flipdate($post['tgl_register']);
         $post['tgl_lahir'] = flipdate($post['tgl_lahir']);
         
 
         $post['status'] = 1;
         
-        $this->db->where('no_register', $post['no_register']);
+        $this->db->where('id', $post['id']);
         $res = $this->db->update('toko_obat', $post); 
         if($res){
             $arr = array("error"=>false,'message'=>"BERHASIL DIUPDATE");
@@ -363,9 +354,6 @@ else {
          $this->db->where('id',$id);
          $izin_praktek = $this->db->get('toko_obat');
          $data_array = $izin_praktek->row_array();
-
-         $data_array['tgl_verifikasi'] = flipdate($data_array['tgl_verifikasi']);
-         $data_array['tgl_register'] = flipdate($data_array['tgl_register']);
          $data_array['tgl_lahir'] = flipdate($data_array['tgl_lahir']);
 
          $data_array['action'] = 'update';
