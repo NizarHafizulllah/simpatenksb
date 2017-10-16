@@ -133,7 +133,7 @@ class app_siu extends verifikator_controller {
         echo json_encode($responce); 
     }
 
-    function status(){
+       function status(){
 
 
         
@@ -141,7 +141,7 @@ class app_siu extends verifikator_controller {
          $id = $get['id'];
          
          $this->db->where('id',$id);
-         $imb = $this->db->get('situ');
+         $imb = $this->db->get('siu');
          $data_array = $imb->row_array();
 
          $data_array['tgl_verifikasi'] = flipdate($data_array['tgl_verifikasi']);
@@ -149,7 +149,7 @@ class app_siu extends verifikator_controller {
          $data_array['tgl_lahir'] = flipdate($data_array['tgl_lahir']);
 
          $data_array['action'] = 'update';
-         $data_array['curPage'] = 'situ';
+         $data_array['curPage'] = 'siu';
 
 
          $data_array['arr_status'] = array('1' => "- Pilih status -",
@@ -177,8 +177,8 @@ class app_siu extends verifikator_controller {
 
         $content = $this->load->view($this->controller."_status_view",$data_array,true);
 
-        $this->set_subtitle("Status Izin Praktek");
-        $this->set_title("Status Izin Praktek");
+        $this->set_subtitle("Status Izin ");
+        $this->set_title("Status Izin ");
         $this->set_content($content);
         $this->cetak();
 
@@ -196,7 +196,7 @@ class app_siu extends verifikator_controller {
 
 
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('nik_pemohon','Nomor registrasi','required');
+       $this->form_validation->set_rules('nik_pemohon','Nomor registrasi','required');
         $this->form_validation->set_rules('nama_pemohon','Nama Pemohon','required');
         $this->form_validation->set_rules('tempat_lahir','Alamat','required');
         $this->form_validation->set_rules('tgl_lahir','Syarat umum pertama','required');
@@ -211,9 +211,8 @@ class app_siu extends verifikator_controller {
         $this->form_validation->set_rules('status_bangunan_tempat_usaha','Syarat teknis pertama','required');
         $this->form_validation->set_rules('npwpd','Syarat teknis kedua','required');
         $this->form_validation->set_rules('klasifikasi_usaha','Syarat teknis ketiga','required');
-        $this->form_validation->set_rules('tgl_register','Syarat teknis keempat','required');
+        $this->form_validation->set_rules('retribusi_perthn_f','Syarat teknis pertahun','required');
         $this->form_validation->set_rules('no_register','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('nama_petugas_verifikasi','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nama_camat','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nip_camat','Tgl. Surat','required');
         $this->form_validation->set_rules('ktp','Tgl. Lahir Pemohon','required');
@@ -225,8 +224,8 @@ class app_siu extends verifikator_controller {
         $this->form_validation->set_rules('fc_pbb','Pekerjaan Pemohon','required');
         $this->form_validation->set_rules('rekom_uptd','Pekerjaan Pemohon','required');
         $this->form_validation->set_rules('gambar_bangunan','Pekerjaan Pemohon','required');
-        $this->form_validation->set_rules('fc_siu','Pekerjaan Pemohon','required');
         $this->form_validation->set_rules('instalasi_air','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('rekom_desa','Pekerjaan Pemohon','required');
         $this->form_validation->set_rules('siup_asli','Pekerjaan Pemohon','required');
           
          
@@ -241,13 +240,23 @@ class app_siu extends verifikator_controller {
 
 if($this->form_validation->run() == TRUE ) { 
 
-        $data = array('status' => $post['status'], );
 
+        $userdata = $this->session->userdata('app_login');
+        if ($post['status']==2) {
+            $data = array('status' => $post['status'],
+                        'tgl_verifikasi' => date('Y-m-d'),
+                        'nama_petugas_verifikasi' => $userdata['nama']);
+    
+        }else{
+            $data = array('status' => $post['status'],);
+    
+        }
+         
         
 
     
         $this->db->where('id', $post['id']);
-        $res = $this->db->update('situ', $data); 
+        $res = $this->db->update('siu', $data); 
         if($res){
             $arr = array("error"=>false,'message'=>"BERHASIL DIUPDATE");
         }
