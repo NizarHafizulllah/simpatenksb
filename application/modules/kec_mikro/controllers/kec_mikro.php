@@ -8,6 +8,7 @@ class kec_mikro extends admin_controller {
         parent::__construct();
         $this->controller = get_class($this);
         $this->load->model($this->controller.'_model','dm');
+        $this->load->model('coremodel', 'cm');
         $this->load->helper("tanggal");
     }
     
@@ -173,6 +174,7 @@ class kec_mikro extends admin_controller {
 
         $data_array['nama_camat'] = $profil_kecamatan['nama_camat'];
         $data_array['nip_camat'] = $profil_kecamatan['nip_camat'];
+        $data_array['arr_klasifikasi'] = $this->cm->arr_dropdown3("klasifikasi_usaha", "id", "klasifikasi", "klasifikasi", "id_kecamatan", $userdata['id_kecamatan']);
 
 
         $content = $this->load->view($this->controller."_form_view",$data_array,true);
@@ -342,6 +344,7 @@ else {
          $get = $this->input->get(); 
          $id = $get['id'];
          
+
          $this->db->where('id',$id);
          $koperasi = $this->db->get('mikro');
          $data_array = $koperasi->row_array();
@@ -355,7 +358,9 @@ else {
          // show_array($data); exit;
          // show_array($data_array);
       //    exit();
-        
+         $userdata = $this->session->userdata('admin_login');
+        $data_array['arr_klasifikasi'] = $this->cm->arr_dropdown3("klasifikasi_usaha", "id", "klasifikasi", "klasifikasi", "id_kecamatan", $userdata['id_kecamatan']);
+
 
         // $data_array=array(
         //      'id' => $data->id,

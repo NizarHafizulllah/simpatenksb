@@ -128,6 +128,26 @@ $userdata = $this->session->userdata('op_login');
                         </ul>
                     </li>
 
+                    <li class="menu-dropdown <?php if($curPage=='klasifikasi'||$curPage=='k_add'){ echo 'active'; } ?>">
+                        <a href="#">
+                            <i class="menu-icon fa fa-file"></i>
+                            <span>Klasifikasi</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="<?php if($curPage=='klasifikasi'){ echo 'active'; } ?>">
+                               <a href="<?php echo site_url('operator_klasifikasi'); ?>">
+                                    <i class="fa fa-fw fa-eye"></i> Lihat Data
+                                </a>
+                            </li>
+                            <li class="<?php if($curPage=='k_add'){ echo 'active'; } ?>">
+                                <a href="<?php echo site_url('operator_klasifikasi/baru'); ?>">
+                                    <i class="fa fa-fw fa-edit"></i> Tambah Data
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
  
 
 </ul>

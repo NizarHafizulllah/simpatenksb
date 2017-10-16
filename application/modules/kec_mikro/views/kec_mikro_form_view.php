@@ -133,7 +133,7 @@
                   <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">Klasifikasi Usaha</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control" name="klasif_perusahaan" id="klasif_perusahaan" placeholder="Klasifikasi Usaha" value="<?php echo isset($klasif_perusahaan)?$klasif_perusahaan:''; ?>" >
+                    <?php echo form_dropdown("klasif_perusahaan",$arr_klasifikasi,isset($klasif_perusahaan)?$klasif_perusahaan:'','id="klasif_perusahaan" class="form-control input-style"'); ?>
                     </div>
                   </div>  
 

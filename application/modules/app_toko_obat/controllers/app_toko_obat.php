@@ -15,6 +15,8 @@ class app_toko_obat extends verifikator_controller {
 		function index(){
 		
 
+ $userdata = $this->session->userdata('app_login');
+        $id_kecamatan = $userdata['id_kecamatan']; 
 
 
 		$data_array=array();
@@ -26,7 +28,7 @@ class app_toko_obat extends verifikator_controller {
                                             '2' => 'Disetujui',
                                             '3' => 'Tidak Disetujui', );
 
-		$data_array['arr_kecamatan'] = $this->cm->arr_dropdown3("tiger_kecamatan", "id", "kecamatan", "kecamatan", "id_kota", "52_7");
+		
 
 		$content = $this->load->view($this->controller."_view",$data_array,true);
 
@@ -140,8 +142,11 @@ class app_toko_obat extends verifikator_controller {
          $get = $this->input->get(); 
          $id = $get['id'];
          
-         $this->db->where('id',$id);
-         $imb = $this->db->get('toko_obat');
+
+         $this->db->select('a.* , k.klasifikasi as klasifikasi_usaha')->from('toko_obat a');
+         $this->db->join('klasifikasi_usaha k','a.klasifikasi_usaha=k.id');
+         $this->db->where('a.id',$id);
+         $imb = $this->db->get();
          $data_array = $imb->row_array();
 
          $data_array['tgl_verifikasi'] = flipdate($data_array['tgl_verifikasi']);

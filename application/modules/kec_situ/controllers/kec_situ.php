@@ -9,6 +9,7 @@ class kec_situ extends admin_controller {
 		$this->controller = get_class($this);
 		$this->load->model($this->controller.'_model','dm');
 		$this->load->helper("tanggal");
+        $this->load->model('coremodel', 'cm');
 	}
 	
 
@@ -173,7 +174,7 @@ class kec_situ extends admin_controller {
 
         $data_array['nama_camat'] = $profil_kecamatan['nama_camat'];
         $data_array['nip_camat'] = $profil_kecamatan['nip_camat'];
-
+        $data_array['arr_klasifikasi'] = $this->cm->arr_dropdown3("klasifikasi_usaha", "id", "klasifikasi", "klasifikasi", "id_kecamatan", $userdata['id_kecamatan']);
 
         $content = $this->load->view($this->controller."_form_view",$data_array,true);
        $this->set_subtitle("Tambah Izin Tempat Usaha ");

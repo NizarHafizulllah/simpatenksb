@@ -9,6 +9,7 @@ class kec_siu extends admin_controller {
         $this->controller = get_class($this);
         $this->load->model($this->controller.'_model','dm');
         $this->load->helper("tanggal");
+        $this->load->model('coremodel', 'cm');
     }
     
 
@@ -173,6 +174,7 @@ class kec_siu extends admin_controller {
 
         $data_array['nama_camat'] = $profil_kecamatan['nama_camat'];
         $data_array['nip_camat'] = $profil_kecamatan['nip_camat'];
+        $data_array['arr_klasifikasi'] = $this->cm->arr_dropdown3("klasifikasi_usaha", "id", "klasifikasi", "klasifikasi", "id_kecamatan", $userdata['id_kecamatan']);
 
 
         $content = $this->load->view($this->controller."_form_view",$data_array,true);
@@ -281,7 +283,6 @@ function update(){
         $this->form_validation->set_rules('pekerjaan','Syarat umum kedua','required');
         $this->form_validation->set_rules('alamat','Syarat umum ketiga','required');
         $this->form_validation->set_rules('no_telp','Syarat umum keempat','required');
-        $this->form_validation->set_rules('negara_pemohon','Syarat umum kelima','required');
         $this->form_validation->set_rules('nama_usaha','Syarat umum keenam','required');
         $this->form_validation->set_rules('jenis_usaha','Syarat umum ketujuh','required');
         $this->form_validation->set_rules('ukuran_luas_usaha','Syarat umum kedelapan','required');
@@ -290,9 +291,7 @@ function update(){
         $this->form_validation->set_rules('npwpd','Syarat teknis kedua','required');
         $this->form_validation->set_rules('klasifikasi_usaha','Syarat teknis ketiga','required');
         $this->form_validation->set_rules('retribusi_perthn_f','Syarat teknis pertahun','required');
-        $this->form_validation->set_rules('tgl_register','Syarat teknis keempat','required');
         $this->form_validation->set_rules('no_register','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('nama_petugas_verifikasi','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nama_camat','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nip_camat','Tgl. Surat','required');
         $this->form_validation->set_rules('ktp','Tgl. Lahir Pemohon','required');
@@ -309,7 +308,7 @@ function update(){
         $this->form_validation->set_rules('siup_asli','Pekerjaan Pemohon','required');
           
          
-        $this->form_validation->set_message('required', ' Harap isi semua data');
+        $this->form_validation->set_message('required', '%s Harap isi semua data');
         
         $this->form_validation->set_error_delimiters('', '<br>&nbsp;<br>&nbsp;<br>');
 
@@ -322,8 +321,6 @@ if($this->form_validation->run() == TRUE ) {
         $userdata = $this->session->userdata('admin_login');
         $post['kecamatan'] = $userdata['id_kecamatan'];
         $post['kabupaten'] = '52_7';
-        $post['tgl_verifikasi'] = flipdate($post['tgl_verifikasi']);
-        $post['tgl_register'] = flipdate($post['tgl_register']);
         $post['tgl_lahir'] = flipdate($post['tgl_lahir']);
         
 
@@ -369,7 +366,8 @@ else {
          // show_array($data); exit;
          // show_array($data_array);
       //    exit();
-        
+          $userdata = $this->session->userdata('admin_login');
+        $data_array['arr_klasifikasi'] = $this->cm->arr_dropdown3("klasifikasi_usaha", "id", "klasifikasi", "klasifikasi", "id_kecamatan", $userdata['id_kecamatan']);
 
         // $data_array=array(
         //      'id' => $data->id,
