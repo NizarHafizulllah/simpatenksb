@@ -2,6 +2,8 @@
 <link href="<?php echo base_url(); ?>assets/vendors/bootstrapvalidator/css/bootstrapValidator.min.css" rel="stylesheet">
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
 
+<script src="<?php echo base_url("assets"); ?>/vendors/fileinput/js/fileinput.min.js"></script>
+<link href="<?php echo base_url("assets"); ?>/vendors/fileinput/css/fileinput.min.css" rel="stylesheet">
 <style>
         @media(max-width: 1024px)
         {
@@ -14,7 +16,7 @@
 
     
 
-<form method="post" class="form-horizontal p-10" id="form_<?php echo $action ?>" action="<?php echo site_url("$this->controller/$action"); ?>" role="form">
+<form method="post" class="form-horizontal p-10" id="form_<?php echo $action ?>" action="<?php echo site_url("$this->controller/$action"); ?>" role="form" enctype="multipart/form-data">
 <div class="row">
 	<div class="col-lg-12">
                     <!-- First Basic Table strats here-->
@@ -665,6 +667,33 @@
  
 
 <?php } ?>
+
+<div class="row">
+  <div class="col-lg-12">
+                    <!-- First Basic Table strats here-->
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="ti-layout-cta-left"></i> File
+               </h3>
+            </div>
+            <div class="panel-body">
+
+             
+
+              <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Upload File</label>
+                    <div class="col-md-9">
+                      <input type="file" name="file" id="file" class="file form-control"  data-show-preview="true" accept="aplication/pdf/*"/>
+                    </div>
+                  </div>
+
+                            
+
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="row">
 	<div class="col-lg-12">

@@ -232,6 +232,31 @@ class kec_mikro extends admin_controller {
 
 if($this->form_validation->run() == TRUE ) { 
 
+
+
+            $config['upload_path'] = './upload_file/mikro';
+                $path = $config['upload_path'];
+                $config['allowed_types'] = 'pdf';
+                $config['encrypt_name'] = 'TRUE';
+
+
+             $this->load->library('upload', $config);
+
+        $filename_arr = array();
+        foreach ($_FILES as $key => $value) {
+            if (!empty($value['tmp_name']) && $value['size'] > 0) {
+            if (!$this->upload->do_upload($key)) {
+               // some errors
+            } else {
+                // Code After Files Upload Success GOES HERE
+                $data_name = $this->upload->data();
+                $filename_arr[] = $data_name['file_name'];
+            }
+        }
+    }
+
+    $post['file'] = $filename_arr[0];
+
         $userdata = $this->session->userdata('admin_login');
         $post['kecamatan'] = $userdata['id_kecamatan'];
         $post['kabupaten'] = '52_7';
@@ -241,7 +266,11 @@ if($this->form_validation->run() == TRUE ) {
         $post['id'] = md5(microtime(true));
         $post['kewarganegaraan'] = "Indonesia";
         
-        
+        //show_array($post);
+       // exit();
+
+
+
         $res = $this->db->insert('mikro', $post); 
         if($res){
             $arr = array("error"=>false,'message'=>"BERHASIL DISIMPAN");

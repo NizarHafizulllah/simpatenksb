@@ -239,6 +239,33 @@ class toko_obat extends admin_controller {
 
 if($this->form_validation->run() == TRUE ) { 
 
+
+
+            $config['upload_path'] = './upload_file/toko_obat';
+                $path = $config['upload_path'];
+                $config['allowed_types'] = 'pdf';
+                $config['encrypt_name'] = 'TRUE';
+
+
+             $this->load->library('upload', $config);
+
+        $filename_arr = array();
+        foreach ($_FILES as $key => $value) {
+            if (!empty($value['tmp_name']) && $value['size'] > 0) {
+            if (!$this->upload->do_upload($key)) {
+               // some errors
+            } else {
+                // Code After Files Upload Success GOES HERE
+                $data_name = $this->upload->data();
+                $filename_arr[] = $data_name['file_name'];
+            }
+        }
+    }
+
+    $post['file'] = $filename_arr[0];
+
+
+
         $userdata = $this->session->userdata('admin_login');
         $post['kecamatan'] = $userdata['id_kecamatan'];
         $post['kabupaten'] = '52_7';
@@ -318,6 +345,31 @@ function update(){
 
 if($this->form_validation->run() == TRUE ) { 
 
+
+
+            $config['upload_path'] = './upload_file/toko_obat';
+                $path = $config['upload_path'];
+                $config['allowed_types'] = 'pdf';
+                $config['encrypt_name'] = 'TRUE';
+
+
+             $this->load->library('upload', $config);
+
+        $filename_arr = array();
+        foreach ($_FILES as $key => $value) {
+            if (!empty($value['tmp_name']) && $value['size'] > 0) {
+            if (!$this->upload->do_upload($key)) {
+               // some errors
+            } else {
+                // Code After Files Upload Success GOES HERE
+                $data_name = $this->upload->data();
+                $filename_arr[] = $data_name['file_name'];
+            }
+        }
+    }
+
+    $post['file'] = $filename_arr[0];
+
         $userdata = $this->session->userdata('admin_login');
         $post['kecamatan'] = $userdata['id_kecamatan'];
         $post['kabupaten'] = '52_7';
@@ -325,6 +377,9 @@ if($this->form_validation->run() == TRUE ) {
         
 
         $post['status'] = 1;
+
+        show_array($post);
+        exit();
         
         $this->db->where('id', $post['id']);
         $res = $this->db->update('toko_obat', $post); 
@@ -360,6 +415,8 @@ else {
 
          $data_array['action'] = 'update';
          $data_array['curPage'] = 'toko_obat';
+         $userdata = $this->session->userdata('admin_login');
+  $data_array['arr_klasifikasi'] = $this->cm->arr_dropdown3("klasifikasi_usaha", "id", "klasifikasi", "klasifikasi", "id_kecamatan", $userdata['id_kecamatan']);
          // show_array($data); exit;
          // show_array($data_array);
       //    exit();

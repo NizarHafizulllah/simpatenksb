@@ -23,7 +23,9 @@ $("#simpan").click(function(){
 
     $.ajax({
         url:'<?php echo site_url("$this->controller/simpan"); ?>',
-        data : $('#form_simpan').serialize(),
+       data : new FormData($('#form_simpan')[0]),
+        contentType: false,
+        processData: false,
         type : 'post',
         dataType : 'json',
         success : function(obj){
@@ -81,7 +83,9 @@ $("#update").click(function(){
 
     $.ajax({
         url:'<?php echo site_url("$this->controller/update"); ?>',
-        data : $('#form_update').serialize(),
+        data : new FormData($('#form_update')[0]),
+        contentType: false,
+        processData: false,
         type : 'post',
         dataType : 'json',
         success : function(obj){
