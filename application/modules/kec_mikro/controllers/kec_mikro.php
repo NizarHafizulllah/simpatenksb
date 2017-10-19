@@ -2,46 +2,47 @@
 
 
 class kec_mikro extends admin_controller {
-	
-	var $controller;
-	public function kec_mikro(){
-		parent::__construct();
-		$this->controller = get_class($this);
-		$this->load->model($this->controller.'_model','dm');
-		$this->load->helper("tanggal");
-	}
-	
+    
+    var $controller;
+    public function kec_mikro(){
+        parent::__construct();
+        $this->controller = get_class($this);
+        $this->load->model($this->controller.'_model','dm');
+        $this->load->model('coremodel', 'cm');
+        $this->load->helper("tanggal");
+    }
+    
 
 
 
-	function index(){
-		
-		$data_array=array();
+    function index(){
+        
+        $data_array=array();
 
         $data_array['curPage'] = 'mikro';
 
-	   
+       
 
-		$content = $this->load->view($this->controller."_view",$data_array,true);
+        $content = $this->load->view($this->controller."_view",$data_array,true);
 
-		$this->set_subtitle("TDI Industri Mikro");
-		$this->set_title("TDI Industri Mikro");
-		$this->set_content($content);
-		$this->cetak();
+        $this->set_subtitle("Izin TDI Industri Mikro");
+        $this->set_title("Izin TDI Industri Mikro");
+        $this->set_content($content);
+        $this->cetak();
 
 
-				
-			
-		
-	}
+                
+            
+        
+    }
 
-	 function get_data() {
+     function get_data() {
 
-    	
-    	// show_array($userdata);
+        
+        // show_array($userdata);
 
-    	$draw = $_REQUEST['draw']; // get the requested page 
-    	$start = $_REQUEST['start'];
+        $draw = $_REQUEST['draw']; // get the requested page 
+        $start = $_REQUEST['start'];
         $limit = $_REQUEST['length']; // get how many rows we want to have into the grid 
         $sidx = isset($_REQUEST['order'][0]['column'])?$_REQUEST['order'][0]['column']:0; // get index row - i.e. user click to sort 
         $sord = isset($_REQUEST['order'][0]['dir'])?$_REQUEST['order'][0]['dir']:"asc"; // get the direction if(!$sidx) $sidx =1;  
@@ -57,23 +58,23 @@ class kec_mikro extends admin_controller {
 
       //  order[0][column]
         $req_param = array (
-				"sort_by" => $sidx,
-				"sort_direction" => $sord,
-				"limit" => null,
-				"no_regis" => $no_regis,
+                "sort_by" => $sidx,
+                "sort_direction" => $sord,
+                "limit" => null,
+                "no_regis" => $no_regis,
                 "nama_pemohon" => $nama_pemohon,
                 "id_kecamatan" => $id_kecamatan
-				
-				 
-		);   
+                
+                 
+        );   
 
-		// show_array($req_param);
+        // show_array($req_param);
   //       exit();  
            
         $row = $this->dm->data($req_param)->result_array();
 
 
-		
+        
         $count = count($row); 
        
         
@@ -89,7 +90,7 @@ class kec_mikro extends admin_controller {
        
         $arr_data = array();
         foreach($result as $row) : 
-		$id = $row['no_regis'];
+        $id = $row['id'];
 
         if ($row['status']==1) {
             $action = "<div class='btn-group'>
@@ -99,8 +100,8 @@ class kec_mikro extends admin_controller {
                                 <span class='sr-only'>Toggle Dropdown</span>
                               </button>
                               <ul class='dropdown-menu' role='menu'>
-                                <li><a href='kec_imb/status?id=$id'><i class='fa fa-eye'></i> Status</a></li>
-                                <li><a href='kec_imb/editdata?id=$id'><i class='fa fa-edit'></i> Edit</a></li>
+                                <li><a href='$this->controller/status?id=$id'><i class='fa fa-eye'></i> Status</a></li>
+                                <li><a href='$this->controller/editdata?id=$id'><i class='fa fa-edit'></i> Edit</a></li>
                                 <li><a href='#' onclick=\"hapus('$id')\" ><i class='fa fa-trash'></i> Hapus</a></li>
                                 <li><a href='#' onclick=\"printsurat('$id')\" ><i class='fa fa-print'></i> Formulir</a></li>
                               </ul>
@@ -113,7 +114,7 @@ class kec_mikro extends admin_controller {
                                 <span class='sr-only'>Toggle Dropdown</span>
                               </button>
                               <ul class='dropdown-menu' role='menu'>
-                                <li><a href='kec_imb/status?id=$id'><i class='fa fa-eye'></i> Status</a></li>
+                                <li><a href='$this->controller/status?id=$id'><i class='fa fa-eye'></i> Status</a></li>
                                 <li><a href='#' onclick=\"printsurat('$id')\" ><i class='fa fa-print'></i> Formulir</a></li>
                                 <li><a href='#' onclick=\"izin('$id')\" ><i class='fa fa-print'></i> Rekomendasi</a></li>
                               </ul>
@@ -126,32 +127,32 @@ class kec_mikro extends admin_controller {
                                 <span class='sr-only'>Toggle Dropdown</span>
                               </button>
                               <ul class='dropdown-menu' role='menu'>
-                                <li><a href='kec_imb/status?id=$id'><i class='fa fa-eye'></i> Status</a></li>
-                                <li><a href='kec_imb/editdata?id=$id'><i class='fa fa-edit'></i> Edit</a></li>
+                                <li><a href='$this->controller/status?id=$id'><i class='fa fa-eye'></i> Status</a></li>
+                                <li><a href='$this->controller/editdata?id=$id'><i class='fa fa-edit'></i> Edit</a></li>
                                 <li><a href='#' onclick=\"hapus('$id')\" ><i class='fa fa-trash'></i> Hapus</a></li>
                               </ul>
                             </div>";
         }
 
         
-        	
-        	 
-        	$arr_data[] = array(
-        		$row['no_regis'],
-        		$row['nama_pemohon'],
-        		$row['tgl_verifikasi'],
-        		$row['nama_petugas_verifikasi'],
-        	   $action
-        		
-         			 
-        		  				);
+            
+             
+            $arr_data[] = array(
+                $row['no_register'],
+                $row['nama_pemohon'],
+                $row['tgl_verifikasi'],
+                $row['nama_petugas_verifikasi'],
+               $action
+                
+                     
+                                );
         endforeach;
 
          $responce = array('draw' => $draw, // ($start==0)?1:$start,
-        				  'recordsTotal' => $count, 
-        				  'recordsFiltered' => $count,
-        				  'data'=>$arr_data
-        	);
+                          'recordsTotal' => $count, 
+                          'recordsFiltered' => $count,
+                          'data'=>$arr_data
+            );
          
         echo json_encode($responce); 
     }
@@ -159,19 +160,28 @@ class kec_mikro extends admin_controller {
 
     function baru(){
 
-    	$data_array=array();
+        $data_array=array();
     
         $data_array['action'] = 'simpan';
         $data_array['tgl_verifikasi'] = "";
         $data_array['tgl_surat'] = ""; 
-        $data_array['curPage'] = 'imb_satu';
+        $data_array['curPage'] = 'mikro';
+
+        $userdata = $this->session->userdata('admin_login');
+
+        $this->db->where('id_kecamatan', $userdata['kecamatan']);
+        $profil_kecamatan = $this->db->get('profil_kecamatan')->row_array();
+
+        $data_array['nama_camat'] = $profil_kecamatan['nama_camat'];
+        $data_array['nip_camat'] = $profil_kecamatan['nip_camat'];
+        $data_array['arr_klasifikasi'] = $this->cm->arr_dropdown3("klasifikasi_usaha", "id", "klasifikasi", "klasifikasi", "id_kecamatan", $userdata['id_kecamatan']);
 
 
         $content = $this->load->view($this->controller."_form_view",$data_array,true);
-       $this->set_subtitle("Tambah Perijinan IMB Dibawah 250");
-		$this->set_title("Tambah Perijinan IMB Dibawah 250");
-		$this->set_content($content);
-		$this->cetak();
+       $this->set_subtitle("Tambah Izin TDI Industri Mikro");
+        $this->set_title("Tambah Izin TDI Industri Mikro");
+        $this->set_content($content);
+        $this->cetak();
     }
 
 
@@ -187,33 +197,32 @@ class kec_mikro extends admin_controller {
 
 
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('no_regis','Nomor registrasi','required');
+        $this->form_validation->set_rules('no_ktp','Nomor registrasi','required');
         $this->form_validation->set_rules('nama_pemohon','Nama Pemohon','required');
-        $this->form_validation->set_rules('alamat','Alamat','required');
-        $this->form_validation->set_rules('pimb','Syarat umum pertama','required');
-        $this->form_validation->set_rules('ktp','Syarat umum kedua','required');
-        $this->form_validation->set_rules('foto','Syarat umum ketiga','required');
-        $this->form_validation->set_rules('sertifikat_tanah','Syarat umum keempat','required');
-        $this->form_validation->set_rules('pbb','Syarat umum kelima','required');
-        $this->form_validation->set_rules('bap','Syarat umum keenam','required');
-        $this->form_validation->set_rules('penelitian_tanah','Syarat umum ketujuh','required');
-        $this->form_validation->set_rules('setuju_sempada_tanah','Syarat umum kedelapan','required');
-        $this->form_validation->set_rules('rekom_dishub','Syarat umum kesembilan','required');
-        $this->form_validation->set_rules('tek_gamabar_rencana','Syarat teknis pertama','required');
-        $this->form_validation->set_rules('tek_instalasi_air','Syarat teknis kedua','required');
-        $this->form_validation->set_rules('tek_penelitian_tanah','Syarat teknis ketiga','required');
-        $this->form_validation->set_rules('tek_pengaman','Syarat teknis keempat','required');
-        $this->form_validation->set_rules('sistem_drainase','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('nama_petugas_verifikasi','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('tgl_verifikasi','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('tgl_surat','Tgl. Surat','required');
-        $this->form_validation->set_rules('tgl_lahir_pemohon','Tgl. Lahir Pemohon','required');
-        $this->form_validation->set_rules('tempat_lahir_pemohon','Tempat Lahir Pemohon','required');
-        $this->form_validation->set_rules('no_telp_pemohon','No. Telp. Pemohon','required');
-        $this->form_validation->set_rules('pekerjaan_pemohon','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('tempat_lahir','Alamat','required');
+        $this->form_validation->set_rules('tgl_lahir','Syarat umum pertama','required');
+        $this->form_validation->set_rules('pekerjaan','Syarat umum kedua','required');
+        $this->form_validation->set_rules('no_tlp','Syarat umum keempat','required');
+        $this->form_validation->set_rules('alamat','Syarat umum ketiga','required');
+        $this->form_validation->set_rules('merek_usaha','Syarat umum keenam','required');
+        $this->form_validation->set_rules('jenis_usaha','Syarat umum ketujuh','required');
+        $this->form_validation->set_rules('alamat_usaha','Syarat umum kesembilan','required');
+        $this->form_validation->set_rules('npwpd','Syarat teknis kedua','required');
+        $this->form_validation->set_rules('klasif_perusahaan','Syarat umum kedelapan','required');
+        $this->form_validation->set_rules('retribusi_perthn_f','Syarat teknis pertama','required');
+        $this->form_validation->set_rules('jenis_permohonan','Syarat teknis ketiga','required');
+        $this->form_validation->set_rules('adrt','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('notulen','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('daftar_anggota','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('rekom_uptd','Tgl. Lahir Pemohon','required');
+        $this->form_validation->set_rules('mengetahui_lurah','No. Telp. Pemohon','required');
+        $this->form_validation->set_rules('siup_asli','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('no_register','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('nama_camat','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('nip_camat','Tgl. Surat','required');
           
          
-        $this->form_validation->set_message('required', ' Harap isi semua data');
+        $this->form_validation->set_message('required', '  Harap isi semua data');
         
         $this->form_validation->set_error_delimiters('', '<br>&nbsp;<br>&nbsp;<br>');
 
@@ -223,19 +232,46 @@ class kec_mikro extends admin_controller {
 
 if($this->form_validation->run() == TRUE ) { 
 
+
+
+            $config['upload_path'] = './upload_file/mikro';
+                $path = $config['upload_path'];
+                $config['allowed_types'] = 'pdf';
+                $config['encrypt_name'] = 'TRUE';
+
+
+             $this->load->library('upload', $config);
+
+        $filename_arr = array();
+        foreach ($_FILES as $key => $value) {
+            if (!empty($value['tmp_name']) && $value['size'] > 0) {
+            if (!$this->upload->do_upload($key)) {
+               // some errors
+            } else {
+                // Code After Files Upload Success GOES HERE
+                $data_name = $this->upload->data();
+                $filename_arr[] = $data_name['file_name'];
+            }
+        }
+    }
+
+    $post['file'] = $filename_arr[0];
+
         $userdata = $this->session->userdata('admin_login');
         $post['kecamatan'] = $userdata['id_kecamatan'];
         $post['kabupaten'] = '52_7';
-        $post['tgl_verifikasi'] = flipdate($post['tgl_verifikasi']);
-        $post['tgl_surat'] = flipdate($post['tgl_surat']);
-        $post['tgl_skgr'] = flipdate($post['tgl_skgr']);
-        $post['tgl_rekom_desa'] = flipdate($post['tgl_rekom_desa']);
-        $post['tgl_rekom_uptd'] = flipdate($post['tgl_rekom_uptd']);
-        $post['tgl_lahir_pemohon'] = flipdate($post['tgl_lahir_pemohon']);
+        $post['tgl_register'] = date('Y-m-d');
+        $post['tgl_lahir'] = flipdate($post['tgl_lahir']);
         $post['status'] = 1;
+        $post['id'] = md5(microtime(true));
+        $post['kewarganegaraan'] = "Indonesia";
         
-        
-        $res = $this->db->insert('imb', $post); 
+        //show_array($post);
+       // exit();
+
+
+
+        $res = $this->db->insert('mikro', $post); 
         if($res){
             $arr = array("error"=>false,'message'=>"BERHASIL DISIMPAN");
         }
@@ -261,34 +297,37 @@ function update(){
        
 
 
-        $this->load->library('form_validation');
-        $this->form_validation->set_rules('no_regis','Nomor registrasi','required');
+      $this->load->library('form_validation');
+        $this->form_validation->set_rules('no_ktp','Nomor registrasi','required');
         $this->form_validation->set_rules('nama_pemohon','Nama Pemohon','required');
-        $this->form_validation->set_rules('alamat','Alamat','required');
-        $this->form_validation->set_rules('pimb','Syarat umum pertama','required');
-        $this->form_validation->set_rules('ktp','Syarat umum kedua','required');
-        $this->form_validation->set_rules('foto','Syarat umum ketiga','required');
-        $this->form_validation->set_rules('sertifikat_tanah','Syarat umum keempat','required');
-        $this->form_validation->set_rules('pbb','Syarat umum kelima','required');
-        $this->form_validation->set_rules('bap','Syarat umum keenam','required');
-        $this->form_validation->set_rules('penelitian_tanah','Syarat umum ketujuh','required');
-        $this->form_validation->set_rules('setuju_sempada_tanah','Syarat umum kedelapan','required');
-        $this->form_validation->set_rules('rekom_dishub','Syarat umum kesembilan','required');
-        $this->form_validation->set_rules('tek_gamabar_rencana','Syarat teknis pertama','required');
-        $this->form_validation->set_rules('tek_instalasi_air','Syarat teknis kedua','required');
-        $this->form_validation->set_rules('tek_penelitian_tanah','Syarat teknis ketiga','required');
-        $this->form_validation->set_rules('tek_pengaman','Syarat teknis keempat','required');
-        $this->form_validation->set_rules('sistem_drainase','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('tempat_lahir','Alamat','required');
+        $this->form_validation->set_rules('tgl_lahir','Syarat umum pertama','required');
+        $this->form_validation->set_rules('pekerjaan','Syarat umum kedua','required');
+        $this->form_validation->set_rules('no_tlp','Syarat umum keempat','required');
+        $this->form_validation->set_rules('kewarganegaraan','Syarat umum kelima','required');
+        $this->form_validation->set_rules('alamat','Syarat umum ketiga','required');
+        $this->form_validation->set_rules('merek_usaha','Syarat umum keenam','required');
+        $this->form_validation->set_rules('jenis_usaha','Syarat umum ketujuh','required');
+        $this->form_validation->set_rules('alamat_usaha','Syarat umum kesembilan','required');
+        $this->form_validation->set_rules('npwpd','Syarat teknis kedua','required');
+        $this->form_validation->set_rules('klasif_perusahaan','Syarat umum kedelapan','required');
+        $this->form_validation->set_rules('retribusi_perthn_f','Syarat teknis pertama','required');
+        $this->form_validation->set_rules('jenis_permohonan','Syarat teknis ketiga','required');
+        $this->form_validation->set_rules('adrt','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('notulen','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('daftar_anggota','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('rekom_uptd','Tgl. Lahir Pemohon','required');
+        $this->form_validation->set_rules('mengetahui_lurah','No. Telp. Pemohon','required');
+        $this->form_validation->set_rules('siup_asli','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('tgl_register','Syarat teknis keempat','required');
+        $this->form_validation->set_rules('no_register','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nama_petugas_verifikasi','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('tgl_verifikasi','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('tgl_surat','Tgl. Surat','required');
-        $this->form_validation->set_rules('tgl_lahir_pemohon','Tgl. Lahir Pemohon','required');
-        $this->form_validation->set_rules('tempat_lahir_pemohon','Tempat Lahir Pemohon','required');
-        $this->form_validation->set_rules('no_telp_pemohon','No. Telp. Pemohon','required');
-        $this->form_validation->set_rules('pekerjaan_pemohon','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('nama_camat','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('nip_camat','Tgl. Surat','required');
+          
           
          
-        $this->form_validation->set_message('required', ' Harap isi semua data');
+        $this->form_validation->set_message('required', ' %s Harap isi semua data');
         
         $this->form_validation->set_error_delimiters('', '<br>&nbsp;<br>&nbsp;<br>');
 
@@ -301,17 +340,14 @@ if($this->form_validation->run() == TRUE ) {
         $userdata = $this->session->userdata('admin_login');
         $post['kecamatan'] = $userdata['id_kecamatan'];
         $post['kabupaten'] = '52_7';
-        $post['tgl_verifikasi'] = flipdate($post['tgl_verifikasi']);
-        $post['tgl_surat'] = flipdate($post['tgl_surat']);
-        $post['tgl_lahir_pemohon'] = flipdate($post['tgl_lahir_pemohon']);
-        $post['tgl_skgr'] = flipdate($post['tgl_skgr']);
-        $post['tgl_rekom_desa'] = flipdate($post['tgl_rekom_desa']);
-        $post['tgl_rekom_uptd'] = flipdate($post['tgl_rekom_uptd']);
+        $post['tgl_register'] = date('Y-m-d');
+        $post['tgl_lahir'] = flipdate($post['tgl_lahir']);
+        
 
         $post['status'] = 1;
         
-        $this->db->where('no_regis', $post['no_regis']);
-        $res = $this->db->update('imb', $post); 
+        $this->db->where('id', $post['id']);
+        $res = $this->db->update('mikro', $post); 
         if($res){
             $arr = array("error"=>false,'message'=>"BERHASIL DIUPDATE");
         }
@@ -333,68 +369,67 @@ else {
    function editdata(){
 
 
-    	
+        
          $get = $this->input->get(); 
-         $no_regis = $get['id'];
+         $id = $get['id'];
          
-         $this->db->where('no_regis',$no_regis);
-         $imb = $this->db->get('imb');
-         $data_array = $imb->row_array();
+
+         $this->db->where('id',$id);
+         $koperasi = $this->db->get('mikro');
+         $data_array = $koperasi->row_array();
 
          $data_array['tgl_verifikasi'] = flipdate($data_array['tgl_verifikasi']);
-         $data_array['tgl_surat'] = flipdate($data_array['tgl_surat']);
-         $data_array['tgl_lahir_pemohon'] = flipdate($data_array['tgl_lahir_pemohon']);
-         $data_array['tgl_skgr'] = flipdate($data_array['tgl_skgr']);
-         $data_array['tgl_rekom_desa'] = flipdate($data_array['tgl_rekom_desa']);
-         $data_array['tgl_rekom_uptd'] = flipdate($data_array['tgl_rekom_uptd']);
-
+         $data_array['tgl_register'] = flipdate($data_array['tgl_register']);
+         $data_array['tgl_lahir'] = flipdate($data_array['tgl_lahir']);
 
          $data_array['action'] = 'update';
-         $data_array['curPage'] = 'imb_satu';
+         $data_array['curPage'] = 'mikro';
          // show_array($data); exit;
-    	 // show_array($data_array);
+         // show_array($data_array);
       //    exit();
-		
+         $userdata = $this->session->userdata('admin_login');
+        $data_array['arr_klasifikasi'] = $this->cm->arr_dropdown3("klasifikasi_usaha", "id", "klasifikasi", "klasifikasi", "id_kecamatan", $userdata['id_kecamatan']);
 
-    	// $data_array=array(
-    	// 		'id' => $data->id,
-    	// 		'nama' => $data->nama,
-    	// 		'no_siup' => $data->no_siup,
-    	// 		'no_npwp' => $data->no_npwp,
-    	// 		'no_tdp' => $data->no_tdp,
-    	// 		'telp' => $data->telp,
-    	// 		'alamat' => $data->alamat,
-    	// 		'email' => $data->email,
-    	// 		'hp' => $data->hp,
 
-    	// 	);
+        // $data_array=array(
+        //      'id' => $data->id,
+        //      'nama' => $data->nama,
+        //      'no_siup' => $data->no_siup,
+        //      'no_npwp' => $data->no_npwp,
+        //      'no_tdp' => $data->no_tdp,
+        //      'telp' => $data->telp,
+        //      'alamat' => $data->alamat,
+        //      'email' => $data->email,
+        //      'hp' => $data->hp,
+
+        //  );
 
         
 
-        $content = $this->load->view($this->controller."_form_view_edit",$data_array,true);
+        $content = $this->load->view($this->controller."_form_view",$data_array,true);
 
-		$this->set_subtitle("Edit Perijinan IMB Dibawah 250");
-		$this->set_title("Edit Perijinan IMB Dibawah 250");
-		$this->set_content($content);
-		$this->cetak();
+        $this->set_subtitle("Edit Izin TDI Industri mikro ");
+        $this->set_title("Edit Izin TDI Industri mikro ");
+        $this->set_content($content);
+        $this->cetak();
 
     }
 
 
         function hapusdata(){
-    	$get = $this->input->post();
-    	$no_regis = $get['id'];
+        $get = $this->input->post();
+        $id = $get['id'];
 
-    	$data = array('no_regis' => $no_regis, );
+        $data = array('id' => $id, );
 
-    	$res = $this->db->delete('imb', $data);
+        $res = $this->db->delete('mikro', $data);
         if($res){
             $arr = array("error"=>false,"message"=>"DATA BERHASIL DIHAPUS");
         }
         else {
             $arr = array("error"=>true,"message"=>"DATA GAGAL DIHAPUS ".mysql_error());
         }
-    	//redirect('sa_birojasa');
+        //redirect('sa_birojasa');
         echo json_encode($arr);
     }
 
@@ -403,46 +438,46 @@ else {
    function status(){
 
 
-    	
+        
          $get = $this->input->get(); 
-         $no_regis = $get['id'];
+         $id = $get['id'];
          
-         $this->db->where('no_regis',$no_regis);
-         $imb = $this->db->get('imb');
-         $data_array = $imb->row_array();
+         $this->db->where('id',$id);
+         $mikro = $this->db->get('mikro');
+         $data_array = $mikro->row_array();
 
          $data_array['tgl_verifikasi'] = flipdate($data_array['tgl_verifikasi']);
-         $data_array['tgl_surat'] = flipdate($data_array['tgl_surat']);
-         $data_array['tgl_lahir_pemohon'] = flipdate($data_array['tgl_lahir_pemohon']);
+         $data_array['tgl_register'] = flipdate($data_array['tgl_register']);
+         $data_array['tgl_lahir'] = flipdate($data_array['tgl_lahir']);
 
          $data_array['action'] = 'update';
-         $data_array['curPage'] = 'imb_satu';
+         $data_array['curPage'] = 'mikro';
          // show_array($data); exit;
-    	 // show_array($data_array);
+         // show_array($data_array);
       //    exit();
-		
+        
 
-    	// $data_array=array(
-    	// 		'id' => $data->id,
-    	// 		'nama' => $data->nama,
-    	// 		'no_siup' => $data->no_siup,
-    	// 		'no_npwp' => $data->no_npwp,
-    	// 		'no_tdp' => $data->no_tdp,
-    	// 		'telp' => $data->telp,
-    	// 		'alamat' => $data->alamat,
-    	// 		'email' => $data->email,
-    	// 		'hp' => $data->hp,
+        // $data_array=array(
+        //      'id' => $data->id,
+        //      'nama' => $data->nama,
+        //      'no_siup' => $data->no_siup,
+        //      'no_npwp' => $data->no_npwp,
+        //      'no_tdp' => $data->no_tdp,
+        //      'telp' => $data->telp,
+        //      'alamat' => $data->alamat,
+        //      'email' => $data->email,
+        //      'hp' => $data->hp,
 
-    	// 	);
+        //  );
 
         
 
         $content = $this->load->view($this->controller."_status_view",$data_array,true);
 
-		$this->set_subtitle("Status IMB Dibawah 250");
-		$this->set_title("Status IMB Dibawah 250");
-		$this->set_content($content);
-		$this->cetak();
+        $this->set_subtitle("Status Izin TDI Industri Mikro ");
+        $this->set_title("Status Izin TDI Industri Mikro    ");
+        $this->set_content($content);
+        $this->cetak();
 
     }
 
@@ -451,7 +486,7 @@ else {
     function printsurat(){
     $get = $this->input->get(); 
     
-    $no_regis = $get['id'];
+    $id = $get['id'];
 
     
      
@@ -462,19 +497,19 @@ else {
 
     $this->db->select('m.*, kec.kecamatan as nm_kecamatan, kab.kota as kabupaten');
 
-      $this->db->from("imb m");
+      $this->db->from("mikro m");
       $this->db->join('tiger_kecamatan kec','m.kecamatan=kec.id');
       $this->db->join('tiger_kota kab','m.kabupaten=kab.id');
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
-      $this->db->where("m.no_regis",$no_regis);
+      $this->db->where("m.id",$id);
 
      $resx = $this->db->get();
 
 
     $data['controller'] = get_class($this);
-    $data['header'] = "Dokumen Persyaratan IMB";
+    $data['header'] = "Dokumen Persyaratan Pendirian Koperasi";
     $data['query'] = $resx->row_array();
 
     $timestamp = strtotime($data['query']['tgl_verifikasi']);
@@ -522,7 +557,7 @@ else {
     function printsuratizin(){
     $get = $this->input->get(); 
     
-    $no_regis = $get['id'];
+    $id = $get['id'];
 
      $userdata = $this->session->userdata('admin_login');
         
@@ -543,19 +578,19 @@ else {
 
     $this->db->select('m.*, kec.kecamatan as nm_kecamatan, kab.kota as kabupaten');
 
-      $this->db->from("imb m");
+      $this->db->from("mikro m");
       $this->db->join('tiger_kecamatan kec','m.kecamatan=kec.id');
       $this->db->join('tiger_kota kab','m.kabupaten=kab.id');
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
-      $this->db->where("m.no_regis",$no_regis);
+      $this->db->where("m.id",$id);
 
      $resx = $this->db->get();
 
 
     $data['controller'] = get_class($this);
-    $data['header'] = "Dokumen Persyaratan IMB";
+    $data['header'] = "Dokumen Persyaratan Izin Pendirian Usaha";
     $data['query'] = $resx->row_array();
 
     $timestamp = strtotime($data['query']['tgl_verifikasi']);
@@ -608,7 +643,7 @@ else {
     function formulir(){
     $get = $this->input->get(); 
     
-    $no_regis = $get['id'];
+    $id = $get['id'];
 
     
      
@@ -619,19 +654,19 @@ else {
 
     $this->db->select('m.*, kec.kecamatan as nm_kecamatan, kab.kota as kabupaten');
 
-      $this->db->from("imb m");
+      $this->db->from("mikro m");
       $this->db->join('tiger_kecamatan kec','m.kecamatan=kec.id');
       $this->db->join('tiger_kota kab','m.kabupaten=kab.id');
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
-      $this->db->where("m.no_regis",$no_regis);
+      $this->db->where("m.id",$id);
 
      $resx = $this->db->get();
 
 
     $data['controller'] = get_class($this);
-    $data['header'] = "Dokumen Persyaratan IMB";
+    $data['header'] = "Blanko Permohonan";
     $data['query'] = $resx->row_array();
 
     $timestamp = strtotime($data['query']['tgl_verifikasi']);

@@ -31,7 +31,7 @@ class kab_add_kecamatan_model extends CI_Model {
 		$this->db->select('a.*, kc.kecamatan as kecamatan')->from("admin a");
 		 $this->db->join('tiger_kecamatan kc','a.kecamatan=kc.id', 'left');
 		 
-		 $this->db->where("level",1);
+		 $this->db->where("level",5);
 
 
 		 

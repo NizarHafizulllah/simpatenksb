@@ -100,7 +100,7 @@
     <td width="16%" height="37">&nbsp;</td>
     <td width="2%">&nbsp;</td>
     <td width="2%"><div align="left" style="font-size: 9px;">2.</div> </td>
-    <td width="80%"><div align="justify" style="font-size: 9px;">Rekomendasi Teknis Izin Mendirikan Bangunan Nomor : <?php echo $query['no_rekom_uptd'] ?>, tanggal <?php echo flipdate($query['tgl_rekom_uptd']) ?> dari UPTD Tata Ruang dan Cipta Karya kabupaten Siak; </div></td>
+    <td width="80%"><div align="justify" style="font-size: 9px;">Rekomendasi Teknis Izin Mendirikan Bangunan Nomor : <?php echo $query['no_rekom_uptd'] ?>, tanggal <?php echo flipdate($query['tgl_rekom_uptd']) ?> dari UPTD Tata Ruang dan Cipta Karya kabupaten Sumbawa Barat; </div></td>
   </tr>
 </table>
 <br/>&nbsp;

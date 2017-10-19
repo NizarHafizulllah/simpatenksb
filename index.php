@@ -21,8 +21,13 @@
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
+<<<<<<< HEAD
 	define('ENVIRONMENT', 'production');
 	// define('ENVIRONMENT', 'development');
+=======
+ define('ENVIRONMENT', 'development');
+//	define('ENVIRONMENT', 'development');
+>>>>>>> 7922c05bab1910ef8f472ad93fa8ef5d159e4cf1
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING

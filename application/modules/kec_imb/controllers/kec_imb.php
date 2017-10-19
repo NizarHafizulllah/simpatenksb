@@ -18,6 +18,8 @@ class kec_imb extends admin_controller {
 		
 		$data_array=array();
 
+        
+
         $data_array['curPage'] = 'imb_satu';
 
 	   
@@ -89,7 +91,7 @@ class kec_imb extends admin_controller {
        
         $arr_data = array();
         foreach($result as $row) : 
-		$id = $row['no_regis'];
+		$id = $row['id'];
 
         if ($row['status']==1) {
             $action = "<div class='btn-group'>
@@ -166,6 +168,13 @@ class kec_imb extends admin_controller {
         $data_array['tgl_surat'] = ""; 
         $data_array['curPage'] = 'imb_satu';
 
+        $userdata = $this->session->userdata('admin_login');
+
+        $this->db->where('id_kecamatan', $userdata['kecamatan']);
+        $profil_kecamatan = $this->db->get('profil_kecamatan')->row_array();
+
+        $data_array['nama_camat'] = $profil_kecamatan['nama_camat'];
+        $data_array['nip_camat'] = $profil_kecamatan['nip_camat'];
 
         $content = $this->load->view($this->controller."_form_view",$data_array,true);
        $this->set_subtitle("Tambah Perijinan IMB Dibawah 250");
@@ -204,9 +213,6 @@ class kec_imb extends admin_controller {
         $this->form_validation->set_rules('tek_penelitian_tanah','Syarat teknis ketiga','required');
         $this->form_validation->set_rules('tek_pengaman','Syarat teknis keempat','required');
         $this->form_validation->set_rules('sistem_drainase','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('nama_petugas_verifikasi','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('tgl_verifikasi','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('tgl_surat','Tgl. Surat','required');
         $this->form_validation->set_rules('tgl_lahir_pemohon','Tgl. Lahir Pemohon','required');
         $this->form_validation->set_rules('tempat_lahir_pemohon','Tempat Lahir Pemohon','required');
         $this->form_validation->set_rules('no_telp_pemohon','No. Telp. Pemohon','required');
@@ -223,17 +229,44 @@ class kec_imb extends admin_controller {
 
 if($this->form_validation->run() == TRUE ) { 
 
+
+            $config['upload_path'] = './upload_file/imb';
+                $path = $config['upload_path'];
+                $config['allowed_types'] = 'pdf';
+                $config['encrypt_name'] = 'TRUE';
+
+
+             $this->load->library('upload', $config);
+
+        $filename_arr = array();
+        foreach ($_FILES as $key => $value) {
+            if (!empty($value['tmp_name']) && $value['size'] > 0) {
+            if (!$this->upload->do_upload($key)) {
+               // some errors
+            } else {
+                // Code After Files Upload Success GOES HERE
+                $data_name = $this->upload->data();
+                $filename_arr[] = $data_name['file_name'];
+            }
+        }
+    }
+
+    $post['file'] = $filename_arr[0];
+
         $userdata = $this->session->userdata('admin_login');
         $post['kecamatan'] = $userdata['id_kecamatan'];
         $post['kabupaten'] = '52_7';
-        $post['tgl_verifikasi'] = flipdate($post['tgl_verifikasi']);
-        $post['tgl_surat'] = flipdate($post['tgl_surat']);
+        $post['tgl_surat'] = date('Y-m-d');
         $post['tgl_skgr'] = flipdate($post['tgl_skgr']);
         $post['tgl_rekom_desa'] = flipdate($post['tgl_rekom_desa']);
         $post['tgl_rekom_uptd'] = flipdate($post['tgl_rekom_uptd']);
         $post['tgl_lahir_pemohon'] = flipdate($post['tgl_lahir_pemohon']);
         $post['status'] = 1;
+        $post['id'] = md5(microtime(true));
         
+
+        // show_array($post);
+        // exit();
         
         $res = $this->db->insert('imb', $post); 
         if($res){
@@ -310,7 +343,7 @@ if($this->form_validation->run() == TRUE ) {
 
         $post['status'] = 1;
         
-        $this->db->where('no_regis', $post['no_regis']);
+        $this->db->where('id', $post['id']);
         $res = $this->db->update('imb', $post); 
         if($res){
             $arr = array("error"=>false,'message'=>"BERHASIL DIUPDATE");
@@ -335,9 +368,9 @@ else {
 
     	
          $get = $this->input->get(); 
-         $no_regis = $get['id'];
+         $id = $get['id'];
          
-         $this->db->where('no_regis',$no_regis);
+         $this->db->where('id',$id);
          $imb = $this->db->get('imb');
          $data_array = $imb->row_array();
 
@@ -354,6 +387,8 @@ else {
          // show_array($data); exit;
     	 // show_array($data_array);
       //    exit();
+
+         
 		
 
     	// $data_array=array(
@@ -383,9 +418,9 @@ else {
 
         function hapusdata(){
     	$get = $this->input->post();
-    	$no_regis = $get['id'];
+    	$id = $get['id'];
 
-    	$data = array('no_regis' => $no_regis, );
+    	$data = array('id' => $id, );
 
     	$res = $this->db->delete('imb', $data);
         if($res){
@@ -405,9 +440,9 @@ else {
 
     	
          $get = $this->input->get(); 
-         $no_regis = $get['id'];
+         $id = $get['id'];
          
-         $this->db->where('no_regis',$no_regis);
+         $this->db->where('id',$id);
          $imb = $this->db->get('imb');
          $data_array = $imb->row_array();
 
@@ -451,7 +486,7 @@ else {
     function printsurat(){
     $get = $this->input->get(); 
     
-    $no_regis = $get['id'];
+    $id = $get['id'];
 
     
      
@@ -468,7 +503,7 @@ else {
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
-      $this->db->where("m.no_regis",$no_regis);
+      $this->db->where("m.id",$id);
 
      $resx = $this->db->get();
 
@@ -522,7 +557,7 @@ else {
     function printsuratizin(){
     $get = $this->input->get(); 
     
-    $no_regis = $get['id'];
+    $id = $get['id'];
 
      $userdata = $this->session->userdata('admin_login');
         
@@ -549,7 +584,7 @@ else {
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
-      $this->db->where("m.no_regis",$no_regis);
+      $this->db->where("m.id",$id);
 
      $resx = $this->db->get();
 
@@ -608,7 +643,7 @@ else {
     function formulir(){
     $get = $this->input->get(); 
     
-    $no_regis = $get['id'];
+    $id = $get['id'];
 
     
      
@@ -625,7 +660,7 @@ else {
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
-      $this->db->where("m.no_regis",$no_regis);
+      $this->db->where("m.id",$id);
 
      $resx = $this->db->get();
 

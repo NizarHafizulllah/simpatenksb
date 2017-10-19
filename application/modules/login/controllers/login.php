@@ -18,6 +18,17 @@ class Login extends CI_Controller {
 		$this->session->unset_userdata("admin_login",true);
 		redirect("login");
 	}
+
+	function logout_verifikatur(){
+		$this->session->unset_userdata("app_login",true);
+		redirect("login");
+	}
+
+	function logout_operator(){
+		$this->session->unset_userdata("op_login",true);
+		redirect("login");
+	}
+
 	function logout_adminkab(){
 		$this->session->unset_userdata("adminkab_login",true);
 		redirect("login");
@@ -85,6 +96,14 @@ class Login extends CI_Controller {
 					$this->session->set_userdata('sa_login', $jj);
 					$datalogin = $this->session->userdata('sa_login');
 					// super admin
+				}else if ($jj['level']==4) {
+					$this->session->set_userdata('app_login', $jj);
+					$datalogin = $this->session->userdata('app_login');
+					// aprover kecamatan
+				}else if ($jj['level']==5) {
+					$this->session->set_userdata('op_login', $jj);
+					$datalogin = $this->session->userdata('op_login');
+					// Operator kecamatan
 				}
 
 		 		

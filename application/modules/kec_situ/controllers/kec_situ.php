@@ -9,6 +9,7 @@ class kec_situ extends admin_controller {
 		$this->controller = get_class($this);
 		$this->load->model($this->controller.'_model','dm');
 		$this->load->helper("tanggal");
+        $this->load->model('coremodel', 'cm');
 	}
 	
 
@@ -89,7 +90,7 @@ class kec_situ extends admin_controller {
        
         $arr_data = array();
         foreach($result as $row) : 
-		$id = $row['no_register'];
+		$id = $row['id'];
 
         if ($row['status']==1) {
             $action = "<div class='btn-group'>
@@ -173,7 +174,7 @@ class kec_situ extends admin_controller {
 
         $data_array['nama_camat'] = $profil_kecamatan['nama_camat'];
         $data_array['nip_camat'] = $profil_kecamatan['nip_camat'];
-
+        $data_array['arr_klasifikasi'] = $this->cm->arr_dropdown3("klasifikasi_usaha", "id", "klasifikasi", "klasifikasi", "id_kecamatan", $userdata['id_kecamatan']);
 
         $content = $this->load->view($this->controller."_form_view",$data_array,true);
        $this->set_subtitle("Tambah Izin Tempat Usaha ");
@@ -202,7 +203,6 @@ class kec_situ extends admin_controller {
         $this->form_validation->set_rules('pekerjaan','Syarat umum kedua','required');
         $this->form_validation->set_rules('alamat','Syarat umum ketiga','required');
         $this->form_validation->set_rules('no_telp','Syarat umum keempat','required');
-        $this->form_validation->set_rules('negara_pemohon','Syarat umum kelima','required');
         $this->form_validation->set_rules('nama_usaha','Syarat umum keenam','required');
         $this->form_validation->set_rules('jenis_usaha','Syarat umum ketujuh','required');
         $this->form_validation->set_rules('ukuran_luas_usaha','Syarat umum kedelapan','required');
@@ -210,9 +210,7 @@ class kec_situ extends admin_controller {
         $this->form_validation->set_rules('status_bangunan_tempat_usaha','Syarat teknis pertama','required');
         $this->form_validation->set_rules('npwpd','Syarat teknis kedua','required');
         $this->form_validation->set_rules('klasifikasi_usaha','Syarat teknis ketiga','required');
-        $this->form_validation->set_rules('tgl_register','Syarat teknis keempat','required');
         $this->form_validation->set_rules('no_register','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('nama_petugas_verifikasi','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nama_camat','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nip_camat','Tgl. Surat','required');
         $this->form_validation->set_rules('ktp','Tgl. Lahir Pemohon','required');
@@ -229,7 +227,7 @@ class kec_situ extends admin_controller {
         $this->form_validation->set_rules('siup_asli','Pekerjaan Pemohon','required');
           
          
-        $this->form_validation->set_message('required', ' Harap isi semua data');
+        $this->form_validation->set_message('required', ' %s Harap isi semua data');
         
         $this->form_validation->set_error_delimiters('', '<br>&nbsp;<br>&nbsp;<br>');
 
@@ -239,13 +237,39 @@ class kec_situ extends admin_controller {
 
 if($this->form_validation->run() == TRUE ) { 
 
+
+
+            $config['upload_path'] = './upload_file/situ';
+                $path = $config['upload_path'];
+                $config['allowed_types'] = 'pdf';
+                $config['encrypt_name'] = 'TRUE';
+
+
+             $this->load->library('upload', $config);
+
+        $filename_arr = array();
+        foreach ($_FILES as $key => $value) {
+            if (!empty($value['tmp_name']) && $value['size'] > 0) {
+            if (!$this->upload->do_upload($key)) {
+               // some errors
+            } else {
+                // Code After Files Upload Success GOES HERE
+                $data_name = $this->upload->data();
+                $filename_arr[] = $data_name['file_name'];
+            }
+        }
+    }
+
+    $post['file'] = $filename_arr[0];
+
         $userdata = $this->session->userdata('admin_login');
         $post['kecamatan'] = $userdata['id_kecamatan'];
         $post['kabupaten'] = '52_7';
-        $post['tgl_verifikasi'] = flipdate($post['tgl_verifikasi']);
-        $post['tgl_register'] = flipdate($post['tgl_register']);
+        $post['tgl_register'] = date('Y-m-d');
         $post['tgl_lahir'] = flipdate($post['tgl_lahir']);;
         $post['status'] = 1;
+        $post['negara_pemohon'] = "Indonesia";
+        $post['id'] = md5(microtime(true));
         
         
         $res = $this->db->insert('situ', $post); 
@@ -282,7 +306,6 @@ function update(){
         $this->form_validation->set_rules('pekerjaan','Syarat umum kedua','required');
         $this->form_validation->set_rules('alamat','Syarat umum ketiga','required');
         $this->form_validation->set_rules('no_telp','Syarat umum keempat','required');
-        $this->form_validation->set_rules('negara_pemohon','Syarat umum kelima','required');
         $this->form_validation->set_rules('nama_usaha','Syarat umum keenam','required');
         $this->form_validation->set_rules('jenis_usaha','Syarat umum ketujuh','required');
         $this->form_validation->set_rules('ukuran_luas_usaha','Syarat umum kedelapan','required');
@@ -290,9 +313,7 @@ function update(){
         $this->form_validation->set_rules('status_bangunan_tempat_usaha','Syarat teknis pertama','required');
         $this->form_validation->set_rules('npwpd','Syarat teknis kedua','required');
         $this->form_validation->set_rules('klasifikasi_usaha','Syarat teknis ketiga','required');
-        $this->form_validation->set_rules('tgl_register','Syarat teknis keempat','required');
         $this->form_validation->set_rules('no_register','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('nama_petugas_verifikasi','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nama_camat','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nip_camat','Tgl. Surat','required');
         $this->form_validation->set_rules('ktp','Tgl. Lahir Pemohon','required');
@@ -325,11 +346,12 @@ if($this->form_validation->run() == TRUE ) {
         $post['tgl_verifikasi'] = flipdate($post['tgl_verifikasi']);
         $post['tgl_register'] = flipdate($post['tgl_register']);
         $post['tgl_lahir'] = flipdate($post['tgl_lahir']);
+        $post['negara_pemohon'] = "Indonesia";
         
 
         $post['status'] = 1;
         
-        $this->db->where('no_register', $post['no_register']);
+        $this->db->where('id', $post['id']);
         $res = $this->db->update('situ', $post); 
         if($res){
             $arr = array("error"=>false,'message'=>"BERHASIL DIUPDATE");
@@ -354,9 +376,9 @@ else {
 
     	
          $get = $this->input->get(); 
-         $no_regis = $get['id'];
+         $id = $get['id'];
          
-         $this->db->where('no_register',$no_regis);
+         $this->db->where('id',$id);
          $izin_praktek = $this->db->get('situ');
          $data_array = $izin_praktek->row_array();
 
@@ -398,9 +420,9 @@ else {
 
         function hapusdata(){
     	$get = $this->input->post();
-    	$no_regis = $get['id'];
+    	$id = $get['id'];
 
-    	$data = array('no_register' => $no_regis, );
+    	$data = array('id' => $id, );
 
     	$res = $this->db->delete('situ', $data);
         if($res){
@@ -420,9 +442,9 @@ else {
 
     	
          $get = $this->input->get(); 
-         $no_regis = $get['id'];
+         $id = $get['id'];
          
-         $this->db->where('no_register',$no_regis);
+         $this->db->where('id',$id);
          $situ = $this->db->get('situ');
          $data_array = $situ->row_array();
 
@@ -431,7 +453,7 @@ else {
          $data_array['tgl_lahir'] = flipdate($data_array['tgl_lahir']);
 
          $data_array['action'] = 'update';
-         $data_array['curPage'] = 'siup';
+         $data_array['curPage'] = 'situ';
          // show_array($data); exit;
     	 // show_array($data_array);
       //    exit();
@@ -466,7 +488,7 @@ else {
     function printsurat(){
     $get = $this->input->get(); 
     
-    $no_regis = $get['id'];
+    $id = $get['id'];
 
     
      
@@ -483,7 +505,7 @@ else {
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
-      $this->db->where("m.no_regis",$no_regis);
+      $this->db->where("m.id",$id);
 
      $resx = $this->db->get();
 
@@ -537,7 +559,7 @@ else {
     function printsuratizin(){
     $get = $this->input->get(); 
     
-    $no_regis = $get['id'];
+    $id = $get['id'];
 
      $userdata = $this->session->userdata('admin_login');
         
@@ -564,7 +586,7 @@ else {
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
-      $this->db->where("m.no_register",$no_regis);
+      $this->db->where("m.id",$id);
 
      $resx = $this->db->get();
 
@@ -573,7 +595,7 @@ else {
     $data['header'] = "Dokumen Persyaratan Izin Tempat Usaha";
     $data['query'] = $resx->row_array();
 
-    $timestamp = strtotime($data['query']['tgl_verifikasi']);
+    $timestamp = strtotime($data['query']['tgl_register']);
 
     $day = date('l', $timestamp);
     $data['d_surat'] = date('d', $timestamp);
@@ -583,6 +605,18 @@ else {
     $data['m_surat'] = bulan($bulan);
 
     $data['hari'] = hari($day);
+
+
+    $timestampv = strtotime($data['query']['tgl_verifikasi']);
+
+    $dayv = date('l', $timestampv);
+    $data['dv_surat'] = date('d', $timestampv);
+    $bulanv = date('m', $timestampv);
+    $data['yv_surat'] = date('Y', $timestampv);
+
+    $data['mv_surat'] = bulan($bulanv);
+
+    $data['hariv'] = hari($dayv);
     // show_array($data);
     // exit();
 
@@ -623,7 +657,7 @@ else {
     function formulir(){
     $get = $this->input->get(); 
     
-    $no_regis = $get['id'];
+    $id = $get['id'];
 
     
      
@@ -640,7 +674,7 @@ else {
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
-      $this->db->where("m.no_register",$no_regis);
+      $this->db->where("m.id",$id);
 
      $resx = $this->db->get();
 
@@ -649,7 +683,7 @@ else {
     $data['header'] = "Blanko Permohonan SITU";
     $data['query'] = $resx->row_array();
 
-    $timestamp = strtotime($data['query']['tgl_verifikasi']);
+    $timestamp = strtotime($data['query']['tgl_register']);
 
     $day = date('l', $timestamp);
     $data['d_surat'] = date('d', $timestamp);

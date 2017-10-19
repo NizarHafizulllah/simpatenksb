@@ -2,22 +2,22 @@
 
 
 class kab_minyak extends adminkab_controller {
-	
-	var $controller;
-	public function kab_minyak(){
-		parent::__construct();
-		$this->controller = get_class($this);
+    
+    var $controller;
+    public function kab_minyak(){
+        parent::__construct();
+        $this->controller = get_class($this);
         $this->load->model('coremodel','cm');
-		$this->load->model($this->controller.'_model','dm');
-		$this->load->helper("tanggal");
-	}
-	
-		function index(){
-		
+        $this->load->model($this->controller.'_model','dm');
+        $this->load->helper("tanggal");
+    }
+    
+        function index(){
+        
 
 
 
-		$data_array=array();
+        $data_array=array();
 
         $data_array['curPage'] = 'minyak';
 
@@ -26,25 +26,25 @@ class kab_minyak extends adminkab_controller {
                                             '2' => 'Disetujui',
                                             '3' => 'Tidak Disetujui', );
 
-		$data_array['arr_kecamatan'] = $this->cm->arr_dropdown3("tiger_kecamatan", "id", "kecamatan", "kecamatan", "id_kota", "52_7");
+        $data_array['arr_kecamatan'] = $this->cm->arr_dropdown3("tiger_kecamatan", "id", "kecamatan", "kecamatan", "id_kota", "52_7");
 
-		$content = $this->load->view($this->controller."_view",$data_array,true);
+        $content = $this->load->view($this->controller."_view",$data_array,true);
 
-		$this->set_subtitle("Izin Depo Pangkalan Minyak");
-		$this->set_title("Izin Depo Pangkalan Minyak");
-		$this->set_content($content);
-		$this->cetak();
+        $this->set_subtitle("Surat Izin Depo Pangkalan Minyak");
+        $this->set_title("Surat Izin Depo Pangkalan Minyak");
+        $this->set_content($content);
+        $this->cetak();
 
-	}
+    }
 
 
-		 function get_data() {
+         function get_data() {
 
-    	
-    	// show_array($userdata);
+        
+        // show_array($userdata);
 
-    	$draw = $_REQUEST['draw']; // get the requested page 
-    	$start = $_REQUEST['start'];
+        $draw = $_REQUEST['draw']; // get the requested page 
+        $start = $_REQUEST['start'];
         $limit = $_REQUEST['length']; // get how many rows we want to have into the grid 
         $sidx = isset($_REQUEST['order'][0]['column'])?$_REQUEST['order'][0]['column']:0; // get index row - i.e. user click to sort 
         $sord = isset($_REQUEST['order'][0]['dir'])?$_REQUEST['order'][0]['dir']:"asc"; // get the direction if(!$sidx) $sidx =1;  
@@ -60,23 +60,23 @@ class kab_minyak extends adminkab_controller {
 
       //  order[0][column]
         $req_param = array (
-				"sort_by" => $sidx,
-				"sort_direction" => $sord,
-				"limit" => null,
-				"no_regis" => $no_regis,
+                "sort_by" => $sidx,
+                "sort_direction" => $sord,
+                "limit" => null,
+                "no_regis" => $no_regis,
                 "nama_pemohon" => $nama_pemohon,
-				"kecamatan" => $kecamatan,
+                "kecamatan" => $kecamatan,
                 "status" => $status,
-				 
-		);   
+                 
+        );   
 
-		// show_array($req_param);
+        // show_array($req_param);
   //       exit();  
            
         $row = $this->dm->data($req_param)->result_array();
 
 
-		
+        
         $count = count($row); 
        
         
@@ -92,7 +92,7 @@ class kab_minyak extends adminkab_controller {
        
         $arr_data = array();
         foreach($result as $row) : 
-		$id = $row['no_regis'];
+        $id = $row['id'];
 
         $action = "<div class='btn-group'>
                               <button type='button' class='btn btn-primary'>Action</button>
@@ -101,7 +101,7 @@ class kab_minyak extends adminkab_controller {
                                 <span class='sr-only'>Toggle Dropdown</span>
                               </button>
                               <ul class='dropdown-menu' role='menu'>
-                              	<li><a href='kab_imb/status?id=$id'><i class='fa fa-eye'></i> Status</a></li>
+                                <li><a href='$this->controller/status?id=$id'><i class='fa fa-eye'></i> Status</a></li>
                               </ul>
                             </div>";
 
@@ -112,25 +112,25 @@ class kab_minyak extends adminkab_controller {
         }else if ($row['status']=='3') {
             $status = '<span class="label label-danger"> Tidak Disetujui</span>';
         }
-        	 
-        	$arr_data[] = array(
-        		$row['no_regis'],
-        		$row['nama_pemohon'],
-        		flipdate($row['tgl_verifikasi']),
+             
+            $arr_data[] = array(
+                $row['no_register'],
+                $row['nama_pemohon'],
+                $row['tgl_verifikasi'],
                 $row['nm_kecamatan'],
-        		$row['nama_petugas_verifikasi'],
+                $row['nama_petugas_verifikasi'],
                 $status,
-        	   $action
-        		
-         			 
-        		  				);
+               $action
+                
+                     
+                                );
         endforeach;
 
          $responce = array('draw' => $draw, // ($start==0)?1:$start,
-        				  'recordsTotal' => $count, 
-        				  'recordsFiltered' => $count,
-        				  'data'=>$arr_data
-        	);
+                          'recordsTotal' => $count, 
+                          'recordsFiltered' => $count,
+                          'data'=>$arr_data
+            );
          
         echo json_encode($responce); 
     }
@@ -141,20 +141,18 @@ class kab_minyak extends adminkab_controller {
 
         
          $get = $this->input->get(); 
-         $no_regis = $get['id'];
+         $id = $get['id'];
          
-         $this->db->where('no_regis',$no_regis);
-         $imb = $this->db->get('imb');
+         $this->db->where('id',$id);
+         $imb = $this->db->get('minyak');
          $data_array = $imb->row_array();
 
          $data_array['tgl_verifikasi'] = flipdate($data_array['tgl_verifikasi']);
-         $data_array['tgl_surat'] = flipdate($data_array['tgl_surat']);
-         $data_array['tgl_rekom_desa'] = flipdate($data_array['tgl_rekom_desa']);
-         $data_array['tgl_rekom_uptd'] = flipdate($data_array['tgl_rekom_uptd']);
-         $data_array['tgl_skgr'] = flipdate($data_array['tgl_skgr']);
+         $data_array['tgl_register'] = flipdate($data_array['tgl_register']);
+         $data_array['tgl_lahir'] = flipdate($data_array['tgl_lahir']);
 
          $data_array['action'] = 'update';
-         $data_array['curPage'] = 'imb_satu';
+         $data_array['curPage'] = 'minyak';
 
 
          $data_array['arr_status'] = array('1' => "- Pilih status -",
@@ -182,8 +180,8 @@ class kab_minyak extends adminkab_controller {
 
         $content = $this->load->view($this->controller."_status_view",$data_array,true);
 
-        $this->set_subtitle("Status IMB");
-        $this->set_title("Status IMB");
+     $this->set_subtitle("Status Izin Depo Pangkalan Minyak");
+        $this->set_title("Status Izin Depo Pangkalan Minyak");
         $this->set_content($content);
         $this->cetak();
 
@@ -201,25 +199,39 @@ class kab_minyak extends adminkab_controller {
 
 
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('no_regis','Nomor registrasi','required');
+        $this->form_validation->set_rules('nik_pemohon','Nomor registrasi','required');
         $this->form_validation->set_rules('nama_pemohon','Nama Pemohon','required');
-        $this->form_validation->set_rules('alamat','Alamat','required');
-        $this->form_validation->set_rules('pimb','Syarat umum pertama','required');
-        $this->form_validation->set_rules('ktp','Syarat umum kedua','required');
-        $this->form_validation->set_rules('foto','Syarat umum ketiga','required');
-        $this->form_validation->set_rules('sertifikat_tanah','Syarat umum keempat','required');
-        $this->form_validation->set_rules('pbb','Syarat umum kelima','required');
-        $this->form_validation->set_rules('bap','Syarat umum keenam','required');
-        $this->form_validation->set_rules('penelitian_tanah','Syarat umum ketujuh','required');
-        $this->form_validation->set_rules('setuju_sempada_tanah','Syarat umum kedelapan','required');
-        $this->form_validation->set_rules('rekom_dishub','Syarat umum kesembilan','required');
-        $this->form_validation->set_rules('tek_gamabar_rencana','Syarat teknis pertama','required');
-        $this->form_validation->set_rules('tek_instalasi_air','Syarat teknis kedua','required');
-        $this->form_validation->set_rules('tek_penelitian_tanah','Syarat teknis ketiga','required');
-        $this->form_validation->set_rules('tek_pengaman','Syarat teknis keempat','required');
-        $this->form_validation->set_rules('sistem_drainase','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('tempat_lahir','Alamat','required');
+        $this->form_validation->set_rules('tgl_lahir','Syarat umum pertama','required');
+        $this->form_validation->set_rules('pekerjaan','Syarat umum kedua','required');
+        $this->form_validation->set_rules('alamat','Syarat umum ketiga','required');
+        $this->form_validation->set_rules('no_telp','Syarat umum keempat','required');
+        $this->form_validation->set_rules('negara_pemohon','Syarat umum kelima','required');
+        $this->form_validation->set_rules('nama_usaha','Syarat umum keenam','required');
+        $this->form_validation->set_rules('jenis_usaha','Syarat umum ketujuh','required');
+        $this->form_validation->set_rules('ukuran_luas_usaha','Syarat umum kedelapan','required');
+        $this->form_validation->set_rules('lokasi_usaha','Syarat umum kesembilan','required');
+        $this->form_validation->set_rules('status_bangunan_tempat_usaha','Syarat teknis pertama','required');
+        $this->form_validation->set_rules('npwpd','Syarat teknis kedua','required');
+        $this->form_validation->set_rules('klasifikasi_usaha','Syarat teknis ketiga','required');
+        $this->form_validation->set_rules('retribusi_perthn_f','Syarat teknis pertahun','required');
+        $this->form_validation->set_rules('tgl_register','Syarat teknis keempat','required');
+        $this->form_validation->set_rules('no_register','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nama_petugas_verifikasi','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('tgl_verifikasi','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('nama_camat','Syarat teknis kelima','required');
+        $this->form_validation->set_rules('nip_camat','Tgl. Surat','required');
+        $this->form_validation->set_rules('ktp','Tgl. Lahir Pemohon','required');
+        $this->form_validation->set_rules('fc_hak_tanah','Tempat Lahir Pemohon','required');
+        $this->form_validation->set_rules('sp_desa','No. Telp. Pemohon','required');
+        $this->form_validation->set_rules('sp_materai','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('denah_lokasi','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('foto','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('fc_pbb','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('rekom_uptd','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('gambar_bangunan','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('fc_siu','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('instalasi_air','Pekerjaan Pemohon','required');
+        $this->form_validation->set_rules('siup_asli','Pekerjaan Pemohon','required');
           
          
         $this->form_validation->set_message('required', ' Harap isi semua data');
@@ -238,8 +250,8 @@ if($this->form_validation->run() == TRUE ) {
         
 
     
-        $this->db->where('no_regis', $post['no_regis']);
-        $res = $this->db->update('imb', $data); 
+        $this->db->where('id', $post['id']);
+        $res = $this->db->update('minyak', $data); 
         if($res){
             $arr = array("error"=>false,'message'=>"BERHASIL DIUPDATE");
         }

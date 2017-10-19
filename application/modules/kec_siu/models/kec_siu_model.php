@@ -18,7 +18,7 @@ class kec_siu_model extends CI_Model {
 
 		 extract($param);
 
-		 $kolom = array(0=>"no_regis",
+		 $kolom = array(0=>"no_register",
 							"nama_pemohon",
 							"id_kecamatan"
 							
@@ -27,13 +27,13 @@ class kec_siu_model extends CI_Model {
 
 		$this->db->where("kecamatan", $id_kecamatan);
 
-		 $this->db->select('*')->from("imb");
+		 $this->db->select('*')->from("siu");
 
 
 		 
 
 		 if(!empty($no_regis)) {
-		 	$this->db->like("no_regis",$no_regis);
+		 	$this->db->like("no_register",$no_regis);
 		 }
 
 		 if(!empty($nama_pemohon)) {

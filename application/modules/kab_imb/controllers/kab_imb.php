@@ -92,7 +92,7 @@ class kab_imb extends adminkab_controller {
        
         $arr_data = array();
         foreach($result as $row) : 
-		$id = $row['no_regis'];
+		$id = $row['id'];
 
         $action = "<div class='btn-group'>
                               <button type='button' class='btn btn-primary'>Action</button>
@@ -141,9 +141,9 @@ class kab_imb extends adminkab_controller {
 
         
          $get = $this->input->get(); 
-         $no_regis = $get['id'];
+         $id = $get['id'];
          
-         $this->db->where('no_regis',$no_regis);
+         $this->db->where('id',$id);
          $imb = $this->db->get('imb');
          $data_array = $imb->row_array();
 
@@ -238,7 +238,7 @@ if($this->form_validation->run() == TRUE ) {
         
 
     
-        $this->db->where('no_regis', $post['no_regis']);
+        $this->db->where('id', $post['id']);
         $res = $this->db->update('imb', $data); 
         if($res){
             $arr = array("error"=>false,'message'=>"BERHASIL DIUPDATE");

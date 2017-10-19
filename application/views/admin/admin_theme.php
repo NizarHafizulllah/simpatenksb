@@ -27,7 +27,7 @@ $userdata = $this->session->userdata('admin_login');
     
     <link href="<?php echo base_url(); ?>assets/vendors/iCheck/css/all.css" rel="stylesheet" type="text/css"/>
     
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/pages/datatables.css">
+    
 
 
 
@@ -122,78 +122,35 @@ $userdata = $this->session->userdata('admin_login');
                             <span class="mm-text ">1. Izin Apotik &amp; Toko Obat </span>
 
                         </a>
-                        <li class="<?php if($curPage=='irigasi'){ echo 'active'; } ?>">
-                        <a href="<?php echo site_url('kec_irigasi'); ?>">
-                            <i class="fa fa-fw fa-file-text-o"></i>
-                            <span class="mm-text ">2. Izin Jaringan Irigasi </span>
-                        </a>
-                    </li>
                     <li class="<?php if($curPage=='mikro'){ echo 'active'; } ?>">
                         <a href="<?php echo site_url('kec_mikro'); ?>">
                             <i class="fa fa-fw fa-file-text-o"></i>
-                            <span class="mm-text ">3. TDI Industri Mikro</span>
-                        </a>
-                    </li>
-                    <li class="<?php if($curPage=='siup'){ echo 'active'; } ?>">
-                        <a href="<?php echo site_url('kec_izinusaha'); ?>">
-                            <i class="fa fa-fw fa-file-text-o"></i>
-                            <span class="mm-text ">4. SIUP </span>
+                            <span class="mm-text ">2. TDI Industri Mikro</span>
                         </a>
                     </li>
                     <li class="<?php if($curPage=='situ'){ echo 'active'; } ?>">
                         <a href="<?php echo site_url('kec_situ'); ?>">
                             <i class="fa fa-fw fa-file-text-o"></i>
-                            <span class="mm-text ">5. SITU </span>
+                            <span class="mm-text ">3. SITU </span>
                         </a>
                     </li>
-                    <li class="<?php if($curPage=='imb_satu'||$curPage=='imb_dua'){ echo 'active'; } ?>">
-                        <a href="#">
+                    <li class="<?php if($curPage=='imb_satu'){ echo 'active'; } ?>">
+                        <a href="<?php echo site_url('kec_imb'); ?>">
                             <i class="fa fa-fw fa-file-text-o"></i>
-                            <span class="mm-text ">6. IMB </span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="sub-menu sub-submenu">
-                            <li class="<?php if($curPage=='imb_satu'){ echo 'active'; } ?>">
-                                <a href="<?php echo site_url('kec_imb'); ?>">
-                                    <i class="fa fa-fw fa-sitemap"></i> IMB Dibawah 250
-                                </a>
-                            </li>
-                            <li class="<?php if($curPage=='imb_dua'){ echo 'active'; } ?>">
-                                <a href="<?php echo site_url('kec_imb_dua'); ?>">
-                                    <i class="fa fa-fw fa-sitemap"></i> IMB Diatas 250
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="<?php if($curPage=='ho'){ echo 'active'; } ?>">
-                        <a href="<?php echo site_url('kec_ho'); ?>">
-                            <i class="fa fa-fw fa-file-text-o"></i>
-                            <span class="mm-text ">7. Ijin Gangguan (HO)</span>
-                        </a>
-                    </li>
-                    <li class="<?php if($curPage=='uptl'){ echo 'active'; } ?>">
-                        <a href="<?php echo site_url('kec_uptl'); ?>">
-                            <i class="fa fa-fw fa-file-text-o"></i>
-                            <span class="mm-text ">8. UPTL  </span>
-                        </a>
-                    </li>
-                    <li class="<?php if($curPage=='minyak'){ echo 'active'; } ?>">
-                        <a href="<?php echo site_url('kec_minyak'); ?>">
-                            <i class="fa fa-fw fa-file-text-o"></i>
-                            <span class="mm-text ">9. Ijin Depo Pangkalan Minyak </span>
+                            <span class="mm-text ">4. IMB Dibawah 250 </span>
                         </a>
                     </li>
                     <li class="<?php if($curPage=='siu'){ echo 'active'; } ?>">
                         <a href="<?php echo site_url('kec_siu'); ?>">
                             <i class="fa fa-fw fa-file-text-o"></i>
-                            <span class="mm-text ">10. Surat izin usaha</span>
+                            <span class="mm-text ">5. Surat izin usaha</span>
                         </a>
                     </li>
                     
                     </li>
                         </ul>
                     </li>
- <li class="menu-dropdown <?php if($curPage=='lahan'){ echo 'active'; } ?>"> 
+ <li class="menu-dropdown <?php if($curPage=='lahan'||$curPage=='p3a'||$curPage=='koperasi'||$curPage=='menara'){ echo 'active'; } ?>"> 
 
         <a href="#">
             <i class="menu-icon fa fa-files-o"></i>
@@ -232,16 +189,13 @@ $userdata = $this->session->userdata('admin_login');
 
             </li>
 
-             <li>
-            <a href="<?php echo site_url('index_admin'); ?>">
+             <li class="<?php if($curPage=='p3a'){ echo 'active'; } ?>">
+            <a href="<?php echo site_url('kec_kelembagaan'); ?>">
                 <i class="fa fa-fw fa-file-text-o"></i>
                 <span class="mm-text ">4. Rek. Pembentukan P3A </span>
             </a>
 
             </li>
-
-
-           
 
              <li class="<?php if($curPage=='lahan'){ echo 'active'; } ?>">
             <a href="<?php echo site_url('kec_lahan'); ?>">
@@ -266,8 +220,8 @@ $userdata = $this->session->userdata('admin_login');
 
             </li>
 
-              <li>
-            <a href="<?php echo site_url('index_admin'); ?>">
+              <li class="<?php if($curPage=='koperasi'){ echo 'active'; } ?>">
+            <a href="<?php echo site_url('kec_koperasi'); ?>">
                 <i class="fa fa-fw fa-file-text-o"></i>
                 <span class="mm-text ">8. Ijin Pendirian Koperasi</span>
             </a>
@@ -291,8 +245,8 @@ $userdata = $this->session->userdata('admin_login');
 
             </li>
 
-               <li>
-            <a href="<?php echo site_url('index_admin'); ?>">
+               <li class="<?php if($curPage=='menara'){ echo 'active'; } ?>">
+            <a href="<?php echo site_url('kec_menara'); ?>">
                 <i class="fa fa-fw fa-file-text-o"></i>
                 <span class="mm-text ">11. Rek. Menara Seluler</span>
             </a>
@@ -510,7 +464,7 @@ $userdata = $this->session->userdata('admin_login');
 <script src="<?php echo base_url("assets") ?>/js/bootstrap-datepicker.js"></script>
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrapValidator.min.css">
 <script src="<?php echo base_url(); ?>assets/js/bootstrapValidator.min.js"></script>
-
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/pages/datatables.css">
 <script type="text/javascript">
 
 

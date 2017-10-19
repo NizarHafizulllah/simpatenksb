@@ -34,6 +34,7 @@
                     <label class="control-label col-md-3" for="text">Nama Pemohon</label>
                     <div class="col-md-9">
                       <input type="text" class="form-control" name="nama_pemohon" id="nama_pemohon" placeholder="Nama Pemohon" value="<?php echo isset($nama_pemohon)?$nama_pemohon:''; ?>">
+                      <input type="hidden" name="id" id="id" value="<?php echo isset($id)?$id:'' ?>">
                     </div>
                   </div> 
                   <div class="form-group p-10">
@@ -108,42 +109,42 @@
                 <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">Tgl. Rekomendasi Desa</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control tanggal" name="tgl_rekom_desa" id="tgl_rekom_desa" placeholder="Tanggal Surat" data-date-format="dd-mm-yyyy" value="<?php echo isset($tgl_rekom_desa)?$tgl_rekom_desa:''; ?>">
+                      <input type="text" class="form-control tanggal" name="tgl_rekom_desa" id="tgl_rekom_desa" placeholder="Tgl. Rekomendasi Desa" data-date-format="dd-mm-yyyy" value="<?php echo isset($tgl_rekom_desa)?$tgl_rekom_desa:''; ?>">
                     </div>
                   </div>
 
               <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">No. Rekomendasi Desa</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control" name="no_rekom_desa" id="no_rekom_desa" placeholder="No. Registrasi" value="<?php echo isset($no_rekom_desa)?$no_rekom_desa:''; ?>" >
+                      <input type="text" class="form-control" name="no_rekom_desa" id="no_rekom_desa" placeholder="No. Rekomendasi Desa" value="<?php echo isset($no_rekom_desa)?$no_rekom_desa:''; ?>" >
                     </div>
                   </div>
 
               <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">Tgl. Rekomendasi UPTD</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control tanggal" name="tgl_rekom_uptd" id="tgl_rekom_uptd" placeholder="Tanggal Surat" data-date-format="dd-mm-yyyy" value="<?php echo isset($tgl_rekom_uptd)?$tgl_rekom_uptd:''; ?>">
+                      <input type="text" class="form-control tanggal" name="tgl_rekom_uptd" id="tgl_rekom_uptd" placeholder="Tgl. Rekomendasi UPTD" data-date-format="dd-mm-yyyy" value="<?php echo isset($tgl_rekom_uptd)?$tgl_rekom_uptd:''; ?>">
                     </div>
                   </div>
 
               <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">No. Rekomendasi UPTD</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control" name="no_rekom_uptd" id="no_rekom_uptd" placeholder="No. Registrasi" value="<?php echo isset($no_rekom_uptd)?$no_rekom_uptd:''; ?>" >
+                      <input type="text" class="form-control" name="no_rekom_uptd" id="no_rekom_uptd" placeholder="No. Rekomendasi UPTD" value="<?php echo isset($no_rekom_uptd)?$no_rekom_uptd:''; ?>" >
                     </div>
                   </div>
 
               <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">Tgl. SKGR</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control tanggal" name="tgl_skgr" id="tgl_skgr" placeholder="Tanggal Surat" data-date-format="dd-mm-yyyy" value="<?php echo isset($tgl_skgr)?$tgl_skgr:''; ?>">
+                      <input type="text" class="form-control tanggal" name="tgl_skgr" id="tgl_skgr" placeholder="Tgl. SKGR" data-date-format="dd-mm-yyyy" value="<?php echo isset($tgl_skgr)?$tgl_skgr:''; ?>">
                     </div>
                   </div>
 
               <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">No. SKGR</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control" name="no_skgr" id="no_skgr" placeholder="No. Registrasi" value="<?php echo isset($no_skgr)?$no_skgr:''; ?>" >
+                      <input type="text" class="form-control" name="no_skgr" id="no_skgr" placeholder="No. SKGR" value="<?php echo isset($no_skgr)?$no_skgr:''; ?>" >
                     </div>
                   </div>
 

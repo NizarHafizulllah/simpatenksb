@@ -164,7 +164,7 @@ class kec_lahan extends admin_controller {
         $data_array['action'] = 'simpan';
         $data_array['tgl_verifikasi'] = "";
         $data_array['tgl_surat'] = ""; 
-        $data_array['curPage'] = 'situ';
+        $data_array['curPage'] = 'lahan';
 
         $userdata = $this->session->userdata('admin_login');
 
@@ -357,7 +357,7 @@ else {
          $no_regis = $get['id'];
          
          $this->db->where('no_register',$no_regis);
-         $izin_praktek = $this->db->get('situ');
+         $izin_praktek = $this->db->get('lahan');
          $data_array = $izin_praktek->row_array();
 
          $data_array['tgl_verifikasi'] = flipdate($data_array['tgl_verifikasi']);
@@ -365,7 +365,7 @@ else {
          $data_array['tgl_lahir'] = flipdate($data_array['tgl_lahir']);
 
          $data_array['action'] = 'update';
-         $data_array['curPage'] = 'siup';
+         $data_array['curPage'] = 'lahan';
          // show_array($data); exit;
     	 // show_array($data_array);
       //    exit();
@@ -388,8 +388,8 @@ else {
 
         $content = $this->load->view($this->controller."_form_view",$data_array,true);
 
-		$this->set_subtitle("Edit Izin Tempat Usaha ");
-		$this->set_title("Edit Izin Tempat Usaha ");
+		$this->set_subtitle("Edit Izin Pemakaian lahan bekas ");
+		$this->set_title("Edit Izin Pemakaian lahan bekas ");
 		$this->set_content($content);
 		$this->cetak();
 
@@ -400,9 +400,9 @@ else {
     	$get = $this->input->post();
     	$no_regis = $get['id'];
 
-    	$data = array('no_register' => $no_regis, );
+    	$data = array('no_register' => $no_register, );
 
-    	$res = $this->db->delete('situ', $data);
+    	$res = $this->db->delete('lahan', $data);
         if($res){
             $arr = array("error"=>false,"message"=>"DATA BERHASIL DIHAPUS");
         }
@@ -422,16 +422,16 @@ else {
          $get = $this->input->get(); 
          $no_regis = $get['id'];
          
-         $this->db->where('no_register',$no_regis);
-         $situ = $this->db->get('situ');
-         $data_array = $situ->row_array();
+         $this->db->where('no_register',$no_register);
+         $situ = $this->db->get('lahan');
+         $data_array = $lahan->row_array();
 
          $data_array['tgl_verifikasi'] = flipdate($data_array['tgl_verifikasi']);
          $data_array['tgl_register'] = flipdate($data_array['tgl_register']);
          $data_array['tgl_lahir'] = flipdate($data_array['tgl_lahir']);
 
          $data_array['action'] = 'update';
-         $data_array['curPage'] = 'siup';
+         $data_array['curPage'] = 'lahan';
          // show_array($data); exit;
     	 // show_array($data_array);
       //    exit();
@@ -454,8 +454,8 @@ else {
 
         $content = $this->load->view($this->controller."_status_view",$data_array,true);
 
-		$this->set_subtitle("Status Izin Tempat Usaha ");
-		$this->set_title("Status Izin Tempat Usaha    ");
+		$this->set_subtitle("Status Izin Pemakaian Lahan Bekas ");
+		$this->set_title("Status Izin Pemakaian Lahan Bekas    ");
 		$this->set_content($content);
 		$this->cetak();
 
@@ -466,7 +466,7 @@ else {
     function printsurat(){
     $get = $this->input->get(); 
     
-    $no_regis = $get['id'];
+    $no_register = $get['id'];
 
     
      
@@ -477,19 +477,19 @@ else {
 
     $this->db->select('m.*, kec.kecamatan as nm_kecamatan, kab.kota as kabupaten');
 
-      $this->db->from("imb m");
+      $this->db->from("lahan m");
       $this->db->join('tiger_kecamatan kec','m.kecamatan=kec.id');
       $this->db->join('tiger_kota kab','m.kabupaten=kab.id');
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
-      $this->db->where("m.no_regis",$no_regis);
+      $this->db->where("m.no_register",$no_register);
 
      $resx = $this->db->get();
 
 
     $data['controller'] = get_class($this);
-    $data['header'] = "Dokumen Persyaratan IMB";
+    $data['header'] = "Dokumen Persyaratan Surat Rekomendasi";
     $data['query'] = $resx->row_array();
 
     $timestamp = strtotime($data['query']['tgl_verifikasi']);
@@ -558,7 +558,7 @@ else {
 
     $this->db->select('m.*, kec.kecamatan as nm_kecamatan, kab.kota as kabupaten');
 
-      $this->db->from("situ m");
+      $this->db->from("lahan m");
       $this->db->join('tiger_kecamatan kec','m.kecamatan=kec.id');
       $this->db->join('tiger_kota kab','m.kabupaten=kab.id');
       // $this->db->where('id_birojasa', $id_birojasa);

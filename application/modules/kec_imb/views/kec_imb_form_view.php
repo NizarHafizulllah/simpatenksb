@@ -1,6 +1,8 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/pages/datatables.css">
 <link href="<?php echo base_url(); ?>assets/vendors/bootstrapvalidator/css/bootstrapValidator.min.css" rel="stylesheet">
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
+<script src="<?php echo base_url("assets"); ?>/vendors/fileinput/js/fileinput.min.js"></script>
+<link href="<?php echo base_url("assets"); ?>/vendors/fileinput/css/fileinput.min.css" rel="stylesheet">
 
 <style>
         @media(max-width: 1024px)
@@ -14,7 +16,7 @@
 
     
 
-<form method="post" class="form-horizontal p-10" id="form_<?php echo $action ?>" action="<?php echo site_url("$this->controller/$action"); ?>" role="form">
+<form method="post" class="form-horizontal p-10" id="form_<?php echo $action ?>" action="<?php echo site_url("$this->controller/$action"); ?>" role="form" enctype="multipart/form-data">
 <div class="row">
   <div class="col-lg-12">
                     <!-- First Basic Table strats here-->
@@ -30,6 +32,7 @@
                     <label class="control-label col-md-3" for="text">Nama Pemohon</label>
                     <div class="col-md-9">
                       <input type="text" class="form-control" name="nama_pemohon" id="nama_pemohon" placeholder="Nama Pemohon">
+
                     </div>
                   </div> 
                   <div class="form-group p-10">
@@ -86,12 +89,6 @@
             </div>
             <div class="panel-body">
 
-              <div class="form-group p-10">
-                    <label class="control-label col-md-3" for="text">Tanggal Surat</label>
-                    <div class="col-md-9">
-                      <input type="text" class="form-control tanggal" name="tgl_surat" id="tgl_surat" placeholder="Tanggal Surat" data-date-format="dd-mm-yyyy">
-                    </div>
-                  </div>
 
             	<div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">No. Registrasi</label>
@@ -388,6 +385,35 @@
     </div>
 </div>
 
+
+<div class="row">
+  <div class="col-lg-12">
+                    <!-- First Basic Table strats here-->
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="ti-layout-cta-left"></i> File
+               </h3>
+            </div>
+            <div class="panel-body">
+
+             
+
+              <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Upload File</label>
+                    <div class="col-md-9">
+                      <input type="file" name="file" id="file" class="file form-control"  data-show-preview="true" accept="aplication/pdf/*"/>
+                    </div>
+                  </div>
+
+                            
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="row">
 	<div class="col-lg-12">
                     <!-- First Basic Table strats here-->
@@ -399,32 +425,20 @@
             </div>
             <div class="panel-body">
 
-            	<div class="form-group p-10">
-                    <label class="control-label col-md-3" for="text">Nama Petugas Verifikasi</label>
-                    <div class="col-md-9">
-                      <input type="text" class="form-control" name="nama_petugas_verifikasi" id="nama_petugas_verifikasi" placeholder="Nama Petugas Verifikasi">
-                    </div>
-                  </div>
-
-                 <div class="form-group p-10">
-                    <label class="control-label col-md-3" for="text">Tanggal Verifikasi</label>
-                    <div class="col-md-9">
-                      <input type="text" class="form-control tanggal" name="tgl_verifikasi" id="tgl_verifikasi" placeholder="Tanggal Verifikasi" data-date-format="dd-mm-yyyy">
-                    </div>
-                  </div> 
+            	
 
 
                   <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">Nama Camat</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control" name="nama_camat" id="nama_camat" placeholder="Nama Camat">
+                      <input type="text" class="form-control" name="nama_camat" id="nama_camat" placeholder="Nama Camat" value="<?php echo isset($nama_camat)?$nama_camat:'' ?>">
                     </div>
                   </div>
 
                   <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">NIP Camat</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control" name="nip_camat" id="nip_camat" placeholder="NIP Camat">
+                      <input type="text" class="form-control" name="nip_camat" id="nip_camat" placeholder="NIP Camat" value="<?php echo isset($nip_camat)?$nip_camat:'' ?>">
                     </div>
                   </div>
 

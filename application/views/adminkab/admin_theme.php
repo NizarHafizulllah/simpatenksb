@@ -14,7 +14,7 @@ $userdata = $this->session->userdata('adminkab_login');
     <script src="<?php echo base_url('assets/plugins/jQuery/jQuery-2.1.4.min.js'); ?>"></script>
 
 
-     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap-dialog.min.css">
+     <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap-dialog.min.css"> -->
 
     
     <!-- global css -->
@@ -66,7 +66,7 @@ $userdata = $this->session->userdata('adminkab_login');
                         </li>
                         <!-- Menu Body -->
                         <li class="p-t-3">
-                            <a href="user_profile.html">
+                            <a href="<?php echo site_url('profil_kabupaten'); ?>">
                                 Profile<i class="fa fa-fw fa-user pull-right"></i>
                             </a>
                         </li>
@@ -103,7 +103,7 @@ $userdata = $this->session->userdata('adminkab_login');
 <li class="menu-dropdown <?php if($curPage=='user'||$curPage=='user_add'){ echo 'active'; } ?>">
                         <a href="#">
                             <i class="menu-icon fa fa-users"></i>
-                            <span>Admin Kecamatan</span>
+                            <span>Admin Kabupaten</span>
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="sub-menu">
@@ -193,7 +193,7 @@ $userdata = $this->session->userdata('adminkab_login');
                     <li class="<?php if($curPage=='minyak'){ echo 'active'; } ?>">
                         <a href="<?php echo site_url('kab_minyak'); ?>">
                             <i class="fa fa-fw fa-file-text-o"></i>
-                            <span class="mm-text ">9. Ijin Depo Pangkalan Minyak </span>
+                            <span class="mm-text ">9. Izin Depo Pangkalan Minyak </span>
                         </a>
                     </li>
                     <li class="<?php if($curPage=='siu'){ echo 'active'; } ?>">
@@ -206,7 +206,7 @@ $userdata = $this->session->userdata('adminkab_login');
                     </li>
                         </ul>
                     </li>
- <li class="menu-dropdown"> 
+ <li class="menu-dropdown <?php if($curPage=='lahan'||$curPage=='p3a'||$curPage=='koperasi'||$curPage=='menara'){ echo 'active'; } ?>">  
 
         <a href="#">
             <i class="menu-icon fa fa-files-o"></i>
@@ -245,8 +245,10 @@ $userdata = $this->session->userdata('adminkab_login');
 
             </li>
 
-             <li>
-            <a href="<?php echo site_url('admin'); ?>">
+             <li class="<?php if ($curPage=='p3a') {
+                 echo 'active';
+             } ?>">
+            <a href="<?php echo site_url('kab_kelembagaan'); ?>">
                 <i class="fa fa-fw fa-file-text-o"></i>
                 <span class="mm-text ">4. Rek. Pembentukan P3A </span>
             </a>
@@ -279,8 +281,10 @@ $userdata = $this->session->userdata('adminkab_login');
 
             </li>
 
-              <li>
-            <a href="<?php echo site_url('admin'); ?>">
+              <li class="<?php if ($curPage=='koperasi') {
+                 echo 'active';
+             } ?>">
+            <a href="<?php echo site_url('kab_koperasi'); ?>">
                 <i class="fa fa-fw fa-file-text-o"></i>
                 <span class="mm-text ">8. Ijin Pendirian Koperasi</span>
             </a>
@@ -304,8 +308,10 @@ $userdata = $this->session->userdata('adminkab_login');
 
             </li>
 
-               <li>
-            <a href="<?php echo site_url('admin'); ?>">
+               <li class="<?php if ($curPage=='menara') {
+                 echo 'active';
+             } ?>">
+            <a href="<?php echo site_url('kab_menara'); ?>">
                 <i class="fa fa-fw fa-file-text-o"></i>
                 <span class="mm-text ">11. Rek. Menara Seluler</span>
             </a>

@@ -74,6 +74,10 @@ class kab_add_kecamatan extends adminkab_controller{
         	$level = 'Admin Kecamatan';
         }else if ($row['level']==2) {
         	$level = 'Admin Kabupaten';
+        }else if ($row['level']==4) {
+            $level = 'Operator Kecamatan';
+        }else if ($row['level']==5) {
+            $level = 'Operator Kecamatan';
         }
         	
         	 
@@ -238,7 +242,7 @@ function cek_username2($username){
          $get = $this->input->get(); 
          $id = $get['id'];
 
-         $data_array['curPage'] = 'user';
+         
 
          $this->db->where('id',$id);
          $pengguna = $this->db->get('admin');
@@ -253,6 +257,7 @@ function cek_username2($username){
         $data['action'] = 'update';
         $data['form'] = 'form_update';
          // show_array($data); exit;
+        $data['curPage'] = 'user';
          
         
 

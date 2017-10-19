@@ -2,6 +2,8 @@
 <link href="<?php echo base_url(); ?>assets/vendors/bootstrapvalidator/css/bootstrapValidator.min.css" rel="stylesheet">
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/vendors/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
 
+<script src="<?php echo base_url("assets"); ?>/vendors/fileinput/js/fileinput.min.js"></script>
+<link href="<?php echo base_url("assets"); ?>/vendors/fileinput/css/fileinput.min.css" rel="stylesheet">
 <style>
         @media(max-width: 1024px)
         {
@@ -14,7 +16,7 @@
 
     
 
-<form method="post" class="form-horizontal p-10" id="form_<?php echo $action ?>" action="<?php echo site_url("$this->controller/$action"); ?>" role="form">
+<form method="post" class="form-horizontal p-10" id="form_<?php echo $action ?>" action="<?php echo site_url("$this->controller/$action"); ?>" role="form" enctype="multipart/form-data">
 <div class="row">
 	<div class="col-lg-12">
                     <!-- First Basic Table strats here-->
@@ -31,6 +33,7 @@
                     <label class="control-label col-md-3" for="text">NIK Pemohon</label>
                     <div class="col-md-9">
                       <input type="text" class="form-control" name="nik_pemohon" id="nik_pemohon" placeholder="NIK Pemohon" value="<?php echo isset($nik_pemohon)?$nik_pemohon:''; ?>">
+                      <input type="hidden" name="id" value="<?php echo isset($id)?$id:''; ?>">
                     </div>
                   </div>
 
@@ -69,12 +72,7 @@
                     </div>
                   </div> 
 
-                   <div class="form-group p-10">
-                    <label class="control-label col-md-3" for="text">Negara</label>
-                    <div class="col-md-9">
-                      <input type="text" class="form-control" name="negara_pemohon" id="negara_pemohon" placeholder="Negara" value="<?php echo isset($negara_pemohon)?$negara_pemohon:''; ?>">
-                    </div>
-                  </div> 
+                 
 
 
 
@@ -150,7 +148,7 @@
                   <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">Klasifikasi Usaha</label>
                     <div class="col-md-9">
-                      <input type="text" class="form-control" name="klasifikasi_usaha" id="klasifikasi_usaha" placeholder="Klasifikasi Usaha" value="<?php echo isset($klasifikasi_usaha)?$klasifikasi_usaha:''; ?>" >
+                      <?php echo form_dropdown("klasifikasi_usaha",$arr_klasifikasi,isset($klasifikasi_usaha)?$klasifikasi_usaha:'','id="klasifikasi_usaha" class="form-control input-style"'); ?>
                     </div>
                   </div>
 
@@ -671,6 +669,33 @@
 <?php } ?>
 
 <div class="row">
+  <div class="col-lg-12">
+                    <!-- First Basic Table strats here-->
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="ti-layout-cta-left"></i> File
+               </h3>
+            </div>
+            <div class="panel-body">
+
+             
+
+              <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Upload File</label>
+                    <div class="col-md-9">
+                      <input type="file" name="file" id="file" class="file form-control"  data-show-preview="true" accept="aplication/pdf/*"/>
+                    </div>
+                  </div>
+
+                            
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
 	<div class="col-lg-12">
                     <!-- First Basic Table strats here-->
         <div class="panel">
@@ -681,12 +706,7 @@
             </div>
             <div class="panel-body">
 
-             <div class="form-group p-10">
-                    <label class="control-label col-md-3" for="text">Tanggal Register</label>
-                    <div class="col-md-9">
-                      <input type="text" class="form-control tanggal" name="tgl_register" id="tgl_register" placeholder="Tanggal Register" data-date-format="dd-mm-yyyy" value="<?php echo isset($tgl_register)?$tgl_register:''; ?>">
-                    </div>
-                  </div>
+             
 
               <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">No. Registrasi</label>
@@ -694,21 +714,6 @@
                       <input type="text" class="form-control" name="no_register" id="no_register" placeholder="No. Registrasi" value="<?php echo isset($no_register)?$no_register:''; ?>" <?php if ($action=='update') { echo 'readonly'; } ?>>
                     </div>
                   </div>
-
-            	<div class="form-group p-10">
-                    <label class="control-label col-md-3" for="text">Nama Petugas Verifikasi</label>
-                    <div class="col-md-9">
-                      <input type="text" class="form-control" name="nama_petugas_verifikasi" id="nama_petugas_verifikasi" placeholder="Nama Petugas Verifikasi" value="<?php echo isset($nama_petugas_verifikasi)?$nama_petugas_verifikasi:''; ?>">
-                    </div>
-                  </div>
-
-                 <div class="form-group p-10">
-                    <label class="control-label col-md-3" for="text">Tanggal Verifikasi</label>
-                    <div class="col-md-9">
-                      <input type="text" class="form-control tanggal" name="tgl_verifikasi" id="tgl_verifikasi" placeholder="Tanggal Verifikasi" data-date-format="dd-mm-yyyy" value="<?php echo isset($tgl_verifikasi)?$tgl_verifikasi:''; ?>">
-                    </div>
-                  </div> 
-
 
                   <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">Nama Camat</label>

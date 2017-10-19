@@ -72,6 +72,7 @@
                     <label class="control-label col-md-3" for="text">Tanggal Surat</label>
                     <div class="col-md-9">
                       <input type="text" class="form-control" name="tgl_surat" id="tgl_surat" placeholder="Tanggal Surat" value="<?php echo $tgl_surat; ?>" readonly>
+                      <input type="hidden" name="id" value="<?php echo isset($id)?$id:''; ?>">
                     </div>
                   </div> 
 
