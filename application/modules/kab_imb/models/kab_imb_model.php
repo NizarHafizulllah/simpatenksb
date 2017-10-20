@@ -38,7 +38,7 @@ class kab_imb_model extends CI_Model {
 		 }
 
 		 if(!empty($no_regis)) {
-		 	$this->db->like("l.no_regis",$no_regis);
+		 	$this->db->like("l.no_surat",$no_regis);
 		 }
 
 		 if(!empty($nama_pemohon)) {

@@ -18,7 +18,7 @@ class kab_siu_model extends CI_Model {
 
 		 extract($param);
 
-		 $kolom = array(0=>"no_register",
+		 $kolom = array(0=>"no_surat",
 							"nama_pemohon",
 							"id_kecamatan"
 							
@@ -40,7 +40,7 @@ class kab_siu_model extends CI_Model {
 		 }
 
 		 if(!empty($no_regis)) {
-		 	$this->db->like("l.no_register",$no_regis);
+		 	$this->db->like("l.no_surat",$no_regis);
 		 }
 
 		 if(!empty($nama_pemohon)) {

@@ -23,7 +23,6 @@ $(document).ready(function(){
         dt.column(1).search($("#nama_pemohon").val())
         dt.column(2).search($("#no_regis").val())
         dt.column(3).search($("#kecamatan").val())
-        dt.column(4).search($("#status").val())
          .draw();
 
          return false;
@@ -34,7 +33,6 @@ $(document).ready(function(){
       $("#no_regis").val('');
       $("#nama_pemohon").val('');
       $("#kecamatan").val('');
-      $("#status").val('');
       $("#btn_submit").click();
      });
 

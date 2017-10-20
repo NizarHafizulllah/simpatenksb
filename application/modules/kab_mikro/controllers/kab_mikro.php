@@ -114,7 +114,7 @@ class kab_mikro extends adminkab_controller {
         }
         	 
         	$arr_data[] = array(
-        		$row['no_register'],
+        		$row['no_surat'],
         		$row['nama_pemohon'],
         		$row['tgl_verifikasi'],
                 $row['nm_kecamatan'],
