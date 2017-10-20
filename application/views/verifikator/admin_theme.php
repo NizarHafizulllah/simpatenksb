@@ -108,7 +108,7 @@ $userdata = $this->session->userdata('app_login');
 
 
  <ul class="navigation">
- <li class="menu-dropdown <?php if($curPage=='imb_satu'||$curPage=='imb_dua'||$curPage=='ho'||$curPage=='siup'||$curPage=='situ'||$curPage=='toko_obat'||$curPage=='irigasi'||$curPage=='mikro'||$curPage=='uptl'||$curPage=='minyak'||$curPage=='siu'){ echo 'active'; } ?>"> 
+ <li class="menu-dropdown <?php if($curPage=='imb_satu'||$curPage=='situ'||$curPage=='toko_obat'||$curPage=='mikro'||$curPage=='siu'){ echo 'active'; } ?>"> 
         <a href="#">
             <i class="menu-icon fa fa-desktop"></i>
             <span>PERIJINAN</span>
@@ -150,7 +150,7 @@ $userdata = $this->session->userdata('app_login');
                     </li>
                         </ul>
                     </li>
- <li class="menu-dropdown <?php if($curPage=='lahan'||$curPage=='p3a'||$curPage=='koperasi'||$curPage=='menara'){ echo 'active'; } ?>"> 
+ <li class="menu-dropdown <?php if($curPage=='p3a'||$curPage=='koperasi'||$curPage=='menara'){ echo 'active'; } ?>"> 
 
         <a href="#">
             <i class="menu-icon fa fa-files-o"></i>
@@ -159,63 +159,10 @@ $userdata = $this->session->userdata('app_login');
         </a>
         <ul class="sub-menu">
 
-
-
-           
-            <li>
-
-            <a href="<?php echo site_url('index_admin'); ?>">
-                <i class="fa fa-fw fa-file-text-o"></i>
-                <span class="mm-text ">1. Pendirian Sekolah</span>
-
-            </a>
-            </li>
-
-
-            <li>
-            <a href="<?php echo site_url('index_admin'); ?>">
-                <i class="fa fa-fw fa-file-text-o"></i>
-                <span class="mm-text ">2. Izin Tempat Kerja </span>
-            </a>
-
-            </li>
-
-
-            <li>
-            <a href="<?php echo site_url('index_admin'); ?>">
-                <i class="fa fa-fw fa-file-text-o"></i>
-                <span class="mm-text ">3. Izin Usaha Depot Isi Ulang </span>
-            </a>
-
-            </li>
-
              <li class="<?php if($curPage=='p3a'){ echo 'active'; } ?>">
             <a href="<?php echo site_url('kec_kelembagaan'); ?>">
                 <i class="fa fa-fw fa-file-text-o"></i>
                 <span class="mm-text ">4. Rek. Pembentukan P3A </span>
-            </a>
-
-            </li>
-
-             <li class="<?php if($curPage=='lahan'){ echo 'active'; } ?>">
-            <a href="<?php echo site_url('kec_lahan'); ?>">
-                <i class="fa fa-fw fa-file-text-o"></i>
-                <span class="mm-text ">5. Izin Pemakaian Lahan Bekas </span>
-            </a>
-
-            </li>
-
-              <li>
-            <a href="<?php echo site_url('index_admin'); ?>">
-                <i class="fa fa-fw fa-file-text-o"></i>
-                <span class="mm-text ">6. IMB Perusahaan & Perumahan </span>
-            </a>
-
-            </li>
-              <li>
-            <a href="<?php echo site_url('index_admin'); ?>">
-                <i class="fa fa-fw fa-file-text-o"></i>
-                <span class="mm-text ">7. Domisili Koperasi & UKM </span>
             </a>
 
             </li>
@@ -228,23 +175,6 @@ $userdata = $this->session->userdata('app_login');
 
             </li>
 
-              <li>
-            <a href="<?php echo site_url('index_admin'); ?>">
-                <i class="fa fa-fw fa-file-text-o"></i>
-                <span class="mm-text ">9. Rek. Modal UMKM</span>
-            </a>
-
-            </li>
-
-
-              <li>
-            <a href="<?php echo site_url('index_admin'); ?>">
-                <i class="fa fa-fw fa-file-text-o"></i>
-                <span class="mm-text ">10. Rek. LPK</span>
-            </a>
-
-            </li>
-
                <li class="<?php if($curPage=='menara'){ echo 'active'; } ?>">
             <a href="<?php echo site_url('kec_menara'); ?>">
                 <i class="fa fa-fw fa-file-text-o"></i>
@@ -252,167 +182,6 @@ $userdata = $this->session->userdata('app_login');
             </a>
 
             </li>
-
-            <li>
-            <a href="<?php echo site_url('index_admin'); ?>">
-                <i class="fa fa-fw fa-file-text-o"></i>
-                <span class="mm-text ">12. Rek. Ijin Trayek</span>
-            </a>
-
-            </li>
-
-            <li>
-            <a href="<?php echo site_url('index_admin'); ?>">
-                <i class="fa fa-fw fa-file-text-o"></i>
-                <span class="mm-text ">13. Rek. Organisasi Sosial</span>
-            </a>
-
-            </li>
-
-              <li>
-            <a href="<?php echo site_url('index_admin'); ?>">
-                <i class="fa fa-fw fa-file-text-o"></i>
-                <span class="mm-text ">14. Rek. Pemberian Penghargaan</span>
-            </a>
-
-            </li>
-
-            <li>
-                <a href="<?php echo site_url('index_admin'); ?>">
-                    <i class="fa fa-fw fa-file-text-o"></i>
-                    <span class="mm-text ">15. Rek. Tempat Pembudidayaan Perikanan</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="<?php echo site_url('index_admin'); ?>">
-                    <i class="fa fa-fw fa-file-text-o"></i>
-                    <span class="mm-text ">16. Rek. Tempat Pembudidayaan Perkebunan</span>
-                </a>
-            </li>
-            <li>
-                <a href="<?php echo site_url('index_admin'); ?>">
-                    <i class="fa fa-fw fa-file-text-o"></i>
-                    <span class="mm-text ">17. Rek. Tempat Budidaya Perkebunan</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="<?php echo site_url('index_admin'); ?>">
-                    <i class="fa fa-fw fa-file-text-o"></i>
-                    <span class="mm-text ">18. Rek. Pengolahan Hasil Perkebunan</span>
-                </a>
-            </li>
-
-
-            <li>
-                <a href="<?php echo site_url('index_admin'); ?>">
-                    <i class="fa fa-fw fa-file-text-o"></i>
-                    <span class="mm-text ">19. Rek. Pengolahan Sarang Burung , Madu dan Jamur</span>
-                </a>
-            </li>
-
-             <li>
-                <a href="<?php echo site_url('index_admin'); ?>">
-                    <i class="fa fa-fw fa-file-text-o"></i>
-                    <span class="mm-text ">20. Rek. Usaha Tenaga  Kelistrikan</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="<?php echo site_url('index_admin'); ?>">
-                    <i class="fa fa-fw fa-file-text-o"></i>
-                    <span class="mm-text ">21. Rek. Industri Pengusulan Modal</span>
-                </a>
-            </li>
-
-             <li>
-                <a href="<?php echo site_url('index_admin'); ?>">
-                    <i class="fa fa-fw fa-file-text-o"></i>
-                    <span class="mm-text ">22. Surat Ket. Penanaman Modal</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="<?php echo site_url('index_admin'); ?>">
-                    <i class="fa fa-fw fa-file-text-o"></i>
-                    <span class="mm-text ">23. Rek. Usaha SBBM</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="<?php echo site_url('index_admin'); ?>">
-                    <i class="fa fa-fw fa-file-text-o"></i>
-                    <span class="mm-text ">24. Rek. UPTL </span>
-                </a>
-            </li>
-
-            <li>
-                <a href="<?php echo site_url('index_admin'); ?>">
-                    <i class="fa fa-fw fa-file-text-o"></i>
-                    <span class="mm-text ">25. Rek. Pemanfaatan Tenaga Kerja Lokal </span>
-                </a>
-            </li>
-
-            <li>
-                <a href="<?php echo site_url('index_admin'); ?>">
-                    <i class="fa fa-fw fa-file-text-o"></i>
-                    <span class="mm-text ">26. Rek. Usaha Pertambangan &amp; Energi </span>
-                </a>
-            </li>
-
-
-            <li>
-                <a href="<?php echo site_url('index_admin'); ?>">
-                    <i class="fa fa-fw fa-file-text-o"></i>
-                    <span class="mm-text ">27. Rek. HO Besar dan Sedang </span>
-                </a>
-            </li>
-
-             <li>
-                <a href="<?php echo site_url('index_admin'); ?>">
-                    <i class="fa fa-fw fa-file-text-o"></i>
-                    <span class="mm-text ">28. Rek. Izin Tempat Usaha  </span>
-                </a>
-            </li>
-
-            <li>
-                <a href="<?php echo site_url('index_admin'); ?>">
-                    <i class="fa fa-fw fa-file-text-o"></i>
-                    <span class="mm-text ">29. Surat Keterangan Ahli Waris </span>
-                </a>
-            </li>
-
-            <li>
-                <a href="<?php echo site_url('index_admin'); ?>">
-                    <i class="fa fa-fw fa-file-text-o"></i>
-                    <span class="mm-text ">30. Surat Keterangan Pindah </span>
-                </a>
-            </li>
-
-            <li>
-                <a href="<?php echo site_url('index_admin'); ?>">
-                    <i class="fa fa-fw fa-file-text-o"></i>
-                    <span class="mm-text ">31. Rekomendasi Akte Kelahiran </span>
-                </a>
-            </li>
-
-            <li>
-                <a href="<?php echo site_url('index_admin'); ?>">
-                    <i class="fa fa-fw fa-file-text-o"></i>
-                    <span class="mm-text ">32. Surat Pengantar Pengurusan KTP </span>
-                </a>
-            </li>
-
-             <li>
-                <a href="<?php echo site_url('index_admin'); ?>">
-                    <i class="fa fa-fw fa-file-text-o"></i>
-                    <span class="mm-text ">33. Surat Keterangan kurang mampu </span>
-                </a>
-            </li>
-
-
-
 
 
         </ul>
