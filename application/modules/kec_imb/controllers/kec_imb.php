@@ -630,6 +630,17 @@ else {
     $data['hari'] = hari($day);
     // show_array($data);
     // exit();
+     $timestamp = strtotime($data['query']['tgl_surat']);
+
+    $day = date('l', $timestamp);
+    $data['dr_surat'] = date('d', $timestamp);
+    $bulan = date('m', $timestamp);
+    $data['yr_surat'] = date('Y', $timestamp);
+
+    $data['mr_surat'] = bulan($bulan);
+
+    $data['hari_r'] = hari($day);
+
 
     
     
@@ -694,7 +705,7 @@ else {
     $data['header'] = "Dokumen Persyaratan IMB";
     $data['query'] = $resx->row_array();
 
-    $timestamp = strtotime($data['query']['tgl_verifikasi']);
+    $timestamp = strtotime($data['query']['tgl_surat']);
 
     $day = date('l', $timestamp);
     $data['d_surat'] = date('d', $timestamp);

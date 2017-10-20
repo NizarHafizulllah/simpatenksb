@@ -93,7 +93,7 @@
   <tr>
     <td width="16%" height="27"><div align="left" style="font-size: 9px;"><strong>Membaca</strong></div></td>
     <td width="2%">:</td>
-    <td width="82%"><div align="justify" style="font-size: 9px;">Surat permohonan dari Saudara, tanggal <?php echo $d_surat.' Bulan '.$m_surat.' Tahun '.$y_surat; ?> yang bermaksud untuk memperoleh/mendaftar ulang/memperpanjang Surat Rekomendasi Izin Kerja Praktek Tenaga Kesehatan;</div></td>
+    <td width="82%"><div align="justify" style="font-size: 9px;">Surat permohonan dari Saudara, tanggal <?php echo $dr_surat.' Bulan '.$mr_surat.' Tahun '.$yr_surat; ?> yang bermaksud untuk memperoleh/mendaftar ulang/memperpanjang Surat Izin Usaha;</div></td>
   </tr>
 </table>
 <br/>&nbsp;
@@ -104,7 +104,7 @@
   <tr>
     <td width="16%" ><div align="left" style="font-size: 9px;"><strong>Menimbang</strong></div></td>
     <td width="2%">:</td>
-    <td width="82%"><div align="justify" style="font-size: 9px;">bahwa permohonan tersebut diatas telah dilakukan pemeriksaan dan memenuhi syarat-syarat sesuai peraturan dan ketentuan yang berlaku, maka permohonan yang bersangkutan telah dapat diberikan Surat Rekomendasi Izin Kerja Praktek Tenaga Kesehatan; </div> </td>
+    <td width="82%"><div align="justify" style="font-size: 9px;">bahwa permohonan tersebut diatas telah dilakukan pemeriksaan dan memenuhi syarat-syarat sesuai peraturan dan ketentuan yang berlaku, maka permohonan yang bersangkutan telah dapat diberikan Surat Izin Usaha; </div> </td>
   </tr>
 </table>
 <br/>&nbsp;
@@ -154,7 +154,7 @@
   <tr>
     <td width="16%"><div align="left" style="font-size: 9px;"><strong>Menetapkan</strong></div></td>
     <td width="2%"><strong>:</strong></td>
-    <td width="82%" colspan="2"><div align="justif" style="font-size: 9px;"> Memberikan/memperpanjang Surat Rekomendasi Izin Kerja Praktek Tenaga Kesehatan. kepada :   </div> </td>
+    <td width="82%" colspan="2"><div align="justif" style="font-size: 9px;"> Memberikan/memperpanjang Surat Izin Usaha. kepada :   </div> </td>
   </tr>
   <tr>
     <td><div align="left" style="font-size: 9px;">&nbsp;</div></td>

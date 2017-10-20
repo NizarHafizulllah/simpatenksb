@@ -93,7 +93,7 @@
   <tr>
     <td width="16%" height="27"><div align="left" style="font-size: 9px;"><strong>Membaca</strong></div></td>
     <td width="2%">:</td>
-    <td width="82%"><div align="justify" style="font-size: 9px;">Surat permohonan dari Saudara, tanggal <?php echo $d_surat.' Bulan '.$m_surat.' Tahun '.$y_surat; ?> yang bermaksud untuk memperoleh/mendaftar ulang/memperpanjang Surat Izin Tempat Usaha;</div></td>
+    <td width="82%"><div align="justify" style="font-size: 9px;">Surat permohonan dari Saudara, tanggal <?php echo $dr_surat.' Bulan '.$mr_surat.' Tahun '.$yr_surat; ?> yang bermaksud untuk memperoleh/mendaftar ulang/memperpanjang Surat Izin Tempat Usaha;</div></td>
   </tr>
 </table>
 <br/>&nbsp;

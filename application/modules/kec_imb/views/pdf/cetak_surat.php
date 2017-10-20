@@ -94,7 +94,7 @@
     <td width="16%" height="27"><div align="left" style="font-size: 9px;"><strong>Membaca</strong></div></td>
     <td width="2%">:</td>
     <td width="2%"><div align="left" style="font-size: 9px;">1.</div> </td>
-    <td width="80%"><div align="justify" style="font-size: 9px;">Surat Sdr/Sdri : <?php echo $query['nama_pemohon'] ?> tentang permohonan Izin Mendirikan Bangunan (IMB) tanggal <?php echo flipdate($query['tgl_rekom']) ?> dan sesuai dengan rekomendasi Kepala Desa/Lurah Nomor : <?php echo $query['no_rekom_desa'] ?>, tanggal <?php echo flipdate($query['tgl_rekom_desa']) ?>, untuk mendirikan bangunan <?php echo $query['nama_bangunan'] ?> di atas sebidang tanah yang terletak di <?php echo $query['letak_tanah'] ?> berdasarkan Surat Keterangan Ganti Rugi (SKGR) Nomor : <?php echo $query['no_skgr'] ?>, tanggal <?php echo flipdate($query['tgl_skgr']) ?>; </div></td>
+    <td width="80%"><div align="justify" style="font-size: 9px;">Surat Sdr/Sdri : <?php echo $query['nama_pemohon'] ?> tentang permohonan Izin Mendirikan Bangunan (IMB) tanggal <?php echo $dr_surat.' '.$mr_surat.' '.$yr_surat; ?> dan sesuai dengan rekomendasi Kepala Desa/Lurah Nomor : <?php echo $query['no_rekom_desa'] ?>, tanggal <?php echo flipdate($query['tgl_rekom_desa']) ?>, untuk mendirikan bangunan <?php echo $query['nama_bangunan'] ?> di atas sebidang tanah yang terletak di <?php echo $query['letak_tanah'] ?> berdasarkan Surat Keterangan Ganti Rugi (SKGR) Nomor : <?php echo $query['no_skgr'] ?>, tanggal <?php echo flipdate($query['tgl_skgr']) ?>; </div></td>
   </tr>
   <tr>
     <td width="16%" height="37">&nbsp;</td>

@@ -649,7 +649,7 @@
                     </div>
                     <div class="col-md-3">
                     <?php if (!empty($file)) {?>
-                      <a class="btn btn-primary form-control" target="_blank" href="<?php echo base_url('upload_file/toko_obat/'.$file.'.pdf'); ?>">Buka</a>  
+                      <a class="btn btn-primary form-control" target="_blank" href="<?php echo base_url('upload_file/toko_obat/'.$file); ?>">Buka</a>  
                     <?php }else{
                       echo 'Tidak Ada File';
                       } ?>

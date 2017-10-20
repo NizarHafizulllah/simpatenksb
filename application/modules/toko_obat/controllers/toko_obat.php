@@ -617,11 +617,12 @@ else {
 
 
 
-    $this->db->select('m.*, kec.kecamatan as nm_kecamatan, kab.kota as kabupaten');
+    $this->db->select('m.*, kec.kecamatan as nm_kecamatan, k.klasifikasi as klasifikasi_usaha, kab.kota as kabupaten');
 
       $this->db->from("toko_obat m");
       $this->db->join('tiger_kecamatan kec','m.kecamatan=kec.id');
       $this->db->join('tiger_kota kab','m.kabupaten=kab.id');
+      $this->db->join('klasifikasi_usaha k','k.id=m.klasifikasi_usaha');
       // $this->db->where('id_birojasa', $id_birojasa);
 
      
@@ -644,6 +645,17 @@ else {
     $data['m_surat'] = bulan($bulan);
 
     $data['hari'] = hari($day);
+
+    $timestamp = strtotime($data['query']['tgl_register']);
+
+    $day = date('l', $timestamp);
+    $data['dr_surat'] = date('d', $timestamp);
+    $bulan = date('m', $timestamp);
+    $data['yr_surat'] = date('Y', $timestamp);
+
+    $data['mr_surat'] = bulan($bulan);
+
+    $data['hari_r'] = hari($day);
     // show_array($data);
     // exit();
 
@@ -710,7 +722,7 @@ else {
     $data['header'] = "Blanko Permohonan ";
     $data['query'] = $resx->row_array();
 
-    $timestamp = strtotime($data['query']['tgl_verifikasi']);
+    $timestamp = strtotime($data['query']['tgl_register']);
 
     $day = date('l', $timestamp);
     $data['d_surat'] = date('d', $timestamp);
