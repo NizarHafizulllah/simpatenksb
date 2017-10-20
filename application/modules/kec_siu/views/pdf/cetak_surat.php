@@ -75,7 +75,7 @@
 
 <table width="100%">
   <tr>
-    <td><div align="center" style="font-size:10px"><strong>NOMOR  : <?php echo $query['no_register']; ?></strong></div></td>
+    <td><div align="center" style="font-size:10px"><strong>NOMOR  : <?php echo $query['no_surat']; ?></strong></div></td>
   </tr>
 </table>
 <br/>&nbsp;
