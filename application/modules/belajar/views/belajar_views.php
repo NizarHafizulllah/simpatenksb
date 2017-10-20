@@ -1,1 +1,0 @@
-yeyyy berhasil
