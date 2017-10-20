@@ -69,7 +69,7 @@
 
 <table width="100%">
   <tr>
-    <td><div align="center" class="style17" style="font-size:12px;"><b><u>SURAT REKOMENDASI</u></b></div></td>
+    <td><div align="center" class="style17" style="font-size:12px;"><b><u>SURAT IZIN USAHA</u></b></div></td>
   </tr>
 </table>
 

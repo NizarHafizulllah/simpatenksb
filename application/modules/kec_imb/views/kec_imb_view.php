@@ -74,6 +74,7 @@
                                         <th>Nama Pemohon</th>
                                         <th>Tgl. Verfikasi</th>
                                         <th>Petugas Verifikasi</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>

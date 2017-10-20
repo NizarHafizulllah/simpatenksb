@@ -90,9 +90,9 @@ class op_add_kecamatan extends operator_controller{
 
         
         if ($row['level']==1) {
-        	$level = 'Admin Kecamatan';
+        	$level = 'Operator Kecamatan';
         }else if ($row['level']==4) {
-        	$level = 'approval Kecamatan';
+        	$level = 'Petugas Verifikasi';
         }
         	
         	 
@@ -129,8 +129,8 @@ class op_add_kecamatan extends operator_controller{
         $data_array['form'] = 'form_simpan';
 
         $data_array['arr_level'] = array('' => '- Pilih Level -',
-                                    '1' => 'Admin Kecamatan',
-                                    '4' => 'Approval Kecamatan', );
+                                    '1' => 'Operator Kecamatan',
+                                    '4' => 'Petugas Verifikasi Kecamatan', );
 
         // show_array($data_array);
         // exit();

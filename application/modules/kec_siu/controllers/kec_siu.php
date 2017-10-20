@@ -134,7 +134,13 @@ class kec_siu extends admin_controller {
                             </div>";
         }
 
-        
+        if ($row['status']=='1') {
+            $status = '<span class="label label-info"> Dalam Proses</span>';
+        }else if ($row['status']=='2') {
+            $status = '<span class="label label-success"> Disetujui</span>';
+        }else if ($row['status']=='3') {
+            $status = '<span class="label label-danger"> Tidak Disetujui</span>';
+        }
             
              
             $arr_data[] = array(
@@ -142,6 +148,7 @@ class kec_siu extends admin_controller {
                 $row['nama_pemohon'],
                 $row['tgl_verifikasi'],
                 $row['nama_petugas_verifikasi'],
+                $status,
                $action
                 
                      
@@ -341,6 +348,31 @@ function update(){
         //show_array($data);
 
 if($this->form_validation->run() == TRUE ) { 
+
+
+          $config['upload_path'] = './upload_file/siu';
+                $path = $config['upload_path'];
+                $config['allowed_types'] = 'pdf';
+                $config['encrypt_name'] = 'TRUE';
+
+
+             $this->load->library('upload', $config);
+
+        $filename_arr = array();
+        foreach ($_FILES as $key => $value) {
+            if (!empty($value['tmp_name']) && $value['size'] > 0) {
+            if (!$this->upload->do_upload($key)) {
+               // some errors
+            } else {
+                // Code After Files Upload Success GOES HERE
+                $data_name = $this->upload->data();
+                $filename_arr[] = $data_name['file_name'];
+            }
+            $post['file'] = $filename_arr[0];
+        }else{
+            unset($post['file']);
+        }
+    }
 
         $userdata = $this->session->userdata('admin_login');
         $post['kecamatan'] = $userdata['id_kecamatan'];

@@ -45,7 +45,7 @@
                 <?php }else if ($status=='1') { ?>
                   <p>Data ini belum diproses</p>
                 <?php  }else if ($status=='3') { ?>
-                  <p>Anda tidak menyetujui data ini</p>
+                  <p>Anda tidak menyetujui data ini. Karena <?php echo $notif ?></p>
                 <?php } ?>
               </div>
                    
@@ -630,6 +630,40 @@
     </div>
 </div>
 
+
+<div class="row">
+  <div class="col-lg-12">
+                    <!-- First Basic Table strats here-->
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="ti-layout-cta-left"></i> File Upload
+               </h3>
+            </div>
+            <div class="panel-body">
+
+             <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">File</label>
+                    <div class="col-md-6">
+                     &nbsp;
+                    </div>
+                    <div class="col-md-3">
+                    <?php if (!empty($file)) {?>
+                      <a class="btn btn-primary form-control" target="_blank" href="<?php echo base_url('upload_file/toko_obat/'.$file.'.pdf'); ?>">Buka</a>  
+                    <?php }else{
+                      echo 'Tidak Ada File';
+                      } ?>
+                    
+
+                    </div>
+                  </div>
+                            
+
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="row">
   <div class="col-lg-12">
                     <!-- First Basic Table strats here-->
@@ -671,12 +705,31 @@
                     </div>
                   </div>
 
+
+                  
+
                   <div class="form-group p-10">
                     <label class="control-label col-md-3" for="text">Status</label>
                     <div class="col-md-9">
                       <?php echo form_dropdown("status",$arr_status,isset($status)?$status:'','id="status" class="form-control input-style"'); ?>
                     </div>
                   </div> 
+
+                  <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">No. Surat</label>
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" name="no_surat" id="no_surat" placeholder="Di isi Jika Data Disetujui" value="<?php echo isset($no_surat)?$no_surat:''; ?>" >
+                    </div>
+                  </div>
+
+                  <div class="form-group p-10">
+                    <label class="control-label col-md-3" for="text">Pemberitahuan</label>
+                    <div class="col-md-9">
+                      <textarea name="notif" id="notif" class="form-control"><?php echo isset($notif)?$notif:'Di isi Jika Data Tidak Disetujui'; ?></textarea>
+                    </div>
+                  </div>
+
+
                             
 
             </div>

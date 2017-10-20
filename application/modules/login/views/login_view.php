@@ -127,7 +127,7 @@
                                        
                                             swal({
                                                 title: 'Login Berhasil',
-                                                text: 'Anda Login Sebagai Admin Kecamatan',
+                                                text: 'Anda Login Sebagai Operator Kecamatan',
                                                 type: 'success',
                                                 buttonsStyling: false,
                                                 confirmButtonClass: 'btn btn-primary'
@@ -165,7 +165,7 @@
                                     }else if(hasil.error == false && hasil.level == 4){
                                         swal({
                                                 title: 'Login Berhasil',
-                                                text: 'Anda Login Sebagai Penyetuju Kecamatan',
+                                                text: 'Anda Login Sebagai Petugas Verifikasi Kecamatan',
                                                 type: 'success',
                                                 buttonsStyling: false,
                                                 confirmButtonClass: 'btn btn-primary'
@@ -177,7 +177,7 @@
                                     }else if(hasil.error == false && hasil.level == 5){
                                         swal({
                                                 title: 'Login Berhasil',
-                                                text: 'Anda Login Sebagai Operator Kecamatan',
+                                                text: 'Anda Login Sebagai Admin Kecamatan',
                                                 type: 'success',
                                                 buttonsStyling: false,
                                                 confirmButtonClass: 'btn btn-primary'

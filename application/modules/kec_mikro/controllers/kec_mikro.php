@@ -134,7 +134,13 @@ class kec_mikro extends admin_controller {
                             </div>";
         }
 
-        
+          if ($row['status']=='1') {
+            $status = '<span class="label label-info"> Dalam Proses</span>';
+        }else if ($row['status']=='2') {
+            $status = '<span class="label label-success"> Disetujui</span>';
+        }else if ($row['status']=='3') {
+            $status = '<span class="label label-danger"> Tidak Disetujui</span>';
+        }
             
              
             $arr_data[] = array(
@@ -142,6 +148,7 @@ class kec_mikro extends admin_controller {
                 $row['nama_pemohon'],
                 $row['tgl_verifikasi'],
                 $row['nama_petugas_verifikasi'],
+                $status,
                $action
                 
                      
@@ -298,13 +305,12 @@ function update(){
 
 
       $this->load->library('form_validation');
-        $this->form_validation->set_rules('no_ktp','Nomor registrasi','required');
+       $this->form_validation->set_rules('no_ktp','Nomor registrasi','required');
         $this->form_validation->set_rules('nama_pemohon','Nama Pemohon','required');
         $this->form_validation->set_rules('tempat_lahir','Alamat','required');
         $this->form_validation->set_rules('tgl_lahir','Syarat umum pertama','required');
         $this->form_validation->set_rules('pekerjaan','Syarat umum kedua','required');
         $this->form_validation->set_rules('no_tlp','Syarat umum keempat','required');
-        $this->form_validation->set_rules('kewarganegaraan','Syarat umum kelima','required');
         $this->form_validation->set_rules('alamat','Syarat umum ketiga','required');
         $this->form_validation->set_rules('merek_usaha','Syarat umum keenam','required');
         $this->form_validation->set_rules('jenis_usaha','Syarat umum ketujuh','required');
@@ -319,15 +325,12 @@ function update(){
         $this->form_validation->set_rules('rekom_uptd','Tgl. Lahir Pemohon','required');
         $this->form_validation->set_rules('mengetahui_lurah','No. Telp. Pemohon','required');
         $this->form_validation->set_rules('siup_asli','Pekerjaan Pemohon','required');
-        $this->form_validation->set_rules('tgl_register','Syarat teknis keempat','required');
         $this->form_validation->set_rules('no_register','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('nama_petugas_verifikasi','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nama_camat','Syarat teknis kelima','required');
         $this->form_validation->set_rules('nip_camat','Tgl. Surat','required');
           
-          
          
-        $this->form_validation->set_message('required', ' %s Harap isi semua data');
+        $this->form_validation->set_message('required', 'Harap isi semua data');
         
         $this->form_validation->set_error_delimiters('', '<br>&nbsp;<br>&nbsp;<br>');
 
@@ -336,6 +339,30 @@ function update(){
         //show_array($data);
 
 if($this->form_validation->run() == TRUE ) { 
+
+    $config['upload_path'] = './upload_file/mikro';
+                $path = $config['upload_path'];
+                $config['allowed_types'] = 'pdf';
+                $config['encrypt_name'] = 'TRUE';
+
+
+             $this->load->library('upload', $config);
+
+        $filename_arr = array();
+        foreach ($_FILES as $key => $value) {
+            if (!empty($value['tmp_name']) && $value['size'] > 0) {
+            if (!$this->upload->do_upload($key)) {
+               // some errors
+            } else {
+                // Code After Files Upload Success GOES HERE
+                $data_name = $this->upload->data();
+                $filename_arr[] = $data_name['file_name'];
+            }
+            $post['file'] = $filename_arr[0];
+        }else{
+            unset($post['file']);
+        }
+    }
 
         $userdata = $this->session->userdata('admin_login');
         $post['kecamatan'] = $userdata['id_kecamatan'];

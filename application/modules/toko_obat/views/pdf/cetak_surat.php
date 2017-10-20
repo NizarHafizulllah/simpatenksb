@@ -69,13 +69,13 @@
 
 <table width="100%">
   <tr>
-    <td><div align="center" class="style17" style="font-size:12px;"><b><u>SURAT REKOMENDASI</u></b></div></td>
+    <td><div align="center" class="style17" style="font-size:12px;"><b><u>SURAT IZIN TEMPAT USAHA</u></b></div></td>
   </tr>
 </table>
 
 <table width="100%">
   <tr>
-    <td><div align="center" style="font-size:10px"><strong>NOMOR  : <?php echo $query['no_register']; ?></strong></div></td>
+    <td><div align="center" style="font-size:10px"><strong>NOMOR  : <?php echo $query['no_surat']; ?></strong></div></td>
   </tr>
 </table>
 <br/>&nbsp;
@@ -93,7 +93,7 @@
   <tr>
     <td width="16%" height="27"><div align="left" style="font-size: 9px;"><strong>Membaca</strong></div></td>
     <td width="2%">:</td>
-    <td width="82%"><div align="justify" style="font-size: 9px;">Surat permohonan dari Saudara, tanggal <?php echo $d_surat.' Bulan '.$m_surat.' Tahun '.$y_surat; ?> yang bermaksud untuk memperoleh/mendaftar ulang/memperpanjang Surat Rekomendasi Tempat Usaha;</div></td>
+    <td width="82%"><div align="justify" style="font-size: 9px;">Surat permohonan dari Saudara, tanggal <?php echo $d_surat.' Bulan '.$m_surat.' Tahun '.$y_surat; ?> yang bermaksud untuk memperoleh/mendaftar ulang/memperpanjang Surat Izin Tempat Usaha;</div></td>
   </tr>
 </table>
 <br/>&nbsp;
@@ -104,7 +104,7 @@
   <tr>
     <td width="16%" ><div align="left" style="font-size: 9px;"><strong>Menimbang</strong></div></td>
     <td width="2%">:</td>
-    <td width="82%"><div align="justify" style="font-size: 9px;">bahwa permohonan tersebut diatas telah dilakukan pemeriksaan dan memenuhi syarat-syarat sesuai peraturan dan ketentuan yang berlaku, maka permohonan yang bersangkutan telah dapat diberikan Surat Rekomendasi Tempat Usaha; </div> </td>
+    <td width="82%"><div align="justify" style="font-size: 9px;">bahwa permohonan tersebut diatas telah dilakukan pemeriksaan dan memenuhi syarat-syarat sesuai peraturan dan ketentuan yang berlaku, maka permohonan yang bersangkutan telah dapat diberikan Surat Izin Tempat Usaha; </div> </td>
   </tr>
 </table>
 <br/>&nbsp;

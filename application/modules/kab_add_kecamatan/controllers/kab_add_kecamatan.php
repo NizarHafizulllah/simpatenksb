@@ -71,13 +71,13 @@ class kab_add_kecamatan extends adminkab_controller{
         $hapus = "<a href ='#' onclick=\"hapus('$id')\" class='btn btn-danger btn-xs'><i class='fa fa-trash'></i>Hapus</a>
         <a href ='$this->controller/editdata?id=$id' class='btn btn-primary btn-xs'><i class='fa fa-edit'></i>Edit</a>";
         if ($row['level']==1) {
-        	$level = 'Admin Kecamatan';
+        	$level = 'Operator Kecamatan';
         }else if ($row['level']==2) {
         	$level = 'Admin Kabupaten';
         }else if ($row['level']==4) {
-            $level = 'Operator Kecamatan';
+            $level = 'Petugas Verifikasi';
         }else if ($row['level']==5) {
-            $level = 'Operator Kecamatan';
+            $level = 'Admin Kecamatan';
         }
         	
         	 

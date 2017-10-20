@@ -136,13 +136,20 @@ class kec_imb extends admin_controller {
         }
 
         
-        	
+        	if ($row['status']=='1') {
+            $status = '<span class="label label-info"> Dalam Proses</span>';
+        }else if ($row['status']=='2') {
+            $status = '<span class="label label-success"> Disetujui</span>';
+        }else if ($row['status']=='3') {
+            $status = '<span class="label label-danger"> Tidak Disetujui</span>';
+        }
         	 
         	$arr_data[] = array(
         		$row['no_regis'],
         		$row['nama_pemohon'],
         		$row['tgl_verifikasi'],
         		$row['nama_petugas_verifikasi'],
+                $status,
         	   $action
         		
          			 
@@ -312,9 +319,6 @@ function update(){
         $this->form_validation->set_rules('tek_penelitian_tanah','Syarat teknis ketiga','required');
         $this->form_validation->set_rules('tek_pengaman','Syarat teknis keempat','required');
         $this->form_validation->set_rules('sistem_drainase','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('nama_petugas_verifikasi','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('tgl_verifikasi','Syarat teknis kelima','required');
-        $this->form_validation->set_rules('tgl_surat','Tgl. Surat','required');
         $this->form_validation->set_rules('tgl_lahir_pemohon','Tgl. Lahir Pemohon','required');
         $this->form_validation->set_rules('tempat_lahir_pemohon','Tempat Lahir Pemohon','required');
         $this->form_validation->set_rules('no_telp_pemohon','No. Telp. Pemohon','required');
@@ -331,11 +335,34 @@ function update(){
 
 if($this->form_validation->run() == TRUE ) { 
 
+
+    $config['upload_path'] = './upload_file/imb';
+                $path = $config['upload_path'];
+                $config['allowed_types'] = 'pdf';
+                $config['encrypt_name'] = 'TRUE';
+
+
+             $this->load->library('upload', $config);
+
+        $filename_arr = array();
+        foreach ($_FILES as $key => $value) {
+            if (!empty($value['tmp_name']) && $value['size'] > 0) {
+            if (!$this->upload->do_upload($key)) {
+               // some errors
+            } else {
+                // Code After Files Upload Success GOES HERE
+                $data_name = $this->upload->data();
+                $filename_arr[] = $data_name['file_name'];
+            }
+            $post['file'] = $filename_arr[0];
+        }else{
+            unset($post['file']);
+        }
+    }
+
         $userdata = $this->session->userdata('admin_login');
         $post['kecamatan'] = $userdata['id_kecamatan'];
         $post['kabupaten'] = '52_7';
-        $post['tgl_verifikasi'] = flipdate($post['tgl_verifikasi']);
-        $post['tgl_surat'] = flipdate($post['tgl_surat']);
         $post['tgl_lahir_pemohon'] = flipdate($post['tgl_lahir_pemohon']);
         $post['tgl_skgr'] = flipdate($post['tgl_skgr']);
         $post['tgl_rekom_desa'] = flipdate($post['tgl_rekom_desa']);
@@ -374,8 +401,6 @@ else {
          $imb = $this->db->get('imb');
          $data_array = $imb->row_array();
 
-         $data_array['tgl_verifikasi'] = flipdate($data_array['tgl_verifikasi']);
-         $data_array['tgl_surat'] = flipdate($data_array['tgl_surat']);
          $data_array['tgl_lahir_pemohon'] = flipdate($data_array['tgl_lahir_pemohon']);
          $data_array['tgl_skgr'] = flipdate($data_array['tgl_skgr']);
          $data_array['tgl_rekom_desa'] = flipdate($data_array['tgl_rekom_desa']);

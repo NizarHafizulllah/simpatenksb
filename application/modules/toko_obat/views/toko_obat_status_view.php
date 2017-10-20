@@ -46,7 +46,7 @@
                 <?php }else if ($status=='1') { ?>
                   <p>Data Anda belum diproses</p>
                 <?php  }else if ($status=='3') { ?>
-                  <p>Data Anda tidak disetujui oleh kecamatan, silahkan periksa kembali data anda. dan lakukan update.</p>
+                  <p>Data Anda tidak disetujui oleh kecamatan, Karena <?php echo $notif; ?>.</p>
                 <?php } ?>
               </div>
                    

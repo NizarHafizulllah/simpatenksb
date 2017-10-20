@@ -101,7 +101,7 @@ $userdata = $this->session->userdata('op_login');
                             <h4 class="media-heading">
                                 <?php echo $userdata['nama']; ?>
                             </h4>
-                            <p>Operator Kecamatan <?php echo $userdata['kecamatan'] ?></p>
+                            <p>Admin Kecamatan <?php echo $userdata['kecamatan'] ?></p>
                         </div>
                     </div>
                 </div>

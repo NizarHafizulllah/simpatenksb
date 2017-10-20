@@ -211,16 +211,21 @@ class app_mikro extends verifikator_controller {
 
 if($this->form_validation->run() == TRUE ) { 
 
-        $userdata = $this->session->userdata('app_login');
-        
+      $userdata = $this->session->userdata('app_login');
         if ($post['status']==2) {
             $data = array('status' => $post['status'],
+                            'no_surat' => $post['no_surat'],
                         'tgl_verifikasi' => date('Y-m-d'),
                         'nama_petugas_verifikasi' => $userdata['nama']);
     
-        }else{
-            $data = array('status' => $post['status'],);
+        }else if($post['status']==3) {
+            $data = array('status' => $post['status'],
+                            'notif' => $post['notif']
+                );
     
+        }else{
+            $data = array('status' => $post['status'],
+                );
         }
          
         $this->db->where('id', $post['id']);

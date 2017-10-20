@@ -135,13 +135,20 @@ class toko_obat extends admin_controller {
         }
 
         
-            
+            if ($row['status']=='1') {
+            $status = '<span class="label label-info"> Dalam Proses</span>';
+        }else if ($row['status']=='2') {
+            $status = '<span class="label label-success"> Disetujui</span>';
+        }else if ($row['status']=='3') {
+            $status = '<span class="label label-danger"> Tidak Disetujui</span>';
+        }
              
             $arr_data[] = array(
                 $row['no_register'],
                 $row['nama_pemohon'],
                 $row['tgl_verifikasi'],
                 $row['nama_petugas_verifikasi'],
+                $status,
                $action
                 
                      
@@ -365,10 +372,13 @@ if($this->form_validation->run() == TRUE ) {
                 $data_name = $this->upload->data();
                 $filename_arr[] = $data_name['file_name'];
             }
+            $post['file'] = $filename_arr[0];
+        }else{
+            unset($post['file']);
         }
     }
 
-    $post['file'] = $filename_arr[0];
+    
 
         $userdata = $this->session->userdata('admin_login');
         $post['kecamatan'] = $userdata['id_kecamatan'];
@@ -378,8 +388,8 @@ if($this->form_validation->run() == TRUE ) {
 
         $post['status'] = 1;
 
-        show_array($post);
-        exit();
+        // show_array($post);
+        // exit();
         
         $this->db->where('id', $post['id']);
         $res = $this->db->update('toko_obat', $post); 

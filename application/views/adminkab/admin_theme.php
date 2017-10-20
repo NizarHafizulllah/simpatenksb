@@ -103,7 +103,7 @@ $userdata = $this->session->userdata('adminkab_login');
 <li class="menu-dropdown <?php if($curPage=='user'||$curPage=='user_add'){ echo 'active'; } ?>">
                         <a href="#">
                             <i class="menu-icon fa fa-users"></i>
-                            <span>Admin Kabupaten</span>
+                            <span>Admin Kecamatan</span>
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="sub-menu">
